@@ -1,0 +1,5 @@
+[run]
+include = nnr/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
