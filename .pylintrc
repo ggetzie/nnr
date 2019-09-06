@@ -5,7 +5,8 @@ load-plugins=pylint_django
 max-line-length=120
 
 [MESSAGES CONTROL]
-disable=missing-docstring,invalid-name
+disable=all
+enable=F,E,unreachable,duplicate-key,unnecessary-semicolon,global-variable-not-assigned,unused-variable,binary-op-exception,bad-format-string,anomalous-backslash-in-string,bad-open-mode
 
 [DESIGN]
 max-parents=13
