@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Recipes
+{% endblock %}
+
+
+{% block content %}
+<h1>Recipes</h1>
+<ul>
+    {% for recipe in object_list %}
+    <li>
+        <a href="{% url 'main:recipe_detail' slug=recipe.title_slug %}">{{ recipe.title }}</a>
+    </li>
+    {% endfor %}
+</li>
+{% endblock %}

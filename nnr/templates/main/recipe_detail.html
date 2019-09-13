@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+{{ recipe.title }}
+{% endblock %}
+
+
+{% block content %}
+<h1>{{ recipe.title }}</h1>
+<h2>Ingredients</h2>
+{{ recipe.ingredients_html|safe }}
+
+<h2>Instructions</h2>
+{{ recipe.instructions_html|safe }}
+{% endblock %}

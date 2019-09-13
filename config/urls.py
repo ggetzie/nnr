@@ -15,7 +15,9 @@ urlpatterns = [
     # User management
     path("users/", include("nnr.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
-    # Your stuff: custom urls includes go here
+
+    # Custom urls
+    path("main/", include("main.urls", namespace="main")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
