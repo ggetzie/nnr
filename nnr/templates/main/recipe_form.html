@@ -2,17 +2,17 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-Add a Recipe
+{% if object %}Update{% else %}Add{% endif %} Recipe
 {% endblock %}
 
 
 {% block content %}
-<div class="form-container" style="margin-bottom: 50px; width: 60%; margin: auto;">
-    <h1>Add a Recipe</h1>
+<div class="form-container main-content">
+    <h1>{% if object %}Update{% else %}Add{% endif %} Recipe</h1>
     <form action="" method="POST">
     {% csrf_token %}
     {{ form|crispy }}
-    <input type="submit" class="btn btn-primary" value="Add" />
+    <input type="submit" class="btn btn-primary" value={% if object %}"Update"{% else %}"Add"{% endif %} />
     </form>
 </div>
 {% endblock %}

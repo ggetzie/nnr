@@ -26,7 +26,7 @@ class Recipe(models.Model):
     ingredients_html = models.TextField(_("Ingredients HTML"))
     instructions_text = models.TextField(_("Instructions"))
     instructions_html = models.TextField(_("Instructions HTML"))
-    tags = models.ManyToManyField("Tag")
+    # tags = models.ManyToManyField("Tag", through="UserTag")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, 
                              on_delete=models.SET_NULL,
                              null=True)
@@ -63,6 +63,15 @@ class Tag(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+class UserTag(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                            on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.recipe} - {self.user} - {self.tag}"
 
 
 class Profile(models.Model):

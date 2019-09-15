@@ -7,10 +7,17 @@
 
 
 {% block content %}
-<h1>{{ recipe.title }}</h1>
-<h2>Ingredients</h2>
-{{ recipe.ingredients_html|safe }}
-
-<h2>Instructions</h2>
-{{ recipe.instructions_html|safe }}
+<div class="main-content">
+    <h1>{{ recipe.title }}</h1>
+    {% if recipe.user == request.user or request.user.is_staff %}
+    <div class="options">
+        <a href="{% url 'main:recipe_update' recipe.title_slug %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'main:recipe_delete' recipe.title_slug %}" class="btn btn-danger">Delete</a>
+    </div>
+    {% endif %}
+    <h2>Ingredients</h2>
+    {{ recipe.ingredients_html|safe }}
+    <h2>Instructions</h2>
+    {{ recipe.instructions_html|safe }}
+</div>
 {% endblock %}
