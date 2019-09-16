@@ -26,7 +26,7 @@ class Recipe(models.Model):
     ingredients_html = models.TextField(_("Ingredients HTML"))
     instructions_text = models.TextField(_("Instructions"))
     instructions_html = models.TextField(_("Instructions HTML"))
-    # tags = models.ManyToManyField("Tag", through="UserTag")
+    tags = models.ManyToManyField("Tag", through="UserTag")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, 
                              on_delete=models.SET_NULL,
                              null=True)

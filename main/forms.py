@@ -28,7 +28,7 @@ class SignupForm(forms.Form):
             recipe = Recipe.objects.get(title_slug=slug)
             raise forms.ValidationError(DUPE_MSG, code="duplicate")
         except Recipe.DoesNotExist:
-            return self.cleaned_data(["title"])
+            return self.cleaned_data["title"]
 
     def clean_ingredients(self):
         lines = self.cleaned_data["ingredients"].split("\n")
