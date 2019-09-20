@@ -25,6 +25,7 @@ class RecipeDetail(LoginRequiredMixin, DetailView):
 
 class RecipeList(LoginRequiredMixin, ListView):
     model = Recipe
+    paginate_by = 25
 
 
 class UpdateRecipe(UserPassesTestMixin, UpdateView):
