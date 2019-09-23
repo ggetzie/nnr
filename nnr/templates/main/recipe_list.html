@@ -14,5 +14,8 @@ Recipes
         <a href="{% url 'main:recipe_detail' slug=recipe.title_slug %}">{{ recipe.title }}</a>
     </li>
     {% endfor %}
-</li>
+</ul>
+
+{% include "main/pagination.html" %}
+
 {% endblock %}
