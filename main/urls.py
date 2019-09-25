@@ -22,8 +22,18 @@ recipe_urls = [
          name="recipe_detail"),         
 ]
 
+tag_urls = [
+     path("",
+          view=views.TagList.as_view(),
+          name="tag_list"),
+     path("<slug:slug>",
+          view=views.TagDetail.as_view(),
+          name="tag_detail"),
+]
+
 urlpatterns = [
     path("recipes/", include(recipe_urls)),
+    path("tags/", include(tag_urls)),
 ]
 
 

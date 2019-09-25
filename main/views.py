@@ -46,3 +46,14 @@ class DeleteRecipe(UserPassesTestMixin, DeleteView):
     def test_func(self):
         return (self.request.user.is_staff or
                 self.request.user == self.object.user)
+
+
+class TagList(LoginRequiredMixin, ListView):
+    model = Tag
+    paginate_by = 144
+
+
+class TagDetail(LoginRequiredMixin, DetailView):
+    model = Tag
+    slug_field = "name_slug"
+    context_object_name = "tag"

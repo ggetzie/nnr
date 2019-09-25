@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+Tags
+{% endblock %}
+
+
+{% block content %}
+<div class="main-content">
+    <h1>Tags</h1>
+    <div class="row">
+        {% for tag in object_list %}
+        <div class="col-sm-1">
+            <a href="{% url 'main:tag_detail' tag.name_slug %}">{{ tag }}</a>
+        </div>
+        {% if forloop.counter|divisibleby:12 %}
+        </div>
+        <div class="row">
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% include "main/pagination.html" %}
+</div>
+{% endblock %}
