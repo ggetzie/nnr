@@ -10,10 +10,10 @@ Tags
     <h1>Tags</h1>
     <div class="row">
         {% for tag in object_list %}
-        <div class="col-sm-1">
+        <div class="col-sm-2">
             <a href="{% url 'main:tag_detail' tag.name_slug %}">{{ tag }}</a>
         </div>
-        {% if forloop.counter|divisibleby:12 %}
+        {% if forloop.counter|divisibleby:6 %}
         </div>
         <div class="row">
         {% endif %}

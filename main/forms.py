@@ -1,9 +1,12 @@
 from django import forms
+from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
 
 from main.models import Recipe, Tag, UserTag
 
+User = get_user_model()
 DUPE_MSG = _("A recipe with that title already exists!")
 
 class SignupForm(forms.Form):
@@ -104,3 +107,20 @@ class UpdateRecipeForm(forms.ModelForm):
     def clean_ingredients_text(self):
         lines = self.cleaned_data["ingredients_text"].split("\n")
         return "\n".join([f"{ing.strip()}  " for ing in lines])
+
+class TagRecipeForm(forms.Form):
+    tags = forms.CharField(label=_("Tags"))
+    user = forms.ModelChoiceField(widget=forms.HiddenInput(),
+                                  queryset=User.objects.all())
+    recipe = forms.ModelChoiceField(widget=forms.HiddenInput(),
+                                    queryset=Recipe.objects.all())
+
+    def save_tags(self):
+        tags = [Tag.objects.get_or_create(name_slug=slugify(tag), 
+                                              defaults={"name": tag.strip()})[0]
+                    for tag in self.cleaned_data["tags"].split(",")]
+        usertags = [UserTag(recipe=self.cleaned_data["recipe"],
+                            user=self.cleaned_data["user"],
+                            tag=tag) for tag in tags]
+        UserTag.objects.bulk_create(usertags)
+        

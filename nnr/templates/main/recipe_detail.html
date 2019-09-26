@@ -12,9 +12,6 @@
     <div class="byline">
         Submitted by: {{ recipe.user.username }}
     </div>
-    <div class="tags">
-        Tags: {% for tag in recipe.tags.all.distinct %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
-    </div>
     {% if recipe.user == request.user or request.user.is_staff %}
     <div class="options">
         <a href="{% url 'main:recipe_update' recipe.title_slug %}" class="btn btn-primary">Edit</a>
@@ -22,8 +19,32 @@
     </div>
     {% endif %}
     <h2>Ingredients</h2>
-    {{ recipe.ingredients_html|safe }}
+    <div class="ingredients">
+        {{ recipe.ingredients_html|safe }}
+    </div>
     <h2>Instructions</h2>
-    {{ recipe.instructions_html|safe }}
+    <div class="instructions">
+        {{ recipe.instructions_html|safe }}
+    </div>
+    <div class="tags">
+        <h3>Your Tags</h3>
+        <p>
+            {% for utag in usertags %}
+            <a href="{% url 'main:tag_detail' utag.tag.name_slug %}">{{ utag.tag.name }}</a>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+        <h3>All Tags</h3>
+        <p>
+            {% for tag in recipe.tags.all.distinct %}
+            <a href="{% url 'main:tag_detail' tag.name_slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+        <h3>Add Tag</h3>
+        <form action="{% url 'main:tag_recipe' %}" method="POST">
+            {% csrf_token %}
+            {{ tagform|crispy }}
+            <input type="Submit" class="btn btn-secondary" value="Submit" />
+        </form>
+    </div>
 </div>
 {% endblock %}
