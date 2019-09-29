@@ -12,10 +12,29 @@
     <div class="byline">
         Submitted by: {{ recipe.user.username }}
     </div>
+    <div class="user-options row">
+        <div class="col-sm-3">
+            <form action="{% url 'main:rate_recipe' %}" methode="POST">
+                {% csrf_token %}
+                {{ rateform|crispy }}
+                <input type="Submit" class="btn btn-primary btn-sm" value="Rate" />
+            </form>
+        </div>
+        <div class="col-sm-3">
+            Average Rating: {{ average_rating }}
+        </div>
+        <div class="col-sm-3">
+            {% crispy saveform %}
+        </div>
+    </div>
     {% if recipe.user == request.user or request.user.is_staff %}
-    <div class="options">
-        <a href="{% url 'main:recipe_update' recipe.title_slug %}" class="btn btn-primary">Edit</a>
-        <a href="{% url 'main:recipe_delete' recipe.title_slug %}" class="btn btn-danger">Delete</a>
+    <div class="owner-options row">
+        <div class="col-sm-3">
+            <a href="{% url 'main:recipe_update' recipe.title_slug %}" class="btn btn-primary btn-sm">Edit</a>
+        </div>
+        <div class="col-sm-3">
+            <a href="{% url 'main:recipe_delete' recipe.title_slug %}" class="btn btn-danger btn-sm">Delete</a>
+        </div>
     </div>
     {% endif %}
     <h2>Ingredients</h2>
@@ -27,6 +46,7 @@
         {{ recipe.instructions_html|safe }}
     </div>
     <div class="tags">
+        <h2>Tags</h2>
         <h3>Your Tags</h3>
         <p>
             {% for utag in usertags %}

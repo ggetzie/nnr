@@ -83,11 +83,8 @@ class Profile(models.Model):
     next_payment = models.DateField(_("Next Payment"), default=next_year)
     saved_recipes = models.ManyToManyField(Recipe, 
                                            related_name="saved_by")
-    rated_recipes = models.ManyToManyField(Recipe, 
-                                           through="RecipeRating",
-                                           related_name="ratings",
-                                           related_query_name="rating")
-
+    
+    
     def __str__(self):
         return f"{self.user.name} ({self.user.id})"
 

@@ -4,7 +4,10 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
 
-from main.models import Recipe, Tag, UserTag
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
+
+from main.models import Recipe, Tag, UserTag, RecipeRating
 
 User = get_user_model()
 DUPE_MSG = _("A recipe with that title already exists!")
@@ -123,4 +126,47 @@ class TagRecipeForm(forms.Form):
                             user=self.cleaned_data["user"],
                             tag=tag) for tag in tags]
         UserTag.objects.bulk_create(usertags)
+
+
+class SaveRecipeForm(forms.Form):
+    recipe = forms.ModelChoiceField(widget=forms.HiddenInput(),
+                                    queryset=Recipe.objects.all())
+    user = forms.ModelChoiceField(widget=forms.HiddenInput(),
+                                  queryset=User.objects.all())
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = "post"
+        self.helper.form_action = "main:save_recipe"
+
+    def save_recipe(self):
+        profile = self.cleaned_data["user"].profile
+        recipe = self.cleaned_data["recipe"]
+        if recipe in profile.saved_recipes.all():
+            profile.saved_recipes.remove(recipe)
+        else:
+            profile.saved_recipes.add(recipe)
+        profile.save()
+
+
+class RateRecipeForm(forms.Form):
+    rating = forms.ChoiceField(choices=((1, "1 Star"),
+                                        (2, "2 Stars"),
+                                        (3, "3 Stars"),
+                                        (4, "4 Stars"),
+                                        (5, "5 Stars")),
+                                label="Rating")
+    recipe = forms.ModelChoiceField(widget=forms.HiddenInput(),
+                                    queryset=Recipe.objects.all())
+    user = forms.ModelChoiceField(widget=forms.HiddenInput(),
+                                  queryset=User.objects.all())
+
+    def rate_recipe(self):
+        
+        rr = RecipeRating(rating=self.cleaned_data["rating"],
+                          recipe = self.cleaned_data["recipe"],
+                          user=self.cleaned_data["user"])
+        rr.save()
+
         

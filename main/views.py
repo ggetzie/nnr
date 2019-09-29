@@ -1,11 +1,15 @@
+from crispy_forms.layout import Submit
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
                                   DetailView, FormView)
 
 from main.models import (Recipe, RecipeRating, Profile, Tag, UserTag)
-from main.forms import CreateRecipeForm, UpdateRecipeForm, TagRecipeForm
+from main.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
+                        SaveRecipeForm, RateRecipeForm)
 
 class CreateRecipe(LoginRequiredMixin, CreateView):
     model = Recipe
@@ -27,7 +31,21 @@ class RecipeDetail(LoginRequiredMixin, DetailView):
         context["usertags"] = UserTag.objects.filter(user=self.request.user,
                                                      recipe=self.object)
         context["tagform"] = TagRecipeForm(initial={"user": self.request.user,
-                                                          "recipe": self.object})
+                                                    "recipe": self.object})
+        saveform = SaveRecipeForm(initial={"user": self.request.user,
+                                           "recipe": self.object})                                                        
+        if self.object in self.request.user.profile.saved_recipes.all():
+            btn = "Unsave"
+            css = "btn btn-outline-primary btn-sm"
+        else:
+            btn = "Save"
+            css = "btn btn-primary btn-sm"
+        submit = Submit(btn, btn)
+        submit.field_classes=css
+        saveform.helper.add_input(submit)
+        context["saveform"] = saveform
+        context["rateform"] = RateRecipeForm(initial={"user": self.request.user,
+                                                      "recipe": self.object})                                                                                                              
         return context
 
 
@@ -75,3 +93,24 @@ class TagRecipe(LoginRequiredMixin, FormView):
         kw = {"slug": form.cleaned_data["recipe"].title_slug}
         return redirect(reverse_lazy("main:recipe_detail", kwargs=kw))
 
+
+class SaveRecipe(LoginRequiredMixin, FormView):
+    form_class = SaveRecipeForm
+
+    def form_valid(self, form):
+        if not self.request.user == form.cleaned_data["user"]:
+            raise PermissionDenied        
+        form.save_recipe()
+        kw = {"slug": form.cleaned_data["recipe"].title_slug}
+        return redirect(reverse_lazy("main:recipe_detail", kwargs=kw))
+
+
+class RateRecipe(LoginRequiredMixin, FormView):
+    form_class = RateRecipeForm
+
+    def form_valid(self, form):
+        if not self.request.user == form.cleaned_data["user"]:
+            raise PermissionDenied
+        form.rate_recipe()
+        kw = {"slug": form.cleaned_data["recipe"].title_slug}
+        return redirect (reverse_lazy("main:recipe_detail", kwargs=kw))
