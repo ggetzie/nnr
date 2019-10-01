@@ -111,6 +111,9 @@ class RecipeRating(models.Model):
     profile = models.ForeignKey("Profile", on_delete=models.CASCADE)
     rating = models.PositiveSmallIntegerField(_("Rating"))
 
-    def __str__(self):
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=["recipe", "profile"],
+                                              name="unique_rating")]
 
+    def __str__(self):
         return f"{self.profile} rated {self.recipe} {self.rating} stars"

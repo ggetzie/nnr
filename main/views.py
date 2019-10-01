@@ -2,6 +2,7 @@ from crispy_forms.layout import Submit
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import PermissionDenied
+from django.db.models import Avg
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
@@ -46,6 +47,9 @@ class RecipeDetail(LoginRequiredMixin, DetailView):
         context["saveform"] = saveform
         context["rateform"] = RateRecipeForm(initial={"user": self.request.user,
                                                       "recipe": self.object})                                                                                                              
+        context["average_rating"] = RecipeRating.objects.\
+                                    filter(recipe=self.object).\
+                                    aggregate(Avg("rating"))["rating__avg"]
         return context
 
 

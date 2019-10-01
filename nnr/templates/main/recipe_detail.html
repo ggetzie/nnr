@@ -14,14 +14,16 @@
     </div>
     <div class="user-options row">
         <div class="col-sm-3">
-            <form action="{% url 'main:rate_recipe' %}" methode="POST">
+            <form action="{% url 'main:rate_recipe' %}" method="POST">
                 {% csrf_token %}
-                {{ rateform|crispy }}
+                {{ rateform.rating }}
+                {{ rateform.user }}
+                {{ rateform.recipe }}
                 <input type="Submit" class="btn btn-primary btn-sm" value="Rate" />
             </form>
         </div>
         <div class="col-sm-3">
-            Average Rating: {{ average_rating }}
+            {{ average_rating|default_if_none:"" }}
         </div>
         <div class="col-sm-3">
             {% crispy saveform %}
@@ -29,10 +31,10 @@
     </div>
     {% if recipe.user == request.user or request.user.is_staff %}
     <div class="owner-options row">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <a href="{% url 'main:recipe_update' recipe.title_slug %}" class="btn btn-primary btn-sm">Edit</a>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <a href="{% url 'main:recipe_delete' recipe.title_slug %}" class="btn btn-danger btn-sm">Delete</a>
         </div>
     </div>
