@@ -12,33 +12,7 @@
     <div class="byline">
         Submitted by: {{ recipe.user.username }}
     </div>
-    <div class="user-options row">
-        <div class="col-sm-3">
-            <form action="{% url 'main:rate_recipe' %}" method="POST">
-                {% csrf_token %}
-                {{ rateform.rating }}
-                {{ rateform.user }}
-                {{ rateform.recipe }}
-                <input type="Submit" class="btn btn-primary btn-sm" value="Rate" />
-            </form>
-        </div>
-        <div class="col-sm-3">
-            {{ average_rating|default_if_none:"" }}
-        </div>
-        <div class="col-sm-3">
-            {% crispy saveform %}
-        </div>
-    </div>
-    {% if recipe.user == request.user or request.user.is_staff %}
-    <div class="owner-options row">
-        <div class="col-sm-2">
-            <a href="{% url 'main:recipe_update' recipe.title_slug %}" class="btn btn-primary btn-sm">Edit</a>
-        </div>
-        <div class="col-sm-2">
-            <a href="{% url 'main:recipe_delete' recipe.title_slug %}" class="btn btn-danger btn-sm">Delete</a>
-        </div>
-    </div>
-    {% endif %}
+    
     <h2>Ingredients</h2>
     <div class="ingredients">
         {{ recipe.ingredients_html|safe }}
@@ -47,26 +21,35 @@
     <div class="instructions">
         {{ recipe.instructions_html|safe }}
     </div>
+
+    <div class="user-options row">
+        <div class="col-sm-4">
+            {% crispy rateform %}
+        </div>
+        <div class="col-sm-2">
+            {% if average_rating %}
+            {{ average_rating }} ⭐ avg.
+            {% endif %}
+        </div>
+        <div class="col-sm-2">
+            {% crispy saveform %}
+        </div>
+    {% if recipe.user == request.user or request.user.is_staff %}
+        <div class="col-sm-4">
+            <a href="{% url 'main:recipe_update' recipe.title_slug %}" class="btn btn-primary btn-sm">Edit</a>
+            <a href="{% url 'main:recipe_delete' recipe.title_slug %}" class="btn btn-danger btn-sm">Delete</a>
+        </div>
+    {% endif %}
+    </div>
+
     <div class="tags">
         <h2>Tags</h2>
-        <h3>Your Tags</h3>
-        <p>
-            {% for utag in usertags %}
-            <a href="{% url 'main:tag_detail' utag.tag.name_slug %}">{{ utag.tag.name }}</a>{% if not forloop.last %}, {% endif %}
-            {% endfor %}
-        </p>
-        <h3>All Tags</h3>
         <p>
             {% for tag in recipe.tags.all.distinct %}
             <a href="{% url 'main:tag_detail' tag.name_slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
             {% endfor %}
         </p>
-        <h3>Add Tag</h3>
-        <form action="{% url 'main:tag_recipe' %}" method="POST">
-            {% csrf_token %}
-            {{ tagform|crispy }}
-            <input type="Submit" class="btn btn-secondary" value="Submit" />
-        </form>
+        {% crispy tagform %}
     </div>
 </div>
 {% endblock %}

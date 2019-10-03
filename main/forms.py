@@ -1,11 +1,12 @@
+from crispy_forms.bootstrap import InlineField
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Submit
+
 from django import forms
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
-
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
 
 from main.models import Recipe, Tag, UserTag, RecipeRating
 
@@ -118,6 +119,20 @@ class TagRecipeForm(forms.Form):
     recipe = forms.ModelChoiceField(widget=forms.HiddenInput(),
                                     queryset=Recipe.objects.all())
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = "post"
+        self.helper.form_action = "main:tag_recipe"
+        self.helper.form_class = "form-inline"
+        self.helper.field_template = "bootstrap4/layout/inline_field.html"
+        self.helper.layout = Layout(
+            InlineField("tags", css_class="form-control-sm"),
+            "recipe",
+            "user",
+            Submit("Add Tags", "Add Tags", css_class="btn-sm")
+        )        
+
     def save_tags(self):
         tags = [Tag.objects.get_or_create(name_slug=slugify(tag), 
                                               defaults={"name": tag.strip()})[0]
@@ -151,22 +166,41 @@ class SaveRecipeForm(forms.Form):
 
 
 class RateRecipeForm(forms.Form):
-    rating = forms.ChoiceField(choices=((1, "1 Star"),
-                                        (2, "2 Stars"),
-                                        (3, "3 Stars"),
-                                        (4, "4 Stars"),
-                                        (5, "5 Stars")),
-                                label="Rating")
+    rating = forms.ChoiceField(choices=((1, "⭐"),
+                                        (2, "⭐⭐"),
+                                        (3, "⭐⭐⭐"),
+                                        (4, "⭐⭐⭐⭐"),
+                                        (5, "⭐⭐⭐⭐⭐")),
+                                label="Rating",
+                                initial=5)
     recipe = forms.ModelChoiceField(widget=forms.HiddenInput(),
                                     queryset=Recipe.objects.all())
     user = forms.ModelChoiceField(widget=forms.HiddenInput(),
                                   queryset=User.objects.all())
 
-    def rate_recipe(self):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = "post"
+        self.helper.form_action = "main:rate_recipe"
+        self.helper.form_class = "form-inline"
+        self.helper.field_template = "bootstrap4/layout/inline_field.html"
+        self.helper.layout = Layout(
+            InlineField("rating", css_class="form-control-sm"),
+            "recipe",
+            "user",
+            Submit("Rate", "Rate", css_class="btn-sm")
+        )
         
-        rr = RecipeRating(rating=self.cleaned_data["rating"],
-                          recipe = self.cleaned_data["recipe"],
-                          user=self.cleaned_data["user"])
-        rr.save()
+
+    def rate_recipe(self):
+
+        defaults = {"rating": self.cleaned_data["rating"]}
+        recipe = self.cleaned_data["recipe"]
+        profile = self.cleaned_data["user"].profile
+        rr, created = RecipeRating.objects.update_or_create(recipe=recipe,
+                                                            profile=profile, 
+                                                            defaults=defaults)
+        
 
         

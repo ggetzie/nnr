@@ -18,3 +18,14 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.form-inline > .btn {
+  margin-left: 5px;
+}
+
+.byline {
+  margin-top: -10px;
+  margin-bottom: 20px;
+  font-weight: lighter;
+  font-size: small;
+}

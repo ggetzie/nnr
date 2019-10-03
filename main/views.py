@@ -45,8 +45,17 @@ class RecipeDetail(LoginRequiredMixin, DetailView):
         submit.field_classes=css
         saveform.helper.add_input(submit)
         context["saveform"] = saveform
-        context["rateform"] = RateRecipeForm(initial={"user": self.request.user,
-                                                      "recipe": self.object})                                                                                                              
+
+        rate_initial = {"user": self.request.user,
+                        "recipe": self.object}
+        try:
+            rr = RecipeRating.objects.get(recipe=self.object,
+                                              profile=self.request.user.profile)
+            rate_initial["rating"] = rr.rating
+        except RecipeRating.DoesNotExist:
+            pass
+
+        context["rateform"] = RateRecipeForm(initial=rate_initial)
         context["average_rating"] = RecipeRating.objects.\
                                     filter(recipe=self.object).\
                                     aggregate(Avg("rating"))["rating__avg"]
