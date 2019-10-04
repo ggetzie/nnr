@@ -12,13 +12,7 @@ Recipes
     <div class="menu">
         <a href="{% url 'main:tag_list' %}">Browse by tag</a>
     </div>
-    <ul>
-        {% for recipe in object_list %}
-        <li>
-            <a href="{% url 'main:recipe_detail' slug=recipe.title_slug %}">{{ recipe.title }}</a>
-        </li>
-        {% endfor %}
-    </ul>
+    {% include "main/recipe_ul.html" %}
     {% include "main/pagination.html" %}
 </div>
 {% endblock %}

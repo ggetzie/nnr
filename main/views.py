@@ -1,9 +1,10 @@
 from crispy_forms.layout import Submit
 
+from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import PermissionDenied
 from django.db.models import Avg
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
                                   DetailView, FormView)
@@ -11,6 +12,8 @@ from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
 from main.models import (Recipe, RecipeRating, Profile, Tag, UserTag)
 from main.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
                         SaveRecipeForm, RateRecipeForm)
+
+User = get_user_model()                        
 
 class CreateRecipe(LoginRequiredMixin, CreateView):
     model = Recipe
@@ -127,3 +130,37 @@ class RateRecipe(LoginRequiredMixin, FormView):
         form.rate_recipe()
         kw = {"slug": form.cleaned_data["recipe"].title_slug}
         return redirect (reverse_lazy("main:recipe_detail", kwargs=kw))
+
+
+class SavedRecipeList(UserPassesTestMixin, ListView):
+    model = Recipe
+    template_name = "users/saved_recipes.html"
+
+    def test_func(self):
+        return (self.request.user.is_staff or
+                self.request.user.username == self.kwargs["username"])
+
+    def get_queryset(self):
+        self.user = get_object_or_404(User, username=self.kwargs["username"])
+        qs = self.user.profile.saved_recipes.all()
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["user"] = self.user
+        return context
+
+
+class SubmittedRecipeList(LoginRequiredMixin, ListView):
+    model = Recipe
+    template_name = "users/submitted_recipes.html"
+
+    def get_queryset(self):
+        self.user = get_object_or_404(User, username=self.kwargs["username"])
+        qs = Recipe.objects.filter(user=self.user)
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["user"] = self.user
+        return context

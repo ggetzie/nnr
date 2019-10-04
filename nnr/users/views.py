@@ -13,6 +13,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
     slug_field = "username"
     slug_url_kwarg = "username"
+    context_object_name = "user"
 
 
 user_detail_view = UserDetailView.as_view()
@@ -22,6 +23,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
 
     model = User
     fields = ["name"]
+    context_object_name = "user"
 
     def get_success_url(self):
         return reverse("users:detail", kwargs={"username": self.request.user.username})
