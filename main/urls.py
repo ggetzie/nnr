@@ -1,8 +1,11 @@
 # included in config.urls with prefix "main"
-from django.urls import include, path
+from django.urls import include, path, register_converter
 import main.views as views
+import main.converters as converters
 
 app_name = "main"
+
+register_converter(converters.LetterConverter, "letter")
 
 recipe_urls = [
      path("", 
@@ -23,6 +26,9 @@ recipe_urls = [
      path("raterecipe/",
           view=views.RateRecipe.as_view(),
           name="rate_recipe"),                   
+     path("<letter:first_letter>/",
+          view=views.RecipebyLetterList.as_view(),
+          name="letter_recipe"),
      path("<slug:slug>/",
           view=views.RecipeDetail.as_view(),
           name="recipe_detail"),         

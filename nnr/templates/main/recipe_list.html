@@ -2,17 +2,30 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-Recipes
+{{ title }}
 {% endblock %}
 
 
 {% block content %}
 <div class="main-content">
-<h1>Recipes</h1>
-    <div class="menu">
-        <a href="{% url 'main:tag_list' %}">Browse by tag</a>
+<h1>{{ title }}</h1>
+    <nav id="letter-nav" aria-label="letter navigation">
+        <ul class="pagination pagination-sm">
+            <li class="page-item">
+                <a class="page-link" href="{% url 'main:tag_list' %}">Tags</a>
+            </li>
+            {% for lc in lettercounts %}
+            <li class="page-item {% if lc.quantity < 1 %}disabled{% endif %}{% if lc.letter == current %}active{% endif %}">
+                <a class="page-link" href="{% url 'main:letter_recipe' lc.letter %}">
+                    {{ lc.letter }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    <div class="main-list">
+        {% include "main/recipe_ul.html" %}
     </div>
-    {% include "main/recipe_ul.html" %}
     {% include "main/pagination.html" %}
 </div>
 {% endblock %}

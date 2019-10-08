@@ -280,7 +280,7 @@ pip-selfcheck.json
 ### Project template
 
 nnr/media/
-
+workspace.code-workspace
 .pytest_cache/
 
 

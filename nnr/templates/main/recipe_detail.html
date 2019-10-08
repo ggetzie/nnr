@@ -10,7 +10,7 @@
 <div class="main-content">
     <h1>{{ recipe.title }}</h1>
     <div class="byline">
-        Submitted by: {{ recipe.user.username }}
+        Submitted by: <a href="{% url 'users:detail' recipe.user.username %}">{{ recipe.user.username }}</a>
     </div>
     
     <h2>Ingredients</h2>

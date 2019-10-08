@@ -9,7 +9,8 @@ from django.urls import reverse_lazy
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
                                   DetailView, FormView)
 
-from main.models import (Recipe, RecipeRating, Profile, Tag, UserTag)
+from main.models import (Recipe, RecipeRating, Profile, Tag, UserTag, 
+                         LetterCount)
 from main.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
                         SaveRecipeForm, RateRecipeForm)
 
@@ -68,6 +69,12 @@ class RecipeDetail(LoginRequiredMixin, DetailView):
 class RecipeList(LoginRequiredMixin, ListView):
     model = Recipe
     paginate_by = 25
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["lettercounts"] = LetterCount.objects.all()
+        context["title"] = "All Recipes"
+        return context
 
 
 class UpdateRecipe(UserPassesTestMixin, UpdateView):
@@ -135,6 +142,7 @@ class RateRecipe(LoginRequiredMixin, FormView):
 class SavedRecipeList(UserPassesTestMixin, ListView):
     model = Recipe
     template_name = "users/saved_recipes.html"
+    paginate_by = 25
 
     def test_func(self):
         return (self.request.user.is_staff or
@@ -154,6 +162,7 @@ class SavedRecipeList(UserPassesTestMixin, ListView):
 class SubmittedRecipeList(LoginRequiredMixin, ListView):
     model = Recipe
     template_name = "users/submitted_recipes.html"
+    paginate_by = 25
 
     def get_queryset(self):
         self.user = get_object_or_404(User, username=self.kwargs["username"])
@@ -164,3 +173,20 @@ class SubmittedRecipeList(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context["user"] = self.user
         return context
+
+
+class RecipebyLetterList(LoginRequiredMixin, ListView):
+    model = Recipe
+    paginate_by = 25
+
+    def get_queryset(self):
+        qs = Recipe.objects.filter(first_letter=self.kwargs["first_letter"])
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = f"Recipes {self.kwargs['first_letter']}"
+        context["lettercounts"] = LetterCount.objects.all()
+        context["current"] = self.kwargs["first_letter"]
+        return context
+        

@@ -6,7 +6,10 @@
 
 {% block user_content  %}
 <h1>Saved Recipes</h1>
-{% include "main/recipe_ul.html" %}
+<div class="main-list">
+    {% include "main/recipe_ul.html" %}
+</div>
+{% include "main/pagination.html" %}
     
 {% endblock user_content %}
 
