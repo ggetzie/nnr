@@ -1,6 +1,9 @@
-from crispy_forms.bootstrap import InlineField
+from allauth.account.forms import SignupForm
+
+from crispy_forms.bootstrap import (InlineField, FormActions, Accordion, 
+                                    AccordionGroup)
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit
+from crispy_forms.layout import Layout, Submit, Fieldset
 
 from django import forms
 from django.conf import settings
@@ -8,25 +11,73 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
 
-from main.models import Recipe, Tag, UserTag, RecipeRating
+from main.models import Recipe, Tag, UserTag, RecipeRating, Profile
 
 User = get_user_model()
 DUPE_MSG = _("A recipe with that title already exists!")
 
-class SignupForm(forms.Form):
-    name = forms.CharField(label=_("Name"), max_length=200)
-    title = forms.CharField(label=_("Title"), max_length=100)
+class NNRSignupForm(SignupForm):
+    name = forms.CharField(label=_("Name"), max_length=255)
+    title = forms.CharField(label=_("Title"), max_length=150)
     ingredients = forms.CharField(label=_("Ingredients"),
                                   widget=forms.widgets.Textarea)
     instructions = forms.CharField(label=_("Instructions"), 
                                    widget=forms.widgets.Textarea)
+    tags = forms.CharField(label=_("Tags"), required=False)
 
-    def signup(self, request, user):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = "signup_form"
+        self.helper.form_class = "signup"
+        self.helper.form_method = "post"
+        self.helper.form_action = "account_signup"
+        
+        self.helper.layout = Layout(
+            Accordion(
+                AccordionGroup(
+                    "User Info ⤵",
+                    "name",
+                    "email",
+                    "username",
+                    "password1",
+                    "password2",
+                ),
+                AccordionGroup(
+                    "Your Favorite Recipe ⤵",
+                    "title",
+                    "ingredients",
+                    "instructions",
+                    "tags"
+                ),  
+            ),
+            FormActions(
+                Submit("signup", "&raquo; Signup"),
+                css_class="form-actions"
+            )
+        )
+
+
+    def save(self, request):
+        user = super().save(request)
+        user.name = self.cleaned_data["name"]
+        user.save()
         recipe = Recipe(title=self.cleaned_data["title"],
                         ingredients_text=self.cleaned_data["ingredients"],
                         instructions_text=self.cleaned_data["instructions"],
                         user=user)
-        recipe.save()
+        recipe.save()                        
+        # for each tag, get it and add it to the recipe, creating a new one if 
+        # it doesn't exist
+        if self.cleaned_data["tags"]:
+            tags = [Tag.objects.get_or_create(name_slug=slugify(tag), 
+                                              defaults={"name": tag.strip()})[0]
+                    for tag in self.cleaned_data["tags"].split(",")]
+            usertags = [UserTag(recipe=recipe,
+                                user=user,
+                                tag=tag) for tag in tags]
+            UserTag.objects.bulk_create(usertags)                        
+        
         return user
 
     def clean_title(self):

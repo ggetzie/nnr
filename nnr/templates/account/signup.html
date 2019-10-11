@@ -10,6 +10,8 @@
 
 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
 
+{% crispy form %}
+{% comment %}
 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
   {{ form|crispy }}
@@ -18,6 +20,12 @@
   {% endif %}
   <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
 </form>
-
+{% endcomment %}
 {% endblock %}
 
+{% block morejs %}
+<script>
+$("#user-info").collapse("show");
+$("#id_password2").focusout(function() {$("#your-favorite-recipe").collapse("show");});
+</script>
+{% endblock morejs %}

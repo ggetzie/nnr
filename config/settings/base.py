@@ -253,7 +253,7 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_ADAPTER = "nnr.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "nnr.users.adapters.SocialAccountAdapter"
-ACCOUNT_SIGNUP_FORM_CLASS = "main.forms.SignupForm"
+ACCOUNT_FORMS = {"signup": "main.forms.NNRSignupForm"}
 
 
 # Your stuff...

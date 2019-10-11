@@ -7,12 +7,9 @@
 {% block content %}
 <div class="main-content">
     <h1>Recipes tagged {{ tag.name }}</h1>
-    <ul>
-        {% for recipe in tag.recipe_set.all %}
-        <li>
-            <a href="{% url 'main:recipe_detail' recipe.title_slug %}">{{ recipe.title }}</a>
-        </li>
-        {% endfor %}
-    </ul>
+    {% with object_list=tag.recipe_set.all %}
+    {% include "main/recipe_ul.html" %}
+    {% endwith %}
+    {% include "main/pagination.html" %}
 </div>
 {% endblock %}

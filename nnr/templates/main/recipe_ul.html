@@ -1,4 +1,4 @@
-<ul class="list-group">
+<ul class="list-group recipe-list">
     {% for recipe in object_list %}
     <li class="list-group-item">
         <a href="{% url 'main:recipe_detail' recipe.title_slug %}">{{ recipe.title }}</a>

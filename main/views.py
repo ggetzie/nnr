@@ -102,10 +102,22 @@ class TagList(LoginRequiredMixin, ListView):
     paginate_by = 144
 
 
-class TagDetail(LoginRequiredMixin, DetailView):
-    model = Tag
+class TagDetail(LoginRequiredMixin, ListView):
+    model = Recipe
     slug_field = "name_slug"
-    context_object_name = "tag"
+    paginate_by = 25
+    template_name = "main/tag_detail.html"
+
+    def get_queryset(self):
+        self.tag = get_object_or_404(Tag, name_slug=self.kwargs["slug"])
+        qs = self.tag.recipe_set.all()
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tag"] = self.tag
+        return context
+    
 
 
 class TagRecipe(LoginRequiredMixin, FormView):
