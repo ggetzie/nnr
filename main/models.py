@@ -59,6 +59,12 @@ class Recipe(models.Model):
                                     default="")
     sort_title = models.CharField(_("Sort Title"), max_length=150, 
                                   default="")
+    created = models.DateField(_("Date Created"), auto_now_add=True)
+    featured = models.BooleanField(_("Recipe of the Day"), default=False)
+    last_featured = models.DateField(_("Last Featured"), 
+                                     default=datetime.date(year=1970, 
+                                                           month=1, 
+                                                           day=1))
 
     class Meta:
         ordering = ["sort_title"]

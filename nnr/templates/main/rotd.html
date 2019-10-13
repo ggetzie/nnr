@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Recipe of the Day - {{ recipe.title }}
+{% endblock %}
+
+
+{% block content %}
+<div class="main-content">
+    <h1>Recipe of the Day - {{ recipe.title }}</h1>
+    <div class="byline">
+        Submitted by: <a href="{% url 'users:detail' recipe.user.username %}">{{ recipe.user.username }}</a>
+    </div>
+    
+    <h2>Ingredients</h2>
+    <div class="ingredients">
+        {{ recipe.ingredients_html|safe }}
+    </div>
+    <h2>Instructions</h2>
+    <div class="instructions">
+        {{ recipe.instructions_html|safe }}
+    </div>
+
+    <p>
+        <a class="btn btn-primary" href="{% url 'account_signup' %}">Sign up now</a> for access to more great recipes.
+        Only $19 per year!
+    </p>
+    
+</div>
+{% endblock %}

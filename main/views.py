@@ -66,6 +66,15 @@ class RecipeDetail(LoginRequiredMixin, DetailView):
         return context
 
 
+class RecipeOfTheDay(DetailView):
+    model = Recipe
+    context_object_name = "recipe"
+    template_name = "main/rotd.html"
+
+    def get_object(self, queryset=None):
+        return Recipe.objects.get(featured=True)
+
+
 class RecipeList(LoginRequiredMixin, ListView):
     model = Recipe
     paginate_by = 25
