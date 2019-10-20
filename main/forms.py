@@ -1,7 +1,8 @@
 from allauth.account.forms import SignupForm
 
 from crispy_forms.bootstrap import (InlineField, FormActions, Accordion, 
-                                    AccordionGroup)
+                                    AccordionGroup, FieldWithButtons, 
+                                    StrictButton)
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, Fieldset
 
@@ -254,4 +255,18 @@ class RateRecipeForm(forms.Form):
                                                             defaults=defaults)
         
 
-        
+class RecipeSearchForm(forms.Form):
+    terms = forms.CharField(label=_("Search for"))
+    
+    def search(self):
+        return Recipe.objects.all()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = "get"
+        self.helper.form_action = "main:search_recipes"
+        self.helper.layout = Layout(
+            FieldWithButtons("terms", Submit("search", "Search"))
+        )
+        self.fields["terms"].label=False

@@ -2,6 +2,9 @@ from crispy_forms.layout import Submit
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.postgres.search import (SearchQuery, 
+                                            SearchRank, 
+                                            SearchVector)
 from django.core.exceptions import PermissionDenied
 from django.db.models import Avg
 from django.shortcuts import render, redirect, get_object_or_404
@@ -12,7 +15,7 @@ from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
 from main.models import (Recipe, RecipeRating, Profile, Tag, UserTag, 
                          LetterCount)
 from main.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
-                        SaveRecipeForm, RateRecipeForm)
+                        SaveRecipeForm, RateRecipeForm, RecipeSearchForm)
 
 User = get_user_model()                        
 
@@ -206,8 +209,31 @@ class RecipebyLetterList(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = f"Recipes {self.kwargs['first_letter']}"
+        context["title"] = f'"{self.kwargs["first_letter"]}" Recipes'
         context["lettercounts"] = LetterCount.objects.all()
         context["current"] = self.kwargs["first_letter"]
         return context
         
+
+class SearchRecipes(LoginRequiredMixin, FormView):
+    form_class = RecipeSearchForm
+    template_name = "main/search.html"
+    success_url = reverse_lazy("main:search_recipes")
+
+    def get_context_data(self, **kwargs):
+        context =  super().get_context_data(**kwargs)
+        terms = self.request.GET.get("terms", None)
+        if terms:
+            title_vector = SearchVector("title", weight="A")
+            ingredients_vector = SearchVector("ingredients_text", weight="B")
+            instructions_vector = SearchVector("instructions_text", weight="B")
+            vector = title_vector + ingredients_vector + instructions_vector
+
+            query = SearchQuery(terms)
+            results = (Recipe.objects
+                      .annotate(search=vector).filter(search=terms)
+                      .annotate(rank=SearchRank(vector, query))
+                      .order_by("-rank"))
+            context["results"] = results
+            context["terms"] = terms
+        return context

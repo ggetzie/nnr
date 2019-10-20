@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+{{ title|default:"Search" }}
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="search-form">
+        {% crispy form %}
+    </div>
+
+    <h1>{{ title|default:"Search results" }} for "{{ terms }}"</h1>
+    {% if results %}    
+    {% with object_list=results%}
+    <div class="main-list">
+        {% include "main/recipe_ul.html" %}
+    </div>
+    {% endwith %}
+    {% else %}
+    <p>No results found</p>
+    {% endif %}
+</div>
+{% endblock %}
