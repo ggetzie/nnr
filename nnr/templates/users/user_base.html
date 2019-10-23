@@ -15,16 +15,23 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'account_email' %}">E-Mail</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:saved_recipes' user.username %}">Saved Recipes</a>
-                </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'users:submitted_recipes' user.username %}">Submitted Recipes</a>
+                    Recipes
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'users:submitted_recipes' user.username %}">Submitted</a>
+                        </li>                 
+                        {% if  request.user == user %}   
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'users:saved_recipes' user.username %}">Saved</a>
+                        </li>
+                        {% endif %}
+                    </ul>
                 </li>
             </ul>
         </div>
-        <div class="col-lg-10">
+        <div class="col-lg-6">
             {% block user_content  %}
             {% endblock user_content %}
         </div>

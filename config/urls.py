@@ -17,9 +17,10 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
 
     # Custom urls
-    path("tos/", TemplateView.as_view(template_name="tos.html"), name="tos"),
     path("privacy/", TemplateView.as_view(template_name="privacy.html"), name="privacy"),
-    path("main/", include("main.urls", namespace="main")),
+    path("support", TemplateView.as_view(template_name="support.html"), name="support"),
+    path("tos/", TemplateView.as_view(template_name="tos.html"), name="tos"),
+        path("main/", include("main.urls", namespace="main")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
