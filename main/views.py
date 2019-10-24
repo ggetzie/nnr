@@ -95,6 +95,7 @@ class UpdateRecipe(UserPassesTestMixin, UpdateView):
     slug_field = "title_slug"
 
     def test_func(self):
+        self.object = self.get_object()
         return (self.request.user.is_staff or 
                 self.request.user == self.object.user)
 
@@ -192,6 +193,28 @@ class SubmittedRecipeList(LoginRequiredMixin, ListView):
         self.user = get_object_or_404(User, username=self.kwargs["username"])
         qs = Recipe.objects.filter(user=self.user)
         return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["user"] = self.user
+        return context
+
+
+class RatedRecipeList(UserPassesTestMixin, ListView):
+    model = RecipeRating
+    template_name = "users/rated_recipes.html"
+    paginate_by = 25
+
+    def test_func(self):
+        return (self.request.user.is_staff or 
+                self.request.user.username == self.kwargs["username"])
+
+    def get_queryset(self):
+        self.user = get_object_or_404(User, username=self.kwargs["username"])
+        ratings = (RecipeRating.objects
+                   .filter(profile=self.user.profile)
+                   .order_by("-rating", "recipe__sort_title"))
+        return ratings
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

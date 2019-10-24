@@ -1,0 +1,29 @@
+{% extends "users/user_base.html" %}
+{% load static %}
+
+{% block title %}Submitted Recipes{% endblock %}
+
+
+{% block user_content  %}
+<h1>Rated Recipes</h1>
+<div class="main-list">
+    <ul class="list-group recipe-list">
+        {% for rating in object_list %}
+        <li class="list-group-item">
+            <a href="{% url 'main:recipe_detail' rating.recipe.title_slug %}">
+                {{ rating.recipe.title }}
+            </a>
+            <span class="float-right">{{ rating.get_rating_display }}</span>
+        </li>
+        {% empty %}
+        <li class="list-group-item">
+            No recipes rated yet.
+        </li>
+        {% endfor %}
+    </ul>        
+</div>
+{% include "main/pagination.html" %}
+    
+{% endblock user_content %}
+
+

@@ -12,7 +12,8 @@ from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
 
-from main.models import Recipe, Tag, UserTag, RecipeRating, Profile
+from main.models import (Recipe, Tag, UserTag, RecipeRating, Profile, 
+                         RATING_CHOICES)
 
 User = get_user_model()
 DUPE_MSG = _("A recipe with that title already exists!")
@@ -218,11 +219,7 @@ class SaveRecipeForm(forms.Form):
 
 
 class RateRecipeForm(forms.Form):
-    rating = forms.ChoiceField(choices=((1, "⭐"),
-                                        (2, "⭐⭐"),
-                                        (3, "⭐⭐⭐"),
-                                        (4, "⭐⭐⭐⭐"),
-                                        (5, "⭐⭐⭐⭐⭐")),
+    rating = forms.ChoiceField(choices=RATING_CHOICES,
                                 label="Rating",
                                 initial=5)
     recipe = forms.ModelChoiceField(widget=forms.HiddenInput(),

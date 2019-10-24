@@ -147,14 +147,21 @@ class PaymentPlan(models.Model):
         return f"{self.name}"
 
 
+RATING_CHOICES = ((1, "⭐"),
+                  (2, "⭐⭐"),
+                  (3, "⭐⭐⭐"),
+                  (4, "⭐⭐⭐⭐"),
+                  (5, "⭐⭐⭐⭐⭐"))
+
 class RecipeRating(models.Model):
     recipe = models.ForeignKey("Recipe", on_delete=models.CASCADE)
     profile = models.ForeignKey("Profile", on_delete=models.CASCADE)
-    rating = models.PositiveSmallIntegerField(_("Rating"))
+    rating = models.PositiveSmallIntegerField(_("Rating"), choices=RATING_CHOICES)
 
     class Meta:
         constraints = [models.UniqueConstraint(fields=["recipe", "profile"],
                                               name="unique_rating")]
+        ordering = ["profile", "recipe__sort_title"]
 
     def __str__(self):
         return f"{self.profile} rated {self.recipe} {self.rating} stars"
