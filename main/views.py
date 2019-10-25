@@ -106,6 +106,7 @@ class DeleteRecipe(UserPassesTestMixin, DeleteView):
     slug_field = "title_slug"
 
     def test_func(self):
+        self.object = self.get_object()
         return (self.request.user.is_staff or
                 self.request.user == self.object.user)
 
