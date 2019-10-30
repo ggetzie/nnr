@@ -4,7 +4,7 @@ from crispy_forms.bootstrap import (InlineField, FormActions, Accordion,
                                     AccordionGroup, FieldWithButtons, 
                                     StrictButton)
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Fieldset
+from crispy_forms.layout import Layout, Submit, Fieldset, Div, HTML
 
 from django import forms
 from django.conf import settings
@@ -17,6 +17,8 @@ from main.models import (Recipe, Tag, UserTag, RecipeRating, Profile,
 
 User = get_user_model()
 DUPE_MSG = _("A recipe with that title already exists!")
+TOS_LABEL = _("I have read and agree to the Terms of Service and "
+              "Privacy Policy")
 
 class NNRSignupForm(SignupForm):
     name = forms.CharField(label=_("Name"), max_length=255)
@@ -26,6 +28,7 @@ class NNRSignupForm(SignupForm):
     instructions = forms.CharField(label=_("Instructions"), 
                                    widget=forms.widgets.Textarea)
     tags = forms.CharField(label=_("Tags"), required=False)
+    tos = forms.BooleanField(label=TOS_LABEL)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -51,13 +54,28 @@ class NNRSignupForm(SignupForm):
                     "ingredients",
                     "instructions",
                     "tags"
-                ),  
+                ),
+                AccordionGroup(
+                    "Payment Information ⤵",
+                    HTML("""<label for="card-element">
+                                Please enter your credit or debit card information below
+                            </label>"""),
+                    Div(css_id="card-element"),
+                    Div(css_id="card-errors", role="alert")
+                ),
+                AccordionGroup(
+                    "Terms of Service ⤵",
+                    "tos"
+                )  
             ),
             FormActions(
                 Submit("signup", "&raquo; Signup"),
                 css_class="form-actions"
             )
         )
+
+    class Media:
+        js = (settings.STATIC_URL + "js/payment.js",)
 
 
     def save(self, request):

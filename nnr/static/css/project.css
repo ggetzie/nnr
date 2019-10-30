@@ -52,3 +52,10 @@
 .search-form {
   margin-top: 30px;
 }
+
+#card-element {
+  padding: 10px 0px 20px 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 550px;
+}
