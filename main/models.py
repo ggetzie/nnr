@@ -14,7 +14,7 @@ import string
 
 def next_year():
     today = datetime.date.today()
-    return today + relativedelta(years=1)
+    return today + relativedelta(years=+1)
 
 def get_basic_plan():
     plan, created =  PaymentPlan.objects.get_or_create(name_slug="basic", 
