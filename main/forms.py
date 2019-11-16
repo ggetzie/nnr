@@ -1,3 +1,4 @@
+from dateutil.relativedelta import relativedelta
 from allauth.account.forms import SignupForm
 
 from crispy_forms.bootstrap import (InlineField, FormActions, Accordion, 
@@ -14,11 +15,16 @@ from django.utils.text import slugify
 
 from main.models import (Recipe, Tag, UserTag, RecipeRating, Profile, 
                          RATING_CHOICES)
+import datetime                    
+import logging
+
+
 
 User = get_user_model()
 DUPE_MSG = _("A recipe with that title already exists!")
 TOS_LABEL = _("I have read and agree to the Terms of Service and "
               "Privacy Policy")
+logger = logging.getLogger(__name__)
 
 class NNRSignupForm(SignupForm):
     name = forms.CharField(label=_("Name"), max_length=255)
@@ -29,9 +35,19 @@ class NNRSignupForm(SignupForm):
                                    widget=forms.widgets.Textarea)
     tags = forms.CharField(label=_("Tags"), required=False)
     tos = forms.BooleanField(label=TOS_LABEL)
+    stripePaymentMethod = forms.CharField(max_length=50, 
+                                          widget=forms.HiddenInput(),
+                                          required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        today = datetime.date.today()
+        paydate = today + relativedelta(days=30)
+        payinfo = ("I understand my card will be charged an annual fee of $19 "
+                   "USD. The first charge will take place at the end of the 30 "
+                   f"day free trial period on {paydate} and thereafter "
+                   "annually on that date.")
+                
         self.helper = FormHelper()
         self.helper.form_id = "signup_form"
         self.helper.form_class = "signup"
@@ -61,7 +77,8 @@ class NNRSignupForm(SignupForm):
                                 Please enter your credit or debit card information below
                             </label>"""),
                     Div(css_id="card-element"),
-                    Div(css_id="card-errors", role="alert")
+                    Div(css_id="card-errors", role="alert"),
+                    HTML(f'<div id="pay-info">{payinfo}</div>'),
                 ),
                 AccordionGroup(
                     "Terms of Service ⤵",
@@ -97,6 +114,7 @@ class NNRSignupForm(SignupForm):
                                 user=user,
                                 tag=tag) for tag in tags]
             UserTag.objects.bulk_create(usertags)                        
+
         
         return user
 

@@ -1,5 +1,6 @@
 from crispy_forms.layout import Submit
 
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.postgres.search import (SearchQuery, 
@@ -15,9 +16,52 @@ from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
 from main.models import (Recipe, RecipeRating, Profile, Tag, UserTag, 
                          LetterCount)
 from main.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
-                        SaveRecipeForm, RateRecipeForm, RecipeSearchForm)
+                        SaveRecipeForm, RateRecipeForm, RecipeSearchForm,
+                        NNRSignupForm)
+
+import logging                        
+import stripe
 
 User = get_user_model()                        
+logger = logging.getLogger(__name__)
+
+def nnr_signup(request):
+    check = "In dat function view, fam"
+    if request.POST:
+        logger.info(f"signup POST {request.POST}")
+        form = NNRSignupForm(**request.POST)
+        if form.is_valid():
+            user = form.save(request)
+            # Create a customer and subscription with stripe
+            payment_method = request.POST["stripePaymentMethod"]
+            logger.info(f"payment method: {payment_method}")
+            stripe.api_key = settings.STRIPE_SK
+            customer = stripe.Customer.create(
+                payment_method=payment_method,
+                email=user.email,
+                invoice_settings={
+                    "default_payment_method":payment_method
+                }
+            )
+            user.profile.stripe_id = customer.id
+            user.save()
+            logger.info(f"created customer: {customer.id}")
+            subscription = stripe.Subscription.create(
+                customer=customer.id,
+                items=[
+                    {
+                        "payment_plan":"plan_G9ZcHdJbqG4WBs"
+                    }
+                ],
+                expand=["latest_invoice.payment_intent"]
+            )
+            logger.info(f"created subscription: {subscription}")
+
+    else:
+        form = NNRSignupForm()
+    return render(request, "account/signup.html", 
+                           context={"form": form, 
+                                    "check": check})
 
 class CreateRecipe(LoginRequiredMixin, CreateView):
     model = Recipe

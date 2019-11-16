@@ -7,7 +7,6 @@ from django.utils.translation import ugettext_lazy as _
 
 User = get_user_model()
 
-
 class UserDetailView(LoginRequiredMixin, DetailView):
 
     model = User

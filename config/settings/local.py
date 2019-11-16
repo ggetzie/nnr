@@ -72,5 +72,37 @@ DATABASES = {
 
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
+# LOGGING
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#logging
+# See https://docs.djangoproject.com/en/dev/topics/logging for
+# more details on how to customize your logging configuration.
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "%(levelname)s %(asctime)s %(module)s "
+            "%(process)d %(thread)d %(message)s"
+        }
+    },
+    "handlers": {
+        "file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": "/usr/local/src/nnr/logs/debug.log",
+            "formatter": "verbose",
+        }
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "INFO",
+            "propagate": True,
+        },
+    },
+    "root": {"level": "INFO", "handlers": ["file"]},
+}
+
 # Your stuff...
 # ------------------------------------------------------------------------------

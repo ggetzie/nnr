@@ -124,6 +124,8 @@ class Profile(models.Model):
     next_payment = models.DateField(_("Next Payment"), default=next_year)
     saved_recipes = models.ManyToManyField(Recipe, 
                                            related_name="saved_by")
+    stripe_id = models.CharField(_("Stripe Customer Id"), max_length=50, 
+                                 default="")
     
     
     def __str__(self):
@@ -135,6 +137,8 @@ class PaymentPlan(models.Model):
     name_slug = models.SlugField(_("Name Slug"), max_length=25, unique=True)
     interval = models.PositiveSmallIntegerField(_("Days between payments"), default=365)
     amount = models.PositiveSmallIntegerField(_("Amount"), default=10)
+    stripe_id = models.CharField(_("Stripe Plan Id"), max_length=50,
+                                 default="")
 
     class Meta:
         ordering = ["name_slug"]
