@@ -35,10 +35,7 @@ class NNRSignupForm(SignupForm):
                                    widget=forms.widgets.Textarea)
     tags = forms.CharField(label=_("Tags"), required=False)
     tos = forms.BooleanField(label=TOS_LABEL)
-    stripePaymentMethod = forms.CharField(max_length=50, 
-                                          widget=forms.HiddenInput(),
-                                          required=False)
-
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         today = datetime.date.today()
@@ -92,7 +89,7 @@ class NNRSignupForm(SignupForm):
         )
 
     class Media:
-        js = (settings.STATIC_URL + "js/payment.js",)
+        js = (settings.STATIC_URL + "js/signup.js",)
 
 
     def save(self, request):

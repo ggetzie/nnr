@@ -8,6 +8,7 @@ from django.contrib.postgres.search import (SearchQuery,
                                             SearchVector)
 from django.core.exceptions import PermissionDenied
 from django.db.models import Avg
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
@@ -33,7 +34,7 @@ def nnr_signup(request):
         if form.is_valid():
             user = form.save(request)
             # Create a customer and subscription with stripe
-            payment_method = request.POST["stripePaymentMethod"]
+            payment_method = request.POST["payment_method"]
             logger.info(f"payment method: {payment_method}")
             stripe.api_key = settings.STRIPE_SK
             customer = stripe.Customer.create(
@@ -56,6 +57,7 @@ def nnr_signup(request):
                 expand=["latest_invoice.payment_intent"]
             )
             logger.info(f"created subscription: {subscription}")
+            return JsonResponse(subscription, safe=False)
 
     else:
         form = NNRSignupForm()

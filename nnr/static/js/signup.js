@@ -33,6 +33,8 @@ var style = {
         var errorElement = document.getElementById('card-errors');
         errorElement.textContent = result.error.message;
       } else {
+        console.log("Result from creating payment method")
+        console.log(result)
         // Send the token to your server.
         stripePaymentHandler(result.payment_method);
       }
@@ -40,14 +42,31 @@ var style = {
   });
 
   function stripePaymentHandler(payment_method) {
-    // Insert the payment method ID into the form so it gets submitted to the server
+    // collect form data and submit it via fetch
     var form = document.getElementById('signup_form');
-    var hiddenInput = document.createElement('input');
-    hiddenInput.setAttribute('type', 'hidden');
-    hiddenInput.setAttribute('name', 'stripePaymentMethod');
-    hiddenInput.setAttribute('value', payment_method);
-    form.appendChild(hiddenInput);
+    let data = {"payment_method": payment_method};
+    for (let i=0; i < form.length; i++) {
+      data[form[i].name] = form[i].value
+    }
+    console.log(data)
+    console.log(form.action)
+    fetch(form.action, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(response => {
+      console.log(response)
+      return response.json();
+    });
+    
+    // var hiddenInput = document.createElement('input');
+    // hiddenInput.setAttribute('type', 'hidden');
+    // hiddenInput.setAttribute('name', 'stripePaymentMethod');
+    // hiddenInput.setAttribute('value', payment_method);
+    // form.appendChild(hiddenInput);
   
-    // Submit the form
-    form.submit();
+    // // Submit the form
+    // form.submit();
   }
