@@ -20,22 +20,30 @@ from main.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
                         SaveRecipeForm, RateRecipeForm, RecipeSearchForm,
                         NNRSignupForm)
 
-import logging                        
+import logging
+import json
 import stripe
 
 User = get_user_model()                        
 logger = logging.getLogger(__name__)
 
 def nnr_signup(request):
-    check = "In dat function view, fam"
-    if request.POST:
-        logger.info(f"signup POST {request.POST}")
-        form = NNRSignupForm(**request.POST)
+    if request.is_ajax():
+        logger.info(f"AJAX Request: {request.body}")
+        data = json.loads(request.body)
+        payment_method = data.pop("payment_method")
+        logger.info(f"Got payment method: {payment_method}")
+        form_data = {k:v for k, v in data.items() 
+                              if k in NNRSignupForm.base_fields}
+        # Password fields don't appear in NNRSignupForm.base_fields
+        # Add them manually                              
+        form_data["password1"] = data["password1"]
+        form_data["password2"] = data["password2"]
+        logger.info(f"Creating form with data: {form_data}")                            
+        form = NNRSignupForm(form_data)
         if form.is_valid():
             user = form.save(request)
             # Create a customer and subscription with stripe
-            payment_method = request.POST["payment_method"]
-            logger.info(f"payment method: {payment_method}")
             stripe.api_key = settings.STRIPE_SK
             customer = stripe.Customer.create(
                 payment_method=payment_method,
@@ -47,23 +55,32 @@ def nnr_signup(request):
             user.profile.stripe_id = customer.id
             user.save()
             logger.info(f"created customer: {customer.id}")
+            if settings.DEBUG:
+                plan = "plan_GE5qJjPJHeV0Hn"
+            else:
+                plan = "plan_G9ZcHdJbqG4WBs"
             subscription = stripe.Subscription.create(
                 customer=customer.id,
                 items=[
                     {
-                        "payment_plan":"plan_G9ZcHdJbqG4WBs"
+                        "plan": plan
                     }
                 ],
+                trial_from_plan=True,
                 expand=["latest_invoice.payment_intent"]
             )
             logger.info(f"created subscription: {subscription}")
             return JsonResponse(subscription, safe=False)
+        else:
+            logger.info(f"Form invalid. Errors: {form.errors}")
+            return JsonResponse(form.errors)
 
     else:
+        logger.info("Signup GET - logger working")
         form = NNRSignupForm()
     return render(request, "account/signup.html", 
-                           context={"form": form, 
-                                    "check": check})
+                           context={"form": form})
+                                    
 
 class CreateRecipe(LoginRequiredMixin, CreateView):
     model = Recipe

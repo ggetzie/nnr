@@ -7,7 +7,6 @@
 
 {% block content %}
 <div class="main-content">
-  <div style="display: none;">{{ check }}</div>
   <h1>{% trans "Sign Up" %}</h1>
   <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
   {% if form.errors %}{{ form.errors }}{% endif %}
@@ -19,6 +18,8 @@
 <script>
 $("#user-info").collapse("show");
 $("#id_password2").focusout(function() {$("#your-favorite-recipe").collapse("show");});
+$("#id_tags").focusout(function() {$("#terms-of-service").collapse("show");});
 </script>
 {{ form.media }}
+
 {% endblock morejs %}

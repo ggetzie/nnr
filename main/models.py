@@ -114,7 +114,11 @@ class UserTag(models.Model):
     def __str__(self):
         return f"{self.recipe} - {self.user} - {self.tag}"
 
-
+PAYMENT_STATUS = ((0, "FAILED"),
+                  (1, "PENDING"),
+                  (2, "TRIAL"),
+                  (3, "SUCCESS"))
+                  
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     plan = models.ForeignKey("PaymentPlan", 
@@ -126,6 +130,9 @@ class Profile(models.Model):
                                            related_name="saved_by")
     stripe_id = models.CharField(_("Stripe Customer Id"), max_length=50, 
                                  default="")
+    payment_status = models.PositiveSmallIntegerField(_("Payment Status"), 
+                                                      choices=PAYMENT_STATUS,
+                                                      default=1)
     
     
     def __str__(self):
@@ -156,6 +163,8 @@ RATING_CHOICES = ((1, "⭐"),
                   (3, "⭐⭐⭐"),
                   (4, "⭐⭐⭐⭐"),
                   (5, "⭐⭐⭐⭐⭐"))
+
+
 
 class RecipeRating(models.Model):
     recipe = models.ForeignKey("Recipe", on_delete=models.CASCADE)
