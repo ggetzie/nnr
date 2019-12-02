@@ -1,4 +1,5 @@
 from crispy_forms.layout import Submit
+from dateutil.relativedelta import relativedelta
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
@@ -20,6 +21,7 @@ from main.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
                         SaveRecipeForm, RateRecipeForm, RecipeSearchForm,
                         NNRSignupForm)
 
+import datetime
 import logging
 import json
 import stripe
@@ -56,9 +58,12 @@ def nnr_signup(request):
             user.save()
             logger.info(f"created customer: {customer.id}")
             if settings.DEBUG:
+                # test plan
                 plan = "plan_GE5qJjPJHeV0Hn"
             else:
+                # production plan
                 plan = "plan_G9ZcHdJbqG4WBs"
+            trial_end = datetime.datetime.now() + relativedelta(days=30)
             subscription = stripe.Subscription.create(
                 customer=customer.id,
                 items=[
@@ -66,7 +71,7 @@ def nnr_signup(request):
                         "plan": plan
                     }
                 ],
-                trial_from_plan=True,
+                trial_end=int(trial_end.timestamp()),
                 expand=["latest_invoice.payment_intent"]
             )
             logger.info(f"created subscription: {subscription}")
