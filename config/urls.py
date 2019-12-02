@@ -7,6 +7,8 @@ from django.views import defaults as default_views
 
 from main.views import nnr_signup
 
+support_context = {"support_email": settings.SUPPORT_EMAIL}
+
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
@@ -20,10 +22,16 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
 
     # Custom urls
-    path("privacy/", TemplateView.as_view(template_name="privacy.html"), name="privacy"),
-    path("support", TemplateView.as_view(template_name="support.html"), name="support"),
-    path("tos/", TemplateView.as_view(template_name="tos.html"), name="tos"),
-        path("main/", include("main.urls", namespace="main")),
+    path("privacy/", TemplateView.as_view(template_name="privacy.html", 
+                                          extra_context=support_context),
+                    name="privacy"),
+    path("support", TemplateView.as_view(template_name="support.html", 
+                                         extra_context=support_context),
+                    name="support"),
+    path("tos/", TemplateView.as_view(template_name="tos.html", 
+                                      extra_context=support_context),
+                 name="tos"),
+    path("main/", include("main.urls", namespace="main")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
