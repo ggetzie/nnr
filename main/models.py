@@ -22,10 +22,12 @@ def get_basic_plan():
     return plan.id
 
 def setup_lettercounts():            
-    nums = LetterCount(letter="0-9", quantity=0)
+    nums, created = LetterCount.objects.get_or_create(letter="0-9", 
+                                             defaults={"quantity":0})
     nums.save()
     for letter in string.ascii_uppercase:
-        lc = LetterCount(letter=letter, quantity=0)
+        lc, created = LetterCount.objects.get_or_create(letter=letter, 
+                                                       defaults={"quantity":0})
         lc.save()
     for r in Recipe.objects.all():
         r.save()    
