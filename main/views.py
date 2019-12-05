@@ -81,7 +81,6 @@ def nnr_signup(request):
             return JsonResponse(form.errors)
 
     else:
-        logger.info("Signup GET - logger working")
         form = NNRSignupForm()
     return render(request, "account/signup.html", 
                            context={"form": form})

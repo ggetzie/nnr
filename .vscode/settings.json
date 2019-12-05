@@ -1,4 +1,9 @@
 {
     "python.pythonPath": "/usr/local/src/env/nnr/bin/python",
-    "python.linting.pylintEnabled": true
+    "python.linting.pylintEnabled": true,
+    "cSpell.words": [
+        "dateutil",
+        "nums",
+        "sortify"
+    ]
 }

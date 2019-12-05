@@ -19,6 +19,8 @@ urlpatterns = [
     # User management
     path("users/", include("nnr.users.urls", namespace="users")),
     path("accounts/signup/", view=nnr_signup, name="account_signup"),
+    path("accounts/thankyou/", TemplateView.as_view(template_name="account/thankyou.html"),
+                               name="thankyou"),
     path("accounts/", include("allauth.urls")),
 
     # Custom urls
