@@ -6,21 +6,47 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<div class="main-content">
-  <h1>{% trans "Sign Up" %}</h1>
-  <div id="message" class="alert"></div>
-  <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-  {% if form.errors %}{{ form.errors }}{% endif %}
-  {% crispy form %}
-</div>  
+
+<h1>{% trans "Sign Up" %}</h1>
+<div id="message" class="alert"></div>
+<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<div class="row">
+  <div class="col-md-6">
+    {% if form.errors %}{{ form.errors }}{% endif %}
+    {% crispy form %}
+  </div>
+  <div class="col-md-4">
+    <h2>What's Next</h2>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          We'll send a confirmation email to you. Click the link to verify your
+          email address and activate your account.
+        </li>
+        <li class="list-group-item">
+          Browse thousands of recipes and save your favorites
+        </li>
+        <li class="list-group-item">
+          Upload your own recipes to keep them organized and available
+        </li>
+        <li class="list-group-item">
+          Tag recipes with descriptive labels to quickly find them later.
+        </li>
+        <li class="list-group-item">
+          Search for ingredients to find recipes that use them.
+        </li>
+      </ul>
+  </div>
+</div>
+
+
 {% endblock %}
 
 {% block morejs %}
-<script>
+{% comment %} <script>
 $("#user-info").collapse("show");
 $("#id_password2").focusout(function() {$("#your-favorite-recipe").collapse("show");});
 $("#id_tags").focusout(function() {$("#terms-of-service").collapse("show");});
-</script>
+</script> {% endcomment %}
 {{ form.media }}
 
 {% endblock morejs %}

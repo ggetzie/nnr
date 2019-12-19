@@ -117,7 +117,7 @@ class UserTag(models.Model):
         return f"{self.recipe} - {self.user} - {self.tag}"
 
 PAYMENT_STATUS = ((0, "FAILED"),
-                  (1, "PENDING"),
+                  (1, "NEEDS CONFIRMATION"),
                   (2, "TRIAL"),
                   (3, "SUCCESS"))
                   
@@ -135,6 +135,7 @@ class Profile(models.Model):
     payment_status = models.PositiveSmallIntegerField(_("Payment Status"), 
                                                       choices=PAYMENT_STATUS,
                                                       default=1)
+    subscription_end = models.DateField(_("Subscription End"))
     
     
     def __str__(self):

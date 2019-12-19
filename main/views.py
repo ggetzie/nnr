@@ -9,17 +9,23 @@ from django.contrib.postgres.search import (SearchQuery,
                                             SearchVector)
 from django.core.exceptions import PermissionDenied
 from django.db.models import Avg
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseBadRequest, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
                                   DetailView, FormView)
-
-from main.models import (Recipe, RecipeRating, Profile, Tag, UserTag, 
-                         LetterCount)
 from main.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
                         SaveRecipeForm, RateRecipeForm, RecipeSearchForm,
                         NNRSignupForm)
+
+from main.models import (Recipe, RecipeRating, Profile, Tag, UserTag, 
+                         LetterCount)
+
+from main.payments import (handle_payment_success, handle_payment_action,
+                           handle_payment_failure)
+
+from main.utils import (get_trial_end, get_subscription_plan)
 
 import datetime
 import logging
@@ -54,24 +60,18 @@ def nnr_signup(request):
                     "default_payment_method":payment_method
                 }
             )
-            user.profile.stripe_id = customer.id
-            user.save()
+            profile = Profile.objects.get(user=user)
+            profile.stripe_id = customer.id
+            profile.save()
             logger.info(f"created customer: {customer.id}")
-            if settings.DEBUG:
-                # test plan
-                plan = "plan_GE5qJjPJHeV0Hn"
-            else:
-                # production plan
-                plan = "plan_G9ZcHdJbqG4WBs"
-            trial_end = datetime.datetime.now() + relativedelta(days=30)
             subscription = stripe.Subscription.create(
                 customer=customer.id,
                 items=[
                     {
-                        "plan": plan
+                        "plan": get_subscription_plan()
                     }
                 ],
-                trial_end=int(trial_end.timestamp()),
+                trial_end=get_trial_end(),
                 expand=["latest_invoice.payment_intent"]
             )
             logger.info(f"created subscription: {subscription}")
@@ -84,7 +84,39 @@ def nnr_signup(request):
         form = NNRSignupForm()
     return render(request, "account/signup.html", 
                            context={"form": form})
-                                    
+
+def public_key(request):
+    if request.is_ajax():
+        return JsonResponse({"publicKey": settings.STRIPE_PK})
+    else:
+        return HttpResponseBadRequest("<h1>Bad Request</h1>")
+
+@csrf_exempt
+def webhook(request):
+    payload = request.body
+    event = None
+    stripe.api_key = settings.STRIPE_SK
+    logger.info("In webhook")
+    try:
+        event = stripe.Event.construct_from(
+            json.loads(payload), stripe.api_key
+        )
+        logger.info(f"Webhook received event:\n{event}")
+    except ValueError:
+        return HttpResponse(status=400)
+
+    if event.type == "invoice.payment_succeeded":
+        handle_payment_success(event)
+    elif event.type == "invoice.payment_action_required":
+        handle_payment_action(event)
+    elif event.type == "invoice.payment_failed":
+        handle_payment_failure(event)
+    else:
+        return HttpResponse(status=400)
+
+
+    return HttpResponse(status=200)
+
 
 class CreateRecipe(LoginRequiredMixin, CreateView):
     model = Recipe

@@ -13,35 +13,63 @@ function getCookie(name) {
   return cookieValue;
 }
 
-var success_url = "/accounts/thankyou/"
+function getPublicKey() {
+  return fetch('/main/public_key/', {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json',
+      "X-Requested-With": "XMLHttpRequest"
+    }
+  })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(response) {
+      console.log(response)
+      stripeElements(response.publicKey);
+    });
+}
 
-var stripe = Stripe('pk_test_636lQazmHaIY6yf9dA5KLSLa00DLs2u5IF');
-var elements = stripe.elements();
-var style = {
+getPublicKey();
+
+var success_url = "/accounts/thankyou/"
+var stripe;
+var stripeElements = function(publicKey) {
+  stripe = Stripe(publicKey);
+  var elements = stripe.elements();
+  // Element styles
+  var style = {
     base: {
       fontSize: '16px',
-      color: "#32325d",
+      color: '#32325d',
+      fontFamily:
+        '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+      fontSmoothing: 'antialiased',
+      '::placeholder': {
+        color: 'rgba(0,0,0,0.4)'
+      }
     }
   };
-  
-var card = elements.create('card', {style: style});
-card.mount('#card-element');
-  
-card.addEventListener('change', function(event) {
-  var displayError = document.getElementById('card-errors');
-  if (event.error) {
-    displayError.textContent = event.error.message;
-  } else {
-    displayError.textContent = '';
-  }
-});
 
-var form = document.getElementById('signup_form');
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-  changeLoadingState(true);
-  createPaymentMethodAndCustomer(stripe, card);
-});
+  var card = elements.create('card', {style: style});
+  card.mount('#card-element');
+    
+  card.addEventListener('change', function(event) {
+    var displayError = document.getElementById('card-errors');
+    if (event.error) {
+      displayError.textContent = event.error.message;
+    } else {
+      displayError.textContent = '';
+    }
+  });
+
+  var form = document.getElementById('signup_form');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    changeLoadingState(true);
+    createPaymentMethodAndCustomer(stripe, card);
+  });
+};
   
 var createPaymentMethodAndCustomer = function(stripe, card) {
   var cardholderEmail = document.getElementById('id_email').value;
@@ -100,8 +128,9 @@ function handleSubscription(subscription) {
     if (status === 'requires_action' || status === 'requires_payment_method') {
       stripe.confirmCardPayment(client_secret).then(function(result) {
         if (result.error) {
-          showCardError(result.error)
+          console.log("Confirmation error")
           console.log(result.error)
+          showCardError(result.error)
         } else {
           console.log("Confirmation success!")
           window.location.href = success_url

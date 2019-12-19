@@ -55,6 +55,8 @@ urlpatterns = [
           name="rotd"),
     path("recipes/", include(recipe_urls)),
     path("tags/", include(tag_urls)),
+    path("public_key/", views.public_key, name="public_key"),
+    path("webhook/", views.webhook, name="webhook"),
 ]
 
 

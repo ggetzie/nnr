@@ -27,20 +27,13 @@ TOS_LABEL = _("I have read and agree to the Terms of Service and "
 logger = logging.getLogger(__name__)
 
 class NNRSignupForm(SignupForm):
-    name = forms.CharField(label=_("Name"), max_length=255)
-    title = forms.CharField(label=_("Title"), max_length=150)
-    ingredients = forms.CharField(label=_("Ingredients"),
-                                  widget=forms.widgets.Textarea)
-    instructions = forms.CharField(label=_("Instructions"), 
-                                   widget=forms.widgets.Textarea)
-    tags = forms.CharField(label=_("Tags"), required=False)
     tos = forms.BooleanField(label=TOS_LABEL)
-    
+        
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         today = datetime.date.today()
         paydate = today + relativedelta(days=30)
-        payinfo = ("I understand my card will be charged an annual fee of $19 "
+        payinfo = ("Your card will be charged an annual fee of $19 "
                    "USD. The first charge will take place at the end of the 30 "
                    f"day free trial period on {paydate} and thereafter "
                    "annually on that date.")
@@ -52,80 +45,29 @@ class NNRSignupForm(SignupForm):
         self.helper.form_action = "account_signup"
         
         self.helper.layout = Layout(
-            Accordion(
-                AccordionGroup(
-                    "User Info ⤵",
-                    "name",
-                    "email",
-                    "username",
-                    "password1",
-                    "password2",
-                ),
-                AccordionGroup(
-                    "Your Favorite Recipe ⤵",
-                    "title",
-                    "ingredients",
-                    "instructions",
-                    "tags"
-                ),
-                AccordionGroup(
-                    "Payment Information ⤵",
-                    HTML("""<label for="card-element">
-                                Please enter your credit or debit card information below
-                            </label>"""),
-                    Div(css_id="card-element"),
-                    Div(css_id="card-errors", role="alert"),
-                    HTML(f'<div id="pay-info">{payinfo}</div>'),
-                ),
-                AccordionGroup(
-                    "Terms of Service ⤵",
-                    "tos"
-                )  
+            "email",
+            "username",
+            "password1",
+            "password2",
+            Div(
+                HTML("""<label for="card-element">
+                            Payment Information
+                     </label>"""),
+                Div(css_id="card-element"),
+                Div(css_id="card-errors", role="alert"),
+                HTML(f'<div id="pay-info">{payinfo}</div>'),
+                css_class="form-group"
             ),
-            FormActions(
-                Submit("signup", "&raquo; Signup"),
-                css_class="form-actions"
-            )
+            "tos",
+            Submit("signup", "&raquo; Signup"),
         )
 
     class Media:
         js = (settings.STATIC_URL + "js/signup.js",)
 
-
     def save(self, request):
         user = super().save(request)
-        user.name = self.cleaned_data["name"]
-        user.save()
-        recipe = Recipe(title=self.cleaned_data["title"],
-                        ingredients_text=self.cleaned_data["ingredients"],
-                        instructions_text=self.cleaned_data["instructions"],
-                        user=user)
-        recipe.save()                        
-        # for each tag, get it and add it to the recipe, creating a new one if 
-        # it doesn't exist
-        if self.cleaned_data["tags"]:
-            tags = [Tag.objects.get_or_create(name_slug=slugify(tag), 
-                                              defaults={"name": tag.strip()})[0]
-                    for tag in self.cleaned_data["tags"].split(",")]
-            usertags = [UserTag(recipe=recipe,
-                                user=user,
-                                tag=tag) for tag in tags]
-            UserTag.objects.bulk_create(usertags)                        
-
-        
         return user
-
-    def clean_title(self):
-        try:
-            slug = slugify(self.cleaned_data["title"])
-            recipe = Recipe.objects.get(title_slug=slug)
-            raise forms.ValidationError(DUPE_MSG, code="duplicate")
-        except Recipe.DoesNotExist:
-            return self.cleaned_data["title"]
-
-    def clean_ingredients(self):
-        lines = self.cleaned_data["ingredients"].split("\n")
-        return "\n".join([f"{ing.strip()}  " for ing in lines])
 
 
 class CreateRecipeForm(forms.ModelForm):
