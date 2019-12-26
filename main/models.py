@@ -134,7 +134,7 @@ class Profile(models.Model):
                                  default="")
     payment_status = models.PositiveSmallIntegerField(_("Payment Status"), 
                                                       choices=PAYMENT_STATUS,
-                                                      default=1)
+                                                      default=2)
     subscription_end = models.DateField(_("Subscription End"))
     
     

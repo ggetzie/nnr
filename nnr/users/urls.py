@@ -9,7 +9,8 @@ from nnr.users.views import (
 from main.views import (
     SavedRecipeList,
     SubmittedRecipeList,
-    RatedRecipeList
+    RatedRecipeList,
+    update_payment
 )
 
 app_name = "users"
@@ -25,5 +26,8 @@ urlpatterns = [
          name="submitted_recipes"),
     path("<str:username>/rated/",
          view=RatedRecipeList.as_view(),
-         name="rated_recipes")
+         name="rated_recipes"),
+    path("<str:username>/update_payment",
+         view=update_payment,
+         name="update_payment")
 ]

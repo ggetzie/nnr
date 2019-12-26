@@ -30,7 +30,7 @@ recipe_urls = [
           view=views.SearchRecipes.as_view(),
           name="search_recipes"),
      path("<letter:first_letter>/",
-          view=views.RecipebyLetterList.as_view(),
+          view=views.RecipeByLetterList.as_view(),
           name="letter_recipe"),
      path("<slug:slug>/",
           view=views.RecipeDetail.as_view(),
@@ -56,7 +56,6 @@ urlpatterns = [
     path("recipes/", include(recipe_urls)),
     path("tags/", include(tag_urls)),
     path("public_key/", views.public_key, name="public_key"),
-    path("webhook/", views.webhook, name="webhook"),
-]
+    path("webhook/", views.webhook, name="webhook"),]
 
 

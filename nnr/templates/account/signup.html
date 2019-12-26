@@ -42,11 +42,5 @@
 {% endblock %}
 
 {% block morejs %}
-{% comment %} <script>
-$("#user-info").collapse("show");
-$("#id_password2").focusout(function() {$("#your-favorite-recipe").collapse("show");});
-$("#id_tags").focusout(function() {$("#terms-of-service").collapse("show");});
-</script> {% endcomment %}
 {{ form.media }}
-
 {% endblock morejs %}

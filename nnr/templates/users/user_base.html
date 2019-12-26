@@ -32,6 +32,14 @@
                         {% endif %}
                     </ul>
                 </li>
+                <li class="nav-item">
+                    Account
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'users:update_payment' user.username %}">Payment</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div class="col-lg-6">

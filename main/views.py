@@ -1,7 +1,9 @@
+from allauth.account.utils import complete_signup
 from crispy_forms.layout import Submit
 from dateutil.relativedelta import relativedelta
 
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.postgres.search import (SearchQuery, 
@@ -34,6 +36,40 @@ import stripe
 
 User = get_user_model()                        
 logger = logging.getLogger(__name__)
+
+class ValidUserMixin(UserPassesTestMixin):
+    payment_failed_message = ("We were unable to process your last payment. "
+                              "Please update your payment information to proceed")
+
+    payment_confirm_message = ("Your payment method requires additional confirmation "
+                               "Please check your email and complete the required "
+                               "confirmation steps to proceed")
+
+    def test_func(self):
+        if self.request.user.is_staff or self.request.user.is_superuser:
+            return True
+        if self.request.user.profile.payment_status in (2, 3):
+            return True
+        if self.request.user.profile.payment_status == 0:
+            # payment failed
+            self.permission_denied_message = self.payment_failed_message
+            return False
+        if self.request.user.profile.payment_status == 1:
+            # payment needs confirmation
+            self.permission_denied_message = self.payment_confirm_message
+            return False
+
+    def handle_no_permission(self):
+        if self.request.user.is_authenticated:
+            if self.request.user.profile.payment_status == 0:
+                messages.error(self.request, self.payment_failed_message)
+                return redirect("users:update_payment", 
+                                username=self.request.user.username)
+            if self.request.user.profile.payment_status == 1:
+                messages.warning(self.request, self.payment_confirm_message)
+                return redirect("users:confirm_payment", 
+                                username=self.request.user.username)
+        return super().handle_no_permission()
 
 def nnr_signup(request):
     if request.is_ajax():
@@ -75,6 +111,11 @@ def nnr_signup(request):
                 expand=["latest_invoice.payment_intent"]
             )
             logger.info(f"created subscription: {subscription}")
+            success_url = reverse_lazy("thankyou")
+            email_verification = settings.ACCOUNT_EMAIL_VERIFICATION
+            response = complete_signup(request, user, 
+                                       email_verification=email_verification,
+                                       success_url = success_url)
             return JsonResponse(subscription, safe=False)
         else:
             logger.info(f"Form invalid. Errors: {form.errors}")
@@ -84,6 +125,11 @@ def nnr_signup(request):
         form = NNRSignupForm()
     return render(request, "account/signup.html", 
                            context={"form": form})
+
+def update_payment(request, username):
+    user = User.objects.get(username=username)
+    return render(request, "users/update_payment.html", 
+                  context={"user": user})
 
 def public_key(request):
     if request.is_ajax():
@@ -96,14 +142,15 @@ def webhook(request):
     payload = request.body
     event = None
     stripe.api_key = settings.STRIPE_SK
-    logger.info("In webhook")
     try:
         event = stripe.Event.construct_from(
             json.loads(payload), stripe.api_key
         )
-        logger.info(f"Webhook received event:\n{event}")
     except ValueError:
+        logger.info(f"Could not parse event")
         return HttpResponse(status=400)
+
+    logger.info(f"received event - {event.type}")        
 
     if event.type == "invoice.payment_succeeded":
         handle_payment_success(event)
@@ -112,13 +159,12 @@ def webhook(request):
     elif event.type == "invoice.payment_failed":
         handle_payment_failure(event)
     else:
-        return HttpResponse(status=400)
-
+        logger.info(f"Received unhandled event: {event.type}")
 
     return HttpResponse(status=200)
 
 
-class CreateRecipe(LoginRequiredMixin, CreateView):
+class CreateRecipe(ValidUserMixin, CreateView):
     model = Recipe
     form_class = CreateRecipeForm
     
@@ -128,7 +174,7 @@ class CreateRecipe(LoginRequiredMixin, CreateView):
         return initial
 
 
-class RecipeDetail(LoginRequiredMixin, DetailView):
+class RecipeDetail(ValidUserMixin, DetailView):
     model = Recipe
     slug_field = "title_slug"
     context_object_name = "recipe"
@@ -177,7 +223,7 @@ class RecipeOfTheDay(DetailView):
         return Recipe.objects.get(featured=True)
 
 
-class RecipeList(LoginRequiredMixin, ListView):
+class RecipeList(ValidUserMixin, ListView):
     model = Recipe
     paginate_by = 25
 
@@ -210,12 +256,12 @@ class DeleteRecipe(UserPassesTestMixin, DeleteView):
                 self.request.user == self.object.user)
 
 
-class TagList(LoginRequiredMixin, ListView):
+class TagList(ValidUserMixin, ListView):
     model = Tag
     paginate_by = 144
 
 
-class TagDetail(LoginRequiredMixin, ListView):
+class TagDetail(ValidUserMixin, ListView):
     model = Recipe
     slug_field = "name_slug"
     paginate_by = 25
@@ -233,7 +279,7 @@ class TagDetail(LoginRequiredMixin, ListView):
     
 
 
-class TagRecipe(LoginRequiredMixin, FormView):
+class TagRecipe(ValidUserMixin, FormView):
     form_class = TagRecipeForm
 
     def form_valid(self, form):
@@ -242,7 +288,7 @@ class TagRecipe(LoginRequiredMixin, FormView):
         return redirect(reverse_lazy("main:recipe_detail", kwargs=kw))
 
 
-class SaveRecipe(LoginRequiredMixin, FormView):
+class SaveRecipe(ValidUserMixin, FormView):
     form_class = SaveRecipeForm
 
     def form_valid(self, form):
@@ -253,7 +299,7 @@ class SaveRecipe(LoginRequiredMixin, FormView):
         return redirect(reverse_lazy("main:recipe_detail", kwargs=kw))
 
 
-class RateRecipe(LoginRequiredMixin, FormView):
+class RateRecipe(ValidUserMixin, FormView):
     form_class = RateRecipeForm
 
     def form_valid(self, form):
@@ -284,7 +330,7 @@ class SavedRecipeList(UserPassesTestMixin, ListView):
         return context
 
 
-class SubmittedRecipeList(LoginRequiredMixin, ListView):
+class SubmittedRecipeList(ValidUserMixin, ListView):
     model = Recipe
     template_name = "users/submitted_recipes.html"
     paginate_by = 25
@@ -322,7 +368,7 @@ class RatedRecipeList(UserPassesTestMixin, ListView):
         return context
 
 
-class RecipebyLetterList(LoginRequiredMixin, ListView):
+class RecipeByLetterList(ValidUserMixin, ListView):
     model = Recipe
     paginate_by = 25
 
@@ -338,7 +384,7 @@ class RecipebyLetterList(LoginRequiredMixin, ListView):
         return context
         
 
-class SearchRecipes(LoginRequiredMixin, FormView):
+class SearchRecipes(ValidUserMixin, FormView):
     form_class = RecipeSearchForm
     template_name = "main/search.html"
     success_url = reverse_lazy("main:search_recipes")
