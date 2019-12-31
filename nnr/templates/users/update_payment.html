@@ -1,4 +1,5 @@
 {% extends "users/user_base.html" %}
+{% load static %}
 
 {% block title %}
 Update Payment Information
@@ -7,4 +8,19 @@ Update Payment Information
 {% block user_content %}
 <h1>Update Payment Information</h1>
 
-{% endblock user_content %}
+<form id="update_payment" class="update_payment" action="{% url 'users:update_payment' user.username %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <div id="card-element"></div>
+        <div id="card-errors"></div>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: flex-end;">
+        <input type="submit" id="submit-id-update_payment" class="btn btn-primary" name="update" value="Update">
+    </div>
+</form>
+
+{% endblock user_content %}     
+
+{% block morejs %}
+<script type="text/javascript" src="{% static 'js/update_payment.js' %}"></script>
+{% endblock morejs %}
