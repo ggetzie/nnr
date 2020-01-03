@@ -128,6 +128,19 @@ def nnr_signup(request):
 
 def update_payment(request, username):
     user = User.objects.get(username=username)
+    if request.is_ajax():
+        data = json.loads(request.body)
+        token = data["token"]
+        stripe.api_key = settings.STRIPE_SK
+        if not user.profile.stripe_id:
+            errmsg = "User has no customer id"
+            return JsonResponse({"status": "error",
+                                 "error" : {"message": errmsg}})
+        stripe.Customer.modify(user.profile.stripe_id,
+                               source=token)
+        return JsonResponse({"status": "success"})
+
+        
     return render(request, "users/update_payment.html", 
                   context={"user": user})
 

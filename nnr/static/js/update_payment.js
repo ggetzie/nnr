@@ -63,89 +63,42 @@ var stripeElements = function(publicKey) {
     }
   });
 
-  var form = document.getElementById('signup_form');
+  var form = document.getElementById('update_payment');
   form.addEventListener('submit', function(event) {
     event.preventDefault();
     changeLoadingState(true);
-    createPaymentMethodAndCustomer(stripe, card);
-  });
-};
-  
-var createPaymentMethodAndCustomer = function(stripe, card) {
-  var cardholderEmail = document.getElementById('id_email').value;
-  stripe
-    .createPaymentMethod('card', card, {
-      billing_details: {
-        email: cardholderEmail
-      }
-    })
-    .then(function(result) {
-      if (result.error) {
-        showCardError(result.error);
-      } else {
-        createCustomer(result.paymentMethod.id, cardholderEmail);
-      }
-    });
-};
-
-async function createCustomer(payment_method) {
-  // collect form data and submit it via fetch
-  var form = document.getElementById('signup_form');
-  let data = {"payment_method": payment_method};
-  for (let i=0; i < form.length; i++) {
-    if (form[i].type !== "submit") {
-      data[form[i].name] = form[i].value
-    }
-  }
-  console.log(data)
-  console.log(form.action)
-  fetch(form.action, {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-      "X-CSRFToken": data["csrfmiddlewaretoken"],
-      "Accept": "application/json",
-      "X-Requested-With": "XMLHttpRequest"
-    },
-    body: JSON.stringify(data)
-  }).then(response => {
-    console.log("returning response JSON")
-    return response.json();
-  }).then(subscription => {
-    handleSubscription(subscription);
-  });
-}
-
-function handleSubscription(subscription) {
-  console.log("Handling subscription");
-  console.log(subscription);
-  const { latest_invoice } = subscription;
-  const { payment_intent } = latest_invoice;
-
-  console.log("Payment intent = " + payment_intent)
-  if (payment_intent) {
-    const { client_secret, status } = payment_intent;
-    if (status === 'requires_action' || status === 'requires_payment_method') {
-      stripe.confirmCardPayment(client_secret).then(function(result) {
+    // createPaymentMethodAndCustomer(stripe, card);
+    stripe.createToken(card).then(function(result){
         if (result.error) {
-          console.log("Confirmation error")
-          console.log(result.error)
-          showCardError(result.error)
+            showCardError(result.error)
         } else {
-          console.log("Confirmation success!")
-          window.location.href = success_url
+            console.log(result.token)
+            updatePaymentMethod(result.token)
         }
-      });
-    } else {
-      console.log("No Confirmation needed!")
-      window.location.href = success_url
-    }
-  } else {
-    console.log("No payment_intent, order complete")
-    window.location.href = success_url
-  }
-}
+    })
+  });
+};
 
+async function updatePaymentMethod(token) {
+    let form = document.getElementById("update_payment");
+    let csrfmiddlewaretoken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+    fetch(form.action, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrfmiddlewaretoken,
+            "Accept": "application/json",
+            "X-Requested-With": "XMLHttpRequest"
+        },
+        body: JSON.stringify({"token": token})
+    }).then( response => {
+        console.log("returning response JSON")
+        return response.json()
+    }).then(response => {
+        console.log(response)
+    })
+}
+  
 function showCardError(error) {
   changeLoadingState(false);
   // The card was declined (i.e. insufficient funds, card has expired, etc)
