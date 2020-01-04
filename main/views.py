@@ -25,7 +25,7 @@ from main.models import (Recipe, RecipeRating, Profile, Tag, UserTag,
                          LetterCount)
 
 from main.payments import (handle_payment_success, handle_payment_action,
-                           handle_payment_failure)
+                           handle_payment_failure, handle_payment_update)
 
 from main.utils import (get_trial_end, get_subscription_plan)
 
@@ -171,6 +171,8 @@ def webhook(request):
         handle_payment_action(event)
     elif event.type == "invoice.payment_failed":
         handle_payment_failure(event)
+    elif event.type == "payment_method.updated":
+        handle_payment_update(event)
     else:
         logger.info(f"Received unhandled event: {event.type}")
 

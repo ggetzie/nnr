@@ -49,37 +49,39 @@ var stripeElements = function(publicKey) {
         color: 'rgba(0,0,0,0.4)'
       }
     }
-  };
+};
 
-  var card = elements.create('card', {style: style});
-  card.mount('#card-element');
+var card = elements.create('card', {style: style});
+card.mount('#card-element');
     
-  card.addEventListener('change', function(event) {
-    var displayError = document.getElementById('card-errors');
-    if (event.error) {
-      displayError.textContent = event.error.message;
-    } else {
-      displayError.textContent = '';
-    }
-  });
+card.addEventListener('change', function(event) {
+var displayError = document.getElementById('card-errors');
+if (event.error) {
+    displayError.textContent = event.error.message;
+} else {
+    displayError.textContent = '';
+}
+});
 
-  var form = document.getElementById('update_payment');
-  form.addEventListener('submit', function(event) {
+var form = document.getElementById('update_payment');
+form.addEventListener('submit', function(event) {
     event.preventDefault();
     changeLoadingState(true);
     // createPaymentMethodAndCustomer(stripe, card);
-    stripe.createToken(card).then(function(result){
+    stripe.createPaymentMethod({
+        type: 'card',
+        card: card,
+    }).then(function(result){
         if (result.error) {
             showCardError(result.error)
         } else {
-            console.log(result.token)
-            updatePaymentMethod(result.token)
+            updatePaymentMethod(result.payment_method)
         }
     })
-  });
-};
+});
 
-async function updatePaymentMethod(token) {
+
+async function updatePaymentMethod(payment_method) {
     let form = document.getElementById("update_payment");
     let csrfmiddlewaretoken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
     fetch(form.action, {
@@ -90,7 +92,7 @@ async function updatePaymentMethod(token) {
             "Accept": "application/json",
             "X-Requested-With": "XMLHttpRequest"
         },
-        body: JSON.stringify({"token": token})
+        body: JSON.stringify({"payment_method": payment_method})
     }).then( response => {
         console.log("returning response JSON")
         return response.json()
