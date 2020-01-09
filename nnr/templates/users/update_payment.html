@@ -6,11 +6,28 @@ Update Payment Information
 {% endblock title %}
 
 {% block user_content %}
+<h2>Current Payment Methods</h2>
+{% for pm in payment_methods  %}
+<div class="row" style="margin-bottom: 10px;">
+    <div class="col-sm-7">
+        {{ pm.card.brand|capfirst }} ending with {{ pm.card.last4 }} exp {{ pm.card.exp_month}}/{{ pm.card.exp_year}}
+    </div>
+    <div class="col-sm-2">
+        {% if pm.id == customer.invoice_settings.default_payment_method %}
+        <span class="default_pm">Default</span> 
+        {% endif %}
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-danger btn-sm">Delete</button>
+    </div>
+</div>
+{% endfor %}
+
 <h1>Update Payment Information</h1>
 
 <div id="message"></div>
 
-<form id="update_payment" class="update_payment" action="{% url 'users:update_payment' user.username %}" method="post">
+<form id="update_payment" class="update_payment" action="{% url 'users:update_payment' %}" method="post">
     {% csrf_token %}
     <div class="form-group">
         <div id="card-element"></div>

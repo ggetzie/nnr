@@ -5,6 +5,7 @@ from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.postgres.search import (SearchQuery, 
                                             SearchRank, 
@@ -126,23 +127,51 @@ def nnr_signup(request):
     return render(request, "account/signup.html", 
                            context={"form": form})
 
-def update_payment(request, username):
-    user = User.objects.get(username=username)
+@login_required
+def update_payment(request):
+    user = request.user
+    stripe.api_key = settings.STRIPE_SK
     if request.is_ajax():
+        logger.info(f"update_payment request: {request}")
+        logger.info(f"update_payment request body: {request.body}")
         data = json.loads(request.body)
-        token = data["token"]
-        stripe.api_key = settings.STRIPE_SK
+        logger.info(f"update_payment data: {data}")
+        payment_method = data["payment_method"]
+        
         if not user.profile.stripe_id:
             errmsg = "User has no customer id"
             return JsonResponse({"status": "error",
                                  "error" : {"message": errmsg}})
-        stripe.Customer.modify(user.profile.stripe_id,
-                               source=token)
-        return JsonResponse({"status": "success"})
+        pm_result = stripe.PaymentMethod.attach(payment_method,
+                                             customer=user.profile.stripe_id)
+        cus_result = stripe.Customer.modify(user.profile.stripe_id,
+                                            invoice_settings={
+                                                'default_payment_method': payment_method
+                                            })
+        open_invoices = stripe.Invoice.list(customer=user.profile.stripe_id,
+                                            status="open")     
+        if not open_invoices:
+            logger.info(f"No open invoices found for {user.username}")                                            
+        # attempt to pay open invoices with new default payment method                                       
+        pay_results = [invoice.pay(expand=["payment_intent"]) 
+                       for invoice in open_invoices.data]
 
-        
+        return JsonResponse({"status": "success", 
+                             "message": "Default payment method updated",
+                             "pm_result": pm_result,
+                             "cus_result": cus_result,
+                             "pay_results": pay_results})
+    customer = stripe.Customer.retrieve(user.profile.stripe_id)
+    pms = stripe.PaymentMethod.list(customer=user.profile.stripe_id, 
+                                    type="card")
+    # pms = [{"brand": pm.card.brand,
+    #         "last4": pm.card.last4,
+    #         "exp_year": pm.card.exp_year}]                                    
+    logger.info(f"got payment methods {pms}")                                    
     return render(request, "users/update_payment.html", 
-                  context={"user": user})
+                  context={"user": user,
+                           "payment_methods": pms.data,
+                           "customer": customer})
 
 def public_key(request):
     if request.is_ajax():

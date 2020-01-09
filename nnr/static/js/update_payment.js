@@ -39,51 +39,55 @@ var stripeElements = function(publicKey) {
   var elements = stripe.elements();
   // Element styles
   var style = {
-    base: {
+      base: {
       fontSize: '16px',
       color: '#32325d',
       fontFamily:
-        '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+          '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
       fontSmoothing: 'antialiased',
       '::placeholder': {
-        color: 'rgba(0,0,0,0.4)'
-      }
-    }
-};
-
-var card = elements.create('card', {style: style});
-card.mount('#card-element');
-    
-card.addEventListener('change', function(event) {
-var displayError = document.getElementById('card-errors');
-if (event.error) {
-    displayError.textContent = event.error.message;
-} else {
-    displayError.textContent = '';
-}
-});
-
-var form = document.getElementById('update_payment');
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    changeLoadingState(true);
-    // createPaymentMethodAndCustomer(stripe, card);
-    stripe.createPaymentMethod({
-        type: 'card',
-        card: card,
-    }).then(function(result){
-        if (result.error) {
-            showCardError(result.error)
-        } else {
-            updatePaymentMethod(result.payment_method)
+          color: 'rgba(0,0,0,0.4)'
         }
-    })
-});
+      }
+  };
+  var card = elements.create('card', {style: style});
+  card.mount('#card-element');
+    
+  card.addEventListener('change', function(event) {
+    var displayError = document.getElementById('card-errors');
+    if (event.error) {
+        displayError.textContent = event.error.message;
+    } else {
+        displayError.textContent = '';
+    }
+  });
+
+  var form = document.getElementById('update_payment');
+  form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      changeLoadingState(true);
+      stripe.createPaymentMethod({
+          type: 'card',
+          card: card,
+      }).then(function(result){
+          if (result.error) {
+            showCardError(result.error)
+          } else {
+            console.log("Got result")
+            console.log(result)
+            updatePaymentMethod(result.paymentMethod.id);
+          }
+      })
+  });
+};  
 
 
 async function updatePaymentMethod(payment_method) {
     let form = document.getElementById("update_payment");
     let csrfmiddlewaretoken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+    let data = {"payment_method": payment_method};
+    console.log("sending data");
+    console.log(data);
     fetch(form.action, {
         method: "post",
         headers: {
@@ -92,25 +96,37 @@ async function updatePaymentMethod(payment_method) {
             "Accept": "application/json",
             "X-Requested-With": "XMLHttpRequest"
         },
-        body: JSON.stringify({"payment_method": payment_method})
+        body: JSON.stringify(data)
     }).then( response => {
         console.log("returning response JSON")
         return response.json()
-    }).then(response => {
-        console.log(response)
+    }).then(result => {
+        console.log(result)
+        if (result.error) {
+          showCardError(result.error)
+        } else {
+          changeLoadingState(false);
+          showMessage(result.message, "alert-success");
+        }
     })
+}
+
+function showMessage(messageText, messageClass) {
+  let msg = document.getElementById("message");
+  msg.classList.add("alert");
+  msg.classList.add(messageClass);
+  msg.textContent = messageText;
+  setTimeout(function () {
+    msg.textContent = "";
+    msg.classList.remove("alert");
+    msg.classList.remove(messageClass);
+  }, 8000);
 }
   
 function showCardError(error) {
   changeLoadingState(false);
   // The card was declined (i.e. insufficient funds, card has expired, etc)
-  var errorMsg = document.getElementById("message");
-  errorMsg.classList.add("alert-danger");
-  errorMsg.textContent = error.message;
-  setTimeout(function() {
-    errorMsg.textContent = '';
-    errorMsg.classList.remove("alert-danger");
-  }, 8000);
+  showMessage(error.message, "alert-danger")
 }
   
 var dotter = 0;
@@ -118,7 +134,7 @@ var dotter = 0;
 var changeLoadingState = function(isLoading) {
   var msg = document.getElementById("message");
   if (isLoading) {
-    document.getElementById("signup_form").hidden = true;
+    document.getElementById("update_payment").hidden = true;
     msg.textContent = "Loading";
     dotter = setInterval(function() {msg.textContent = msg.textContent + "."}, 3000);
     // document.querySelector('#spinner').classList.add('loading');
@@ -128,7 +144,7 @@ var changeLoadingState = function(isLoading) {
   } else {
     clearInterval(dotter);
     msg.textContent = "";
-    document.getElementById("signup_form").hidden = false;
+    document.getElementById("update_payment").hidden = false;
     // document.querySelector('button').disabled = false;
     // document.querySelector('#spinner').classList.remove('loading');
     // document.querySelector('#button-text').classList.remove('hidden');
