@@ -26,7 +26,8 @@ from main.models import (Recipe, RecipeRating, Profile, Tag, UserTag,
                          LetterCount)
 
 from main.payments import (handle_payment_success, handle_payment_action,
-                           handle_payment_failure, handle_payment_update)
+                           handle_payment_failure, handle_payment_update,
+                           update_customer_card)
 
 from main.utils import (get_trial_end, get_subscription_plan)
 
@@ -142,12 +143,9 @@ def update_payment(request):
             errmsg = "User has no customer id"
             return JsonResponse({"status": "error",
                                  "error" : {"message": errmsg}})
-        pm_result = stripe.PaymentMethod.attach(payment_method,
-                                             customer=user.profile.stripe_id)
-        cus_result = stripe.Customer.modify(user.profile.stripe_id,
-                                            invoice_settings={
-                                                'default_payment_method': payment_method
-                                            })
+
+        pm, cus_result = update_customer_card(payment_method, 
+                                                     user.profile.stripe_id)        
         open_invoices = stripe.Invoice.list(customer=user.profile.stripe_id,
                                             status="open")     
         if not open_invoices:
@@ -155,19 +153,17 @@ def update_payment(request):
         # attempt to pay open invoices with new default payment method                                       
         pay_results = [invoice.pay(expand=["payment_intent"]) 
                        for invoice in open_invoices.data]
+        newpay = (f"{pm.card.brand.title()} ending with {pm.card.last4} "
+                  f"expires {pm.card.exp_month}/{pm.card.exp_year}")
 
         return JsonResponse({"status": "success", 
                              "message": "Default payment method updated",
-                             "pm_result": pm_result,
-                             "cus_result": cus_result,
-                             "pay_results": pay_results})
+                             "newPay" : newpay})
+                             
     customer = stripe.Customer.retrieve(user.profile.stripe_id)
     pms = stripe.PaymentMethod.list(customer=user.profile.stripe_id, 
                                     type="card")
-    # pms = [{"brand": pm.card.brand,
-    #         "last4": pm.card.last4,
-    #         "exp_year": pm.card.exp_year}]                                    
-    logger.info(f"got payment methods {pms}")                                    
+                        
     return render(request, "users/update_payment.html", 
                   context={"user": user,
                            "payment_methods": pms.data,

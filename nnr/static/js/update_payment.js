@@ -107,6 +107,8 @@ async function updatePaymentMethod(payment_method) {
         } else {
           changeLoadingState(false);
           showMessage(result.message, "alert-success");
+          cardInfo = document.getElementById("cardinfo")
+          cardInfo.textContent = result.newPay;
         }
     })
 }

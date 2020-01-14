@@ -1,8 +1,10 @@
 import datetime
 from dateutil.relativedelta import relativedelta
+from django.conf import settings
 
 from .models import Profile
 import logging
+import stripe
 
 logger = logging.getLogger(__name__)
 
@@ -40,3 +42,17 @@ def handle_payment_update(event):
     # if so, retry payment with new payment method
     # if successful, set payment status to success
     # otherwise do nothing
+
+def update_customer_card(payment_id, customer_id):
+    stripe.api_key = settings.STRIPE_SK
+    # remove old payment methods
+    old_cards = stripe.PaymentMethod.list(customer=customer_id, type="card")
+    for card in old_cards.data:
+        stripe.PaymentMethod.detach(card.id)
+    
+    new_card = stripe.PaymentMethod.attach(payment_id, customer=customer_id)
+    default = stripe.Customer.modify(customer_id,
+                                     invoice_settings = {
+                                         "default_payment_method": payment_id
+                                     })
+    return new_card, default
