@@ -48,6 +48,8 @@ class ValidUserMixin(UserPassesTestMixin):
                                "confirmation steps to proceed")
 
     def test_func(self):
+        if not self.request.user.is_authenticated:
+            return False
         if self.request.user.is_staff or self.request.user.is_superuser:
             return True
         if self.request.user.profile.payment_status in (2, 3):
@@ -65,8 +67,8 @@ class ValidUserMixin(UserPassesTestMixin):
         if self.request.user.is_authenticated:
             if self.request.user.profile.payment_status == 0:
                 messages.error(self.request, self.payment_failed_message)
-                return redirect("users:update_payment", 
-                                username=self.request.user.username)
+                return redirect("users:update_payment")
+                             
             if self.request.user.profile.payment_status == 1:
                 messages.warning(self.request, self.payment_confirm_message)
                 return redirect("users:confirm_payment", 
@@ -168,6 +170,10 @@ def update_payment(request):
                   context={"user": user,
                            "payment_methods": pms.data,
                            "customer": customer})
+
+@login_required
+def confirm_payment(request):
+    return render(request, "confirm_payment.html")
 
 def public_key(request):
     if request.is_ajax():
