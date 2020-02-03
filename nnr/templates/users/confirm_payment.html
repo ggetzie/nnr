@@ -10,10 +10,7 @@ Confirm Payment Information
 <p>Your credit card requires an additional step to confirm your payment
 information. Please follow the link below to complete the payment
 confirmation.</p>
-<a href="#" class="btn btn-primary">Confirm Payment</a>
-{% endfor %}
-
-
+<a href="{{ invoice_url }}" class="btn btn-primary">Confirm Payment</a>
 {% endblock user_content %}     
 
 {% block morejs %}

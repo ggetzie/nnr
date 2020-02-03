@@ -119,30 +119,56 @@ async function createCustomer(payment_method) {
 function handleSubscription(subscription) {
   console.log("Handling subscription");
   console.log(subscription);
-  const { latest_invoice } = subscription;
+  const { latest_invoice, pending_setup_intent } = subscription;
   const { payment_intent } = latest_invoice;
-
+  
   console.log("Payment intent = " + payment_intent)
-  if (payment_intent) {
-    const { client_secret, status } = payment_intent;
-    if (status === 'requires_action' || status === 'requires_payment_method') {
-      stripe.confirmCardPayment(client_secret).then(function(result) {
+  // if (payment_intent) {
+  //   const { client_secret, status } = payment_intent;
+  //   if (status === 'requires_action' || status === 'requires_payment_method') {
+  //     stripe.confirmCardPayment(client_secret).then(function(result) {
+  //       if (result.error) {
+  //         console.log("Confirmation error")
+  //         console.log(result.error)
+  //         showCardError(result.error)
+  //       } else {
+  //         console.log("Confirmation success!");
+  //         window.location.href = success_url;
+  //       }
+  //     });
+  //   } else {
+  //     console.log("No Confirmation needed!");
+  //     window.location.href = success_url;
+  //   }
+  // } else {
+  //   console.log("No payment_intent, order complete");
+  //   window.location.href = success_url;
+  // }
+  let success_msg = `Success! Your account has been created. 
+                     Please check your email for a confirmation 
+                     link to activate your account`;
+  if (pending_setup_intent) {
+    const {client_secret, status } = subscription.pending_setup_intent;
+    if (status == "requires_action") {
+      stripe.confirmCardSetup(client_secret).then(function(result) {
         if (result.error) {
-          console.log("Confirmation error")
-          console.log(result.error)
+          console.log("Confirmation error - setup intent");
+          console.log(result.error);
           showCardError(result.error)
         } else {
-          console.log("Confirmation success!")
-          window.location.href = success_url
+          console.log("Confirmation success! - setup intent");
+          changeLoadingState(false);
+          showMessage(success_msg, "alert-success");
         }
-      });
+      })
+    } else if (status == "requires_payment_method") {
+      changeLoadingState(false);
+      showCardError("Unable to authorize payment. Please try a different card");
     } else {
-      console.log("No Confirmation needed!")
-      window.location.href = success_url
+      console.log("pending_setup_intent status = " + status);
+      changeLoadingState(false);
+      showMessage(success_msg, "alert-success");
     }
-  } else {
-    console.log("No payment_intent, order complete")
-    window.location.href = success_url
   }
 }
 
@@ -179,3 +205,15 @@ var changeLoadingState = function(isLoading) {
     // document.querySelector('#button-text').classList.remove('hidden');
   }
 };
+
+function showMessage(messageText, messageClass) {
+  let msg = document.getElementById("message");
+  msg.classList.add("alert");
+  msg.classList.add(messageClass);
+  msg.textContent = messageText;
+  setTimeout(function () {
+    msg.textContent = "";
+    msg.classList.remove("alert");
+    msg.classList.remove(messageClass);
+  }, 8000);
+}

@@ -71,8 +71,8 @@ class ValidUserMixin(UserPassesTestMixin):
                              
             if self.request.user.profile.payment_status == 1:
                 messages.warning(self.request, self.payment_confirm_message)
-                return redirect("users:confirm_payment", 
-                                username=self.request.user.username)
+                return redirect("users:confirm_payment")
+                                
         return super().handle_no_permission()
 
 def nnr_signup(request):
@@ -114,6 +114,7 @@ def nnr_signup(request):
                 trial_end=get_trial_end(),
                 expand=["latest_invoice.payment_intent"]
             )
+            
             logger.info(f"created subscription: {subscription}")
             success_url = reverse_lazy("thankyou")
             email_verification = settings.ACCOUNT_EMAIL_VERIFICATION
@@ -173,7 +174,14 @@ def update_payment(request):
 
 @login_required
 def confirm_payment(request):
-    return render(request, "confirm_payment.html")
+    stripe.api_key = settings.STRIPE_SK
+    user = request.user
+    customer = stripe.Customer.retrieve(user.profile.stripe_id)
+    invoice_id = customer.subscriptions.data[0].latest_invoice
+    latest_invoice = stripe.Invoice.retrieve(invoice_id)
+    invoice_url = latest_invoice.hosted_invoice_url
+    return render(request, "users/confirm_payment.html",
+                  context={"invoice_url": invoice_url})
 
 def public_key(request):
     if request.is_ajax():
