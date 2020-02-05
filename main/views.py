@@ -121,10 +121,13 @@ def nnr_signup(request):
             response = complete_signup(request, user, 
                                        email_verification=email_verification,
                                        success_url = success_url)
-            return JsonResponse(subscription, safe=False)
+            response_data = {"status": "success",
+                             "subscription": subscription}
         else:
             logger.info(f"Form invalid. Errors: {form.errors}")
-            return JsonResponse(form.errors)
+            response_data = {"status": "error", 
+                             "errors": form.errors}
+        return JsonResponse(response_data, safe=False)
 
     else:
         form = NNRSignupForm()

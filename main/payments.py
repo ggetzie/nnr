@@ -12,7 +12,6 @@ def handle_payment_success(event):
     customer_id = event.data.object.customer
     amount_paid = event.data.object.amount_paid
     logger.info("handling payment success")
-    logger.info(event)
     logger.info(f"customer_id={customer_id} paid {amount_paid}")
     profile = Profile.objects.get(stripe_id=customer_id)
     if amount_paid > 0:

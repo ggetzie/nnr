@@ -1,18 +1,3 @@
-function getCookie(name) {
-  var cookieValue = null;
-  if (document.cookie && document.cookie !== '') {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-      var cookie = jQuery.trim(cookies[i]);
-      if (cookie.substring(0, name.length + 1) === (name + '=')) {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
-      }
-    }
-  }
-  return cookieValue;
-}
-
 function getPublicKey() {
   return fetch('/main/public_key/', {
     method: 'get',
@@ -66,6 +51,7 @@ var stripeElements = function(publicKey) {
   var form = document.getElementById('signup_form');
   form.addEventListener('submit', function(event) {
     event.preventDefault();
+    clearErrors();
     changeLoadingState(true);
     createPaymentMethodAndCustomer(stripe, card);
   });
@@ -111,8 +97,17 @@ async function createCustomer(payment_method) {
   }).then(response => {
     console.log("returning response JSON")
     return response.json();
-  }).then(subscription => {
-    handleSubscription(subscription);
+  }).then(responseJSON => {
+    console.log("handling form response");
+    console.log(responseJSON)
+    if (responseJSON.status === "success"){
+      handleSubscription(responseJSON.subscription);
+    } else {
+      changeLoadingState(false);
+      clearInterval(dotter);
+      handleFormErrors(responseJSON.errors);
+    }
+      
   });
 }
 
@@ -121,8 +116,8 @@ function handleSubscription(subscription) {
   console.log(subscription);
   const { latest_invoice, pending_setup_intent } = subscription;
   const { payment_intent } = latest_invoice;
-  
   console.log("Payment intent = " + payment_intent)
+  console.log("pending_setup_intent = " + pending_setup_intent)
   let success_msg = `Success! Your account has been created. 
                      Please check your email for a confirmation 
                      link to activate your account`;
@@ -147,7 +142,11 @@ function handleSubscription(subscription) {
       console.log("pending_setup_intent status = " + status);
       changeLoadingState(false);
       showMessage(success_msg, "alert-success");
-    }
+    } 
+  } else {
+    console.log("no pending setup intent");
+    changeLoadingState(false);
+    showMessage(success_msg, "alert-success");
   }
 }
 
@@ -163,13 +162,16 @@ function showCardError(error) {
   }, 8000);
 }
   
-var dotter = 0;
+var dotter;
 // Show a spinner on subscription submission
 var changeLoadingState = function(isLoading) {
-  var msg = document.getElementById("message");
+  let msg = document.getElementById("message");
   if (isLoading) {
     document.getElementById("signup_form").hidden = true;
     msg.textContent = "Loading";
+    if (dotter) {
+      clearInterval(dotter);
+    }
     dotter = setInterval(function() {msg.textContent = msg.textContent + "."}, 3000);
     // document.querySelector('#spinner').classList.add('loading');
     // document.querySelector('button').disabled = true;
@@ -195,4 +197,38 @@ function showMessage(messageText, messageClass) {
     msg.classList.remove("alert");
     msg.classList.remove(messageClass);
   }, 8000);
+}
+
+function appendError(fieldName, errMsg) {
+  let field = document.getElementById(`id_${fieldName}`);
+  let errorDiv = document.createElement("div");
+  errorDiv.classList.add("invalid-feedback");
+  errorDiv.textContent = errMsg;
+  field.parentElement.appendChild(errorDiv);
+}
+
+function handleFormErrors(errors) {
+  for (fieldName in errors) {
+    let field = document.getElementById(`id_${fieldName}`);
+    field.classList.add("is-invalid");
+    for (i in errors[fieldName]) {
+      appendError(fieldName, errors[fieldName][i]);
+    }
+  }
+}
+
+function clearErrors() {
+  let errorFields = document.querySelectorAll(".is-invalid");
+  if (errorFields) {
+    for (let i=0; i < errorFields.length; i++) {
+      errorFields[i].classList.remove("is-invalid");
+    }
+  }
+  
+  let errorFeedback = document.querySelectorAll(".invalid-feedback");
+  if (errorFeedback) {
+    for (let i=0; i < errorFeedback.length; i++) {
+      errorFeedback[i].remove();
+    }
+  }
 }
