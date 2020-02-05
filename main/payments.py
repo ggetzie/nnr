@@ -39,11 +39,6 @@ def handle_payment_failure(event):
 
 def handle_payment_update(event):
     logger.info("handling updated payment method")
-    # get profile from stripe customer id
-    # check if customer has outstanding invoice with failed payment
-    # if so, retry payment with new payment method
-    # if successful, set payment status to success
-    # otherwise do nothing
 
 def update_customer_card(payment_id, customer_id):
     stripe.api_key = settings.STRIPE_SK

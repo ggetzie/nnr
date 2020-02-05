@@ -123,27 +123,6 @@ function handleSubscription(subscription) {
   const { payment_intent } = latest_invoice;
   
   console.log("Payment intent = " + payment_intent)
-  // if (payment_intent) {
-  //   const { client_secret, status } = payment_intent;
-  //   if (status === 'requires_action' || status === 'requires_payment_method') {
-  //     stripe.confirmCardPayment(client_secret).then(function(result) {
-  //       if (result.error) {
-  //         console.log("Confirmation error")
-  //         console.log(result.error)
-  //         showCardError(result.error)
-  //       } else {
-  //         console.log("Confirmation success!");
-  //         window.location.href = success_url;
-  //       }
-  //     });
-  //   } else {
-  //     console.log("No Confirmation needed!");
-  //     window.location.href = success_url;
-  //   }
-  // } else {
-  //   console.log("No payment_intent, order complete");
-  //   window.location.href = success_url;
-  // }
   let success_msg = `Success! Your account has been created. 
                      Please check your email for a confirmation 
                      link to activate your account`;
