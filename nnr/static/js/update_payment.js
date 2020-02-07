@@ -114,15 +114,24 @@ async function updatePaymentMethod(payment_method) {
 }
 
 function showMessage(messageText, messageClass) {
-  let msg = document.getElementById("message");
+  let msg = document.createElement("div")
+  msg.id = "message"
   msg.classList.add("alert");
   msg.classList.add(messageClass);
   msg.textContent = messageText;
-  setTimeout(function () {
-    msg.textContent = "";
-    msg.classList.remove("alert");
-    msg.classList.remove(messageClass);
-  }, 8000);
+  closeButton = document.createElement("button");
+  closeButton.setAttribute("type", "button");
+  closeButton.setAttribute("class", "close");
+  closeButton.setAttribute("data-dismiss", "alert");
+  closeButton.setAttribute("aria-label", "Close");
+  xSpan = document.createElement("span");
+  xSpan.setAttribute("aria-hidden", "true");
+  xSpan.innerHTML = "&times;"
+  closeButton.appendChild(xSpan);
+  msg.appendChild(closeButton);
+  
+  main = document.getElementById("main-container");
+  main.insertBefore(msg, main.childNodes[0]);
 }
   
 function showCardError(error) {
@@ -131,7 +140,7 @@ function showCardError(error) {
   showMessage(error.message, "alert-danger")
 }
   
-var dotter = 0;
+var dotter;
 // Show a spinner on subscription submission
 var changeLoadingState = function(isLoading) {
   var msg = document.getElementById("message");
