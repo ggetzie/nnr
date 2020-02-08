@@ -110,8 +110,6 @@ RATING_CHOICES = ((1, "⭐"),
                   (4, "⭐⭐⭐⭐"),
                   (5, "⭐⭐⭐⭐⭐"))
 
-
-
 class RecipeRating(models.Model):
     recipe = models.ForeignKey("Recipe", on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

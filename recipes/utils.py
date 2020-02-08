@@ -1,6 +1,3 @@
-import recipes.models
-import main.models
-
 STOPWORDS = {"i","me","my","myself","we","our","ours","ourselves","you","your",
              "yours", "yourself","yourselves","he","him","his","himself","she",
              "her","hers","herself","it","its","itself","they","them","their",
@@ -25,3 +22,4 @@ def sortify(slug, stopwords=STOPWORDS):
             first_letter = "0-9" if word[0].isdigit() else word[0].upper()
             sort_title = "-".join(title_words[i:])
             return first_letter, sort_title
+
