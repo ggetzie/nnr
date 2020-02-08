@@ -129,7 +129,7 @@ function showMessage(messageText, messageClass) {
   xSpan.innerHTML = "&times;"
   closeButton.appendChild(xSpan);
   msg.appendChild(closeButton);
-  
+   
   main = document.getElementById("main-container");
   main.insertBefore(msg, main.childNodes[0]);
 }
