@@ -12,7 +12,7 @@ Tags
         <div class="row">
             {% for tag in object_list %}
             <div class="col-sm-2">
-                <a href="{% url 'main:tag_detail' tag.name_slug %}">{{ tag }}</a>
+                <a href="{% url 'recipes:tag_detail' tag.name_slug %}">{{ tag }}</a>
             </div>
             {% if forloop.counter|divisibleby:6 %}
             </div>

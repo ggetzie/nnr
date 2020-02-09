@@ -12,11 +12,11 @@
     <nav id="letter-nav" aria-label="letter navigation">
         <ul class="pagination pagination-sm">
             <li class="page-item">
-                <a class="page-link" href="{% url 'main:tag_list' %}">Tags</a>
+                <a class="page-link" href="{% url 'recipes:tag_list' %}">Tags</a>
             </li>
             {% for lc in lettercounts %}
             <li class="page-item {% if lc.quantity < 1 %}disabled{% endif %}{% if lc.letter == current %}active{% endif %}">
-                <a class="page-link" href="{% url 'main:letter_recipe' lc.letter %}">
+                <a class="page-link" href="{% url 'recipes:letter_recipe' lc.letter %}">
                     {{ lc.letter }}
                 </a>
             </li>

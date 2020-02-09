@@ -4,6 +4,6 @@
 <form method="POST">
 {% csrf_token %}
 <p>Really delete {{ object.title }}?</p>
-<a href="{% url 'main:recipe_list' %}" class="btn btn-secondary">Cancel</a>
+<a href="{% url 'recipes:recipe_list' %}" class="btn btn-secondary">Cancel</a>
 <input type="submit" class="btn btn-danger" value="Delete" />
 {% endblock content %}

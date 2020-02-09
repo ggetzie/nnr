@@ -83,7 +83,7 @@ class Recipe(models.Model):
         return super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse("main:recipe_detail", kwargs={"slug": self.title_slug})
+        return reverse("recipes:recipe_detail", kwargs={"slug": self.title_slug})
     
     def __str__(self):
         if len(self.title) < 15:

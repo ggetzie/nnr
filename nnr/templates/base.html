@@ -47,17 +47,17 @@
               <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'main:rotd' %}">Recipe of the Day</a>
+              <a class="nav-link" href="{% url 'recipes:rotd' %}">Recipe of the Day</a>
             </li>
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'main:recipe_create' %}">Add</a>
+              <a class="nav-link" href="{% url 'recipes:recipe_create' %}">Add</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'main:recipe_list' %}">Browse</a>
+              <a class="nav-link" href="{% url 'recipes:recipe_list' %}">Browse</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'main:search_recipes' %}">Search</a>
+              <a class="nav-link" href="{% url 'recipes:search_recipes' %}">Search</a>
             </li>            
            {% endif %}
             </ul>

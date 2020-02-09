@@ -36,8 +36,8 @@
         </div>
     {% if recipe.user == request.user or request.user.is_staff %}
         <div class="col-sm-4">
-            <a href="{% url 'main:recipe_update' recipe.title_slug %}" class="btn btn-primary btn-sm">Edit</a>
-            <a href="{% url 'main:recipe_delete' recipe.title_slug %}" class="btn btn-danger btn-sm">Delete</a>
+            <a href="{% url 'recipes:recipe_update' recipe.title_slug %}" class="btn btn-primary btn-sm">Edit</a>
+            <a href="{% url 'recipes:recipe_delete' recipe.title_slug %}" class="btn btn-danger btn-sm">Delete</a>
         </div>
     {% endif %}
     </div>
@@ -46,7 +46,7 @@
         <h2>Tags</h2>
         <p>
             {% for tag in recipe.tags.all.distinct %}
-            <a href="{% url 'main:tag_detail' tag.name_slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+            <a href="{% url 'recipes:tag_detail' tag.name_slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
             {% endfor %}
         </p>
         {% crispy tagform %}

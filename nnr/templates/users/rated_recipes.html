@@ -10,7 +10,7 @@
     <ul class="list-group recipe-list">
         {% for rating in object_list %}
         <li class="list-group-item">
-            <a href="{% url 'main:recipe_detail' rating.recipe.title_slug %}">
+            <a href="{% url 'recipes:recipe_detail' rating.recipe.title_slug %}">
                 {{ rating.recipe.title }}
             </a>
             <span class="float-right">{{ rating.get_rating_display }}</span>
