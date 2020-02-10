@@ -175,9 +175,9 @@ class RateRecipeForm(forms.Form):
 
         defaults = {"rating": self.cleaned_data["rating"]}
         recipe = self.cleaned_data["recipe"]
-        profile = self.cleaned_data["user"].profile
+        user = self.cleaned_data["user"]
         rr, created = RecipeRating.objects.update_or_create(recipe=recipe,
-                                                            profile=profile, 
+                                                            user=user,
                                                             defaults=defaults)
         
 

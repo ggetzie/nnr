@@ -63,7 +63,7 @@ class RecipeDetail(ValidUserMixin, DetailView):
                         "recipe": self.object}
         try:
             rr = RecipeRating.objects.get(recipe=self.object,
-                                              profile=self.request.user.profile)
+                                              user=self.request.user)
             rate_initial["rating"] = rr.rating
         except RecipeRating.DoesNotExist:
             pass
@@ -78,7 +78,7 @@ class RecipeDetail(ValidUserMixin, DetailView):
 class RecipeOfTheDay(DetailView):
     model = Recipe
     context_object_name = "recipe"
-    template_name = "main/rotd.html"
+    template_name = "recipes/rotd.html"
 
     def get_object(self, queryset=None):
         return Recipe.objects.get(featured=True)
@@ -126,7 +126,7 @@ class TagDetail(ValidUserMixin, ListView):
     model = Recipe
     slug_field = "name_slug"
     paginate_by = 25
-    template_name = "main/tag_detail.html"
+    template_name = "recipes/tag_detail.html"
 
     def get_queryset(self):
         self.tag = get_object_or_404(Tag, name_slug=self.kwargs["slug"])
@@ -218,7 +218,7 @@ class RatedRecipeList(UserPassesTestMixin, ListView):
     def get_queryset(self):
         self.user = get_object_or_404(User, username=self.kwargs["username"])
         ratings = (RecipeRating.objects
-                   .filter(profile=self.user.profile)
+                   .filter(user=self.user)
                    .order_by("-rating", "recipe__sort_title"))
         return ratings
 
@@ -246,7 +246,7 @@ class RecipeByLetterList(ValidUserMixin, ListView):
 
 class SearchRecipes(ValidUserMixin, FormView):
     form_class = RecipeSearchForm
-    template_name = "main/search.html"
+    template_name = "recipes/search.html"
     success_url = reverse_lazy("recipes:search_recipes")
 
     def get_context_data(self, **kwargs):

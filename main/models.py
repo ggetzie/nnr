@@ -6,8 +6,6 @@ from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
-from .utils import sortify
-
 import datetime
 import markdown
 import string
@@ -74,7 +72,7 @@ class Recipe(models.Model):
         self.ingredients_html = markdown.markdown(self.ingredients_text)
         self.instructions_html = markdown.markdown(self.instructions_text)
         self.title_slug = slugify(self.title)
-        self.first_letter, self.sort_title = sortify(self.title_slug)
+        # self.first_letter, self.sort_title = sortify(self.title_slug)
         lc, created = LetterCount.objects.get_or_create(letter=self.first_letter,
                                                         defaults={"quantity": 1})
         if not created:
@@ -127,7 +125,7 @@ class Profile(models.Model):
                              default=get_basic_plan)
     created = models.DateTimeField(_("Created"), auto_now_add=True)
     next_payment = models.DateField(_("Next Payment"), default=next_year)
-    saved_recipes = models.ManyToManyField(Recipe, 
+    saved_recipes = models.ManyToManyField("recipes.Recipe", 
                                            related_name="saved_by")
     stripe_id = models.CharField(_("Stripe Customer Id"), max_length=50, 
                                  default="")

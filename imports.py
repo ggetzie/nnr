@@ -1,6 +1,9 @@
-from main.models import *
+from main.models import Profile
 from main.forms import *
 from django.conf import settings
+
+from recipes.models import *
+from recipes.forms import *
 
 from nnr.users.models import *
 

@@ -7,11 +7,14 @@ from nnr.users.views import (
 )
 
 from main.views import (
+    update_payment,
+    confirm_payment
+)
+
+from recipes.views import (
     SavedRecipeList,
     SubmittedRecipeList,
     RatedRecipeList,
-    update_payment,
-    confirm_payment
 )
 
 app_name = "users"

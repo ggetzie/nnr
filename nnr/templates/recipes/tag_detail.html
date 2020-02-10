@@ -8,8 +8,8 @@
 <div class="main-content">
     <h1>Recipes tagged {{ tag.name }}</h1>
     {% with object_list=tag.recipe_set.all %}
-    {% include "main/recipe_ul.html" %}
+    {% include "recipes/recipe_ul.html" %}
     {% endwith %}
-    {% include "main/pagination.html" %}
+    {% include "recipes/pagination.html" %}
 </div>
 {% endblock %}
