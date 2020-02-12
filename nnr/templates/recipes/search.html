@@ -10,16 +10,13 @@
     <div class="search-form">
         {% crispy form %}
     </div>
-
+    {% if terms %}    
     <h1>{{ title|default:"Search results" }} for "{{ terms }}"</h1>
-    {% if results %}    
     {% with object_list=results%}
     <div class="main-list">
         {% include "recipes/recipe_ul.html" %}
     </div>
     {% endwith %}
-    {% else %}
-    <p>No results found</p>
     {% endif %}
 </div>
 {% endblock %}

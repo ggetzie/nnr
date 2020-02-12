@@ -3,5 +3,9 @@
     <li class="list-group-item">
         <a href="{% url 'recipes:recipe_detail' recipe.title_slug %}">{{ recipe.title }}</a>
     </li>
+    {% empty %}
+    <li class="list-group-item">
+        No Recipes Found
+    </li>
     {% endfor %}
 </ul>
