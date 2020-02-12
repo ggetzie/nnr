@@ -39,6 +39,12 @@ class Profile(models.Model):
                                                       choices=PAYMENT_STATUS,
                                                       default=2)
     subscription_end = models.DateField(_("Subscription End"))
+    rate_level = models.PositiveSmallIntegerField(_("Rate Level"),
+                                                  default=1)
+    last_sub = models.DateTimeField(_("Last Submission"), 
+                                    default=datetime.datetime(year=1970,
+                                                              month=1,
+                                                              day=1))
     
     
     def __str__(self):
