@@ -21,11 +21,12 @@ Recipe of the Day - {{ recipe.title }}
     <div class="instructions">
         {{ recipe.instructions_html|safe }}
     </div>
-
+    {% if  not request.user.is_authenticated %}
     <p>
         <a class="btn btn-primary" href="{% url 'account_signup' %}">Sign up now</a> for access to more great recipes.
         Only $19 per year!
     </p>
+    {% endif %}
     
 </div>
 {% endblock %}
