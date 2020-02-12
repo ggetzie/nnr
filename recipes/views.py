@@ -14,7 +14,7 @@ from django.urls import reverse_lazy
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
                                   DetailView, FormView)                                            
 
-from mixins import ValidUserMixin
+from mixins import ValidUserMixin, RateLimitMixin
 
 from recipes.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
                            SaveRecipeForm, RateRecipeForm, RecipeSearchForm,)
@@ -29,7 +29,7 @@ User = get_user_model()
 
 logger = logging.getLogger(__name__)
 
-class CreateRecipe(ValidUserMixin, CreateView):
+class CreateRecipe(ValidUserMixin, RateLimitMixin, CreateView):
     model = Recipe
     form_class = CreateRecipeForm
     

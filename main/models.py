@@ -10,6 +10,8 @@ import datetime
 import markdown
 import string
 
+UTC = datetime.timezone.utc
+
 def next_year():
     today = datetime.date.today()
     return today + relativedelta(years=+1)
@@ -44,7 +46,8 @@ class Profile(models.Model):
     last_sub = models.DateTimeField(_("Last Submission"), 
                                     default=datetime.datetime(year=1970,
                                                               month=1,
-                                                              day=1))
+                                                              day=1,
+                                                              tzinfo=UTC))
     
     
     def __str__(self):
