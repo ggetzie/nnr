@@ -3,7 +3,7 @@ from crispy_forms.layout import Submit
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.postgres.search import (SearchQuery, 
                                             SearchRank, 
                                             SearchVector)
@@ -23,7 +23,11 @@ from recipes.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
 from recipes.models import (Recipe, Tag, UserTag, RecipeRating, 
                             LetterCount)
 
+import logging                            
+
 User = get_user_model()                                                    
+
+logger = logging.getLogger(__name__)
 
 class CreateRecipe(ValidUserMixin, CreateView):
     model = Recipe
