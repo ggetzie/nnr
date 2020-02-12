@@ -8,7 +8,7 @@ app_name = "recipes"
 register_converter(converters.LetterConverter, "letter")
 
 recipe_urls = [
-     path("", 
+     path("browse", 
           view=views.RecipeList.as_view(),
           name="recipe_list"),
      path("add/",

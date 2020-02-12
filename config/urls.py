@@ -34,7 +34,7 @@ urlpatterns = [
                                       extra_context=support_context),
                  name="tos"),
     path("main/", include("main.urls", namespace="main")),
-    path("r/", include("recipes.urls", namespace="recipes")),
+    path("", include("recipes.urls", namespace="recipes")),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
