@@ -20,6 +20,15 @@
   min-height: 600px;
 }
 
+.landing {
+  width: 100%;
+  min-height: 600px;
+}
+
+.landing-info {
+  text-align: center;
+}
+
 .form-inline > .btn {
   margin-left: 5px;
 }
@@ -62,4 +71,48 @@
 
 .login {
   max-width: 400px;
+}
+
+#yes-mark {
+  height: 45px;
+  width: 45px;
+  position: relative;
+  display: inline-block;
+  background: #28a745;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.benefit-index {
+  text-align: center;
+  font-size: 40px;
+  vertical-align: middle;
+}
+
+.benefit-row {
+  padding-bottom: 10px;
+  justify-content: center;
+}
+
+.benefit-text {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 200;
+}
+
+.call-to-action {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-top: 1.5rem;
+}
+
+#signup-button {
+  font-weight: 1000;
+}
+
+.landing-lead {
+  margin-bottom: 1.5rem;
 }

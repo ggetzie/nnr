@@ -7,7 +7,7 @@
 
 
 {% block content %}
-<div class="main-content">
+<div class="container main-content">
     <h1>{{ recipe.title }}</h1>
     <div class="byline">
         Submitted by: <a href="{% url 'users:detail' recipe.user.username %}">{{ recipe.user.username }}</a>
