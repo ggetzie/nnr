@@ -187,29 +187,6 @@ var changeLoadingState = function(isLoading) {
   }
 };
 
-function showMessage(messageText, messageClass) {
-  let msg = document.createElement("div")
-  msg.id = "message"
-  msg.classList.add("alert");
-  msg.classList.add(messageClass);
-  msg.textContent = messageText;
-  closeButton = document.createElement("button");
-  closeButton.setAttribute("type", "button");
-  closeButton.setAttribute("class", "close");
-  closeButton.setAttribute("data-dismiss", "alert");
-  closeButton.setAttribute("aria-label", "Close");
-  xSpan = document.createElement("span");
-  xSpan.setAttribute("aria-hidden", "true");
-  xSpan.innerHTML = "&times;"
-  closeButton.appendChild(xSpan);
-  msg.appendChild(closeButton);
-  
-  // msg.append(`<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>`);
-  
-  main = document.getElementById("main-container");
-  main.insertBefore(msg, main.childNodes[0]);
-}
-
 function appendError(fieldName, errMsg) {
   let field = document.getElementById(`id_${fieldName}`);
   let errorDiv = document.createElement("div");

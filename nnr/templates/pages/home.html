@@ -8,7 +8,7 @@
     <div class="container">
         <h1 class="display-2 landing-info">No Nonsense Recipes</h1>
         <p class="lead landing-lead landing-info">
-            Save, Organize and Discover your favorite recipes.
+            Save, Organize, and Discover your favorite recipes.
         </p>
         <div class="row benefit-row">
             <div class="col-md-1 benefit-index">🚫</div>
@@ -32,7 +32,7 @@
         </div>
         {% if not request.user.is_authenticated %}
         <p class="call-to-action">
-            <a id="signup-button" class="btn btn-lg btn-success" href="{% url 'account_signup' %}">Sign up now</a> for a 30-day free trial, then only $19 per year for unlimited access.
+            <a class="btn btn-lg btn-success signup-button" href="{% url 'account_signup' %}">Sign up now</a> for a 30-day free trial, then only $19 per year for unlimited access.
         </p>
         {% endif %}      
     </div>

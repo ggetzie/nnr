@@ -6,34 +6,34 @@ Update Payment Information
 {% endblock title %}
 
 {% block user_content %}
-<h2>Current Payment Method</h2>
-{% for pm in payment_methods  %}
-<div class="row" style="margin-bottom: 10px;">
-    <div class="col-sm-7" id="cardinfo">
-        {{ pm.card.brand|capfirst }} ending with {{ pm.card.last4 }} exp {{ pm.card.exp_month}}/{{ pm.card.exp_year}}
+<div class="user-content">
+    <h2>Current Payment Method</h2>
+    {% for pm in payment_methods  %}
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-7" id="cardinfo">
+            {{ pm.card.brand|capfirst }} ending with {{ pm.card.last4 }} exp {{ pm.card.exp_month}}/{{ pm.card.exp_year}}
+        </div>
+        <div class="col-sm-2">
+            {% if pm.id == customer.invoice_settings.default_payment_method %}
+            <span class="default_pm">Default</span> 
+            {% endif %}
+        </div>
     </div>
-    <div class="col-sm-2">
-        {% if pm.id == customer.invoice_settings.default_payment_method %}
-        <span class="default_pm">Default</span> 
-        {% endif %}
-    </div>
+    {% endfor %}
+
+    <h2>Update Payment Information</h2>
+
+    <form id="update_payment" class="update_payment" action="{% url 'users:update_payment' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <div id="card-element"></div>
+            <div id="card-errors"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: flex-start;">
+            <input type="submit" id="submit-id-update_payment" class="btn btn-primary" name="update" value="Update">
+        </div>
+    </form>
 </div>
-{% endfor %}
-
-<h2>Update Payment Information</h2>
-
-<div id="message"></div>
-
-<form id="update_payment" class="update_payment" action="{% url 'users:update_payment' %}" method="post">
-    {% csrf_token %}
-    <div class="form-group">
-        <div id="card-element"></div>
-        <div id="card-errors"></div>
-    </div>
-    <div style="display: flex; flex-direction: column; align-items: flex-end;">
-        <input type="submit" id="submit-id-update_payment" class="btn btn-primary" name="update" value="Update">
-    </div>
-</form>
 {% endblock user_content %}     
 
 {% block morejs %}

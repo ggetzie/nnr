@@ -33,9 +33,7 @@
   </head>
 
   <body>
-
-
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <nav id="main-nav" class="navbar navbar-expand-md navbar-light bg-light">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -95,17 +93,17 @@
       </div>
     </nav>
 
+    {% if messages %}
     <div class="container" id="messages">
-      {% if messages %}
-          {% for message in messages %}
-              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
-          {% endfor %}
-      {% endif %}
-      </div>
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
+    {% block content %}
+      <p>Use this document as a way to quick start any new project.</p>
+    {% endblock content %}
 
     
 

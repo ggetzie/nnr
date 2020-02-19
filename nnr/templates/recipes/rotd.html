@@ -22,9 +22,11 @@ Recipe of the Day - {{ recipe.title }}
         {{ recipe.instructions_html|safe }}
     </div>
     {% if  not request.user.is_authenticated %}
-    <p>
-        <a class="btn btn-primary" href="{% url 'account_signup' %}">Sign up now</a> for access to more great recipes.
-        Only $19 per year!
+    <p class="call-to-action">
+        Want more great recipes?
+    </p>    
+    <p class="call-to-action">
+            <a class="btn btn-lg btn-success signup-button" href="{% url 'account_signup' %}">Sign up now</a> for a 30-day free trial, then only $19 per year for unlimited access.
     </p>
     {% endif %}
     

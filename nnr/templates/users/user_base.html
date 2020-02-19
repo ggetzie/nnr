@@ -4,9 +4,9 @@
 {% block title %}User: {{ user.username }}{% endblock %}
 
 {% block content %}
-<div class="user-content">
+<div class="user-main">
     <div class="row">
-        <div class="col-lg-2">
+        <div class="col-lg-2 bg-light">
             <ul class="nav flex-column">
                 {% if  request.user == user %}
                 <li class="nav-item">
@@ -42,7 +42,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-8">
             {% block user_content  %}
             {% endblock user_content %}
         </div>

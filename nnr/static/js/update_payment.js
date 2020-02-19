@@ -113,27 +113,6 @@ async function updatePaymentMethod(payment_method) {
     })
 }
 
-function showMessage(messageText, messageClass) {
-  let msg = document.createElement("div")
-  msg.id = "message"
-  msg.classList.add("alert");
-  msg.classList.add(messageClass);
-  msg.textContent = messageText;
-  closeButton = document.createElement("button");
-  closeButton.setAttribute("type", "button");
-  closeButton.setAttribute("class", "close");
-  closeButton.setAttribute("data-dismiss", "alert");
-  closeButton.setAttribute("aria-label", "Close");
-  xSpan = document.createElement("span");
-  xSpan.setAttribute("aria-hidden", "true");
-  xSpan.innerHTML = "&times;"
-  closeButton.appendChild(xSpan);
-  msg.appendChild(closeButton);
-   
-  main = document.getElementById("main-container");
-  main.insertBefore(msg, main.childNodes[0]);
-}
-  
 function showCardError(error) {
   changeLoadingState(false);
   // The card was declined (i.e. insufficient funds, card has expired, etc)

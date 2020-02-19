@@ -14,6 +14,7 @@
 
 .main-content {
   width: 70%;
+  margin-top: 10px;
   margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto;
@@ -73,17 +74,6 @@
   max-width: 400px;
 }
 
-#yes-mark {
-  height: 45px;
-  width: 45px;
-  position: relative;
-  display: inline-block;
-  background: #28a745;
-  border-radius: 50%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .benefit-index {
   text-align: center;
   font-size: 40px;
@@ -109,10 +99,24 @@
   margin-top: 1.5rem;
 }
 
-#signup-button {
+.signup-button {
   font-weight: 1000;
 }
 
 .landing-lead {
   margin-bottom: 1.5rem;
+}
+
+#messages {
+  margin-top: 10px;
+}
+
+.user-main {
+  width: 100%;
+  margin-left: 20px;
+  min-height: 600px;
+}
+
+.user-content {
+  margin-top: 20px;
 }
