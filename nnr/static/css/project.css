@@ -120,3 +120,8 @@
 .user-content {
   margin-top: 20px;
 }
+
+#recipe-form label {
+  font-size: 1.2rem;
+  font-weight: 500;
+}

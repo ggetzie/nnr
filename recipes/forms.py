@@ -1,8 +1,7 @@
-from crispy_forms.bootstrap import (InlineField, FormActions, Accordion, 
-                                    AccordionGroup, FieldWithButtons, 
-                                    StrictButton)
+from crispy_forms.bootstrap import (InlineField, FormActions, 
+                                    FieldWithButtons)
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Fieldset, Div, HTML
+from crispy_forms.layout import Layout, Submit, Fieldset, Div, HTML, Field
 
 from django import forms
 from django.conf import settings
@@ -32,6 +31,34 @@ class CreateRecipeForm(forms.ModelForm):
         widgets = {
             "user": forms.HiddenInput()
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()        
+        self.helper.form_method = "post"
+        self.helper.form_action = "recipes:recipe_create"
+        self.helper.attrs = {"id": "recipe-form"}
+        self.helper.layout = Layout(
+            HTML("""<p class="text-muted">* = field is required</p>"""),
+            Div(
+                Field("title", wrapper_class="form-group col-md-12"),
+                css_class="form-row"
+            ),
+            Div(
+                Field("ingredients_text", wrapper_class="form-group col-md-6"),
+                Field("instructions_text", wrapper_class="form-group col-md-6"),
+
+                css_class="form-row"
+            ),
+            Div(
+                Field("tags", wrapper_class="form-group col-md-12"),
+                css_class="form-row"
+            ),
+            "user",
+            FormActions(
+                Submit("submit", "Submit", css_class="btn btn-primary")
+            )
+        )
 
     def save(self):
         r = Recipe(title=self.cleaned_data["title"],
@@ -72,6 +99,29 @@ class UpdateRecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
         fields = ("title", "ingredients_text", "instructions_text")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()        
+        self.helper.form_method = "post"
+        self.helper.form_action = ""
+        self.helper.attrs = {"id": "recipe-form"}
+        self.helper.layout = Layout(
+            HTML("""<p class="text-muted">* = field is required</p>"""),
+            Div(
+                Field("title", wrapper_class="form-group col-md-12"),
+                css_class="form-row"
+            ),
+            Div(
+                Field("ingredients_text", wrapper_class="form-group col-md-6"),
+                Field("instructions_text", wrapper_class="form-group col-md-6"),
+
+                css_class="form-row"
+            ),
+            FormActions(
+                Submit("submit", "Submit", css_class="btn btn-primary")
+            )
+        )        
 
     def save(self):
         r = self.instance

@@ -9,10 +9,6 @@
 {% block content %}
 <div class="form-container main-content">
     <h1>{% if object %}Update{% else %}Add{% endif %} Recipe</h1>
-    <form action="" method="POST">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <input type="submit" class="btn btn-primary" value={% if object %}"Update"{% else %}"Add"{% endif %} />
-    </form>
+    {% crispy form %}
 </div>
 {% endblock %}
