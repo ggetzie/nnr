@@ -1,0 +1,50 @@
+{% load static %}
+<p class="text-muted">
+    * indicates field is required <br>
+    <a href="https://daringfireball.net/projects/markdown/">Markdown</a> formatting may be used in the ingredients and instructions fields to format text. 
+    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#markdownHelp">
+        help
+    </button>
+</p>
+
+<div class="modal fade" id="markdownHelp" tabindex="-1" role="dialog" aria-labelledby="markdownHelpTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="markdownHelpTitle">Markdown Help</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>*italics* = <em>italics</em></p>
+                <p>**bold** = <strong>bold</strong></p>
+                <p>
+                    [This is a link](http://thisisalink.com "link title") = <a href="http://thisisalink.com" title="link title">This is a link</a>
+                </p>
+                <p>Use two spaces at the end of a line for a line break.</p>
+                <p>Use a blank line between paragraphs for a paragraph break.</p>
+                <pre>
+#Heading1 = Heading level 1
+##Heading2 = Heading level 2
+###Heading3 = Heading level 3
+                </pre>
+                <pre>
+Ordered list: 
+1. First item 
+2. Second item
+3. Third item 
+                </pre>
+                <pre>
+Unordered list: 
+- First item 
+- Second item
+- Third item
+                </pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

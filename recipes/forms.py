@@ -39,7 +39,6 @@ class CreateRecipeForm(forms.ModelForm):
         self.helper.form_action = "recipes:recipe_create"
         self.helper.attrs = {"id": "recipe-form"}
         self.helper.layout = Layout(
-            HTML("""<p class="text-muted">* = field is required</p>"""),
             Div(
                 Field("title", wrapper_class="form-group col-md-12"),
                 css_class="form-row"
@@ -107,7 +106,6 @@ class UpdateRecipeForm(forms.ModelForm):
         self.helper.form_action = ""
         self.helper.attrs = {"id": "recipe-form"}
         self.helper.layout = Layout(
-            HTML("""<p class="text-muted">* = field is required</p>"""),
             Div(
                 Field("title", wrapper_class="form-group col-md-12"),
                 css_class="form-row"

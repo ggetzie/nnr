@@ -18,3 +18,12 @@ function showMessage(messageText, messageClass) {
   let mainNav = document.getElementById("main-nav");
   mainNav.after(msg);
 }
+
+function toggle(id) {
+  let elem = document.getElementById(id);
+  if (elem.style.display === "none") {
+	  elem.style.display = "initial";
+  } else {
+	  elem.style.display = "none";
+  }
+}

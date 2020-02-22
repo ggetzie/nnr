@@ -9,6 +9,7 @@
 {% block content %}
 <div class="form-container main-content">
     <h1>{% if object %}Update{% else %}Add{% endif %} Recipe</h1>
+    {% include "recipes/recipe_form_help.html" %}
     {% crispy form %}
 </div>
 {% endblock %}
