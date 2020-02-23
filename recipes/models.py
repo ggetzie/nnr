@@ -32,11 +32,14 @@ class LetterCount(models.Model):
     def __str__(self):
         return f"{self.quantity} of {self.letter}"    
 
+
+INGREDIENTS_HELP = _("Tip: list ingredients in the order they are used")
 class Recipe(models.Model):
     title = models.CharField(_("Title"), max_length=150)
     title_slug = models.SlugField(_("Title Slug"), max_length=150, 
                                   unique=True)
-    ingredients_text = models.TextField(_("Ingredients"))
+    ingredients_text = models.TextField(_("Ingredients"), 
+                                        help_text=INGREDIENTS_HELP)
     ingredients_html = models.TextField(_("Ingredients HTML"))
     instructions_text = models.TextField(_("Instructions"))
     instructions_html = models.TextField(_("Instructions HTML"))

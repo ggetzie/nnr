@@ -22,9 +22,12 @@ import logging
 User = get_user_model()
 DUPE_MSG = _("A recipe with that title already exists!")
 logger = logging.getLogger(__name__)
+TAGS_HELP = _("Short, descriptive words or phrases, separated by commas. "
+              "For example: healthy, cheap, dessert, side dish")
 
 class CreateRecipeForm(forms.ModelForm):
-    tags = forms.CharField(label=_("Tags"), required=False)
+    tags = forms.CharField(label=_("Tags"), required=False,
+                           help_text=TAGS_HELP)
     class Meta:
         model = Recipe
         fields = ("title", "ingredients_text", "instructions_text", "user")
@@ -143,7 +146,7 @@ class UpdateRecipeForm(forms.ModelForm):
         return "\n".join([f"{ing.strip()}  " for ing in lines])
 
 class TagRecipeForm(forms.Form):
-    tags = forms.CharField(label=_("Tags"))
+    tags = forms.CharField(label=_("Tags"), help_text=TAGS_HELP)
     user = forms.ModelChoiceField(widget=forms.HiddenInput(),
                                   queryset=User.objects.all())
     recipe = forms.ModelChoiceField(widget=forms.HiddenInput(),
@@ -160,7 +163,7 @@ class TagRecipeForm(forms.Form):
             InlineField("tags", css_class="form-control-sm"),
             "recipe",
             "user",
-            Submit("Add Tags", "Add Tags", css_class="btn-sm")
+            Submit("Add Tags", "Add Tags", css_class="btn-sm"),
         )        
 
     def save_tags(self):

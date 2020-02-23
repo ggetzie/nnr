@@ -50,6 +50,7 @@
             {% endfor %}
         </p>
         {% crispy tagform %}
+        <small class="form-text text-muted">{{ tagform.fields.tags.help_text }}</small>
     </div>
 </div>
 {% endblock %}
