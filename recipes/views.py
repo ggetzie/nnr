@@ -46,11 +46,13 @@ class RecipeDetail(ValidUserMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        tags = self.object.usertag_set.values("tag").\
+        tags = self.object.usertag_set.values("tag__name", "tag__name_slug").\
                annotate(Count("tag")).\
                order_by("-tag__count")
-        tag_list = [(Tag.objects.get(id=tag["tag"]),
-                    tag["tag__count"]) for tag in tags]
+        tag_list = [{"name": tag["tag__name"],
+                     "slug": tag["tag__name_slug"],
+                     "count": tag["tag__count"]}
+                    for tag in tags]
         context["tag_list"] = tag_list
         context["tagform"] = TagRecipeForm(initial={"user": self.request.user,
                                                     "recipe": self.object})

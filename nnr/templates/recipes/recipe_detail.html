@@ -45,9 +45,9 @@
     <div class="tags">
         <h2>Tags</h2>
         <p>
-            {% for tag, count in tag_list %}
-            <a href="{% url 'recipes:tag_detail' tag.name_slug %}" 
-               title="{{ count }} user{{ count|pluralize }} tagged this recipe as {{ tag.name }}">
+            {% for tag in tag_list %}
+            <a href="{% url 'recipes:tag_detail' tag.slug %}" 
+               title="{{ tag.count }} user{{ tag.count|pluralize }} tagged this recipe as {{ tag.name }}">
                 {{ tag.name }}
             </a>{% if not forloop.last %}, {% endif %}
             {% endfor %}
