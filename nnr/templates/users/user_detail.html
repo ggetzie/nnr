@@ -4,15 +4,9 @@
 {% block title %}User: {{ user.username }}{% endblock %}
 
 {% block user_content %}
-  <div class="row">
-    <div class="col-sm-12">
-
-      <h2>{{ user.username }}</h2>
-      {% if user.name %}
-        <p>{{ user.name }}</p>
-      {% endif %}
-    </div>
-  </div>
-</div>
+  <h2>{{ user.username }}</h2>
+  {% if user.name %}
+    <p>{{ user.name }}</p>
+  {% endif %}
 {% endblock user_content %}
 

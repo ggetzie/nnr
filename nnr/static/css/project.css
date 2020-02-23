@@ -117,11 +117,12 @@
   min-height: 600px;
 }
 
-.user-content {
-  margin-top: 20px;
-}
-
 #recipe-form label {
   font-size: 1.2rem;
   font-weight: 500;
+}
+
+#user-content {
+  margin-left: 50px;
+  margin-top: 10px;
 }
