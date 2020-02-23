@@ -8,7 +8,7 @@ from django.contrib.postgres.search import (SearchQuery,
                                             SearchRank, 
                                             SearchVector)
 from django.core.exceptions import PermissionDenied                                            
-from django.db.models import Avg                                            
+from django.db.models import Avg, Count
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
@@ -46,8 +46,12 @@ class RecipeDetail(ValidUserMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["usertags"] = UserTag.objects.filter(user=self.request.user,
-                                                     recipe=self.object)
+        tags = self.object.usertag_set.values("tag").\
+               annotate(Count("tag")).\
+               order_by("-tag__count")
+        tag_list = [(Tag.objects.get(id=tag["tag"]),
+                    tag["tag__count"]) for tag in tags]
+        context["tag_list"] = tag_list
         context["tagform"] = TagRecipeForm(initial={"user": self.request.user,
                                                     "recipe": self.object})
         saveform = SaveRecipeForm(initial={"user": self.request.user,
@@ -135,13 +139,11 @@ class TagDetail(ValidUserMixin, ListView):
     def get_queryset(self):
         self.tag = get_object_or_404(Tag, name_slug=self.kwargs["slug"])
         qs = Recipe.objects.filter(usertag__tag=self.tag).distinct()
-        logger.info(qs)
         return qs
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["tag"] = self.tag
-        logger.info(context)
         return context    
 
 

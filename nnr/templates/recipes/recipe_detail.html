@@ -45,8 +45,11 @@
     <div class="tags">
         <h2>Tags</h2>
         <p>
-            {% for tag in recipe.tags.all.distinct %}
-            <a href="{% url 'recipes:tag_detail' tag.name_slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+            {% for tag, count in tag_list %}
+            <a href="{% url 'recipes:tag_detail' tag.name_slug %}" 
+               title="{{ count }} user{{ count|pluralize }} tagged this recipe as {{ tag.name }}">
+                {{ tag.name }}
+            </a>{% if not forloop.last %}, {% endif %}
             {% endfor %}
         </p>
         {% crispy tagform %}
