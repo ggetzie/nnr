@@ -134,12 +134,14 @@ class TagDetail(ValidUserMixin, ListView):
 
     def get_queryset(self):
         self.tag = get_object_or_404(Tag, name_slug=self.kwargs["slug"])
-        qs = self.tag.recipe_set.all()
+        qs = Recipe.objects.filter(usertag__tag=self.tag).distinct()
+        logger.info(qs)
         return qs
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["tag"] = self.tag
+        logger.info(context)
         return context    
 
 
