@@ -104,6 +104,10 @@ class UserTag(models.Model):
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
 
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['user', 'tag', 'recipe'],
+                                               name="unique_user_tag")]
+
     def __str__(self):
         return f"{self.recipe} - {self.user} - {self.tag}"            
 

@@ -168,14 +168,17 @@ class TagRecipeForm(forms.Form):
 
     def save_tags(self):
         tags = [Tag.objects.get_or_create(name_slug=slugify(tag), 
-                                              defaults={"name": tag.strip()})[0]
+                                          defaults={"name": tag.strip()})[0]
                     for tag in self.cleaned_data["tags"].split(",")]
-        usertags = [UserTag(recipe=self.cleaned_data["recipe"],
-                            user=self.cleaned_data["user"],
-                            tag=tag) for tag in tags]
-        UserTag.objects.bulk_create(usertags)
+        recipe = self.cleaned_data["recipe"]
+        user = self.cleaned_data["user"]
+        for tag in tags:
+            usertag = UserTag.objects.get_or_create(recipe=recipe,
+                                                    user=user,
+                                                    tag=tag)[0]
+            usertag.save()                                                    
 
-
+        
 class SaveRecipeForm(forms.Form):
     recipe = forms.ModelChoiceField(widget=forms.HiddenInput(),
                                     queryset=Recipe.objects.all())
