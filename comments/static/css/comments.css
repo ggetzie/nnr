@@ -1,0 +1,8 @@
+#addCommentForm {
+    max-width: 600px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: end;
+}

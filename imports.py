@@ -5,6 +5,9 @@ from django.conf import settings
 from recipes.models import *
 from recipes.forms import *
 
+from comments.models import *
+from comments.forms import *
+
 from nnr.users.models import *
 
 gabe = User.objects.get(username="gabe")

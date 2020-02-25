@@ -16,6 +16,8 @@ from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
 
 from mixins import ValidUserMixin, RateLimitMixin
 
+from comments.forms import CreateCommentForm
+
 from recipes.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
                            SaveRecipeForm, RateRecipeForm, RecipeSearchForm,)
                            
@@ -46,6 +48,9 @@ class RecipeDetail(ValidUserMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        comment_form = CreateCommentForm(initial={"user": self.request.user,
+                                                  "recipe": self.object})
+        context["comment_form"] = comment_form
         tags = self.object.usertag_set.values("tag__name", "tag__name_slug").\
                annotate(Count("tag")).\
                order_by("-tag__count")

@@ -1,4 +1,4 @@
-# Recipes urls. Imported with prefix "/r/"
+# Recipes urls. Imported with no prefix
 from django.urls import include, path, register_converter
 import recipes.views as views
 import recipes.converters as converters

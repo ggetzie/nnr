@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
+
+{% block morecss %}
+<link href="{% static 'css/comments.css' %}" rel="stylesheet">
+{% endblock morecss %}
+
 
 {% block title %}
 {{ recipe.title }}
@@ -55,5 +61,12 @@
         {% crispy tagform %}
         <small class="form-text text-muted">{{ tagform.fields.tags.help_text }}</small>
     </div>
+
+    {% include 'comment_container.html' %}
 </div>
 {% endblock %}
+
+{% block morejs %}
+{% static 'js/comments.js' %}
+{% endblock morejs %}
+{% static 'js/comments.js' %}
