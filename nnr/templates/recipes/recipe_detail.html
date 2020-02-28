@@ -4,6 +4,8 @@
 
 {% block morecss %}
 <link href="{% static 'css/comments.css' %}" rel="stylesheet">
+<meta name="user_id" content="{{ request.user.id }}">
+<meta name="recipe_id" content="{{ recipe.id }}">
 {% endblock morecss %}
 
 
@@ -54,8 +56,7 @@
             {% for tag in tag_list %}
             <a href="{% url 'recipes:tag_detail' tag.slug %}" 
                title="{{ tag.count }} user{{ tag.count|pluralize }} tagged this recipe as {{ tag.name }}">
-                {{ tag.name }}
-            </a>{% if not forloop.last %}, {% endif %}
+                {{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
             {% endfor %}
         </p>
         {% crispy tagform %}
@@ -67,6 +68,5 @@
 {% endblock %}
 
 {% block morejs %}
-{% static 'js/comments.js' %}
+<script src="{% static 'js/comments.js' %}"></script>
 {% endblock morejs %}
-{% static 'js/comments.js' %}

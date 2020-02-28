@@ -6,6 +6,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 import markdown
+from dateutil.relativedelta import relativedelta
 
 from recipes.models import Recipe
 
@@ -50,8 +51,55 @@ class Comment(models.Model):
 
     def soft_delete(self):
         self.deleted = True
-        self.text = "*comment deleted*"
         self.save()
+
+    def time_ago(self):
+        now = datetime.datetime.now(tz=datetime.timezone.utc)
+        elapsed = relativedelta(now, self.timestamp)
+        if elapsed.years > 0:
+            unit = f"year{'s' if elapsed.years > 1 else ''}"
+            val = elapsed.years * -1
+        elif elapsed.months > 0:
+            unit = f"month{'s' if elapsed.months > 1 else ''}"
+            val = elapsed.months
+        elif elapsed.weeks > 0:
+            unit = f"week{'s' if elapsed.weeks > 1 else ''}"
+            unit = "week" if elapsed.weeks == 1 else "weeks"
+            val = elapsed.weeks
+        elif elapsed.days > 0:
+            unit = f"day{'s' if elapsed.days > 1 else ''}"
+            val = elapsed.days
+        elif elapsed.hours > 0:
+            unit = f"hour{'s' if elapsed.hours > 1 else ''}"
+            val = elapsed.hours
+        elif elapsed.minutes > 0:
+            unit = f"minute{'s' if elapsed.minutes > 1 else ''}"
+            val = elapsed.minutes
+        elif elapsed.seconds > 0:
+            unit = f"second{'s' if elapsed.minutes > 1 else ''}"
+            val = elapsed.seconds
+        else:
+            unit = "seconds"
+            val = 0
+
+        return f"{val} {unit} ago"
+    
+    def json(self):
+        # return dict for use in json response
+        return {
+            "id": self.id,
+            "user": {
+                "id": self.user.id,
+                "username": self.user.username,
+            },
+            "html": self.html,
+            "text": self.text,
+            "timestamp": self.time_ago(),
+            "edited": self.has_been_edited(),
+            "parent": self.parent,
+            "nesting": self.nesting
+        }
+        
 
 class Flag(models.Model):
     id = models.UUIDField(_("id"), 

@@ -6,3 +6,20 @@
     display: flex;
     justify-content: end;
 }
+
+.comment-error {
+    max-width: 600px;
+}
+
+.comment-ts {
+    margin-left: 1.5rem;
+}
+
+.comment-control {
+    margin-left: 3rem;
+    display: inline;
+}
+
+.comment-dropdown {
+    font-weight: 750;
+}
