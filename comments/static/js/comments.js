@@ -24,11 +24,14 @@ async function submitComment(commentForm) {
     }).then(response => {
         return response.json()
     }).then(responseJSON => {
-        console.log(responseJSON)
         if (responseJSON.error) {
             ed = createErrorDiv(response.error.message)
             commentForm.parentNode.insertBefore(ed, commentForm);
         } else {
+            // clear form
+            commentForm["text"].value = "";
+
+            // insert new comment at top of list
             let newComment = createComment(responseJSON.comment);
             let cl = document.getElementById("comment-list");
             cl.insertBefore(newComment, cl.children[0])
@@ -72,9 +75,9 @@ function createComment(comment) {
 
 function createCommentHeader(comment) {
     let commentHeader = document.createElement("div");
-    commentHeader.classList.add("comment-header");
+    commentHeader.classList.add("text-muted", "comment-header");
     userSpan = document.createElement("span");
-    userSpan.textContent = `by ${comment.user.username}`;
+    userSpan.textContent = comment.user.username;
     userSpan.classList.add("comment-user");
     commentHeader.appendChild(userSpan);
 
@@ -86,7 +89,7 @@ function createCommentHeader(comment) {
     let currentUserId = Number(document.querySelector('meta[name="user_id"]')["content"]);
     if (currentUserId === Number(comment.user.id)) {
         let controls = document.createElement("div");
-        controls.classList.add("dropdown", "comment-control");
+        controls.classList.add("dropdown", "float-right", "comment-control");
         dropdownButton = document.createElement("button");
         // dropdownButton.classList.add("btn", "btn-outline-secondary", "btn-sm", "dropdown-toggle", "comment-dropdown");
         dropdownButton.classList.add("btn", "btn-outline-secondary", "btn-sm", "comment-dropdown");

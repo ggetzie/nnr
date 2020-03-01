@@ -2,6 +2,10 @@
     max-width: 600px;
 }
 
+.comment-container {
+    max-width: 800px;
+}
+
 .form-actions {
     display: flex;
     justify-content: end;
@@ -22,4 +26,12 @@
 
 .comment-dropdown {
     font-weight: 750;
+}
+
+.comment-header {
+    font-size: 0.9rem;
+}
+
+#comment-list {
+    margin-top: 1.5rem;
 }

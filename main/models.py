@@ -7,10 +7,14 @@ from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
 import datetime
+import logging
 import markdown
 import string
 
 UTC = datetime.timezone.utc
+BASE_RATE = 30 if settings.DEBUG else 5
+
+logger = logging.getLogger(__name__)
 
 def next_year():
     today = datetime.date.today()
@@ -52,6 +56,30 @@ class Profile(models.Model):
     
     def __str__(self):
         return f"{self.user.name} ({self.user.id})"
+
+    def is_valid(self):
+        return self.payment_status in (2, 3)
+
+    def paid(self):
+        return self.payment_status == 3
+
+    def rate_limit_exceeded(self):
+        now = datetime.datetime.now(tz=UTC)
+        limit = BASE_RATE ** self.rate_level
+        diff = now - self.last_sub
+        exceeded = diff.total_seconds() < limit
+        if exceeded:
+            # submission is too soon after the last one
+            self.rate_level += 1
+            msg = (f"Posting too fast. Try again in "
+                   f"{BASE_RATE ** self.rate_level} seconds.")
+        else:
+            self.rate_level = 1
+            msg = ""
+        self.last_sub = now
+        self.save()
+        
+        return exceeded, msg
 
 
 class PaymentPlan(models.Model):

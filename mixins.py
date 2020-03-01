@@ -5,6 +5,11 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 
 import datetime
+import logging
+
+from main.models import BASE_RATE
+
+logger = logging.getLogger(__name__)
 
 class ValidUserMixin(UserPassesTestMixin):
     payment_failed_message = ("We were unable to process your last payment. "
@@ -51,21 +56,11 @@ class HttpResponseTooManyRequests(HttpResponse):
 
 
 class RateLimitMixin():
-    base_rate = 30 if settings.DEBUG else 5
 
     def post(self, request, *args, **kwargs):
         profile = self.request.user.profile
-        now = datetime.datetime.now(tz=datetime.timezone.utc)
-        limit = self.base_rate ** profile.rate_level
-        diff = now - profile.last_sub
-        if diff.total_seconds() < limit:
-            profile.rate_level += 1
-            profile.save()
-            msg = f"Try again in {self.base_rate ** profile.rate_level} seconds."
+        exceeded, msg = profile.rate_limit_exceeded()
+        if exceeded:
             return HttpResponseTooManyRequests(msg)
-        else:
-            profile.last_sub = now
-            profile.rate_level = 1
-            profile.save()
-
+        
         return super().post(request, *args, **kwargs)
