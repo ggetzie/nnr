@@ -3,5 +3,6 @@
     <h2>Comments</h2>
     {% crispy comment_form %}
     <div id="comment-list">
+    {% csrf_token %}
     </div>
 </div>

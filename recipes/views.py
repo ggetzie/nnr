@@ -9,6 +9,7 @@ from django.contrib.postgres.search import (SearchQuery,
                                             SearchVector)
 from django.core.exceptions import PermissionDenied                                            
 from django.db.models import Avg, Count
+from django.middleware.csrf import get_token
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,

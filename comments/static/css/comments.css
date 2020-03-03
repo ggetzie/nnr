@@ -1,5 +1,10 @@
 .comment {
-    margin-bottom: 15px;
+    margin-bottom: 2rem;
+    border-bottom: 1px gray solid;
+}
+
+.comment-body p {
+    margin-bottom: 0.7rem;
 }
 
 .comment-container {
@@ -34,6 +39,7 @@
 
 .comment-header {
     font-size: 0.9rem;
+    min-height: 35px;
 }
 
 #comment-list {

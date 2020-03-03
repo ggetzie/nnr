@@ -78,8 +78,11 @@ function createComment(comment) {
     commentBody.innerHTML = comment.html;
     commentDiv.appendChild(commentBody);
 
-    let commentEdit = createEditForm(comment);
+    let commentEdit = editModal(comment);
     commentDiv.appendChild(commentEdit);
+
+    let commentDelete = deleteModal(comment.id);
+    commentDiv.appendChild(commentDelete);
     return commentDiv;
 
 }
@@ -121,16 +124,16 @@ function createCommentHeader(comment) {
         let editButton = document.createElement("button");
         editButton.classList.add("dropdown-item");
         editButton.setAttribute("data-toggle", "modal");
-        editButton.setAttribute("data-target", `#edit-${comment.id}-modal`)
+        editButton.setAttribute("data-target", `#edit-${comment.id}-modal`);
         editButton.textContent = "Edit";
         dropdownMenu.appendChild(editButton);
         
-        let deleteLink = document.createElement("a");
-        deleteLink.href = "#" + dd_id;
-        deleteLink.classList.add("dropdown-item");
-        deleteLink.textContent = "Delete";
-        deleteLink.onclick = function () { deleteComment(comment.id) };
-        dropdownMenu.appendChild(deleteLink);
+        let deleteButton = document.createElement("button");
+        deleteButton.classList.add("dropdown-item");
+        deleteButton.setAttribute("data-toggle", "modal");
+        deleteButton.setAttribute("data-target", `#delete-${comment.id}-modal`);
+        deleteButton.textContent = "Delete";
+        dropdownMenu.appendChild(deleteButton);
 
         commentHeader.appendChild(controls);
 
@@ -139,11 +142,11 @@ function createCommentHeader(comment) {
     return commentHeader;
 }
 
-function createEditForm(comment) {
+function editModal(comment) {
     let form = document.createElement("form");
     form.action = "/comments/edit/";
     form.method = "post";
-    form.id = `edit_${comment.id}`;
+    form.id = `edit-${comment.id}`;
     form.classList.add("comment-form");
     form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -175,13 +178,11 @@ function createEditForm(comment) {
     cancel.classList.add("btn", "btn-secondary");
     cancel.setAttribute("data-dismiss", "modal");
     cancel.textContent = "Cancel";
-    // TODO cancel should clear form and swap back to original comment
 
     let submit = document.createElement("input");
     submit.type = "submit";
     submit.value = "Submit";
     submit.classList.add("btn", "btn-primary");
-    // TODO function to submit comment and replace with edited content if successful
 
     let fc = document.createElement("div");
     fc.classList.add("form-actions");
@@ -195,6 +196,52 @@ function createEditForm(comment) {
                   form);
 
     return modal;
+
+}
+
+function deleteModal(commentId) {
+    let bodyP = document.createElement("p");
+    bodyP.textContent = "Comment will be deleted. Are you sure?";
+    let modalBody = document.createElement("div");
+    modalBody.appendChild(bodyP);
+
+    let deleteForm = document.createElement("form");
+    deleteForm.id = `delete-${commentId}`;
+    deleteForm.action = "/comments/delete/";
+    deleteForm.method = "post";
+    deleteForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        deleteComment(deleteForm);
+    })
+
+    let id = document.createElement("input");
+    id.name = "id"
+    id.value = commentId
+    id.type = "hidden"
+    deleteForm.appendChild(id)
+
+    let fa = document.createElement("div");
+    fa.classList.add("form-actions");
+    deleteForm.appendChild(fa)
+
+    let no = document.createElement("button");
+    no.textContent = "No";
+    no.setAttribute("data-dismiss", "modal");
+    no.classList.add("btn", "btn-secondary");
+    fa.appendChild(no);
+
+    let yes = document.createElement("input");
+    yes.textContent = "Yes";
+    yes.type = "submit";
+    yes.value = "Yes";
+    yes.classList.add("btn", "btn-danger")
+    fa.appendChild(yes);
+
+    modalBody.appendChild(deleteForm);
+
+    return Modal(`delete-${commentId}-modal`,
+                 "Delete Comment", 
+                 modalBody)
 
 }
 
@@ -260,14 +307,41 @@ function closeModal() {
     return cb;
 }
 
-function deleteComment(commentId) {
-    console.log(`Delete comment ${commentId}`);
+async function deleteComment(deleteForm) {
+    let data = {"id": deleteForm["id"].value}
+    let csrftoken = document.querySelector('#comment-list input[name="csrfmiddlewaretoken"]').value;
+
+    fetch(deleteForm.action, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrftoken,
+            "Accept": "application/json",
+            "X-Requested-With": "XMLHttpRequest"
+        },
+        body: JSON.stringify(data)
+    }).then(response => {
+        return response.json();
+    }).then(responseJSON => {
+        let deleted = document.getElementById(data["id"]);
+        let c = document.querySelector(`#delete-${deleteForm["id"].value}-modal button.close`);
+        c.click()        
+        if (responseJSON.error) {
+            ed = createErrorDiv(responseJSON.error);
+            deleted.before(ed);
+        } else {
+            let msg = createAlert("Comment Deleted.", ["alert-success"]);
+            deleted.before(msg);
+            deleted.remove();
+        }
+    })
 }
 
 async function editComment(editForm) {
     let data = {"id": editForm["id"].value,
                 "text": editForm["text"].value}
-    let csrftoken = document.querySelector('[name="csrfmiddlewaretoken"]').value;
+    let csrftoken = document.querySelector('#comment-list input[name="csrfmiddlewaretoken"]').value;
+    
     fetch(editForm.action, {
         method: "post",
         headers: {
