@@ -1,5 +1,5 @@
-#addCommentForm {
-    max-width: 600px;
+.comment {
+    margin-bottom: 15px;
 }
 
 .comment-container {
@@ -9,6 +9,10 @@
 .form-actions {
     display: flex;
     justify-content: end;
+}
+
+.form-actions * {
+    margin-left: 1rem;
 }
 
 .comment-error {

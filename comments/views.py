@@ -8,6 +8,8 @@ from django.shortcuts import render
 from django.views.decorators.http import require_POST
 
 from comments.models import Comment
+from decorators import (user_is_paying_api, user_is_valid_api, 
+                        rate_limited_api)
 from recipes.models import Recipe
 
 User = get_user_model()
@@ -15,7 +17,7 @@ User = get_user_model()
 logger = logging.getLogger(__name__)
 
 # users can view comments during trial
-# @validuser
+@user_is_valid_api
 def list_comments(request):
     recipe_id = request.GET.get("recipe_id", "")
     start_from = request.GET.get("start_from", None)
@@ -39,9 +41,10 @@ def list_comments(request):
 # @payinguser
 # @ratelimited
 @require_POST
+@user_is_paying_api
+@rate_limited_api
 def add_comment(request):
     data = json.loads(request.body)
-    logger.info(f"Add comment request: {request}")
     user = User.objects.get(id=data["user"])
     recipe = Recipe.objects.get(id=data["recipe"])
     comment = Comment(user=user,
@@ -53,13 +56,27 @@ def add_comment(request):
     }
     return JsonResponse(data=response_data)
 
-# @payinguser
-# @user_is_owner
+@user_is_paying_api
 def edit_comment(request):
-    pass
+    data = json.loads(request.body)
+    comment = Comment.objects.get(id=data["id"])
+    if request.user != comment.user:
+        return JsonResponse({"error": ("You do not have permission "
+                                       "to edit this comment")})
+    comment.text = data["text"]
+    comment.save()
+    return JsonResponse({"status": "ok",
+                         "message": "Comment updated",
+                         "comment": comment.json()})
 
-# @payinguser
-# @user_is_owner
+@user_is_paying_api
 def delete_comment(request):
-    pass
+    data = json.loads(request.body)
+    comment = Comment.objects.get(id=data["id"])
+    if request.user != comment.user:
+        return JsonResponse({"error": ("You do not have permission to "
+                                       "delete this comment.")})
+    comment.soft_delete()
+    return JsonResponse({"status": "ok",
+                         "message": "Comment deleted"})
 

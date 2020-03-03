@@ -2,9 +2,12 @@
     "python.pythonPath": "/usr/local/src/env/nnr/bin/python",
     "python.linting.pylintEnabled": true,
     "cSpell.words": [
+        "csrftoken",
         "dateutil",
+        "labelledby",
         "nums",
         "rotd",
-        "sortify"
+        "sortify",
+        "tabindex"
     ]
 }

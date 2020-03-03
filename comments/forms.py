@@ -23,6 +23,7 @@ class CreateCommentForm(forms.ModelForm):
         self.helper = FormHelper()
         self.helper.form_id = "addCommentForm"
         self.helper.form_action = reverse("comments:add")
+        self.helper.form_class = "comment-form"
         self.helper.form_show_labels = False
         self.helper.layout = Layout(
             "text",

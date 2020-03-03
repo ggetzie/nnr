@@ -39,10 +39,12 @@ async function submitComment(commentForm) {
     })
 }
 
-function createErrorDiv(msg) {
-    let ed = document.createElement("div");
-    ed.classList.add("alert", "alert-danger", "comment-error");
-    ed.textContent = msg;
+function createAlert(msg, classes) {
+    // create a bootstrap alert div
+    let ad = document.createElement("div");
+    ad.classList.add("alert", ...classes);
+    ad.textContent = msg;
+
     let closeButton = document.createElement("button");
     closeButton.setAttribute("type", "button");
     closeButton.setAttribute("class", "close");
@@ -52,12 +54,18 @@ function createErrorDiv(msg) {
     xSpan.setAttribute("aria-hidden", "true");
     xSpan.innerHTML = "&times;"
     closeButton.appendChild(xSpan);
-    ed.appendChild(closeButton);
+    ad.appendChild(closeButton);
+
+    return ad;
+}
+
+function createErrorDiv(msg) {
+    let ed = createAlert(msg, ["alert-danger"])
     return ed;
 }
 
 function createComment(comment) {
-    
+    // build up div for a comment with info from comment JSON
     let commentDiv = document.createElement("div");
     commentDiv.id = comment.id;
     commentDiv.classList.add("comment");
@@ -69,6 +77,9 @@ function createComment(comment) {
     commentBody.classList.add("comment-body");
     commentBody.innerHTML = comment.html;
     commentDiv.appendChild(commentBody);
+
+    let commentEdit = createEditForm(comment);
+    commentDiv.appendChild(commentEdit);
     return commentDiv;
 
 }
@@ -91,10 +102,8 @@ function createCommentHeader(comment) {
         let controls = document.createElement("div");
         controls.classList.add("dropdown", "float-right", "comment-control");
         dropdownButton = document.createElement("button");
-        // dropdownButton.classList.add("btn", "btn-outline-secondary", "btn-sm", "dropdown-toggle", "comment-dropdown");
         dropdownButton.classList.add("btn", "btn-outline-secondary", "btn-sm", "comment-dropdown");
         dropdownButton.setAttribute("type", "button");
-        // dropdownButton.innerHTML = "&#183;&#183;&#183;";
         dropdownButton.innerHTML = "&#8901;&#8901;&#8901;";
         let dd_id = `${comment.id}-dropdown`;
         dropdownButton.id = dd_id;
@@ -109,12 +118,12 @@ function createCommentHeader(comment) {
         controls.appendChild(dropdownMenu);
 
 
-        let editLink = document.createElement("a");
-        editLink.href = "#" + dd_id;
-        editLink.classList.add("dropdown-item");
-        editLink.textContent = "Edit";
-        editLink.onclick = function () { editComment(comment.id) };
-        dropdownMenu.appendChild(editLink);
+        let editButton = document.createElement("button");
+        editButton.classList.add("dropdown-item");
+        editButton.setAttribute("data-toggle", "modal");
+        editButton.setAttribute("data-target", `#edit-${comment.id}-modal`)
+        editButton.textContent = "Edit";
+        dropdownMenu.appendChild(editButton);
         
         let deleteLink = document.createElement("a");
         deleteLink.href = "#" + dd_id;
@@ -130,12 +139,159 @@ function createCommentHeader(comment) {
     return commentHeader;
 }
 
+function createEditForm(comment) {
+    let form = document.createElement("form");
+    form.action = "/comments/edit/";
+    form.method = "post";
+    form.id = `edit_${comment.id}`;
+    form.classList.add("comment-form");
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        editComment(form);
+    })
+
+    let cid = document.createElement("input");
+    cid.type = "hidden";
+    cid.value = comment.id;
+    cid.name = "id";
+
+    form.appendChild(cid);
+
+    let text = document.createElement("textarea");
+    text.value = comment.text;
+    text.classList.add("textarea", "form-control");
+    text.setAttribute("cols", 40);
+    text.setAttribute("rows", 5);
+    text.setAttribute("required", "");
+    text.name = "text";
+
+    let fg = document.createElement("div");
+    fg.classList.add("form-group");
+    fg.appendChild(text);
+
+    form.appendChild(fg)
+
+    let cancel = document.createElement("button");
+    cancel.classList.add("btn", "btn-secondary");
+    cancel.setAttribute("data-dismiss", "modal");
+    cancel.textContent = "Cancel";
+    // TODO cancel should clear form and swap back to original comment
+
+    let submit = document.createElement("input");
+    submit.type = "submit";
+    submit.value = "Submit";
+    submit.classList.add("btn", "btn-primary");
+    // TODO function to submit comment and replace with edited content if successful
+
+    let fc = document.createElement("div");
+    fc.classList.add("form-actions");
+    fc.appendChild(cancel);
+    fc.appendChild(submit);
+
+    form.appendChild(fc);
+
+    modal = Modal(`edit-${comment.id}-modal`, 
+                  "Edit Comment",
+                  form);
+
+    return modal;
+
+}
+
+function Modal(modalId, headerText, bodyElement, footerElement = null) {
+    let modal = document.createElement("div");
+    modal.id = modalId;
+    modal.classList.add("modal");
+    modal.setAttribute("tabindex", "-1");
+    modal.setAttribute("role", "dialog");
+    let titleId = `${modalId}-title`;
+    modal.setAttribute("aria-labelledby", titleId);
+    modal.setAttribute("aria-hidden", "true");
+
+    let dialog = document.createElement("div");
+    dialog.classList.add("modal-dialog", "modal-dialog-centered");
+    dialog.setAttribute("role", "document");
+
+    modal.appendChild(dialog);
+
+    let content = document.createElement("div");
+    content.classList.add("modal-content")
+    dialog.appendChild(content);
+
+    let header = document.createElement("div");
+    header.classList.add("modal-header");
+
+    let h5 = document.createElement("h5");
+    h5.classList.add("modal-title");
+    h5.textContent = headerText;
+    header.appendChild(h5);
+    header.appendChild(closeModal());
+    
+    content.appendChild(header);
+
+    let body = document.createElement("div");
+    body.classList.add("modal-body");
+    body.appendChild(bodyElement);
+    content.appendChild(body);
+
+    if (footerElement) {
+        let footer = document.createElement("div");
+        footer.classList.add("modal-footer");
+        footer.appendChild(footerElement);
+        content.appendChild(footer);
+    }
+    
+    return modal;
+
+}
+
+function closeModal() {
+    let cb = document.createElement("button");
+    cb.setAttribute("type", "button");
+    cb.classList.add("close");
+    cb.setAttribute("data-dismiss", "modal");
+    cb.setAttribute("aria-label", "Close");
+
+    let xSpan = document.createElement("span");
+    xSpan.setAttribute("aria-hidden", "true");
+    xSpan.innerHTML = "&times;"
+
+    cb.appendChild(xSpan);
+    return cb;
+}
+
 function deleteComment(commentId) {
     console.log(`Delete comment ${commentId}`);
 }
 
-function editComment(commentId) {
-    console.log(`Edit comment ${commentId}`);
+async function editComment(editForm) {
+    let data = {"id": editForm["id"].value,
+                "text": editForm["text"].value}
+    let csrftoken = document.querySelector('[name="csrfmiddlewaretoken"]').value;
+    fetch(editForm.action, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrftoken,
+            "Accept": "application/json",
+            "X-Requested-With": "XMLHttpRequest"
+        },
+        body: JSON.stringify(data)
+    }).then(response => {
+        return response.json()
+    }).then( responseJSON => {
+        if (responseJSON.error) {
+            ed = createErrorDiv(response.error.message);
+            editForm.before(ed);
+        } else {
+            // comment successfully updated. 
+            // Close the model and replace the comment with the updated version
+            let c = document.querySelector(`#edit-${editForm["id"].value}-modal button.close`);
+            c.click()
+            updateComment(responseJSON.comment);
+        }
+    })
+
 }
 
 async function loadComments(startFrom = null) {
@@ -156,13 +312,11 @@ async function loadComments(startFrom = null) {
     }).then(response => {
         return response.json()
     }).then(responseJSON => {
-        console.log(responseJSON);
         let cl = document.getElementById("comment-list");
         if (responseJSON.error) {
             ed = createErrorDiv(response.error);
             cl.appendChild(ed);
         } else {
-            console.log(responseJSON.comment_list);
             for (let i=0; i < responseJSON.comment_list.length ; i++) {
                 c = createComment(responseJSON.comment_list[i]);
                 cl.appendChild(c);
@@ -172,4 +326,13 @@ async function loadComments(startFrom = null) {
     
 }
 
+function updateComment(newComment) {
+    oldCommentDiv = document.getElementById(newComment.id);
+    oldCommentDiv.id += "-old";
+    newCommentDiv = createComment(newComment);
+    oldCommentDiv.before(newCommentDiv);
+    oldCommentDiv.remove()
+}
+
 window.onload = loadComments();
+
