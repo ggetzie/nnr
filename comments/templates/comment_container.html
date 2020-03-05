@@ -1,6 +1,7 @@
 {% load crispy_forms_tags %}
 <div class="comment-container">
     <h2>Comments</h2>
+    {% include "markdown_help.html" %}
     {% crispy comment_form %}
     <div id="comment-list">
     {% csrf_token %}

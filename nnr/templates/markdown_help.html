@@ -1,0 +1,161 @@
+{% load static %}
+<p class="text-muted">
+    <a href="https://daringfireball.net/projects/markdown/">Markdown</a> may be used format text. 
+    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#markdownHelp">
+        help
+    </button>
+</p>
+
+<div class="modal fade" id="markdownHelp" tabindex="-1" role="dialog" aria-labelledby="markdownHelpTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="markdownHelpTitle">Markdown Help</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+
+                    <div class="row mb-2">
+                        <div class=col-sm-6>
+                            <strong>Markdown Text</strong>
+                        </div>
+                        <div class="col-sm-6">
+                            <strong>HTML</strong>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            *italics*
+                        </div>
+                        <div class="col-sm-6">
+                            <em>italics</em>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            *bold*
+                        </div>
+                        <div class="col-sm-6">
+                            <strong>bold</strong>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            [This is a link](http://thisisalink.com "link title")
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="http://thisisalink.com" title="link title">This is a link</a>
+                        </div>
+                    </div>                
+
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <pre>
+Use two spaces at the end of a line  
+for a line break                        
+                            </pre>
+                        </div>
+                        <div class="col-sm-6">
+                            Use two spaces at the end of a line <br>
+                            for a line break
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <pre>
+Use a blank space between paragraphs
+
+for a paragraph break
+                            </pre>
+                        </div>
+                        <div class="col-sm-6">
+                            <p>Use a blank space between paragraphs.</p>
+                            <p>for a paragraph break</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <pre>
+#Heading1
+##Heading2
+###Heading3
+                            </pre>
+                        </div>
+                        <div class="col-sm-6">
+                            <h1>Heading1</h1>
+                            <h2>Heading2</h2>
+                            <h3>Heading3</h3>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <pre>
+Ordered list: 
+1. First item 
+2. Second item
+3. Third item 
+                            </pre>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol>
+                                <li>First item</li>
+                                <li>Second item</li>
+                                <li>Third item</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <pre>
+Unordered list: 
+- First item 
+- Second item
+- Third item
+                            </pre>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul>
+                                <li>First item</li>
+                                <li>Second item</li>
+                                <li>Third item</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <pre>
+> Put a right angle bracket
+at the start of each paragraph
+
+> to create a blockquote.
+                            </pre>
+                        </div>
+                        <div class="col-sm-6">
+                            <blockquote>
+                                Put a right angle bracket
+                                at the start of each paragraph
+
+                                to create a blockquote
+                            </blockquote>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
