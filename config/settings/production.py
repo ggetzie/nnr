@@ -7,7 +7,7 @@ from .base import env
 SECRET_KEY = env("nnr_SECRET_KEY")
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 # ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["nononsense.recipes"])
-ALLOWED_HOSTS = ["3.95.194.194", "nononsense.recipes"]
+ALLOWED_HOSTS = ["3.95.194.194", "nononsense.recipes", "www.nononsense.recipes"]
 
 # DATABASES
 # ------------------------------------------------------------------------------
