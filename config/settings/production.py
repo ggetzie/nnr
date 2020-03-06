@@ -6,15 +6,30 @@ from .base import env
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env("nnr_SECRET_KEY")
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["nononsense.recipes"])
+# ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["nononsense.recipes"])
+ALLOWED_HOSTS = ["3.95.194.194", "nononsense.recipes"]
 
 # DATABASES
 # ------------------------------------------------------------------------------
+# TODO Replace with config for RDS later
 DATABASES = {
-    'default': env.db("DATABASE_URL")
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'nnr_db',
+        'USER': 'nnr_db_user',
+        'PASSWORD': env('nnr_DB_PW'),
+        'HOST': 'localhost',
+        'PORT': '',
+        }
 }
-DATABASES["default"]["ATOMIC_REQUESTS"] = True  # noqa F405
-DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # noqa F405
+
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
+
+# DATABASES = {
+#     'default': env.db("DATABASE_URL")
+# }
+# DATABASES["default"]["ATOMIC_REQUESTS"] = True  # noqa F405
+# DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # noqa F405
 
 # CACHES
 # ------------------------------------------------------------------------------
