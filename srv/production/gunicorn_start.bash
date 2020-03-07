@@ -1,8 +1,8 @@
 #!/bin/bash
-NAME="mscv"
-DJANGODIR="/usr/local/src/ceevee/"
-SOCKFILE="/usr/local/src/ceevee/run/gunicorn.sock"
-USER=mscv_user
+NAME="nnr"
+DJANGODIR="/usr/local/src/nnr/"
+SOCKFILE="/usr/local/src/nnr/run/gunicorn.sock"
+USER=nnr_user
 GROUP=webapps
 NUM_WORKERS=3
 TIMEOUT=120
@@ -13,7 +13,7 @@ echo "Starting $NAME as `whoami`"
 
 # Activate the virtual environement
 cd $DJANGODIR
-source /usr/local/src/env/ceevee/bin/activate
+source /usr/local/src/env/nnr/bin/activate
 
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
@@ -27,12 +27,12 @@ test -d $RUNDIR || mkdir -p $RUNDIR
 # daemonize themselves.
 # (do not use --daemon)
 
-exec /usr/local/src/env/ceevee/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
+exec /usr/local/src/env/nnr/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
     --name $NAME \
     --workers $NUM_WORKERS \
     --timeout $TIMEOUT \
     --user=$USER --group=$GROUP \
-    --bind 127.0.0.1:8004 \
+    --bind 127.0.0.1:8001 \
     --log-level=warning \
     --log-file=-
 

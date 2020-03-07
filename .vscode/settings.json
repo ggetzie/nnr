@@ -5,6 +5,7 @@
         "boto",
         "csrftoken",
         "dateutil",
+        "haspopup",
         "labelledby",
         "nononsense",
         "nums",
