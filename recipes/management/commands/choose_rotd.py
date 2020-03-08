@@ -1,8 +1,11 @@
 import datetime
+import logging
 import random
 
 from django.core.management.base import BaseCommand, CommandError
-from main.models import Recipe
+from recipes.models import Recipe
+
+logger = logging.getLogger(__name__)
 
 class Command(BaseCommand):
 
@@ -18,7 +21,11 @@ class Command(BaseCommand):
         thirty_days_ago = datetime.date.today() - datetime.timedelta(days=30)
         recipes = Recipe.objects.filter(last_featured__lt=thirty_days_ago)
 
+        if not recipes:
+            recipes = Recipe.objects.all()
+
         new_rotd = random.choice(recipes)
         new_rotd.featured = True
         new_rotd.last_featured = datetime.date.today()
         new_rotd.save()
+        logger.info(f"New Recipe of the Day - {new_rotd}")

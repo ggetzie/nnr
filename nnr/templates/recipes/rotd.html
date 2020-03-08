@@ -8,6 +8,7 @@ Recipe of the Day - {{ recipe.title }}
 
 {% block content %}
 <div class="main-content">
+    {% if recipe %}
     <h1>Recipe of the Day - {{ recipe.title }}</h1>
     <div class="byline">
         Submitted by: <a href="{% url 'users:detail' recipe.user.username %}">{{ recipe.user.username }}</a>
@@ -28,6 +29,9 @@ Recipe of the Day - {{ recipe.title }}
     <p class="call-to-action">
             <a class="btn btn-lg btn-success signup-button" href="{% url 'account_signup' %}">Sign up now</a> for a 30-day free trial, then only $19 per year for unlimited access.
     </p>
+    {% endif %}
+    {% else %}
+    <p>Oops! Looks like there's no recipe today.</p>
     {% endif %}
     
 </div>

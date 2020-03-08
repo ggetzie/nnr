@@ -97,8 +97,11 @@ class RecipeOfTheDay(DetailView):
     template_name = "recipes/rotd.html"
 
     def get_object(self, queryset=None):
-        return Recipe.objects.get(featured=True)
-
+        try:
+            obj = Recipe.objects.get(featured=True)
+        except Recipe.DoesNotExist:
+            obj = None
+        return obj
 
 class RecipeList(ValidUserMixin, ListView):
     model = Recipe
