@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method="POST">
-{% csrf_token %}
-<p>Really delete {{ object.title }}?</p>
-<a href="{% url 'recipes:recipe_list' %}" class="btn btn-secondary">Cancel</a>
-<input type="submit" class="btn btn-danger" value="Delete" />
+<div class="container main-content">
+    <form method="POST">
+    {% csrf_token %}
+    <p>Really delete {{ object.title }}?</p>
+    <a href="{% url 'recipes:recipe_list' %}" class="btn btn-secondary">Cancel</a>
+    <input type="submit" class="btn btn-danger" value="Delete" />
+</form>
 {% endblock content %}
