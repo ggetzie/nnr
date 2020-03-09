@@ -266,4 +266,4 @@ ACCOUNT_FORMS = {"signup": "main.forms.NNRSignupForm"}
 # ------------------------------------------------------------------------------
 STRIPE_PK = env("STRIPE_PK")
 STRIPE_SK = env("STRIPE_SK")
-SUPPORT_EMAIL = "gabe@kotsf.com"
+SUPPORT_EMAIL = "support@nononsense.recipes"
