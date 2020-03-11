@@ -39,25 +39,7 @@ async function submitComment(commentForm) {
     })
 }
 
-function createAlert(msg, classes) {
-    // create a bootstrap alert div
-    let ad = document.createElement("div");
-    ad.classList.add("alert", ...classes);
-    ad.textContent = msg;
 
-    let closeButton = document.createElement("button");
-    closeButton.setAttribute("type", "button");
-    closeButton.setAttribute("class", "close");
-    closeButton.setAttribute("data-dismiss", "alert");
-    closeButton.setAttribute("aria-label", "Close");
-    let xSpan = document.createElement("span");
-    xSpan.setAttribute("aria-hidden", "true");
-    xSpan.innerHTML = "&times;"
-    closeButton.appendChild(xSpan);
-    ad.appendChild(closeButton);
-
-    return ad;
-}
 
 function createErrorDiv(msg) {
     let ed = createAlert(msg, ["alert-danger"])

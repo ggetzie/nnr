@@ -1,18 +1,3 @@
-function getCookie(name) {
-  var cookieValue = null;
-  if (document.cookie && document.cookie !== '') {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-      var cookie = jQuery.trim(cookies[i]);
-      if (cookie.substring(0, name.length + 1) === (name + '=')) {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
-      }
-    }
-  }
-  return cookieValue;
-}
-
 function getPublicKey() {
   return fetch('/main/public_key/', {
     method: 'get',
@@ -106,8 +91,10 @@ async function updatePaymentMethod(payment_method) {
           showCardError(result.error)
         } else {
           changeLoadingState(false);
-          showMessage(result.message, "alert-success");
-          cardInfo = document.getElementById("cardinfo")
+          const msg = createAlert(result.message, ["alert-success"]);
+          const header = document.getElementById("update_payment_header");
+          header.after(msg);
+          cardInfo = document.getElementById("card_info")
           cardInfo.textContent = result.newPay;
         }
     })
@@ -116,15 +103,20 @@ async function updatePaymentMethod(payment_method) {
 function showCardError(error) {
   changeLoadingState(false);
   // The card was declined (i.e. insufficient funds, card has expired, etc)
-  showMessage(error.message, "alert-danger")
+  const cardError = createAlert(error.message, ["alert-danger"]);
+  const header = document.getElementById("update_payment_header");
+  header.after(cardError);
 }
   
 var dotter;
 // Show a spinner on subscription submission
 var changeLoadingState = function(isLoading) {
-  var msg = document.getElementById("message");
+  form = document.getElementById("update_payment")
   if (isLoading) {
-    document.getElementById("update_payment").hidden = true;
+    let msg = document.createElement("div")
+    msg.id="loading_message"
+    form.before(msg)
+    form.hidden = true;
     msg.textContent = "Loading";
     dotter = setInterval(function() {msg.textContent = msg.textContent + "."}, 3000);
     // document.querySelector('#spinner').classList.add('loading');
@@ -133,7 +125,8 @@ var changeLoadingState = function(isLoading) {
     // document.querySelector('#button-text').classList.add('hidden');
   } else {
     clearInterval(dotter);
-    msg.textContent = "";
+    msg = document.getElementById("loading_message");
+    msg.remove();
     document.getElementById("update_payment").hidden = false;
     // document.querySelector('button').disabled = false;
     // document.querySelector('#spinner').classList.remove('loading');

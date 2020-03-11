@@ -10,7 +10,7 @@ Update Payment Information
     <h2>Current Payment Method</h2>
     {% for pm in payment_methods  %}
     <div class="row" style="margin-bottom: 10px;">
-        <div class="col-sm-7" id="cardinfo">
+        <div class="col-sm-7" id="card_info">
             {{ pm.card.brand|capfirst }} ending with {{ pm.card.last4 }} exp {{ pm.card.exp_month}}/{{ pm.card.exp_year}}
         </div>
         <div class="col-sm-2">
@@ -19,9 +19,11 @@ Update Payment Information
             {% endif %}
         </div>
     </div>
+    {% empty %}
+    <p>No payment methods found</p>
     {% endfor %}
 
-    <h2>Update Payment Information</h2>
+    <h2 id="update_payment_header">Update Payment Information</h2>
 
     <form id="update_payment" class="update_payment" action="{% url 'users:update_payment' %}" method="post">
         {% csrf_token %}

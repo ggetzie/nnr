@@ -97,11 +97,12 @@ def update_payment(request):
     user = request.user
     stripe.api_key = settings.STRIPE_SK
     if request.is_ajax():
-        logger.info(f"update_payment request: {request}")
-        logger.info(f"update_payment request body: {request.body}")
         data = json.loads(request.body)
-        logger.info(f"update_payment data: {data}")
         payment_method = data["payment_method"]
+        if user.is_staff:
+            errmsg = "Payment not required"
+            return JsonResponse({"status": "error",
+                                 "error": {"message": errmsg}})
         
         if not user.profile.stripe_id:
             errmsg = "User has no customer id"
@@ -123,15 +124,21 @@ def update_payment(request):
         return JsonResponse({"status": "success", 
                              "message": "Default payment method updated",
                              "newPay" : newpay})
-                             
-    customer = stripe.Customer.retrieve(user.profile.stripe_id)
-    pms = stripe.PaymentMethod.list(customer=user.profile.stripe_id, 
-                                    type="card")
-                        
-    return render(request, "users/update_payment.html", 
-                  context={"user": user,
-                           "payment_methods": pms.data,
-                           "customer": customer})
+
+    if user.profile.stripe_id:    
+        customer = stripe.Customer.retrieve(user.profile.stripe_id)
+        pms = stripe.PaymentMethod.list(customer=user.profile.stripe_id, 
+                                        type="card")
+                            
+        return render(request, "users/update_payment.html", 
+                    context={"user": user,
+                            "payment_methods": pms.data,
+                            "customer": customer})
+    else:
+        return render(request, "users/update_payment.html", 
+                    context={"user": user,
+                            "payment_methods": [],
+                            "customer": None})
 
 @login_required
 def confirm_payment(request):
