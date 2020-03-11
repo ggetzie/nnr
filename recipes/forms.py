@@ -58,7 +58,7 @@ class CreateRecipeForm(forms.ModelForm):
             ),
             "user",
             FormActions(
-                Submit("submit", "Submit", css_class="btn btn-primary")
+                Submit("submit", "Submit", css_class="float-right")
             )
         )
 
