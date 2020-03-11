@@ -55,7 +55,7 @@ class Profile(models.Model):
     
     
     def __str__(self):
-        return f"{self.user.name} ({self.user.id})"
+        return f"{self.user.username} ({self.user.id})"
 
     def is_valid(self):
         return self.payment_status in (2, 3)
@@ -80,6 +80,10 @@ class Profile(models.Model):
         self.save()
         
         return exceeded, msg
+
+    def reset_rate_limit(self):
+        self.rate_level = 1
+        self.save()
 
 
 class PaymentPlan(models.Model):
