@@ -140,7 +140,7 @@ TEMPLATES[0]["OPTIONS"]["loaders"] = [  # noqa F405
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
 DEFAULT_FROM_EMAIL = env(
-    "DJANGO_DEFAULT_FROM_EMAIL", default="No Nonsense Recipes <noreply@nononsense.recipes>"
+    "DJANGO_DEFAULT_FROM_EMAIL", default="No Nonsense Recipes <support@nononsense.recipes>"
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = "server@nononsense.recipes"
