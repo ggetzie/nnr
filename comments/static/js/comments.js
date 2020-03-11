@@ -25,8 +25,8 @@ async function submitComment(commentForm) {
         return response.json()
     }).then(responseJSON => {
         if (responseJSON.error) {
-            ed = createErrorDiv(response.error.message)
-            commentForm.parentNode.insertBefore(ed, commentForm);
+            let ed = createErrorDiv(responseJSON.error);
+            commentForm.before(ed);
         } else {
             // clear form
             commentForm["text"].value = "";
