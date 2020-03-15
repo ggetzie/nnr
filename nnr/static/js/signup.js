@@ -10,7 +10,6 @@ function getPublicKey() {
       return response.json();
     })
     .then(function(response) {
-      console.log(response)
       stripeElements(response.publicKey);
     });
 }
@@ -83,8 +82,7 @@ async function createCustomer(payment_method) {
       data[form[i].name] = form[i].value
     }
   }
-  console.log(data)
-  console.log(form.action)
+
   fetch(form.action, {
     method: "post",
     headers: {
@@ -95,11 +93,8 @@ async function createCustomer(payment_method) {
     },
     body: JSON.stringify(data)
   }).then(response => {
-    console.log("returning response JSON")
     return response.json();
   }).then(responseJSON => {
-    console.log("handling form response");
-    console.log(responseJSON)
     if (responseJSON.status === "success"){
       handleSubscription(responseJSON.subscription);
     } else {
@@ -112,12 +107,8 @@ async function createCustomer(payment_method) {
 }
 
 function handleSubscription(subscription) {
-  console.log("Handling subscription");
-  console.log(subscription);
   const { latest_invoice, pending_setup_intent } = subscription;
   const { payment_intent } = latest_invoice;
-  console.log("Payment intent = " + payment_intent)
-  console.log("pending_setup_intent = " + pending_setup_intent)
   let success_msg = `Success! Your account has been created. 
                      Please check your email for a confirmation 
                      link to activate your account`;
@@ -126,11 +117,8 @@ function handleSubscription(subscription) {
     if (status == "requires_action") {
       stripe.confirmCardSetup(client_secret).then(function(result) {
         if (result.error) {
-          console.log("Confirmation error - setup intent");
-          console.log(result.error);
           showCardError(result.error)
         } else {
-          console.log("Confirmation success! - setup intent");
           changeLoadingState(false);
           showMessage(success_msg, "alert-success");
         }
@@ -139,12 +127,10 @@ function handleSubscription(subscription) {
       changeLoadingState(false);
       showCardError("Unable to authorize payment. Please try a different card");
     } else {
-      console.log("pending_setup_intent status = " + status);
       changeLoadingState(false);
       showMessage(success_msg, "alert-success");
     } 
   } else {
-    console.log("no pending setup intent");
     changeLoadingState(false);
     showMessage(success_msg, "alert-success");
   }
