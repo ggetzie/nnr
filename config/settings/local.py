@@ -31,9 +31,18 @@ CACHES = {
 EMAIL_PORT = 1025
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-host
-EMAIL_HOST = 'localhost'
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = '/tmp/nnr_emails'
+# EMAIL_HOST = 'localhost'
+AWS_ACCESS_KEY_ID = env("DJANGO_AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = env("DJANGO_AWS_SECRET_ACCESS_KEY")
+INSTALLED_APPS += ["anymail"] # noqa
+EMAIL_BACKEND = 'anymail.backends.amazon_ses.EmailBackend'
+
+ANYMAIL = {
+    "AMAZON_SES_CLIENT_PARAMS": {
+        "region_name": "us-east-1"
+    }
+}
+# EMAIL_FILE_PATH = '/tmp/nnr_emails'
 
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
