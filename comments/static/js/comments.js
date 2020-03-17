@@ -350,13 +350,13 @@ async function editComment(editForm) {
 
 }
 
-async function loadComments(startFrom = null) {
+async function loadComments(startFrom = null, max_comments=25) {
     // startFrom is a comment id. All comments fetched will have timestamps prior to
     // but not including startFrom. If null, will fetch the most recent comments
     let recipeId = document.querySelector('meta[name="recipe_id"]').content;
-    let listUrl = `/comments/list/?recipe_id=${recipeId}`
+    let listUrl = `/comments/list/?recipe_id=${recipeId}&max_comments=${max_comments}`
     if (startFrom) {
-        listUrl += `?start_from=${startFrom}`
+        listUrl += `&start_from=${startFrom}`
     }
     fetch(listUrl, {
         method: "get",
@@ -369,23 +369,43 @@ async function loadComments(startFrom = null) {
         return response.json()
     }).then(responseJSON => {
         let cl = document.getElementById("comment-list");
+        let oldB = document.getElementById("loadMoreButton");
+        if (oldB) {
+            oldB.remove()
+        }        
         if (responseJSON.error) {
-            ed = createErrorDiv(response.error);
+            let ed = createErrorDiv(response.error);
             cl.appendChild(ed);
         } else {
             for (let i=0; i < responseJSON.comment_list.length ; i++) {
-                c = createComment(responseJSON.comment_list[i]);
+                let c = createComment(responseJSON.comment_list[i]);
                 cl.appendChild(c);
+                if ((i === responseJSON.comment_list.length - 1) && responseJSON.has_more) {
+                    let lb = loadMoreButton(c);
+                    cl.appendChild(lb);
+                }
             }
         }
     })
     
 }
 
+function loadMoreButton(comment) {
+    
+    let b = document.createElement("button");
+    b.id = "loadMoreButton"
+    b.classList.add("btn", "btn-primary");
+    b.textContent = "Load more comments";
+    b.addEventListener("click", function () {
+        loadComments(startFrom=comment.id);
+    })
+    return b;
+}
+
 function updateComment(newComment) {
-    oldCommentDiv = document.getElementById(newComment.id);
+    let oldCommentDiv = document.getElementById(newComment.id);
     oldCommentDiv.id += "-old";
-    newCommentDiv = createComment(newComment);
+    let newCommentDiv = createComment(newComment);
     oldCommentDiv.before(newCommentDiv);
     oldCommentDiv.remove()
 }

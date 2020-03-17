@@ -76,7 +76,7 @@ class Comment(models.Model):
             unit = f"minute{'s' if elapsed.minutes > 1 else ''}"
             val = elapsed.minutes
         elif elapsed.seconds > 0:
-            unit = f"second{'s' if elapsed.minutes > 1 else ''}"
+            unit = f"second{'s' if elapsed.seconds > 1 else ''}"
             val = elapsed.seconds
         else:
             unit = "seconds"

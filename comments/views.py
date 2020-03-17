@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 def list_comments(request):
     recipe_id = request.GET.get("recipe_id", "")
     start_from = request.GET.get("start_from", None)
-    max_comments = request.GET.get("max_comments", 100)
+    max_comments = int(request.GET.get("max_comments", 100))
     if start_from:
         before_comment = Comment.objects.get(pk=start_from)
         get_before = before_comment.timestamp
@@ -32,10 +32,11 @@ def list_comments(request):
                                       spam=False,
                                       flag_count__lt=10,
                                       deleted=False
-                                     )[:max_comments]
-    comment_list = [c.json() for c in comments]
+                                     )
+    comment_list = [c.json() for c in comments[:max_comments]]
     return JsonResponse({"status": "ok",
-                        "comment_list": comment_list}) 
+                        "comment_list": comment_list,
+                        "has_more": comments.count() > max_comments})
 
 # users can only post comments after free trial    
 # @payinguser
