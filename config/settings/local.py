@@ -32,9 +32,10 @@ EMAIL_PORT = 1025
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-host
 # EMAIL_HOST = 'localhost'
-AWS_ACCESS_KEY_ID = env("DJANGO_AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = env("DJANGO_AWS_SECRET_ACCESS_KEY")
 INSTALLED_APPS += ["anymail"] # noqa
+AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
+
 EMAIL_BACKEND = 'anymail.backends.amazon_ses.EmailBackend'
 
 ANYMAIL = {
@@ -42,6 +43,16 @@ ANYMAIL = {
         "region_name": "us-east-1"
     }
 }
+DEFAULT_FROM_EMAIL = env(
+    "DJANGO_DEFAULT_FROM_EMAIL", default="No Nonsense Recipes <support@nononsense.recipes>"
+)
+# https://docs.djangoproject.com/en/dev/ref/settings/#server-email
+SERVER_EMAIL = "server@nononsense.recipes"
+# https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
+EMAIL_SUBJECT_PREFIX = env(
+    "DJANGO_EMAIL_SUBJECT_PREFIX", default="[No Nonsense Recipes]"
+)
+
 # EMAIL_FILE_PATH = '/tmp/nnr_emails'
 
 # django-debug-toolbar

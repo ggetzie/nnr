@@ -1,23 +1,6 @@
-function getPublicKey() {
-  return fetch('/main/public_key/', {
-    method: 'get',
-    headers: {
-      'Content-Type': 'application/json',
-      "X-Requested-With": "XMLHttpRequest"
-    }
-  })
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(response) {
-      stripeElements(response.publicKey);
-    });
-}
-
-getPublicKey();
-
-var success_url = "/accounts/thankyou/"
 var stripe;
+var success_url = "/accounts/thankyou/"
+
 var stripeElements = function(publicKey) {
   stripe = Stripe(publicKey);
   var elements = stripe.elements();
@@ -52,11 +35,11 @@ var stripeElements = function(publicKey) {
     event.preventDefault();
     clearErrors();
     changeLoadingState(true);
-    createPaymentMethodAndCustomer(stripe, card);
+    createPaymentMethodAndCustomer(card);
   });
 };
   
-var createPaymentMethodAndCustomer = function(stripe, card) {
+var createPaymentMethodAndCustomer = function(card) {
   var cardholderEmail = document.getElementById('id_email').value;
   stripe
     .createPaymentMethod('card', card, {
@@ -75,7 +58,7 @@ var createPaymentMethodAndCustomer = function(stripe, card) {
 
 async function createCustomer(payment_method) {
   // collect form data and submit it via fetch
-  var form = document.getElementById('signup_form');
+  let form = document.getElementById('signup_form');
   let data = {"payment_method": payment_method};
   for (let i=0; i < form.length; i++) {
     if (form[i].type !== "submit") {
@@ -99,7 +82,6 @@ async function createCustomer(payment_method) {
       handleSubscription(responseJSON.subscription);
     } else {
       changeLoadingState(false);
-      clearInterval(dotter);
       handleFormErrors(responseJSON.errors);
     }
       
@@ -112,6 +94,7 @@ function handleSubscription(subscription) {
   let success_msg = `Success! Your account has been created. 
                      Please check your email for a confirmation 
                      link to activate your account`;
+  
   if (pending_setup_intent) {
     const {client_secret, status } = subscription.pending_setup_intent;
     if (status == "requires_action") {
@@ -119,7 +102,9 @@ function handleSubscription(subscription) {
         if (result.error) {
           showCardError(result.error)
         } else {
+          // confirmation completed successfully
           changeLoadingState(false);
+          document.getElementById("signup_form").reset();
           showMessage(success_msg, "alert-success");
         }
       })
@@ -127,45 +112,70 @@ function handleSubscription(subscription) {
       changeLoadingState(false);
       showCardError("Unable to authorize payment. Please try a different card");
     } else {
+      // setup intent does not require action
       changeLoadingState(false);
+      document.getElementById("signup_form").reset();
       showMessage(success_msg, "alert-success");
     } 
   } else {
+    // no pending setup intent
     changeLoadingState(false);
+    document.getElementById("signup_form").reset();
     showMessage(success_msg, "alert-success");
   }
 }
 
+function getPublicKey() {
+  return fetch('/main/public_key/', {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json',
+      "X-Requested-With": "XMLHttpRequest"
+    }
+  })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(response) {
+      stripeElements(response.publicKey);
+    });
+}
+
+getPublicKey();
+
 function showCardError(error) {
   changeLoadingState(false);
   // The card was declined (i.e. insufficient funds, card has expired, etc)
-  var errorMsg = document.getElementById("message");
-  errorMsg.classList.add("alert-danger");
-  errorMsg.textContent = error.message;
-  setTimeout(function() {
-    errorMsg.textContent = '';
-    errorMsg.classList.remove("alert-danger");
-  }, 8000);
+  let errorMsg = createAlert(error.message, "alert-danger");
+  document.getElementById("signup_form").before(errorMsg);
 }
   
-var dotter;
-// Show a spinner on subscription submission
+var dotter; // Loading......
+
 var changeLoadingState = function(isLoading) {
-  let msg = document.getElementById("message");
+  console.log("changing loading state");
   if (isLoading) {
-    document.getElementById("signup_form").hidden = true;
+    let signupForm = document.getElementById("signup_form");
+    let msg = document.createElement("div");
+    msg.id = "message";
     msg.textContent = "Loading";
+    signupForm.before(msg);
+    signupForm.hidden = true;
     if (dotter) {
       clearInterval(dotter);
     }
-    dotter = setInterval(function() {msg.textContent = msg.textContent + "."}, 3000);
+    dotter = setInterval(function() {
+      let loadingMessage = document.getElementById("message");
+      loadingMessage.textContent = loadingMessage.textContent + ".";
+    }, 3000);
     // document.querySelector('#spinner').classList.add('loading');
     // document.querySelector('button').disabled = true;
 
     // document.querySelector('#button-text').classList.add('hidden');
   } else {
     clearInterval(dotter);
-    msg.textContent = "";
+    let msg = document.getElementById("message");
+    msg.remove();
     document.getElementById("signup_form").hidden = false;
     // document.querySelector('button').disabled = false;
     // document.querySelector('#spinner').classList.remove('loading');
