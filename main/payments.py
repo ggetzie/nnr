@@ -1,12 +1,16 @@
 import datetime
 from dateutil.relativedelta import relativedelta
+import environ
+
 from django.conf import settings
+
 
 from .models import Profile
 import logging
 import stripe
 
 logger = logging.getLogger(__name__)
+env = environ.Env()
 
 def handle_payment_success(event):
     customer_id = event.data.object.customer
@@ -52,3 +56,20 @@ def update_customer_card(payment_id, customer_id):
                                          "default_payment_method": payment_id
                                      })
     return new_card, default
+
+def handle_session_complete(event):
+    logger.info("Checkout Session completed")
+    logger.info(event)
+    stripe.api_key = settings.STRIPE_SK
+    session = event.data.object.session
+    profile = Profile.objects.get(checkout_session=session.id)
+    if profile.stripe_id:
+        # User updated payment info
+        pass
+    else:
+        # No existing stripe id means new user, complete signup
+        profile.stripe_id = event.data.object.customer.id
+        profile.payment_status = 2
+        profile.save()
+        
+    

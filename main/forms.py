@@ -20,7 +20,6 @@ import datetime
 import logging
 
 User = get_user_model()
-DUPE_MSG = _("A recipe with that title already exists!")
 logger = logging.getLogger(__name__)
 
 class NNRSignupForm(SignupForm):
@@ -32,7 +31,7 @@ class NNRSignupForm(SignupForm):
         paydate = today + relativedelta(days=30)
         payinfo = ("Your card will be charged an annual fee of $19 "
                    "USD. The first charge will take place at the end of the "
-                   f"30 day free trial period on {paydate} and thereafter "
+                   f"30 day free trial period on {paydate:%B %d, %Y} and thereafter "
                    "annually on that date.")
         TOS_LINK = (f"""<a href="{reverse_lazy('tos')}" """ 
                      """target="_blank">Terms of Service</a>""")
@@ -40,29 +39,22 @@ class NNRSignupForm(SignupForm):
                     """target="_blank">Privacy Policy</a>""")
         self.fields["tos"].label = mark_safe(_("I have read and agree to the "
                                                f"{TOS_LINK} and {PP_LINK}"))
-                
         self.helper = FormHelper()
         self.helper.form_id = "signup_form"
         self.helper.form_class = "signup"
         self.helper.form_method = "post"
-        self.helper.form_action = "account_signup"
-        
+        self.helper.form_action = "main:create_checkout_session"
         self.helper.layout = Layout(
             "email",
             "username",
             "password1",
             "password2",
-            Div(
-                HTML("""<label for="card-element">
-                            Payment Information
-                     </label>"""),
-                Div(css_id="card-element"),
-                Div(css_id="card-errors", role="alert"),
-                HTML(f'<div id="pay-info">{payinfo}</div>'),
-                css_class="form-group"
-            ),
             "tos",
-            Submit("signup", "&raquo; Signup"),
+            HTML(f'<div id="pay-info">{payinfo}</div>'),
+            Div(
+                Submit("signup", "&raquo; Continue to payment"),
+                css_class="form-row float-right"
+            )
         )
 
     class Media:

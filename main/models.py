@@ -21,14 +21,16 @@ def next_year():
     return today + relativedelta(years=+1)
 
 def get_basic_plan():
-    plan, created =  PaymentPlan.objects.get_or_create(name_slug="basic", 
-                                                       defaults={"name": "Basic"})
+    plan, _ =  PaymentPlan.objects.get_or_create(name_slug="basic", 
+                                                 defaults={"name": "Basic"})
     return plan.id
 
 PAYMENT_STATUS = ((0, "FAILED"),
                   (1, "NEEDS CONFIRMATION"),
                   (2, "TRIAL"),
-                  (3, "SUCCESS"))
+                  (3, "SUCCESS"),
+                  (4, "PENDING"),
+                  (5, "CANCELED"))
                   
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -41,9 +43,11 @@ class Profile(models.Model):
                                            related_name="saved_by")
     stripe_id = models.CharField(_("Stripe Customer Id"), max_length=50, 
                                  default="")
+    checkout_session = models.CharField(_("Stripe Checkout Session"), max_length=50, 
+                                        default="")
     payment_status = models.PositiveSmallIntegerField(_("Payment Status"), 
                                                       choices=PAYMENT_STATUS,
-                                                      default=2)
+                                                      default=4)
     subscription_end = models.DateField(_("Subscription End"))
     rate_level = models.PositiveSmallIntegerField(_("Rate Level"),
                                                   default=1)
