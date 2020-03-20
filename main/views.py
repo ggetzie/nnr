@@ -50,12 +50,18 @@ def create_checkout_session(request):
         if form.is_valid():
             user = form.save(request)
             checkout_session = stripe.checkout.Session.create(
-                success_url= (DOMAIN_URL + 
-                              reverse_lazy("main:checkout_success") + 
-                              "?session_id={CHECKOUT_SESSION_ID}"),
+                customer_email=user.email,
+                success_url=(DOMAIN_URL + 
+                             reverse_lazy("main:checkout_success") + 
+                             "?session_id={CHECKOUT_SESSION_ID}"),
                 cancel_url=DOMAIN_URL+reverse_lazy("main:checkout_cancel"),
                 payment_method_types=["card"],
-                subscription_data={"items": [{"plan": get_subscription_plan()}]}
+                subscription_data={
+                    "items": [{
+                        "plan": get_subscription_plan()
+                        }],
+                    "trial_from_plan": True
+                }
             )
             user.profile.checkout_session = checkout_session["id"]
             user.profile.save()
