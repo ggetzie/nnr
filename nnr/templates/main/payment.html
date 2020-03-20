@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="main-content">
+    <h1>Account Created!</h1>
+    <p>
+        Thank you for signing up for an account at No Nonsense Recipes! 
+    </p>
+    <p> 
+        We will now redirect you to our payment processor, Stripe, to securely collect your payment information.
+    </p>
+    <p>
+        When ready, please click the button below to continue.
+    </p>
+    {% csrf_token %}
+    <button id="enterPaymentInfo" class="btn btn-primary btn-lg">&raquo; Enter payment information.</button>
+</div>
+{% endblock content %}
+
+{% block morejs %}
+<script type="text/javascript" src="{% static 'js/payment.js' %}">
+{% endblock morejs %}

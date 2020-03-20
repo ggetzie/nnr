@@ -63,12 +63,10 @@ def handle_session_complete(event):
     stripe.api_key = settings.STRIPE_SK
     session = event.data.object.session
     profile = Profile.objects.get(checkout_session=session.id)
-    if profile.stripe_id:
-        # User updated payment info
-        pass
-    else:
+    if not profile.stripe_id:
         # No existing stripe id means new user, complete signup
         profile.stripe_id = event.data.object.customer.id
+        profile.checkout_session = ""
         profile.payment_status = 2
         profile.save()
         

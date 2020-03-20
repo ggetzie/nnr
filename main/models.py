@@ -1,4 +1,5 @@
 from dateutil.relativedelta import relativedelta
+import stripe
 
 from django.db import models
 from django.conf import settings
@@ -31,6 +32,19 @@ PAYMENT_STATUS = ((0, "FAILED"),
                   (3, "SUCCESS"),
                   (4, "PENDING"),
                   (5, "CANCELED"))
+
+SUBSCRIPTION_STATUS = (
+    ("", "undefined"),
+    ("admin", "Administrator"),
+    ("free", "Free Account"),
+    ("incomplete", "Incomplete"),
+    ("incomplete_expired", "Incomplete, Session Expired"),
+    ("trialing", "Free Trial"),
+    ("active", "Active"),
+    ("past_due", "Past Due"),
+    ("canceled", "Canceled"),
+    ("unpaid", "Unpaid")
+)                  
                   
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -48,6 +62,10 @@ class Profile(models.Model):
     payment_status = models.PositiveSmallIntegerField(_("Payment Status"), 
                                                       choices=PAYMENT_STATUS,
                                                       default=4)
+    subscription_status = models.CharField(_("Subscription Status"), 
+                                           max_length=25,
+                                           default="",
+                                           choices=SUBSCRIPTION_STATUS)
     subscription_end = models.DateField(_("Subscription End"))
     rate_level = models.PositiveSmallIntegerField(_("Rate Level"),
                                                   default=1)
@@ -84,11 +102,36 @@ class Profile(models.Model):
         self.save()
         
         return exceeded, msg
-
+    
     def reset_rate_limit(self):
         self.rate_level = 1
         self.save()
 
+    def sync_subscription(self):
+        stripe.api_key = settings.STRIPE_SK
+        if self.stripe_id:
+            subs = stripe.Subscription.list(customer=self.stripe_id)
+            if subs.data:
+                self.subscription_status = subs.data[0].status
+            else:
+                self.subscription_status = "canceled"
+        elif self.checkout_session:
+            self.subscription_status = "incomplete"
+        elif self.user.is_staff or self.user.is_superuser:
+            self.subscription_status = "admin"
+        else:
+            self.subscription_status = "free"
+        self.save()
+
+    def update_stripe_id(self):
+        stripe.api_key = settings.STRIPE_SK
+        if not self.stripe_id:
+            result = stripe.Customer.list(email=self.user.email, limit=1)
+            if result.data:
+                self.stripe_id = result.data[0].id
+                self.save()
+
+            
 
 class PaymentPlan(models.Model):
     name = models.CharField(_("Name"), max_length=25)

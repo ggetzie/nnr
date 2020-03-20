@@ -2,10 +2,12 @@ var stripe;
 var checkoutSessionId;
 
 var setupElements = function() {
-    fetch("/public-key", {
+    fetch("/main/public_key/", {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-Requested-With": "XMLHttpRequest"
       }
     })
       .then(function(result) {
@@ -18,15 +20,15 @@ var setupElements = function() {
 
 setupElements();
 
-var createCheckoutSession = async function() {
+function createCheckoutSession() {
     let form = document.getElementById("signup_form");
     let data = {};
     for (let i=0; i < form.length; i++) {
-    if (form[i].type !== "submit") {
-      data[form[i].name] = form[i].value
+        if (form[i].type !== "submit") {
+            data[form[i].name] = form[i].value
+        }
     }
-  }
-    fetch(form.action, {
+    fetch("/main/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,20 +42,19 @@ var createCheckoutSession = async function() {
         return result.json();
       })
       .then(function(data) {
-        checkoutSessionId = data.checkoutSessionId;
+        stripe.redirectToCheckout({sessionId: data.checkoutSessionId
+        }).then(function (result) {
+            console.log("error redirecting to stripe");
+            console.log(result);
+        }).catch(function (err) {
+            console.log(err)
+        });
       });
 };
 
 
 document.getElementById("signup_form").addEventListener("submit", function (event) {
   event.preventDefault();
+  console.log("form submission");
   createCheckoutSession();
-  stripe.redirectToCheckout({
-      sessionId: checkoutSessionId
-  }).then(function (result) {
-      console.log("error redirecting to stripe");
-      console.log(result)
-  }).catch(function (err) {
-      console.log(err);
-  })
 });

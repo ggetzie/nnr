@@ -5,8 +5,6 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
-from main.views import nnr_signup
-
 support_context = {"support_email": settings.SUPPORT_EMAIL}
 
 urlpatterns = [
@@ -18,7 +16,6 @@ urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
     path("users/", include("nnr.users.urls", namespace="users")),
-    path("accounts/signup/", view=nnr_signup, name="account_signup"),
     path("accounts/", include("allauth.urls")),
 
     # Custom urls

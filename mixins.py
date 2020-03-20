@@ -29,11 +29,10 @@ class ValidUserMixin(UserPassesTestMixin):
         if self.request.user.profile.payment_status == 0:
             # payment failed
             self.permission_denied_message = self.payment_failed_message
-            return False
         if self.request.user.profile.payment_status == 1:
             # payment needs confirmation
             self.permission_denied_message = self.payment_confirm_message
-            return False
+        return False
 
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
@@ -44,11 +43,10 @@ class ValidUserMixin(UserPassesTestMixin):
             if self.request.user.profile.payment_status == 1:
                 messages.warning(self.request, self.payment_confirm_message)
                 return redirect("users:confirm_payment")
+            if self.request.user.profile.payment_status == 4:
+                return redirect("main:payment")
                                 
         return super().handle_no_permission()
-
-class Http429(Exception):
-    pass
 
 
 class HttpResponseTooManyRequests(HttpResponse):

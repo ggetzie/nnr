@@ -1,4 +1,4 @@
-from main.models import Profile
+from main.models import *
 from main.forms import *
 from django.conf import settings
 

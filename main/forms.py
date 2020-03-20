@@ -43,7 +43,6 @@ class NNRSignupForm(SignupForm):
         self.helper.form_id = "signup_form"
         self.helper.form_class = "signup"
         self.helper.form_method = "post"
-        self.helper.form_action = "main:create_checkout_session"
         self.helper.layout = Layout(
             "email",
             "username",
@@ -52,13 +51,13 @@ class NNRSignupForm(SignupForm):
             "tos",
             HTML(f'<div id="pay-info">{payinfo}</div>'),
             Div(
-                Submit("signup", "&raquo; Continue to payment"),
+                Submit("signup", "&raquo; Signup"),
                 css_class="form-row float-right"
             )
         )
 
-    class Media:
-        js = (settings.STATIC_URL + "js/signup.js",)
+    # class Media:
+    #     js = (settings.STATIC_URL + "js/signup.js",)
 
     def save(self, request):
         user = super().save(request)

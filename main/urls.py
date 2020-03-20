@@ -16,5 +16,8 @@ urlpatterns = [
          name="checkout_success"),
     path("cancel/",
          TemplateView.as_view(template_name="main/cancel.html"),
-         name="checkout_cancel")
+         name="checkout_cancel"),
+     path("payment/",
+          TemplateView.as_view(template_name="main/payment.html"),
+          name="payment"),
     ]

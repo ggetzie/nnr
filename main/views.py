@@ -37,118 +37,44 @@ logger = logging.getLogger(__name__)
 
 DOMAIN_URL = "http://nnr" if settings.DEBUG else "https://nononsense.recipes"
 
-def create_checkout_session(request):
+def public_key(request):
     if request.is_ajax():
-        data = json.loads(request.body)
-        form_data = {k:v for k, v in data.items() 
-                              if k in NNRSignupForm.base_fields}
-        # Password fields don't appear in NNRSignupForm.base_fields
-        # Add them manually                              
-        form_data["password1"] = data["password1"]
-        form_data["password2"] = data["password2"]
-        form = NNRSignupForm(form_data)
-        if form.is_valid():
-            user = form.save(request)
-            stripe.api_key = settings.STRIPE_SK
-            checkout_session = stripe.checkout.Session.create(
-                customer_email=user.email,
-                success_url=(DOMAIN_URL + 
-                             reverse("main:checkout_success") + 
-                             "?session_id={CHECKOUT_SESSION_ID}"),
-                cancel_url=DOMAIN_URL+reverse("main:checkout_cancel"),
-                payment_method_types=["card"],
-                subscription_data={
-                    "items": [{
-                        "plan": get_subscription_plan()
-                        }],
-                    "trial_from_plan": True
-                }
-            )
-            user.profile.checkout_session = checkout_session["id"]
-            user.profile.save()
-            success_url = reverse("main:checkout_success")
-            email_verification = settings.ACCOUNT_EMAIL_VERIFICATION
-            _ = complete_signup(request, user, 
-                                email_verification=email_verification,
-                                success_url = success_url)            
-            response_data = {"checkoutSessionId": checkout_session["id"]}
-        else:
-            logger.info(f"Form invalid. Errors: {form.errors}")
-            response_data = {"error": form.errors}
-        return JsonResponse(response_data, safe=False)
-        
+        return JsonResponse({"publicKey": settings.STRIPE_PK})
     else:
-        return JsonResponse({"error": "Invalid Request"})
+        return HttpResponseBadRequest("<h1>Bad Request</h1>")                            
+
+@login_required
+def create_checkout_session(request):
+    if not request.is_ajax():
+        return HttpResponse("Bad Request")
+    stripe.api_key = settings.STRIPE_SK
+    checkout_session = stripe.checkout.Session.create(
+            customer_email=request.user.email,
+            success_url=(DOMAIN_URL + 
+                            reverse("main:checkout_success") + 
+                            "?session_id={CHECKOUT_SESSION_ID}"),
+            cancel_url=DOMAIN_URL+reverse("main:checkout_cancel"),
+            payment_method_types=["card"],
+            subscription_data={
+                "items": [{
+                    "plan": get_subscription_plan()
+                    }],
+                "trial_from_plan": True
+            }
+    )
+    request.user.profile.checkout_session = checkout_session["id"]
+    request.user.profile.save()
+    return JsonResponse({"checkoutSessionId": checkout_session["id"]})
 
 def checkout_success(request):
     stripe.api_key = settings.STRIPE_SK
-    session_id = request.GET("session_id", "")
+    session_id = request.GET.get("session_id", "")
     if session_id:
         logger.info(f"Successful checkout: {session_id}")
     return render(request, 
                   "main/thankyou.html", 
                   context={"checkout_session_id": session_id})
     
-
-def nnr_signup(request):
-    if request.is_ajax():
-        logger.info(f"AJAX Request: {request.body}")
-        data = json.loads(request.body)
-        payment_method = data.pop("payment_method")
-        logger.info(f"Got payment method: {payment_method}")
-        form_data = {k:v for k, v in data.items() 
-                              if k in NNRSignupForm.base_fields}
-        # Password fields don't appear in NNRSignupForm.base_fields
-        # Add them manually                              
-        form_data["password1"] = data["password1"]
-        form_data["password2"] = data["password2"]
-        logger.info(f"Creating form with data: {form_data}")                            
-        form = NNRSignupForm(form_data)
-        if form.is_valid():
-            user = form.save(request)
-            # Create a customer and subscription with stripe
-            stripe.api_key = settings.STRIPE_SK
-            customer = stripe.Customer.create(
-                payment_method=payment_method,
-                email=user.email,
-                invoice_settings={
-                    "default_payment_method":payment_method
-                }
-            )
-            profile = Profile.objects.get(user=user)
-            profile.stripe_id = customer.id
-            profile.save()
-            logger.info(f"created customer: {customer.id}")
-            subscription = stripe.Subscription.create(
-                customer=customer.id,
-                items=[
-                    {
-                        "plan": get_subscription_plan()
-                    }
-                ],
-                trial_end=get_trial_end(),
-                expand=["latest_invoice.payment_intent"]
-            )
-            
-            logger.info(f"created subscription: {subscription}")
-            success_url = reverse_lazy("thankyou")
-            email_verification = settings.ACCOUNT_EMAIL_VERIFICATION
-            _ = complete_signup(request, user, 
-                                email_verification=email_verification,
-                                success_url = success_url)
-            response_data = {"status": "success",
-                             "subscription": subscription}
-        else:
-            logger.info(f"Form invalid. Errors: {form.errors}")
-            response_data = {"status": "error", 
-                             "errors": form.errors}
-        return JsonResponse(response_data, safe=False)
-
-    else:
-        form = NNRSignupForm()
-    return render(request, "account/signup.html", 
-                           context={"form": form})
-
 @login_required
 def update_payment(request):
     user = request.user
@@ -197,26 +123,26 @@ def update_payment(request):
                             "payment_methods": [],
                             "customer": None})
 
+
+
 @login_required
 def confirm_payment(request):
     stripe.api_key = settings.STRIPE_SK
     user = request.user
     customer = stripe.Customer.retrieve(user.profile.stripe_id)
-    invoice_id = customer.subscriptions.data[0].latest_invoice
-    latest_invoice = stripe.Invoice.retrieve(invoice_id)
-    invoice_url = latest_invoice.hosted_invoice_url
-    return render(request, "users/confirm_payment.html",
-                  context={"invoice_url": invoice_url})
-
-def public_key(request):
-    if request.is_ajax():
-        return JsonResponse({"publicKey": settings.STRIPE_PK})
-    else:
-        return HttpResponseBadRequest("<h1>Bad Request</h1>")
+    try:
+        invoice_id = customer.subscriptions.data[0].latest_invoice
+        latest_invoice = stripe.Invoice.retrieve(invoice_id)
+        invoice_url = latest_invoice.hosted_invoice_url
+        return render(request, "users/confirm_payment.html",
+                    context={"invoice_url": invoice_url})
+    except IndexError:
+        # no outstanding invoice
+        return redirect("home")
 
 @csrf_exempt
 def webhook(request):
-    webhook_secret = env("STRIPE_WEBHOOK_SECRET", "")
+    webhook_secret = env("STRIPE_WEBHOOK_SECRET", default="")
     payload = request.body
     event = None
     stripe.api_key = settings.STRIPE_SK
