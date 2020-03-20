@@ -43,7 +43,7 @@ class Profile(models.Model):
                                            related_name="saved_by")
     stripe_id = models.CharField(_("Stripe Customer Id"), max_length=50, 
                                  default="")
-    checkout_session = models.CharField(_("Stripe Checkout Session"), max_length=50, 
+    checkout_session = models.CharField(_("Stripe Checkout Session"), max_length=100, 
                                         default="")
     payment_status = models.PositiveSmallIntegerField(_("Payment Status"), 
                                                       choices=PAYMENT_STATUS,

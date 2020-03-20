@@ -11,7 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
                                   DetailView, FormView)
@@ -49,12 +49,13 @@ def create_checkout_session(request):
         form = NNRSignupForm(form_data)
         if form.is_valid():
             user = form.save(request)
+            stripe.api_key = settings.STRIPE_SK
             checkout_session = stripe.checkout.Session.create(
                 customer_email=user.email,
                 success_url=(DOMAIN_URL + 
-                             reverse_lazy("main:checkout_success") + 
+                             reverse("main:checkout_success") + 
                              "?session_id={CHECKOUT_SESSION_ID}"),
-                cancel_url=DOMAIN_URL+reverse_lazy("main:checkout_cancel"),
+                cancel_url=DOMAIN_URL+reverse("main:checkout_cancel"),
                 payment_method_types=["card"],
                 subscription_data={
                     "items": [{
@@ -65,7 +66,7 @@ def create_checkout_session(request):
             )
             user.profile.checkout_session = checkout_session["id"]
             user.profile.save()
-            success_url = reverse_lazy("thankyou")
+            success_url = reverse("main:checkout_success")
             email_verification = settings.ACCOUNT_EMAIL_VERIFICATION
             _ = complete_signup(request, user, 
                                 email_verification=email_verification,
