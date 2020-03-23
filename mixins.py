@@ -24,28 +24,37 @@ class ValidUserMixin(UserPassesTestMixin):
             return False
         if self.request.user.is_staff or self.request.user.is_superuser:
             return True
-        if self.request.user.profile.payment_status in (2, 3):
+        if self.request.user.profile.subscription_status in ("admin",
+                                                             "free", 
+                                                             "trialing",
+                                                             "active"):
             return True
-        if self.request.user.profile.payment_status == 0:
+        if self.request.user.profile.subscription_status in ("",
+                                                             "incomplete",
+                                                             "incomplete_expired",
+                                                             "past_due",
+                                                             "unpaid"):
             # payment failed
+            messages.warning(self.request, self.payment_failed_message)
             self.permission_denied_message = self.payment_failed_message
-        if self.request.user.profile.payment_status == 1:
-            # payment needs confirmation
-            self.permission_denied_message = self.payment_confirm_message
+        if self.request.user.profile.subscription_status == "canceled":
+            # canceled account
+            self.permission_denied_message = "Your account has been canceled."
         return False
 
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
-            if self.request.user.profile.payment_status == 0:
-                messages.error(self.request, self.payment_failed_message)
-                return redirect("users:update_payment")
-                             
-            if self.request.user.profile.payment_status == 1:
-                messages.warning(self.request, self.payment_confirm_message)
-                return redirect("users:confirm_payment")
-            if self.request.user.profile.payment_status == 4:
+            if self.request.user.profile.subscription_status in ("",
+                                                                "incomplete",
+                                                                "incomplete_expired",
+                                                                "past_due",
+                                                                "unpaid"):
                 return redirect("main:payment")
-                                
+            elif self.request.user.profile.subscription_status == "canceled":
+                return redirect("main:expired")
+            else:
+                pass
+
         return super().handle_no_permission()
 
 

@@ -1,5 +1,6 @@
 {% extends "users/user_base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}User: {{ user.username }}{% endblock %}
 
@@ -8,5 +9,20 @@
   {% if user.name %}
     <p>{{ user.name }}</p>
   {% endif %}
+
+  {% if request.user == user and has_sub %}
+
+  <p>Subscription status: {{ user.profile.get_subscription_status_display }}</p>
+
+  {% if cancel_at_period_end %}
+  <p>Your subscription will expire on {{ subscription_end }}. You will not be charged.</p>
+  {% crispy reactivate_form %}
+  {% else %}
+  <p>Your subscription will automatically be renewed for ${{ amount|floatformat:2 }} USD on {{ subscription_end }}.</p>
+  {% crispy cancel_form %}
+  {% endif %}
+
+  {% endif %}
+
 {% endblock user_content %}
 

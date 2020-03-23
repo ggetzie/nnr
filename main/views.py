@@ -13,6 +13,7 @@ from django.http import JsonResponse, HttpResponseBadRequest, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
                                   DetailView, FormView)
 from main.forms import NNRSignupForm
@@ -21,7 +22,9 @@ from main.models import Profile
 
 from main.payments import (handle_payment_success, handle_payment_action,
                            handle_payment_failure, handle_payment_update,
-                           update_customer_card, handle_session_complete)
+                           update_customer_card, handle_session_complete,
+                           handle_subscription_updated, 
+                           handle_subscription_deleted)
 
 from main.utils import (get_trial_end, get_subscription_plan)
 
@@ -48,20 +51,38 @@ def create_checkout_session(request):
     if not request.is_ajax():
         return HttpResponse("Bad Request")
     stripe.api_key = settings.STRIPE_SK
-    checkout_session = stripe.checkout.Session.create(
-            customer_email=request.user.email,
-            success_url=(DOMAIN_URL + 
-                            reverse("main:checkout_success") + 
-                            "?session_id={CHECKOUT_SESSION_ID}"),
-            cancel_url=DOMAIN_URL+reverse("main:checkout_cancel"),
+    success_url=(DOMAIN_URL + 
+                 reverse("main:checkout_success") + 
+                 "?session_id={CHECKOUT_SESSION_ID}")
+    cancel_url=DOMAIN_URL+reverse("main:payment")
+    if request.user.profile.stripe_id:
+        # User already had a subscription that expired. No free trial.
+        checkout_session = stripe.checkout.Session.create(
+            customer=request.user.profile.stripe_id,
+            success_url=success_url,
+            cancel_url=cancel_url,
             payment_method_types=["card"],
             subscription_data={
-                "items": [{
-                    "plan": get_subscription_plan()
-                    }],
-                "trial_from_plan": True
-            }
-    )
+                    "items": [{
+                        "plan": get_subscription_plan()
+                        }],
+                    "trial_from_plan": False
+                }
+        )
+    else:
+        # New user, include free trial
+        checkout_session = stripe.checkout.Session.create(
+                customer_email=request.user.email,
+                success_url=success_url,
+                cancel_url=cancel_url,
+                payment_method_types=["card"],
+                subscription_data={
+                    "items": [{
+                        "plan": get_subscription_plan()
+                        }],
+                    "trial_from_plan": True
+                }
+        )
     request.user.profile.checkout_session = checkout_session["id"]
     request.user.profile.save()
     return JsonResponse({"checkoutSessionId": checkout_session["id"]})
@@ -124,6 +145,53 @@ def update_payment(request):
                             "customer": None})
 
 
+@require_POST                            
+@login_required
+def cancel_subscription(request):
+    """
+    User wants to turn off automatic renewal. 
+    Subscription will expire at end date.
+    """
+    stripe.api_key = settings.STRIPE_SK
+    stripe_id = request.user.profile.stripe_id
+    subs = stripe.Subscription.list(customer=stripe_id)
+    if subs.data:
+        _ = stripe.Subscription.modify(subs.data[0].id,
+                                       cancel_at_period_end=True)
+        end_date = datetime.datetime.fromtimestamp(subs.data[0].current_period_end)
+        msg = f"""
+              Automatic renewal has been turned off for your subscription.
+              Your subscription will expire on {end_date:%B %d, %Y}.
+              Your account will remain active until then.
+              """
+        messages.warning(request, msg)
+    else:
+        messages.info(request, "Could not find any active subscription")
+    return redirect("users:detail", username=request.user.username)
+
+
+@require_POST
+@login_required
+def reactivate_subscription(request):
+    """
+    User has turned off automatic renewal and wants to turn it back on
+    """
+    stripe.api_key = settings.STRIPE_SK
+    stripe_id = request.user.profile.stripe_id
+    subs = stripe.Subscription.list(customer=stripe_id)
+    if subs.data:
+        _ = stripe.Subscription.modify(subs.data[0].id,
+                                       cancel_at_period_end=False)
+        end_date = datetime.datetime.fromtimestamp(subs.data[0].current_period_end)
+        msg = f"""
+              Automatic renewal has been turned on for your subscription.
+              Your subscription will be renewed on {end_date:%B %d, %Y}.
+              """
+        messages.success(request, msg)                                       
+    else:
+        messages.info(request, "Could not find any active subscription")
+    return redirect("users:detail", username=request.user.username)
+
 
 @login_required
 def confirm_payment(request):
@@ -176,8 +244,12 @@ def webhook(request):
         handle_payment_failure(event)
     elif event.type == "payment_method.updated":
         handle_payment_update(event)
-    elif event.typ == "checkout.session.completed":
+    elif event.type == "checkout.session.completed":
         handle_session_complete(event)
+    elif event.type == "customer.subscription.updated":
+        handle_subscription_updated(event)
+    elif event.type == "customer.subscription.deleted":
+        handle_subscription_deleted(event)
     else:
         logger.info(f"Received unhandled event: {event.type}")
 

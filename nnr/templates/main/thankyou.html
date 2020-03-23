@@ -4,12 +4,12 @@
 <div class="main-content">
     <h1>Thank you!</h1>
     <p>
-        Your signup is complete!
+        Your signup is complete and your account is ready to go!
     </p>
     <p> 
-        Just one more thing: we sent an email to confirm your email address. Please
-        open the email and click the confirmation link to activate your account.
-        Then you'll be all set to use No Nonsense Recipes!
+        To get started, <a href="{% url 'recipes:recipe_list'%}">browse</a> our recipes, 
+        try <a href="{% url 'recipes:search_recipes' %}">searching</a> for a recipe or ingredient,
+        or even <a href="{% url 'recipes:recipe_create' %}">add</a> a recipe of your own.
     </p>
 </div>
 {% endblock content %}

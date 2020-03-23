@@ -10,7 +10,7 @@ from crispy_forms.layout import Layout, Submit, Fieldset, Div, HTML
 from django import forms
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
@@ -62,3 +62,26 @@ class NNRSignupForm(SignupForm):
     def save(self, request):
         user = super().save(request)
         return user
+
+class CancelForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = "cancel_form"
+        self.helper.form_method = "post"
+        self.helper.form_action = reverse("main:cancel_subscription")
+        self.helper.layout = Layout(
+            Submit("cancel", "Cancel", css_class="btn btn-danger")
+        )
+
+class ReactivateForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = "reactivate_form"
+        self.helper.form_method = "post"
+        self.helper.form_action = reverse("main:reactivate_subscription")
+        self.helper.layout = Layout(
+            Submit("reactivate", "Turn On Automatic Renewal", 
+                   css_class="btn btn-success")
+        )        

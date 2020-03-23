@@ -26,18 +26,21 @@ def handle_payment_success(event):
         profile.payment_status = 2
     else:
         pass    
+    profile.sync_subscription()
     profile.save()
 
 def handle_payment_action(event):
     logger.info("handling payment action")
     profile = Profile.objects.get(stripe_id=event.data.object.customer)
     profile.payment_status = 1
+    profile.sync_subscription()
     profile.save()
 
 def handle_payment_failure(event):
     logger.info("handling payment failure")
     profile = Profile.objects.get(stripe_id=event.data.object.customer)
     profile.payment_status = 0
+    profile.sync_subscription()
     profile.save()
 
 def handle_payment_update(event):
@@ -61,13 +64,24 @@ def handle_session_complete(event):
     logger.info("Checkout Session completed")
     logger.info(event)
     stripe.api_key = settings.STRIPE_SK
-    session = event.data.object.session
-    profile = Profile.objects.get(checkout_session=session.id)
+    session_id = event.data.object.id
+    profile = Profile.objects.get(checkout_session=session_id)
+    profile.checkout_session = ""
     if not profile.stripe_id:
         # No existing stripe id means new user, complete signup
         profile.stripe_id = event.data.object.customer.id
-        profile.checkout_session = ""
         profile.payment_status = 2
-        profile.save()
+    profile.save()
+    profile.sync_subscription()
         
-    
+def handle_subscription_updated(event):
+    stripe_id = event.data.object.customer
+    profile = Profile.objects.get(stripe_id=stripe_id)
+    profile.sync_subscription()
+
+def handle_subscription_deleted(event):
+    logger.info("Handling deleted subscription")
+    stripe_id = event.data.object.customer
+    profile = Profile.objects.get(stripe_id=stripe_id)
+    profile.sync_subscription()
+    profile.subscription_end = datetime.date.today()

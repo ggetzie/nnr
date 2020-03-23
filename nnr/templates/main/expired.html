@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="main-content">
+    <h2>Your subscription has expired</h2>
+    <p>Please click the button below to enter your payment information and renew your subscription.</p>
+    <button id="enterPaymentInfo" class="btn btn-success">Resubscribe</button>
+</div>
+{% endblock content %}
+
+{% block morejs %}
+<script type="text/javascript" src="{% static 'js/payment.js' %}">
+{% endblock morejs %}
