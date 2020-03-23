@@ -10,17 +10,19 @@
     <p>{{ user.name }}</p>
   {% endif %}
 
-  {% if request.user == user and has_sub %}
+  {% if request.user == user %}
 
-  <p>Subscription status: {{ user.profile.get_subscription_status_display }}</p>
+    <p>Subscription status: {{ user.profile.get_subscription_status_display }}</p>
 
-  {% if cancel_at_period_end %}
-  <p>Your subscription will expire on {{ subscription_end }}. You will not be charged.</p>
-  {% crispy reactivate_form %}
-  {% else %}
-  <p>Your subscription will automatically be renewed for ${{ amount|floatformat:2 }} USD on {{ subscription_end }}.</p>
-  {% crispy cancel_form %}
-  {% endif %}
+    {% if has_sub %}
+      {% if cancel_at_period_end %}
+      <p>Your subscription will expire on {{ subscription_end }}. You will not be charged.</p>
+      {% crispy reactivate_form %}
+      {% else %}
+      <p>Your subscription will automatically be renewed for ${{ amount|floatformat:2 }} USD on {{ subscription_end }}.</p>
+      {% crispy cancel_form %}
+      {% endif %}
+    {% endif %}
 
   {% endif %}
 

@@ -24,7 +24,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         
         context =  super().get_context_data(**kwargs)
         subs = None
-        has_sub = not self.object.profile.subscription_status in ("admin", "free")
+        has_sub = not self.object.profile.subscription_status in ("admin", "free", "")
         if has_sub:
             stripe.api_key = settings.STRIPE_SK
             subs = stripe.Subscription.list(customer=self.object.profile.stripe_id)
