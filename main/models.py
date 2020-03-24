@@ -80,10 +80,15 @@ class Profile(models.Model):
         return f"{self.user.username} ({self.user.id})"
 
     def is_valid(self):
-        return self.payment_status in (2, 3)
+        return self.subscription_status in ("admin", 
+                                            "free", 
+                                            "trialing", 
+                                            "active")
 
     def paid(self):
-        return self.payment_status == 3
+        return self.subscription_status in ("admin", 
+                                            "free", 
+                                            "active")
 
     def rate_limit_exceeded(self):
         now = datetime.datetime.now(tz=UTC)
