@@ -30,7 +30,7 @@
         {{ recipe.instructions_html|safe }}
     </div>
 
-    <div class="user-options row">
+    <div class="user-options row recipe-section">
         <div class="col-sm-4">
             {% crispy rateform %}
         </div>
@@ -50,7 +50,7 @@
     {% endif %}
     </div>
 
-    <div class="tags">
+    <div class="tags recipe-section">
         <h2>Tags</h2>
         <p>
             {% for tag in tag_list %}
