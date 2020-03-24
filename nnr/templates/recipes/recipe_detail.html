@@ -18,7 +18,12 @@
 <div class="container main-content">
     <h1>{{ recipe.title }}</h1>
     <div class="byline">
-        Submitted by: <a href="{% url 'users:detail' recipe.user.username %}">{{ recipe.user.username }}</a>
+        Submitted by: 
+        {% if recipe.user %}
+        <a href="{% url 'users:detail' recipe.user.username %}">{{ recipe.user.username }}</a>
+        {% else %}
+        <em>deleted</em>
+        {% endif %}
     </div>
     
     <h2>Ingredients</h2>

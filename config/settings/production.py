@@ -98,7 +98,8 @@ AWS_DEFAULT_ACL = None
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_S3_REGION_NAME = env("DJANGO_AWS_S3_REGION_NAME", default=None)
 
-AWS_S3_CUSTOM_DOMAIN = "d1q0lpl7gly8q2.cloudfront.net"
+AWS_S3_CUSTOM_DOMAIN = env("AWS_S3_CUSTOM_DOMAIN", 
+                           default="d1q0lpl7gly8q2.cloudfront.net")
 
 # STATIC
 # ------------------------
