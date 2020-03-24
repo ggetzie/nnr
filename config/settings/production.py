@@ -19,7 +19,7 @@ DATABASES = {
         'NAME': 'nnr_db',
         'USER': 'nnr_db_user',
         'PASSWORD': env('nnr_DB_PW'),
-        'HOST': 'nnr-db-1.ckogb2auafir.us-east-1.rds.amazonaws.com',
+        'HOST': env('DB_HOST'), # 'nnr-db-1.ckogb2auafir.us-east-1.rds.amazonaws.com'
         'PORT': '5432',
         }
 }
