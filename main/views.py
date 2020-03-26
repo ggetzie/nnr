@@ -215,7 +215,7 @@ def webhook(request):
     event = None
     stripe.api_key = settings.STRIPE_SK
     if webhook_secret:
-        signature = request.META.get("stripe-signature")
+        signature = request.META.get("HTTP_STRIPE_SIGNATURE")
         logger.info(request.META)
         try: 
             event = stripe.Webhook.construct_event(
