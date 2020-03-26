@@ -18,8 +18,6 @@ var setupElements = function() {
       });
   };
 
-
-
 var createCheckoutSession = function() {
     fetch("/main/create-checkout-session/", {
       method: "GET",
