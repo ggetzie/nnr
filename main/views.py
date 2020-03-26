@@ -222,8 +222,8 @@ def webhook(request):
                 sig_header=signature, 
                 secret=webhook_secret)
         except Exception as e:
-            logger.info(f"Could not parse event (webhook secret)")
-            logger.info(e)
+            logger.error(f"Could not parse event (webhook secret)")
+            logger.error(e)
             return HttpResponse(status=400)
     else:
         try:
@@ -231,7 +231,7 @@ def webhook(request):
                 json.loads(payload), stripe.api_key
             )
         except ValueError:
-            logger.info(f"Could not parse event")
+            logger.error(f"Could not parse event")
             return HttpResponse(status=400)
 
     logger.info(f"received event - {event.type}")        
