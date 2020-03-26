@@ -448,7 +448,7 @@ Combine all ingredients in medium bowl until smooth and creamy. Transfer dip to 
 #end
 #title
 CLAM DIP WITH BACON AND SCALLIONS
-#quantity
+#quantity     
 MAKES ABOUT 2 CUPS
 Serve with chips or crackers.
 4
