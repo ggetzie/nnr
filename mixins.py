@@ -35,7 +35,8 @@ class ValidUserMixin(UserPassesTestMixin):
                                                              "past_due",
                                                              "unpaid"):
             # payment failed
-            messages.warning(self.request, self.payment_failed_message)
+            if self.request.user.profile.stripe_id:
+                messages.warning(self.request, self.payment_failed_message)
             self.permission_denied_message = self.payment_failed_message
         if self.request.user.profile.subscription_status == "canceled":
             # canceled account
