@@ -72,7 +72,7 @@ def handle_session_complete(event):
     profile.checkout_session = ""
     if not profile.stripe_id:
         # No existing stripe id means new user, complete signup
-        profile.stripe_id = event.data.object.customer.id
+        profile.stripe_id = event.data.object.customer
         profile.payment_status = 2
     profile.save()
     profile.sync_subscription()
