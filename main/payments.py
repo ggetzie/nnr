@@ -64,7 +64,11 @@ def handle_session_complete(event):
     logger.info("Checkout Session completed")
     stripe.api_key = settings.STRIPE_SK
     session_id = event.data.object.id
-    profile = Profile.objects.get(checkout_session=session_id)
+    customer_email = event.data.object.customer_email
+    try:
+        profile = Profile.objects.get(checkout_session=session_id)
+    except Profile.DoesNotExist:
+        profile = Profile.objects.get(user__email=customer_email)
     profile.checkout_session = ""
     if not profile.stripe_id:
         # No existing stripe id means new user, complete signup
