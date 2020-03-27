@@ -1,8 +1,10 @@
 {% load crispy_forms_tags %}
 <div class="comment-container recipe-section">
     <h2>Comments</h2>
+    {% if request.user.profile.paid %}
     {% include "markdown_help.html" %}
     {% crispy comment_form %}
+    {% endif %}
     <div id="comment-list">
     {% csrf_token %}
     </div>
