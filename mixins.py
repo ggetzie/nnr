@@ -50,11 +50,14 @@ class ValidUserMixin(UserPassesTestMixin):
                                                                 "incomplete_expired",
                                                                 "past_due",
                                                                 "unpaid"):
-                return redirect("main:payment")
+                if self.request.user.profile.checkout_session:
+                    return redirect("main:processing")
+                else:
+                    return redirect("main:payment")
             elif self.request.user.profile.subscription_status == "canceled":
                 return redirect("main:expired")
             else:
-                pass
+                logger.error("Unhandled subscription status")
 
         return super().handle_no_permission()
 

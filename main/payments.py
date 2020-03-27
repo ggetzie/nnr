@@ -62,7 +62,6 @@ def update_customer_card(payment_id, customer_id):
 
 def handle_session_complete(event):
     logger.info("Checkout Session completed")
-    logger.info(event)
     stripe.api_key = settings.STRIPE_SK
     session_id = event.data.object.id
     profile = Profile.objects.get(checkout_session=session_id)

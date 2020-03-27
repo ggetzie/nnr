@@ -55,6 +55,9 @@ def create_checkout_session(request):
                  reverse("main:checkout_success") + 
                  "?session_id={CHECKOUT_SESSION_ID}")
     cancel_url=DOMAIN_URL+reverse("main:payment")
+    if request.user.profile.checkout_session:
+        # User already has an active checkout session
+        return JsonResponse({"checkoutSessionId": ""})
     if request.user.profile.stripe_id:
         # User already had a subscription that expired. No free trial.
         checkout_session = stripe.checkout.Session.create(

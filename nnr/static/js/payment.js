@@ -49,7 +49,3 @@ document.getElementById("enterPaymentInfo").addEventListener("click", function (
   })
     
 });
-
-function testpay() {
-  console.log("This function was defined")
-}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="main-content">
+    <h2>Payment processing</h2>
+    <p>
+        Sorry for the delay. We are awaiting payment confirmation from the payment processor. Please try again in a few minutes.
+    </p>
+</div>
+{% endblock content %}
+
+{% block morejs %}
+<script type="text/javascript" src="{% static 'js/payment.js' %}">
+{% endblock morejs %}

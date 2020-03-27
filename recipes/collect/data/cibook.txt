@@ -451,602 +451,490 @@ CLAM DIP WITH BACON AND SCALLIONS
 #quantity     
 MAKES ABOUT 2 CUPS
 Serve with chips or crackers.
-4
-slices bacon, cut into 1⁄4-inch pieces
-³⁄4
-cup sour cream
-³⁄4
-cup mayonnaise
-1
-teaspoon lemon juice
-1
-teaspoon Worcestershire sauce
-2
-(61⁄2-ounce) cans minced clams, drained
-2
-scallions, sliced thin
+#ingredients
+4 slices bacon, cut into 1⁄4-inch pieces
+3⁄4 cup sour cream
+3⁄4 cup mayonnaise
+1 teaspoon lemon juice
+1 teaspoon Worcestershire sauce
+2 (6-1⁄2-ounce) cans minced clams, drained
+2 scallions, sliced thin
 Salt and pepper
 Cayenne pepper
+#instructions
 1. Cook bacon in 8-inch skillet over medium heat until crisp, 5 to 7 minutes. Transfer bacon to paper towel–lined plate.
 2. Whisk together sour cream, mayonnaise, lemon juice, and Worcestershire in medium bowl. Stir in minced clams, scallions, and bacon. Season with salt, pepper, and cayenne to taste. Transfer dip to serving bowl, cover with plastic wrap, and refrigerate until flavors are blended, at least 1 hour. Serve. (Dip can be refrigerated for up to 2 days.)
+#end
+#title
 SMOKED SALMON DIP WITH DILL AND HORSERADISH
+#quantity
 MAKES ABOUT 2 CUPS
 Serve with chips or crackers.
-³⁄4
-cup sour cream
-³⁄4
-cup mayonnaise
-3
-ounces smoked salmon
-2
-teaspoons lemon juice
-1
-teaspoon prepared horseradish
-2
-tablespoons minced fresh dill
+#ingredients
+3⁄4 cup sour cream
+3⁄4 cup mayonnaise
+3 ounces smoked salmon
+2 teaspoons lemon juice
+1 teaspoon prepared horseradish
+2 tablespoons minced fresh dill
 Salt and pepper
+#instructions
 Process sour cream, mayonnaise, salmon, lemon juice, and horseradish in food processor until smooth and creamy. Transfer mixture to serving bowl, stir in dill, and season with salt and pepper to taste. Cover with plastic wrap and refrigerate until flavors are blended, at least 1 hour. Serve. (Dip can be refrigerated for up to 3 days.)
-SPINACH DIP
-WHY THIS RECIPE WORKS
-Spinach dip with sour cream and soup mixes are flat, overly salty, and stale-tasting, and nothing near fresh. This lackluster 1950s relic was long overdue for a face-lift, and the solution turned out to be surprisingly easy. We found that dips made with fresh spinach tasted meek and lacked the more intense, vibrant flavor of those made with frozen. A combination of mayonnaise and sour cream created a smooth and creamy base, while dill, parsley, garlic, and hot sauce were smart replacements for soup mix as the flavoring components. Using partially thawed spinach cooled the dip and avoided the 2-hour chilling time required for dip made with completely thawed spinach.
+#end
+#title
 CREAMY HERBED SPINACH DIP
+#quantity
 MAKES ABOUT 1-1⁄2 CUPS
 Partial thawing of the spinach produces a cold dip that can be served without further chilling. The garlic must be minced before going into the food processor; otherwise, the dip will contain large chunks of garlic.
-10
-ounces frozen chopped spinach
-¹⁄2
-cup sour cream
-¹⁄2
-cup mayonnaise
-¹⁄2
-cup packed flat-leaf parsley
-3
-scallions, white parts only, sliced thin
-1
-tablespoon chopped fresh dill
-1
-small garlic clove, minced
-¹⁄4
-teaspoon hot sauce
-¹⁄2
-teaspoon salt
-¹⁄4
-teaspoon pepper
-¹⁄2
-red bell pepper, chopped fine
+#ingredients
+10 ounces frozen chopped spinach
+1⁄2 cup sour cream
+1⁄2 cup mayonnaise
+1⁄2 cup packed flat-leaf parsley
+3 scallions, white parts only, sliced thin
+1 tablespoon chopped fresh dill
+1 small garlic clove, minced
+1⁄4 teaspoon hot sauce
+1⁄2 teaspoon salt
+1⁄4 teaspoon pepper
+1⁄2 red bell pepper, chopped fine
+#instructions
 1. Thaw spinach in microwave for 3 minutes on medium power (spinach should be soft enough to be broken apart into icy chunks). Squeeze partially frozen spinach to remove excess water.
 2. Process spinach, sour cream, mayonnaise, parsley, scallions, dill, garlic, hot sauce, salt, and pepper until smooth and creamy, about 30 seconds. Transfer mixture to medium bowl and stir in bell pepper. Serve. (Dip can be refrigerated for up to 2 days.)
+
 SPINACH DIP WITH BLUE CHEESE AND BACON
 If making this dip in advance, hold off on sprinkling the bacon over it until just before serving.
 Cook 3 slices bacon, cut into ¹⁄4-inch pieces, in 8-inch skillet over medium-high heat until crisp, about 5 minutes. Transfer to paper towel–lined plate and set aside. Omit dill, hot sauce, salt, and red bell pepper. Process 1¹⁄2 ounces crumbled blue cheese (¹⁄3 cup) along with spinach. Season with salt to taste and sprinkle bacon over dip.
+
 SPINACH DIP WITH FETA, LEMON, AND OREGANO
 Omit hot sauce, salt, and red bell pepper. Process ¹⁄2 cup crumbled feta cheese, 2 tablespoons fresh oregano, and 1 teaspoon grated lemon zest plus 1 tablespoon lemon juice along with spinach. Season with salt to taste.
+
 CILANTRO-LIME SPINACH DIP WITH CHIPOTLE CHILE
 This dip pairs well with tortilla chips.
 Omit hot sauce and red bell pepper. Process ¹⁄4 cup packed cilantro leaves, 1 tablespoon minced canned chipotle chile in adobo sauce, ¹⁄2 teaspoon grated lime zest plus 1 tablespoon lime juice, ¹⁄2 teaspoon light brown sugar, and ¹⁄8 teaspoon ground cumin along with spinach.
+#end
+#title
 BACON, SCALLION, AND CARAMELIZED ONION DIP
-WHY THIS RECIPE WORKS
-Onion dip is an old favorite, but we wanted a recipe that went beyond stirring powdered onion soup mix into sour cream and mayonnaise. For a more modern, grown-up take, we started with caramelized onions, which lent our dip a sweet, more complex flavor. We discovered several keys to making caramelized onions that weren’t burnt, gummy, bland, or greasy. First, we sautéed the onions in a nonstick pan in butter and oil over high heat to quickly release the moisture, then we turned down the heat to medium until they were cooked through. This ensured clear onion flavor and a yielding yet firm texture. Adding light brown sugar to the pan helped bring out their sweetness and complemented their caramel-like flavor. Then we incorporated complementary flavors to give the dip more heft. Bacon added a smokiness that perfectly balanced the sweet onions, while fresh minced scallions reinforced the onion flavor and added a touch of color.
-See “SLICING ONIONS POLE TO POLE” illustration that follows recipe.
-BACON, SCALLION, AND CARAMELIZED ONION DIP
+#quantity
 MAKES ABOUT 1¹⁄2 CUPS
-This recipe uses half a recipe of Caramelized Onions. Leftover onions can be used in a number of dishes, including omelets, frittatas, sandwiches, or pizza.
-3
-slices bacon, cut into ¹⁄4-inch pieces
-³⁄4
-cup sour cream
-¹⁄2
-cup CARAMELIZED ONIONS (recipe follows)
-2
-scallions, minced
-¹⁄2
-teaspoon cider vinegar
+#ingredients
+3 slices bacon, cut into ¹⁄4-inch pieces
+3⁄4 cup sour cream
+1⁄2 cup CARAMELIZED ONIONS (recipe follows)
+2 scallions, minced
+1⁄2 teaspoon cider vinegar
 Salt and pepper
+#instructions
 1. Cook bacon in 8-inch skillet over medium heat until crisp, 5 to 7 minutes. Transfer to paper towel–lined plate and set aside.
 2. Combine sour cream, caramelized onions, scallions, vinegar, and bacon in medium bowl. Season with salt and pepper to taste and serve. (Dip can be refrigerated for up to 3 days.)
+#end
+#title
 CARAMELIZED ONIONS
+#quantity
 MAKES 1 CUP
-If the onions are sizzling or scorching in step 2, reduce the heat. If the onions are not browning after 15 to 20 minutes, raise the heat.
-1
-tablespoon unsalted butter
-1
-tablespoon vegetable oil
-1
-teaspoon light brown sugar
-¹⁄2
-teaspoon salt
-2
-pounds onions, halved andsliced pole to pole into¹⁄4-inch-thick pieces
-1
-tablespoon water
+#instructions
+1 tablespoon unsalted butter
+1 tablespoon vegetable oil
+1 teaspoon light brown sugar
+1⁄2 teaspoon salt
+2 pounds onions, halved andsliced pole to pole into¹⁄4-inch-thick pieces
+1 tablespoon water
 Pepper
+#instructions
 1. Heat butter and oil in 12-inch nonstick skillet over high heat and stir in sugar and salt. Add onions and stir to coat. Cook, stirring occasionally, until onions begin to soften and release some moisture, about 5 minutes.
 2. Reduce heat to medium and cook, stirring frequently, until onions are deeply browned and slightly sticky, about 40 minutes longer.
 3. Off heat, stir in water. Season with pepper to taste. (Onions can be refrigerated for up to 1 week.)
-SLICING ONIONS POLE TO POLE
-When slicing onions for caramelizing, be sure to slice them with the grain, from pole to pole. When sliced the opposite way, against the grain, the onions will have a stringy texture.
+#end
+#title
 SWEET AND SPICY ROASTED RED PEPPER DIP
-WHY THIS RECIPE WORKS
-Sweet red bell peppers take on a whole new layer of complex, smoky flavor when roasted. We wanted a method for roasting them that was more efficient than the common technique of roasting each pepper over a gas burner, letting it steam in a covered bowl, then laboriously removing the skin bit by bit. We also hoped to transform our perfectly roasted peppers into a full-flavored dip. For the roasting method, we discovered the broiler offered an easy, consistent, and more hands-off option than the burner (roasting in either a hot or low oven yielded soggy, overcooked peppers). To get around the issue of whole peppers hitting the broiler element, we cut the peppers into pieces that lay flat on a sheet pan. After 10 minutes, the peppers were done and we could easily peel off the blistered skin. For our dip, we adapted a recipe for a sweet and spicy Middle Eastern–style dip by combining our roasted peppers with jalapeño and tangy pomegranate molasses.
-SWEET AND SPICY ROASTED RED PEPPER DIP
+#quantity
 MAKES ABOUT 2 CUPS
-For more information on preparing the bell peppers for roasting, CLICK HERE. Look for pomegranate molasses in Middle Eastern markets or the international foods aisle of supermarkets. If you cannot find it, 2 tablespoons of molasses combined with 2 tablespoons of lime juice can be substituted for the pomegranate molasses. Serve with grilled or toasted pita bread.
-3
-red bell peppers, stemmed, seeded, ribs removed, and cut to lie flat
-6
-tablespoons olive oil
-1
-small onion, chopped coarse
-¹⁄2
-jalapeño chile or other hot red or green fresh chile, minced
-1
-tablespoon ground cumin
-1
-small garlic clove, minced
-¹⁄4
-cup chopped fresh parsley
-¹⁄4
-cup pomegranate molasses
+#ingredients
+3 red bell peppers, stemmed, seeded, ribs removed, and cut to lie flat
+6 tablespoons olive oil
+1 small onion, chopped coarse
+1⁄2 jalapeño chile or other hot red or green fresh chile, minced
+1 tablespoon ground cumin
+1 small garlic clove, minced
+1⁄4 cup chopped fresh parsley
+1⁄4 cup pomegranate molasses
 Salt and pepper
+#instructions
 1. Adjust oven rack 2¹⁄2 to 3¹⁄2 inches from broiler element and heat broiler. If necessary, set upside-down rimmed baking sheet on oven rack to elevate pan.
 2. Spread peppers out over aluminum foil–lined baking sheet and broil until skin is charred and puffed but flesh is still firm, 8 to 10 minutes, rotating sheet halfway through cooking.
 3. Transfer peppers to medium bowl, cover with foil, and let steam until skin peels off easily, 10 to 15 minutes. Peel and discard skin; set peppers aside.
 4. Heat oil in 10-inch skillet over medium-high heat. Add onion and sauté until softened, about 5 minutes. Add chile, cumin, and garlic; sauté until garlic softens, about 1 minute longer.
 5. Transfer mixture to food processor. Add peppers, parsley, and pomegranate molasses; process until very smooth. Season with salt and pepper to taste. Transfer to bowl and serve. (Dip can be refrigerated for up to 1 week.)
+#end
+#title
 FRESH TOMATO SALSA
-WHY THIS RECIPE WORKS
-Even at the peak of tomato season, fresh tomato salsas can be inconsistent and less than stellar. Complicating matters, salsa’s popularity has opened the door to versions employing extravagant and extraneous ingredients. We wanted a fresh, chunky salsa cruda that would emphasize the tomatoes. To solve the problem of watery salsa, we drained diced tomatoes in a colander. This put all tomatoes, regardless of origin, ripeness, or juiciness, on a level—and dry—playing field. Red onions were preferred over other varieties for color and flavor. Jalapeño chiles beat out the alternatives because of their wide availability, slight vegetal flavor, and moderate heat. Lime juice tasted more authentic (and better) than red wine vinegar, rice vinegar, or lemon juice. We investigated the best way to combine the ingredients and rejected all but the simplest technique: We layered each ingredient (chopped) on top of the tomatoes while they drained in the colander. Once the tomatoes were ready, it all just needed a few stirs before being finished with the lime juice, sugar, and salt.
-FRESH TOMATO SALSA
+#quantity
 MAKES ABOUT 3 CUPS
 For more heat, include the jalapeño seeds and ribs when mincing. The amount of sugar and lime juice to use depends on the ripeness of the tomatoes. The salsa can be made 2 to 3 hours in advance, but hold off adding the lime juice, salt, and sugar until just before serving. This salsa is perfect for tortilla chips, but it’s also a nice accompaniment to grilled steaks, chicken, and fish.
-1¹⁄2
-pounds tomatoes, cut into ¹⁄2-inch dice
-¹⁄2
-cup finely chopped red onion
-¹⁄4
-cup chopped fresh cilantro
-1
-large jalapeño chile, stemmed, seeded, and minced
-1
-small garlic clove, minced
-2–6
-teaspoons lime juice (1 to 2 limes)
-¹⁄2
-teaspoon salt
+#ingredients
+1-1⁄2 pounds tomatoes, cut into ¹⁄2-inch dice
+1⁄2 cup finely chopped red onion
+1⁄4 cup chopped fresh cilantro
+1 large jalapeño chile, stemmed, seeded, and minced
+1 small garlic clove, minced
+2–6 teaspoons lime juice (1 to 2 limes)
+1⁄2 teaspoon salt
 Pinch pepper
 Sugar
+#instructions
 1. Set large colander in large bowl. Place tomatoes in colander and let drain 30 minutes. As tomatoes drain, layer onion, cilantro, jalapeño, and garlic on top.
 2. Shake colander to drain off excess tomato juice. Discard juice; wipe out bowl.
 3. Transfer tomato mixture to bowl. Add 2 teaspoons lime juice, salt, and pepper and toss to combine. Add sugar to taste and additional lime juice to taste before serving.
-TEST KITCHEN TIP NO. 4 TOMATOES—SKIP THE FRIDGE, PLEASE
-We never store tomatoes in the refrigerator. Cold damages tomatoes in two ways: It destroys an enzyme that produces flavorful compounds, and it makes water in the tomato expand, rupturing cells and turning the flesh mealy. But what about storing a partially used tomato? We cut a dozen ripe tomatoes in two, stored half of each in the fridge, and kept the other half at room temperature (both were wrapped tightly in plastic wrap). After a few days, the halves at room temperature had begun to soften, while the refrigerated halves were still as firm as the day they were cut. Upon tasting, however, we found the refrigerated halves were bland and mealy compared with the never-refrigerated halves. Our advice? Keep cut tomatoes tightly wrapped at room temperature and consume them within a few days. The shelf life gained by refrigeration doesn’t make up for the loss in flavor and texture.
+#end
+#title
 ONE-MINUTE SALSA
-WHY THIS RECIPE WORKS
-When we’re considering a quick snack of chips and salsa or a topping for our ultimate nachos, we don’t want to settle for the watery, overprocessed jarred stuff, especially when we can make a far better option from scratch in a few minutes. For a salsa that avoids the hassle of chopping multiple vegetables and herbs, we turned to the food processor. After a few tests, we happily discovered this salsa tastes just fine, and still beats out the commercial varieties, when made with canned diced tomatoes.
-ONE-MINUTE SALSA
+#quantity
 MAKES ABOUT 1 CUP
-This quick salsa can be made with either fresh or canned tomatoes, but if you’re using fresh, make sure they are sweet, ripe, in-season tomatoes. If they aren’t, canned tomatoes are a better choice.
-¹⁄2
-small jalapeño chile or ³⁄4 teaspoon minced canned chipotle chile in adobo sauce
-¹⁄4
-small red onion
-2
-tablespoons fresh cilantro leaves
-2
-teaspoons lime juice
-1
-small garlic clove, minced
-¹⁄4
-teaspoon salt
+#ingredients
+1⁄2 small jalapeño chile or ³⁄4 teaspoon minced canned chipotle chile in adobo sauce
+1⁄4 small red onion
+2 tablespoons fresh cilantro leaves
+2 teaspoons lime juice
+1 small garlic clove, minced
+1⁄4 teaspoon salt
 Pinch pepper
-2
-small tomatoes (12 ounces), cored and cut into eighths, or 1 (14.5-ounce) can diced tomatoes, drained
+2 small tomatoes (12 ounces), cored and cut into eighths, or 1 (14.5-ounce) can diced tomatoes, drained
+#instructions
 Pulse all ingredients except tomatoes in food processor until minced, about 5 pulses, scraping sides of bowl as necessary. Add tomatoes and pulse until roughly chopped, about 2 pulses. Serve.
+#end
+#title
 CHUNKY GUACAMOLE
-WHY THIS RECIPE WORKS
-Most guacamole recipes sacrifice the extraordinary character of the avocados by adding too many other flavorings, and the texture of these dips is usually reduced to an utterly smooth, listless puree. We wanted to highlight the buttery texture and nutty flavor of the avocado; any additions needed to provide bright counterpoints to the avocado without overwhelming it. Neither pureeing in a food processor nor mashing all the avocados at once—two commonly used methods—gave us guacamole with the right texture. Instead, mashing one of the avocados lightly with a fork and mixing it with most of the other ingredients, then gently mixing in the remaining avocados, broke down the cubes just enough to make an appealingly chunky yet cohesive dip. Restraint when incorporating additional ingredients was key. We added just enough onion, garlic, cumin, and jalapeño to lend balance and depth to our dip without overwhelming the starring ingredient. Acidity, in the form of lime juice, was a necessity, not only for flavor but also to help preserve the mixture’s green color.
-CHUNKY GUACAMOLE
-MAKES 2¹⁄2 TO 3 CUPS
-To minimize the risk of discoloration, prepare the minced ingredients first so they are ready to mix with the avocados as soon as they are cut. Ripe avocados are essential here. To test for ripeness, try to flick the small stem off the end of the avocado. If it comes off easily and you can see green underneath it, the avocado is ripe. If it does not come off or if you see brown underneath after prying it off, the avocado is not ripe. If you like, garnish the guacamole with diced tomatoes and chopped cilantro just before serving.
-3
-avocados
-¹⁄4
-cup minced fresh cilantro
-2
-tablespoons finely chopped onion
-1
-small jalapeño chile, stemmed, seeded, and minced
-1
-garlic clove, minced
-¹⁄2
-teaspoon ground cumin (optional)
+#quantity
+MAKES 2-1⁄2 TO 3 CUPS
+#ingredients
+3 avocados
+1⁄4 cup minced fresh cilantro
+2 tablespoons finely chopped onion
+1 small jalapeño chile, stemmed, seeded, and minced
+1 garlic clove, minced
+1⁄2 teaspoon ground cumin (optional)
 Salt
-2
-tablespoons lime juice
+2 tablespoons lime juice
+#instructions
 1. Halve 1 avocado, remove pit, and scoop flesh into medium bowl. Mash flesh lightly with cilantro, onion, jalapeño, garlic, cumin, if using, and ¹⁄4 teaspoon salt with fork until just combined.
 2. Halve, pit, and cube remaining 2 avocados. Add cubes to bowl with mashed avocado mixture.
 3. Sprinkle lime juice over cubed avocado and mix lightly with fork until combined but still chunky. Season with salt to taste and serve. (Guacamole can be covered with plastic wrap, pressed directly onto surface, and refrigerated for up to 1 day. Return to room temperature, removing plastic wrap at the last moment, before serving.)
-TEST KITCHEN TIP NO. 5 AVOCADOS—FROM ROCK-HARD TO RIPE
-Avocados have a notoriously small window for ripeness. You’ll almost never find perfectly ripe avocados from the supermarket on the day you want to use them, so it pays to think—and shop—ahead. We’ve tested various ways to ripen avocados, but in the end, we’ve found that the only thing that matters is the temperature at which the avocados are stored. In our tests, rock-hard avocados at room temperature ripened within two days, but many of them ended up ripening unevenly, developing soft spots and air pockets on one side just as the other side was ripening. After completely ripening, they lasted two days on average if kept at room temperature (stored in the fridge after ripening, they lasted five days). Avocados ripened in the refrigerator, whether in a bag or out in the open, took around four days to soften, but did so evenly. Stored in the fridge, they lasted a full five days before starting to show signs of overripening. The bottom line: If you need your avocados to ripen sooner rather than later, keep them on the counter. Otherwise, for better quality, you’re better off putting them in the fridge and allowing them to ripen slowly. In either case, store the ripened fruit in the fridge to extend shelf life.
-CHEESY NACHOS
-WHY THIS RECIPE WORKS
-With the help of prepackaged shredded cheese, jarred salsa, and the microwave, nachos have turned into bland, subpar snack food. We set a few standards for our revamped recipe. First, the chips should be crisp and hot, not lukewarm, soggy, or charred. Ten minutes in a 400-degree oven produced warm, toasted chips and perfectly melted cheese (cooler ovens dried out the chips; hotter ovens and the broiler burnt them). Second, there should be no shortage of cheese; a chip without cheese is not a nacho. We settled on using a full pound of cheddar. To ensure that all of the chips got good coverage, we found it was best to layer the chips and cheese; tossing them together broke the chips and sent much of the cheese to the bottom of the dish. Layering the jalapeños along with the cheese ensured good heat in every bite. Third, minimalism has no place in a great plate of nachos. In addition to abundant cheese, we topped our recipe with ample amounts of salsa and guacamole. Using fresh, homemade versions of these garnishes made all the difference.
+#end
+#title
 CHEESY NACHOS WITH GUACAMOLE AND SALSA
+#quantity
 SERVES 4 TO 6
-Do not substitute store-bought guacamole or salsa; using homemade guacamole and salsa is key to making this recipe above average.
-8
-ounces tortilla chips
-1
-pound cheddar cheese, shredded (4 cups)
-2
-large jalapeño chiles, stemmed and sliced thin crosswise
-2
-scallions, sliced thin
-1¹⁄2
-cups CHUNKY GUACAMOLE
-1
-recipe ONE-MINUTE SALSA
-¹⁄2
-cup sour cream
+#ingredients
+8 ounces tortilla chips
+1 pound cheddar cheese, shredded (4 cups)
+2 large jalapeño chiles, stemmed and sliced thin crosswise
+2 scallions, sliced thin
+1-1⁄2 cups CHUNKY GUACAMOLE
+1 recipe ONE-MINUTE SALSA
+1⁄2 cup sour cream
 Lime wedges
+#instructions
 1. Adjust oven rack to middle position and heat oven to 400 degrees. Spread half of chips in even layer in 13 by 9-inch baking dish or similar ovensafe platter; sprinkle evenly with 2 cups cheese and half of jalapeño slices. Repeat with remaining chips, cheese, and jalapeños.
 2. Bake until cheese is melted, 7 to 10 minutes. Remove nachos from oven, cool 2 minutes, then sprinkle with scallions. Drop scoops of guacamole, salsa, and sour cream around edges of nachos. Serve immediately, passing lime wedges separately.
+
 CHEESY NACHOS WITH REFRIED BEANS
-We far prefer making our own refried beans (CLICK HERE) to using store-bought, but if you are short on time you can substitute your favorite store-bought variety.
-Drop ³⁄4 cup refried beans in small spoonfuls on each chip layer before sprinkling with cheese.
+Drop 3⁄4 cup refried beans in small spoonfuls on each chip layer before sprinkling with cheese.
+#end
+#title
 CHEESY NACHOS WITH SPICY BEEF
-This variation makes for a heartier option.
-2
-teaspoons corn or vegetable oil
-1
-small onion, chopped fine
-1
-large garlic clove, minced
-1
-tablespoon chili powder
-¹⁄2
-teaspoon ground cumin
-¹⁄2
-teaspoon ground coriander
-¹⁄4
-teaspoon cayenne pepper
-¹⁄4
-teaspoon dried oregano
-¹⁄8
-teaspoon salt
-8
-ounces 90 percent lean ground beef
+#quantity
+SERVES 4 TO 6
+#ingredients
+2 teaspoons corn or vegetable oil
+1 small onion, chopped fine
+1 large garlic clove, minced
+1 tablespoon chili powder
+1⁄2 teaspoon ground cumin
+1⁄2 teaspoon ground coriander
+1⁄4 teaspoon cayenne pepper
+1⁄4 teaspoon dried oregano
+1⁄8 teaspoon salt
+8 ounces 90 percent lean ground beef
+#instructions
 1. Heat oil in 10-inch skillet over medium heat until shimmering, about 2 minutes. Add onion and cook, stirring occasionally, until softened, about 4 minutes. Add garlic, chili powder, cumin, coriander, cayenne, oregano, and salt and cook, stirring constantly, until fragrant, about 1 minute. Add ground beef and cook, breaking up meat with wooden spoon, until beef is no longer pink, about 5 minutes.
-2. Follow recipe for CHEESY NACHOS WITH GUACAMOLE AND SALSA, sprinkling half of beef mixture on each chip layer before sprinkling with cheese.
+2. Adjust oven rack to middle position and heat oven to 400 degrees. Spread half of chips in even layer in 13 by 9-inch baking dish or similar ovensafe platter; sprinkle evenly with 2 cups cheese, half of jalapeño slices, and beef. Repeat with remaining chips, cheese, jalapeños, and beef.
+3. Bake until cheese is melted, 7 to 10 minutes. Remove nachos from oven, cool 2 minutes, then sprinkle with scallions. Drop scoops of guacamole, salsa, and sour cream around edges of nachos. Serve immediately, passing lime wedges separately.
+#end
+#title
 QUESADILLAS
-WHY THIS RECIPE WORKS
-Quesadillas have evolved into a version of bad Mexican pizza, becoming stale and soggy supermarket tortillas topped with almost everything under the sun. We wanted to make quesadillas that were authentic in spirit (if not quite in substance) yet also quick enough to make a satisfying snack. We kept the tortillas crisp by lightly toasting them in a dry skillet. We then filled them with cheese, lightly coated them with oil, and returned them to the skillet until they were well browned and the cheese was fully melted. Not yet satisfied that our recipe was speedy enough, we made the process even more convenient by switching to small 8-inch tortillas and folding them in half around the filling. This allowed us to cook two at one time in the same skillet, and the fold also kept our cheesy filling from oozing out.
-QUESADILLAS
+#quantity
 MAKES 2 FOLDED 8-INCH QUESADILLAS
-Cooling the quesadillas before cutting and serving is important; straight from the skillet, the cheese is molten and will ooze out. This recipe is easy to double or triple to serve a crowd. Finished quesadillas can be held on a baking sheet in a 200-degree oven for up to 20 minutes.
-2
-(8-inch) flour tortillas
-2²⁄3
-ounces Monterey Jack or cheddar cheese, shredded (²⁄3 cup)
-1
-tablespoon minced jarred jalapeños (optional)
+#ingredients
+2 (8-inch) flour tortillas
+2-2⁄3 ounces Monterey Jack or cheddar cheese, shredded (²⁄3 cup)
+1 tablespoon minced jarred jalapeños (optional)
 Vegetable oil for brushing tortillas
 Kosher salt
+#instructions
 1. Heat 10-inch nonstick skillet over medium heat until hot, about 2 minutes. Place 1 tortilla in skillet and toast until soft and puffed slightly at edges, about 2 minutes. Flip tortilla and toast until puffed and slightly browned, 1 to 2 minutes longer. Slip tortilla onto cutting board. Repeat to toast second tortilla while assembling first quesadilla.
 2. Sprinkle ¹⁄3 cup cheese and half of jalapeños, if using, over half of tortilla, leaving ¹⁄2-inch border around edge. Fold tortilla in half over filling and press to flatten. Brush top generously with oil, sprinkle lightly with salt, and set aside. Repeat to form second quesadilla.
 3. Place quesadillas in skillet, oiled sides down. Cook over medium heat until crisp and well browned, 1 to 2 minutes. Brush tops with oil and sprinkle lightly with salt. Flip quesadillas and cook until second sides are crisp, 1 to 2 minutes. Transfer quesadillas to cutting board. Cool about 3 minutes, halve each quesadilla, and serve.
+
 CHEDDAR, BACON, AND SCALLION QUESADILLAS
 For more bacon flavor, substitute the rendered bacon fat for the oil and omit the salt.
 Cook 2 slices bacon, cut into ¹⁄2-inch pieces, in 10-inch nonstick skillet over medium heat until crisp, 5 to 7 minutes. Transfer bacon to paper towel–lined plate and wipe out skillet with paper towels. Use cheddar cheese and sprinkle half of bacon and 1 tablespoon thinly sliced scallions over cheese in each quesadilla.
+
 CORN AND BLACK BEAN QUESADILLAS WITH PEPPER JACK CHEESE
 Cook ¹⁄3 cup thawed frozen corn in 10-inch nonstick skillet over medium-high heat, stirring occasionally, until kernels begin to brown and pop, 3 to 5 minutes; transfer to bowl. Heat 2 teaspoons vegetable oil in skillet over medium heat until shimmering. Add ¹⁄3 cup minced red onion and cook until softened, about 3 minutes. Add 1 teaspoon minced garlic and ¹⁄2 teaspoon chili powder and cook until fragrant, about 1 minute; stir in ¹⁄3 cup canned black beans and cook until heated through, about 1 minute. Return corn to skillet and gently press mixture with spatula to lightly crush beans. Transfer mixture to bowl, stir in 2 teaspoons lime juice, and season with salt. Substitute pepper Jack cheese for Monterey Jack and divide corn-and-bean filling between quesadillas.
+
 QUESADILLAS WITH QUESO FRESCO AND ROASTED PEPPERS
 Use a light hand when seasoning with kosher salt, as the cheese is rather salty.
 Substitute ²⁄3 cup crumbled queso fresco for the Monterey Jack and add 1 tablespoon chopped roasted red pepper, patted dry, and ¹⁄4 teaspoon chopped fresh cilantro to the filling in each quesadilla.
+
 CUBANO QUESADILLAS
 Use a light hand when seasoning with salt, as the cheese is rather salty.
 Omit the Monterey Jack and jarred jalapeños. In step 2, spread 2 teaspoons yellow mustard over half of each toasted tortilla, then top with 2 slices deli ham, ¹⁄3 cup shredded Gruyère cheese, and 1 tablespoon each finely chopped onion and pickles. Fold tortillas in half over filling and proceed with recipe as directed.
-BRUSCHETTA
-WHY THIS RECIPE WORKS
-The ingredients in modern bruschetta—toasted bread, tomatoes, and basil—may seem like an appealing combination but in reality, the tomatoes usually lack flavor, excess liquid results in soggy bread, and precariously stacked toppings often end up on your shirt. We wanted to establish a solid recipe for classic bruschetta and then go on to develop several more bruschetta recipes featuring smart flavor combinations that didn’t require a bib; we were after a mix of recipes that gave us both lighter and heartier topping options. Along with fresh ingredients like mushrooms, we found that pantry ingredients, such as marinated peppers paired with sharp feta cheese or dried figs teamed up with goat cheese and salty prosciutto, fit the bill when summer tomatoes weren’t an option. Creating a “glue” by pulsing ingredients in the food processor helped us anchor lighter toppings to the bread for several recipes.
+#end
+#title
 TOASTED BREAD FOR BRUSCHETTA
+#quantity
 SERVES 8 TO 10
-Toast the bread as close as possible to the time at which you plan to assemble the bruschetta.
-1
-loaf country bread with thick crust (about 10 by 5 inches), ends discarded, sliced crosswise into ³⁄4-inch-thick pieces
-¹⁄2
-garlic clove, peeled
+#ingredients
+1 loaf country bread with thick crust (about 10 by 5 inches), ends discarded, sliced crosswise into ³⁄4-inch-thick pieces
+1⁄2 garlic clove, peeled
 Extra-virgin olive oil
 Salt
+#instructions
 Adjust oven rack 4 inches from broiler element and heat broiler. Place bread on aluminum foil–lined baking sheet. Broil until bread is deep golden, 1 to 2 minutes. Flip and repeat on second side. Lightly rub 1 side of each bread slice with garlic and brush with oil. Season with salt to taste.
-TEST KITCHEN TIP NO. 6 KEEPING A SHARP EDGE
-With three dozen test cooks, editors, and cookware specialists working side by side in the test kitchen, we take knife care very seriously. Simply put, a dull knife is a dangerous knife. Here’s why: The duller the blade, the more work it takes to do the job—and the easier it is for the blade to slip and miss the mark (slippery ingredients like onions are the worst offenders), quickly sending the knife toward your hand. With a sharp knife, the blade does the work—and the razorlike edge is far less likely to slip.
-To determine if your knife is sharp, put it to a simple test. Hold a folded, but not creased, sheet of newspaper by one end. Lay the blade against the top edge at an angle and slice outward. If the knife fails to slice cleanly, try running the blade over a sharpening steel. A sharpening steel is a tune-up device, not a knife sharpener. Just a few minutes of cutting can knock the edge of a knife out of alignment and running the blade over the sharpening steel can reset the edge. That said, if your knife still fails to slice cleanly after using a steel, it means the edge is worn down and needs proper sharpening.
-To sharpen your knife, you have three choices. You can send it out to a professional for sharpening, you can use a whetstone (tricky for anyone but a professional), or—the most convenient option—you can use an electric or manual sharpener.
+#end
+#title
 BRUSCHETTA WITH TOMATOES AND BASIL
+#quantity
 SERVES 8 TO 10
-This is the classic bruschetta, although you can substitute other herbs. Decrease the quantity of stronger herbs, such as thyme or oregano. Toast the bread as close as possible to the time at which you plan to assemble the bruschetta.
-1
-recipe TOASTED BREAD FOR BRUSCHETTA
-3
-tablespoons extra-virgin olive oil
-1¹⁄2
-pounds tomatoes, cored and cut into ¹⁄2-inch dice
-¹⁄3
-cup shredded fresh basil
+#ingredients
+1 recipe TOASTED BREAD FOR BRUSCHETTA
+3 tablespoons extra-virgin olive oil
+1-1⁄2 pounds tomatoes, cored and cut into ¹⁄2-inch dice
+1⁄3 cup shredded fresh basil
 Salt and pepper
+#instructions
 Brush toasts with oil. Combine tomatoes and basil in medium bowl and season with salt and pepper to taste. Divide tomato mixture evenly among toasts. Serve immediately.
+#end
+#title
 BRUSCHETTA WITH BLACK OLIVE PESTO, RICOTTA, AND BASIL
+#quantity
 SERVES 8 TO 10
 Use only a high-quality whole-milk ricotta for this recipe. Toast the bread as close as possible to the time at which you plan to assemble the bruschetta.
-1
-recipe TOASTED BREAD FOR BRUSCHETTA
-6
-tablespoons extra-virgin olive oil, plus extra for serving
-¹⁄2
-cup pitted kalamata olives
-1
-small shallot, minced
-1¹⁄2
-teaspoons lemon juice
-1
-garlic clove, minced
-1¹⁄2
-cups whole-milk ricotta cheese
+#ingredients
+1 recipe TOASTED BREAD FOR BRUSCHETTA
+6 tablespoons extra-virgin olive oil, plus extra for serving
+1⁄2 cup pitted kalamata olives
+1 small shallot, minced
+1-1⁄2 teaspoons lemon juice
+1 garlic clove, minced
+1-1⁄2 cups whole-milk ricotta cheese
 Salt and pepper
-2
-tablespoons shredded fresh basil
-Brush toasts with ¹⁄4 cup oil. Process olives, remaining 2 tablespoons oil, shallot, lemon juice, and garlic in food processor until uniform paste forms, about 10 seconds, scraping down bowl once during processing. Combine ricotta with salt and pepper to taste in small bowl. Divide olive pesto evenly among toasts and spread to edges. Top with ricotta and carefully spread over pesto. Drizzle with olive oil to taste, sprinkle with basil, and serve.
-TEST KITCHEN TIP NO. 7 OLIVES—WHAT’S THE DIFFERENCE?
-Jarred olives come in three basic types at the supermarket: brine-cured green, brine-cured black, and salt-cured black (often erroneously labeled “oil-cured”). Brine-cured olives are soaked in a salt solution; salt-cured olives are packed in salt until nearly all their liquid has been extracted, then covered in oil to be re-plumped. Both processes traditionally take weeks or even months. Generally we find that brine-cured black or green olives can be used interchangeably in any recipe based on personal preference. Often labeled “Spanish” olives, green olives are picked before fully ripened and their mild flavor adds a bright, acidic dimension to food. Picked when mature, black olives lend a more robust, fruity taste. Among our test cooks, only a few olive aficionados favored the concentrated, bitter taste of salt-cured olives—we don’t recommend cooking with them unless a recipe specifically calls for them. And as for canned olives? We avoid them entirely, finding them almost tasteless, with a firm yet oddly slippery texture.
+2 tablespoons shredded fresh basil
+#instructions
+Brush toasts with 1⁄4 cup oil. Process olives, remaining 2 tablespoons oil, shallot, lemon juice, and garlic in food processor until uniform paste forms, about 10 seconds, scraping down bowl once during processing. Combine ricotta with salt and pepper to taste in small bowl. Divide olive pesto evenly among toasts and spread to edges. Top with ricotta and carefully spread over pesto. Drizzle with olive oil to taste, sprinkle with basil, and serve.
+#end
+#title
 BRUSCHETTA WITH RED ONIONS, MINT, AND PARMESAN
+#quantity
 SERVES 8 TO 10
-Fresh mint gives the onion and cheese topping a refreshing finish, but parsley can be substituted. Toast the bread as close as possible to the time at which you plan to assemble the bruschetta.
-1
-recipe TOASTED BREAD FOR BRUSCHETTA
-6
-tablespoons extra-virgin olive oil
-4
-red onions, halved and sliced thin
-4
-teaspoons sugar
-2
-tablespoons balsamic vinegar
-1¹⁄2
-tablespoons minced fresh mint
+#ingredients
+1 recipe TOASTED BREAD FOR BRUSCHETTA
+6 tablespoons extra-virgin olive oil
+4 red onions, halved and sliced thin
+4 teaspoons sugar
+2 tablespoons balsamic vinegar
+1-1⁄2 tablespoons minced fresh mint
 Salt and pepper
-3
-tablespoons grated Parmesan cheese
+3 tablespoons grated Parmesan cheese
+#instructions
 1. Brush toasts with 2¹⁄2 tablespoons oil. Heat remaining 3¹⁄2 tablespoons oil in 12-inch skillet over medium-high heat. Add onions and sugar and cook, stirring often, until onions are softened, 7 to 8 minutes. Reduce heat to medium-low and continue to cook, stirring often, until onions are sweet and tender, 7 to 8 minutes longer. Stir in vinegar and mint and season with salt and pepper to taste.
 2. Divide onion mixture evenly among toasts, then sprinkle with cheese.
 3. Broil until cheese just melts. Transfer bruschetta to large platter and serve immediately. (Onion mixture can be covered and refrigerated for 1 week.)
+#end
+#title
 BRUSCHETTA WITH WHIPPED FETA AND ROASTED RED PEPPERS
+#quantity
 SERVES 8 TO 10
-Toast the bread as close as possible to the time at which you plan to assemble the bruschetta.
-1
-recipe TOASTED BREAD FOR BRUSCHETTA
-6
-tablespoons extra-virgin olive oil, plus extra for serving
-1 ¹⁄2
-cups jarred roasted red peppers, rinsed, patted dry, and cut into ¹⁄2-inch dice
-2
-tablespoons red wine vinegar
-2
-tablespoons sugar
-1
-medium garlic clove, minced
-¹⁄4
-teaspoon red pepper flakes
+#ingredients
+1 recipe TOASTED BREAD FOR BRUSCHETTA
+6 tablespoons extra-virgin olive oil, plus extra for serving
+1-1⁄2 cups jarred roasted red peppers, rinsed, patted dry, and cut into ¹⁄2-inch dice
+2 tablespoons red wine vinegar
+2 tablespoons sugar
+1 medium garlic clove, minced
+1⁄4 teaspoon red pepper flakes
 Salt and pepper
-8
-ounces feta cheese, crumbled (2 cups)
-2
-teaspoons lemon juice
-Brush toasts with ¹⁄4 cup oil. Combine roasted peppers, vinegar, sugar, garlic, pepper flakes, and ¹⁄4 teaspoon salt in medium bowl; set aside. Process feta, lemon juice, remaining 2 tablespoons olive oil, and ¹⁄4 teaspoon black pepper in food processor until smooth, about 10 seconds, scraping down bowl with rubber spatula once during processing. Divide feta mixture evenly among toasts and spread to edges. Using fork, lift peppers from vinegar mixture and place on toasts. Drizzle with olive oil to taste and serve.
+8 ounces feta cheese, crumbled (2 cups)
+2 teaspoons lemon juice
+#instructions
+Brush toasts with 1⁄4 cup oil. Combine roasted peppers, vinegar, sugar, garlic, pepper flakes, and 1⁄4 teaspoon salt in medium bowl; set aside. Process feta, lemon juice, remaining 2 tablespoons olive oil, and 1⁄4 teaspoon black pepper in food processor until smooth, about 10 seconds, scraping down bowl with rubber spatula once during processing. Divide feta mixture evenly among toasts and spread to edges. Using fork, lift peppers from vinegar mixture and place on toasts. Drizzle with olive oil to taste and serve.
+#end
+#title
 BRUSCHETTA WITH GRILLED PORTOBELLO MUSHROOMS
+#quantity
 SERVES 8 TO 10
-The mushrooms are grilled with the gill-covered undersides facing up to prevent loss of juices. For serving, the mushrooms are flipped onto the bread so their juices seep down into the toast. Toast the bread as close as possible to the time at which you plan to assemble the bruschetta.
-1
-recipe TOASTED BREAD FOR BRUSCHETTA
-6
-tablespoons extra-virgin olive oil
-4
-portobello mushrooms, stemmed
-1
-tablespoon minced fresh rosemary
+#ingredients
+1 recipe TOASTED BREAD FOR BRUSCHETTA
+6 tablespoons extra-virgin olive oil
+4 portobello mushrooms, stemmed
+1 tablespoon minced fresh rosemary
+#instructions
 1A. FOR A CHARCOAL GRILL: Open bottom vent completely. Light large chimney starter filled with charcoal briquettes (6 quarts). When top coals are partially covered with ash, pour evenly over grill. Set cooking grate in place, cover, and open lid vent completely. Heat grill until hot, about 5 minutes.
 1B. FOR A GAS GRILL: Turn all burners to high, cover, and heat grill until hot, about 15 minutes. Turn all burners to medium. (Adjust burners as needed to maintain grill temperature around 350 degrees.)
 2. While grill heats, brush toasts with 2¹⁄2 tablespoons oil. Place mushroom caps on large baking sheet. Mix remaining 3¹⁄2 tablespoons oil, rosemary, and salt and pepper to taste in small bowl. Brush oil mixture over both sides of mushrooms.
 3. Clean and oil cooking grate. Grill mushrooms, gill side up, until caps are cooked through and grill-marked, 8 to 10 minutes.
 4. Halve grilled mushrooms. Place 1 half, gill side down, on each toast. Serve immediately.
+#end
+#title
 BRUSCHETTA WITH PORT-CARAMELIZED ONIONS, BLUE CHEESE, AND WALNUTS
+#quantity
 SERVES 8 TO 10
-Toast the bread as close as possible to the time at which you plan to assemble the bruschetta.
-1
-recipe TOASTED BREAD FOR BRUSCHETTA
-¹⁄4
-cup extra-virgin olive oil, plus extra for serving
-1¹⁄2
-teaspoons unsalted butter
-1¹⁄2
-teaspoons vegetable oil
-1
-pound onions, sliced ¹⁄4 inch thick
-¹⁄2
-teaspoon light brown sugar
-¹⁄4
-teaspoon salt
-1
-cup port, preferably ruby
-8
-ounces mild blue cheese, crumbled (2 cups)
-3
-tablespoons milk
-¹⁄8
-teaspoon cayenne pepper
+#instructions
+1 recipe TOASTED BREAD FOR BRUSCHETTA
+1⁄4 cup extra-virgin olive oil, plus extra for serving
+1-1⁄2 teaspoons unsalted butter
+1-1⁄2 teaspoons vegetable oil
+1 pound onions, sliced ¹⁄4 inch thick
+1⁄2 teaspoon light brown sugar
+1⁄4 teaspoon salt
+1 cup port, preferably ruby
+8 ounces mild blue cheese, crumbled (2 cups)
+3 tablespoons milk
+1⁄8 teaspoon cayenne pepper
 Pepper
-¹⁄4
-cup walnuts, toasted and chopped fine
+1⁄4 cup walnuts, toasted and chopped fine
+#instructions
 1. Brush toasts with ¹⁄4 cup oil. Heat butter and vegetable oil in 10-inch nonstick skillet over high heat; add onions, sugar, and ¹⁄4 teaspoon salt and stir to coat. Cook, stirring occasionally, until onions soften and begin to release some moisture, about 5 minutes. Reduce heat to medium; cook, stirring frequently, until onions are deeply browned and sticky, about 35 minutes (if onions are sizzling or scorching, reduce heat; if onions are not browning after 15 minutes, increase heat). Stir in port and continue to cook until port reduces to glaze consistency, 4 to 6 minutes.
 2. Using fork, mash blue cheese and milk together in medium bowl until smooth, spreadable consistency is formed. Stir in cayenne, ¹⁄4 teaspoon black pepper, and walnuts. Divide blue cheese mixture evenly among toasts and spread to edges. Top with onions and distribute evenly over surface of cheese. Sprinkle with black pepper to taste, drizzle with olive oil to taste, and serve.
+#end
+#title
 BRUSCHETTA WITH SAUTÉED SWEET PEPPERS
+#quantity
 SERVES 8 TO 10
-Toast the bread as close as possible to the time at which you plan to assemble the bruschetta.
-1
-recipe TOASTED BREAD FOR BRUSCHETTA
-6
-tablespoons plus 1 teaspoonextra-virgin olive oil
-4
-large red bell peppers, stemmed, seeded, and cut into 3-by¹⁄4-inch strips
-2
-onions, halved and sliced thin
-³⁄4
-teaspoon salt
-3
-garlic cloves, minced
-¹⁄4
-teaspoon red pepper flakes
-1
-(14.5-ounce) can diced tomatoes, drained with ¹⁄4 cup juice reserved
-1¹⁄2
-teaspoons minced fresh thyme
-4
-teaspoons sherry vinegar
-2
-ounces Parmesan cheese, shaved into strips with vegetable peeler
+#ingredients
+1 recipe TOASTED BREAD FOR BRUSCHETTA
+6 tablespoons plus 1 teaspoonextra-virgin olive oil
+4 large red bell peppers, stemmed, seeded, and cut into 3-by¹⁄4-inch strips
+2 onions, halved and sliced thin
+3⁄4 teaspoon salt
+3 garlic cloves, minced
+1⁄4 teaspoon red pepper flakes
+1 (14.5-ounce) can diced tomatoes, drained with ¹⁄4 cup juice reserved
+1-1⁄2 teaspoons minced fresh thyme
+4 teaspoons sherry vinegar
+2 ounces Parmesan cheese, shaved into strips with vegetable peeler
+#instructions
 Brush both sides of toasts with 3 tablespoons oil. Heat 3 tablespoons more oil, bell peppers, onions, and ¹⁄2 teaspoon salt in 12-inch skillet over medium-high heat; cook, stirring occasionally, until vegetables are softened and browned at the edges, 10 to 12 minutes. Reduce heat to medium, push vegetables to sides of skillet, and add remaining 1 teaspoon oil, garlic, and red pepper flakes to center of skillet. Cook, mashing garlic with wooden spoon, until fragrant, about 30 seconds, then stir into vegetables. Reduce heat to low and stir in tomatoes, reserved juice, and thyme. Cover and cook, stirring occasionally, until moisture has evaporated, 15 to 18 minutes. Off heat, stir in vinegar and remaining ¹⁄4 teaspoon salt. Divide pepper mixture evenly among toasts, top with shaved Parmesan, and serve.
+#end
+#title
 BRUSCHETTA WITH SUMMER SQUASH, BACON, AND BLUE CHEESE
+#quantity
 SERVES 8 TO 10
-Toast the bread as close as possible to the time at which you plan to assemble the bruschetta.
-1
-recipe TOASTED BREAD FOR BRUSCHETTA
-5
-tablespoons extra-virgin olive oil
-4
-slices bacon, minced
-4
-summer squash and/or zucchini, halved lengthwise, seeded and cut into matchsticks
-1
-tablespoon red wine vinegar
-¹⁄2
-teaspoon salt
-¹⁄4
-teaspoon pepper
-4
-ounces blue cheese, crumbled (1 cup)
-¹⁄4
-cup chopped fresh basil
+#ingredients
+1 recipe TOASTED BREAD FOR BRUSCHETTA
+5 tablespoons extra-virgin olive oil
+4 slices bacon, minced
+4 summer squash and/or zucchini, halved lengthwise, seeded and cut into matchsticks
+1 tablespoon red wine vinegar
+1⁄2 teaspoon salt
+1⁄4 teaspoon pepper
+4 ounces blue cheese, crumbled (1 cup)
+1⁄4 cup chopped fresh basil
+#instructions
 1. Brush toasts with 3 tablespoons oil. Position oven rack 4 inches from broiler element and heat broiler. Cook bacon in 8-inch skillet over medium-high heat until crisp, about 5 minutes. Transfer to paper towel–lined plate.
 2. Combine squash, vinegar, remaining 2 tablespoons oil, salt, and pepper in medium bowl. Let stand 5 minutes, then fold in bacon, cheese, and basil.
 3. Divide mixture evenly among toasts. Broil bruschetta until cheese begins to melt, about 1¹⁄2 minutes. Serve immediately.
+#end
+#title
 BRUSCHETTA WITH ARTICHOKE HEARTS AND PARMESAN
+#quantity
 SERVES 8 TO 10
-Use artichoke hearts packed in water. Toast the bread as close as possible to the time at which you plan to assemble the bruschetta.
-1
-recipe TOASTED BREAD FOR BRUSCHETTA
-6
-tablespoons extra-virgin olive oil, plus extra for serving
-1
-(14-ounce) can artichoke hearts, rinsed and patted dry
-2
-tablespoons chopped fresh basil
-2
-teaspoons lemon juice
-1
-garlic clove, minced
-¹⁄4
-teaspoon salt
+#ingredients
+1 recipe TOASTED BREAD FOR BRUSCHETTA
+6 tablespoons extra-virgin olive oil, plus extra for serving
+1 (14-ounce) can artichoke hearts, rinsed and patted dry
+2 tablespoons chopped fresh basil
+2 teaspoons lemon juice
+1 garlic clove, minced
+1⁄4 teaspoon salt
 Pepper
-2
-ounces Parmesan cheese, 1 ounce grated fine (¹⁄2 cup), 1 ounce shaved into strips with vegetable peeler
+2 ounces Parmesan cheese, 1 ounce grated fine (1⁄2 cup), 1 ounce shaved into strips with vegetable peeler
+#instructions
 Brush toasts with ¹⁄4 cup oil. Pulse artichoke hearts, remaining 2 tablespoons oil, basil, lemon juice, garlic, salt, and ¹⁄4 teaspoon pepper in food processor until coarsely pureed, about 6 pulses, scraping down bowl once during processing. Add grated Parmesan and pulse to combine, about 2 pulses. Divide artichoke mixture evenly among toasts and spread to edges. Top with shaved Parmesan. Sprinkle with pepper to taste, drizzle with olive oil to taste, and serve.
+#end
+#title
 BRUSCHETTA WITH ARUGULA, RED ONIONS, AND ROSEMARY–WHITE BEAN SPREAD
+#quantity
 SERVES 8 TO 10
-Toast the bread as close as possible to the time at which you plan to assemble the bruschetta.
-1
-recipe TOASTED BREAD FOR BRUSCHETTA
-6
-tablespoons extra-virgin olive oil
-1
-(15-ounce) can cannellini beans, rinsed
-2
-tablespoons water
-1
-tablespoon lemon juice
-1
-small garlic clove, crushed
-³⁄4
-teaspoon salt
-¹⁄4
-teaspoon pepper
-¹⁄4
-teaspoon chopped fresh rosemary
-1
-tablespoon balsamic vinegar
-¹⁄4
-red onion, sliced thin
-2
-ounces arugula (2 cups), cut into ¹⁄2-inch strips
+#ingredients
+1 recipe TOASTED BREAD FOR BRUSCHETTA
+6 tablespoons extra-virgin olive oil
+1 (15-ounce) can cannellini beans, rinsed
+2 tablespoons water
+1 tablespoon lemon juice
+1 small garlic clove, crushed
+3⁄4 teaspoon salt
+1⁄4 teaspoon pepper
+1⁄4 teaspoon chopped fresh rosemary
+1 tablespoon balsamic vinegar
+1⁄4 red onion, sliced thin
+2 ounces arugula (2 cups), cut into 1⁄2-inch strips
+#instructions
 1. Brush toasts with 3 tablespoons oil. In food processor, process two-thirds of beans, 2 tablespoons oil, water, lemon juice, garlic, ¹⁄2 teaspoon salt, and ¹⁄8 teaspoon pepper until smooth, about 10 seconds. Add remaining beans and rosemary; pulse until incorporated but not smooth, about 5 pulses.
 2. Whisk remaining 1 tablespoon oil, vinegar, remaining ¹⁄4 teaspoon salt, and remaining ¹⁄8 teaspoon pepper in medium bowl; add onion and toss.
 3. Divide bean spread evenly among toasts. Toss arugula with onion until coated, then top toasts with portion of onion and arugula. Serve immediately.
+#end
+#title
 BRUSCHETTA WITH GOAT CHEESE, FIGS, AND PROSCIUTTO
+#quantity
 SERVES 8 TO 10
-A soft, mild goat cheese works best here. Toast the bread as close as possible to the time at which you plan to assemble the bruschetta.
-1
-recipe TOASTED BREAD FOR BRUSCHETTA
-¹⁄4
-cup extra-virgin olive oil, plus extra for serving
-5
-ounces dried Calimyrna or Turkish figs, chopped coarse (about 1 cup)
-³⁄4
-cup water
-¹⁄4
-cup balsamic vinegar
+#ingredients
+1 recipe TOASTED BREAD FOR BRUSCHETTA
+1⁄4 cup extra-virgin olive oil, plus extra for serving
+5 ounces dried Calimyrna or Turkish figs, chopped coarse (about 1 cup)
+3⁄4 cup water
+1⁄4 cup balsamic vinegar
 Salt
-8
-ounces goat cheese, room temperature
-4
-ounces thinly sliced prosciutto, torn into bite-size pieces
+8 ounces goat cheese, room temperature
+4 ounces thinly sliced prosciutto, torn into bite-size pieces
+#instructions
 1. Brush toasts with ¹⁄4 cup oil. Bring figs, water, and vinegar to boil in small saucepan over high heat. Reduce heat to low, cover, and simmer, stirring occasionally, until mixture is almost dry and figs have softened, about 20 minutes (if after 20 minutes mixture is still moist, remove lid and continue to cook until almost dry). Process fig mixture in food processor until uniform paste forms, about 10 seconds, scraping down bowl once during processing.
 2. Divide goat cheese evenly among toasts and spread to edges. Top with fig mixture and carefully spread over cheese. Top each slice with pieces of prosciutto, drizzle with olive oil to taste, and serve.
+#end
+#title
 TOMATO AND MOZZARELLA TART
-WHY THIS RECIPE WORKS
-Falling somewhere in between pizza and quiche, a tomato and mozzarella tart shares the flavors of both but features problems unique unto itself. For starters, some sort of pastry crust is required. Second, the moisture in the tomatoes almost guarantees a soggy crust. Third, tomato tarts are often short on flavor. We set out to develop a recipe that could easily be made at home with a solid bottom crust and great vine-ripened flavor. The best results came from using a two-step baking method—we parbaked the unfilled crust until golden, then baked it again once the topping had been added, which gave us a flaky yet rigid crust. “Waterproofing” the crust with egg wash and using two kinds of cheese in layers prevented sogginess. We also salted the sliced tomatoes for 30 minutes, then gently pressed them with paper towels to remove excess juice.
-See “FORMING THE TART SHELL” illustrations that follow recipe.
-TOMATO AND MOZZARELLA TART
+#quantity
 SERVES 6 TO 8
-Thawing the frozen puff pastry in the refrigerator overnight will help prevent cracking while unfolding it. Be sure to use low-moisture supermarket mozzarella sold in block form, not fresh water-packed mozzarella.
-1
-box frozen puff pastry, thawed in box in refrigerator overnight
-1
-large egg, beaten
-2
-ounces Parmesan cheese, grated (1 cup)
-1
-pound plum tomatoes, cored and cut crosswise into ¹⁄4-inch-thick slices
+#ingredients
+1 box frozen puff pastry, thawed in box in refrigerator overnight
+1 large egg, beaten
+2 ounces Parmesan cheese, grated (1 cup)
+1 pound plum tomatoes, cored and cut crosswise into ¹⁄4-inch-thick slices
 Salt and pepper
-2
-garlic cloves, minced
-2
-tablespoons extra-virgin olive oil
-8
-ounces whole-milk mozzarella cheese, shredded (2 cups)
-2
-tablespoons chopped fresh basil
+2 garlic cloves, minced
+2 tablespoons extra-virgin olive oil
+8 ounces whole-milk mozzarella cheese, shredded (2 cups)
+2 tablespoons chopped fresh basil
+#instructions
 1. Adjust oven rack to lower-middle position and heat oven to 425 degrees. Dust counter with flour and unfold both pieces puff pastry onto counter. Following illustrations, form 1 large sheet, then make border, using beaten egg as directed. Sprinkle Parmesan evenly over shell. Using fork, uniformly poke holes in shell all over. Bake 13 to 15 minutes, then reduce oven temperature to 350 degrees. Continue to bake until golden brown and crisp, 13 to 15 minutes longer. Transfer to wire rack; increase oven temperature to 425 degrees.
 2. While shell bakes, place tomato slices in single layer on double layer of paper towels and sprinkle evenly with ¹⁄2 teaspoon salt; let stand 30 minutes. Place another double layer of paper towels on top of tomatoes and press firmly to dry tomatoes. Combine garlic, olive oil, and pinch each salt and pepper in small bowl; set aside.
 3. Sprinkle mozzarella evenly over baked shell. Shingle tomato slices widthwise on top of cheese (about 4 slices per row); brush tomatoes with garlic oil. Bake until shell is deep golden brown and cheese is melted, 15 to 17 minutes. Cool on wire rack 5 minutes. Sprinkle with basil, slide onto cutting board or serving platter, cut into pieces, and serve.
+
 TO MAKE AHEAD: Tart shell can be prebaked through step 1, cooled to room temperature, wrapped in plastic wrap, and kept at room temperature for up to 2 days before being topped and baked with mozzarella and tomatoes.
+
 CHERRY TOMATO AND MOZZARELLA TART
 Omit salted and drained plum tomatoes and substitute the following mixture: In medium bowl, gently toss 1¹⁄2 pounds (2 pints) halved cherry tomatoes with ¹⁄4 cup olive oil, 1 tablespoon balsamic vinegar, 3 thinly sliced large garlic cloves, 1¹⁄2 teaspoons sugar, ¹⁄2 teaspoon salt, ¹⁄4 teaspoon red pepper flakes, and ¹⁄4 teaspoon pepper. Spread mixture in even layer on rimmed baking sheet and, after removing tart shell from oven, roast tomatoes until skins are slightly shriveled (tomatoes should retain their shape) about 30 minutes. (Do not stir tomatoes during roasting.) Prepare garlic oil and sprinkle mozzarella over baked shell as directed, then use slotted spoon to scatter roasted cherry tomato mixture on top of cheese. Brush with garlic oil and proceed as directed.
+
 SUN-DRIED TOMATO AND MOZZARELLA TART
 Replacing the plum tomatoes with sun-dried tomatoes turns this into an appetizer you can make any time of year.
 Substitute ¹⁄2 cup oil-packed sun-dried tomatoes, drained, rinsed, and chopped fine, for plum tomatoes.
+
 TOMATO AND SMOKED MOZZARELLA TART
 Substitute 6 ounces smoked mozzarella for whole-milk mozzarella.
+
 TOMATO AND MOZZARELLA TART WITH PROSCIUTTO
 Place 2 ounces thinly sliced prosciutto in single layer on top of mozzarella before arranging tomato slices.
+
 FORMING THE TART SHELL
 1. Brush egg along 1 short edge of 1 sheet of puff pastry. Overlap with second sheet of dough by 1 inch and press to seal pieces together.
 2. With rolling pin, smooth out seam. Dough should measure about 18 by 9 inches. Use pizza wheel or knife to trim edges straight, if necessary.
@@ -1054,234 +942,180 @@ FORMING THE TART SHELL
 4. Cut 1-inch strip from 1 short side of dough. Cut another 1-inch strip from same side. Transfer pieces of dough to parchment-lined baking sheet and brush with egg.
 5. Gently press 1 long strip of dough onto each long edge of dough and brush with egg. Gently press 1 short strip of dough onto each short edge and brush with egg.
 6. With pizza wheel or knife, trim excess dough from corners.
+#end
+#title
 FRESH SPRING ROLLS
-WHY THIS RECIPE WORKS
-Fresh spring rolls should offer a textural symphony (soft wrapper, firm noodles, and crunchy vegetables) as well as appealing contrasts in flavor (mint, basil, cilantro, chiles, peanuts, and fish sauce). But too often, spring rolls are disappointing combinations of gummy noodles, bland vegetables, and mushy rice paper. We set out to develop a recipe for easy-to-make spring rolls packed with fresh, bright flavors and accompanied by a spicy, not-too-sweet peanut sauce for dipping. First, we soaked the spring roll wrappers in water for just 10 seconds, just long enough to make them pliable. Second, marinating the noodle-vegetable filling ingredients ensured superior flavor. Third, we eliminated the typical glut of sugar from the dipping sauce to put the peanut flavor at the forefront.
-See “ASSEMBLING SPRING ROLLS” illustrations that follow recipe.
-FRESH SPRING ROLLS
+#quantity
 MAKES 8 SPRING ROLLS
-If you can’t find Thai basil, do not substitute regular basil; its flavor is too gentle to stand up to the other, more assertive flavors in the filling. Mint makes a better substitute. Be sure to only make one spring roll at a time to keep the wrappers moist and pliable.
-2¹⁄2
-tablespoons lime juice (2 limes)
-1¹⁄2
-tablespoons fish sauce
-1
-teaspoon sugar
-3
-ounces rice vermicelli
-1
-teaspoon salt
-1
-large carrot, peeled and shredded
-¹⁄3
-cup chopped dry-roasted peanuts
-1
-jalapeño chile or 2 Thai chiles, stemmed, seeded, and minced, or ¹⁄2 teaspoon red pepper flakes
-1
-large cucumber, peeled, halved, seeded, and cut into matchsticks
-4
-leaves red leaf lettuce or Boston lettuce, halved lengthwise
-8
-(8-inch) round rice paper wrappers
-¹⁄2
-cup loosely packed fresh Thai basil or mint, small leaves left whole, medium and large leaves torn into ¹⁄2-inch pieces
-¹⁄2
-cup loosely packed fresh cilantro leaves
-1
-recipe PEANUT DIPPING SAUCE (recipe follows)
+#ingredients
+2-1⁄2 tablespoons lime juice (2 limes)
+1-1⁄2 tablespoons fish sauce
+1 teaspoon sugar
+3 ounces rice vermicelli
+1 teaspoon salt
+1 large carrot, peeled and shredded
+1⁄3 cup chopped dry-roasted peanuts
+1 jalapeño chile or 2 Thai chiles, stemmed, seeded, and minced, or ¹⁄2 teaspoon red pepper flakes
+1 large cucumber, peeled, halved, seeded, and cut into matchsticks
+4 leaves red leaf lettuce or Boston lettuce, halved lengthwise
+8 (8-inch) round rice paper wrappers
+1⁄2 cup loosely packed fresh Thai basil or mint, small leaves left whole, medium and large leaves torn into ¹⁄2-inch pieces
+1⁄2 cup loosely packed fresh cilantro leaves
+1 recipe PEANUT DIPPING SAUCE (recipe follows)
+#instructions
 1. Combine lime juice, fish sauce, and sugar in small bowl.
 2. Bring 4 quarts water to boil in large pot. Remove from heat, stir in rice vermicelli and salt and let sit, stirring occasionally, until noodles are tender but not mushy, about 10 minutes. Drain noodles, transfer to medium bowl, and toss with 2 tablespoons fish sauce mixture.
 3. Combine carrot, peanuts, and jalapeño in small bowl. Add 1 tablespoon fish sauce mixture; toss to combine. Toss cucumber in remaining 1 tablespoon fish sauce mixture.
 4. Place lettuce on platter. Spread clean, damp kitchen towel on counter. Fill 9-inch pie plate with 1 inch room-temperature water. Immerse each wrapper in water until just pliable, about 2 minutes; lay softened wrapper on towel. Scatter about 6 Thai basil leaves and 6 cilantro leaves over wrapper. Following illustrations, arrange 5 cucumber sticks horizontally on wrapper, top with 1 tablespoon carrot mixture, then arrange about 2¹⁄2 tablespoons noodles on top of carrot mixture. Wrap spring roll and set on 1 lettuce piece on platter. Cover with second damp kitchen towel. Repeat with remaining wrappers and filling. Serve with peanut dipping sauce, wrapping lettuce around exterior of each roll. (Spring rolls are best eaten immediately, but they can be held for up to 4 hours in the refrigerator, covered with a clean, damp kitchen towel.)
+#end
+#title
 PEANUT DIPPING SAUCE
-MAKES ABOUT ³⁄4 CUP
-¹⁄4
-cup creamy peanut butter
-¹⁄4
-cup hoisin sauce
-¹⁄4
-cup water
-2
-tablespoons tomato paste
-1
-teaspoon Asian chili-garlic sauce (optional)
-2
-teaspoons peanut oil or vegetable oil
-2
-garlic cloves, minced
-1
-teaspoon red pepper flakes
+#quantity
+MAKES ABOUT 3⁄4 CUP
+#ingredients
+1⁄4 cup creamy peanut butter
+1⁄4 cup hoisin sauce
+1⁄4 cup water
+2 tablespoons tomato paste
+1 teaspoon Asian chili-garlic sauce (optional)
+2 teaspoons peanut oil or vegetable oil
+2 garlic cloves, minced
+1 teaspoon red pepper flakes
+#instructions
 Whisk peanut butter, hoisin sauce, water, tomato paste, and chili-garlic sauce, if using, in small bowl. Heat oil, garlic, and pepper flakes in small saucepan over medium heat until fragrant, 1 to 2 minutes. Stir in peanut butter mixture; bring to simmer, then reduce heat to medium-low and cook, stirring occasionally, until flavors blend, about 3 minutes. (Sauce should have ketchuplike consistency; if too thick, add water, 1 teaspoon at a time, until proper consistency is reached.) Transfer to bowl; cool to room temperature. (Sauce can be refrigerated for up to 3 days. Bring to room temperature before serving.)
+
 FRESH SPRING ROLLS WITH SHRIMP
 Peel and remove tails from 8 ounces medium shrimp (41 to 50 per pound). Add shrimp to boiling water along with salt in step 2; cook until shrimp are opaque, about 3 minutes. Using slotted spoon, transfer shrimp to small bowl; use water to cook rice vermicelli as in step 2. When cool enough to handle, coarsely chop shrimp. When assembling spring rolls, place about 2 tablespoons chopped shrimp on top of noodles.
+
 ASSEMBLING SPRING ROLLS
 1. After layering herbs, cucumber, carrot mixture, and noodles on wrapper, fold up bottom 2-inch border of wrapper over filling.
 2. Fold left, then right edge of wrapper over filling.
 3. Roll filling to top edge of wrapper to form tight cylinder.
+#end
+#title
 SCALLION PANCAKES
-WHY THIS RECIPE WORKS
-Scallion pancakes should boast multiple paper-thin layers laced with scallions and just a hint of sesame flavor. The exterior should be brown and crisp while the interior retains a soft chew. We found 2 tablespoons of scallions per pancake was just right for bold allium flavor. Cilantro lent a great herbal flavor. Brushing a thin layer of sesame oil onto the pancakes before sprinkling on the scallions and cilantro added the right sesame flavor. As for forming the pancakes, we got the best results from rolling the dough into a pancake, sprinkling the flavorings over, rolling it into a log, then coiling it around itself like a snake and rolling it out into a pancake again. This was easier to do than expected and the result was a pancake with tender layers and evenly incorporated scallions.
-See “ROLLING AND FORMING SCALLION PANCAKES” illustrations that follow recipe.
-SCALLION PANCAKES
+#quantity
 SERVES 4 TO 6
-We like these pancakes with the dipping sauce, but if preferred, you can omit the sauce and simply sprinkle with salt to taste before serving.
-1¹⁄2
-cups all-purpose flour
-1
-teaspoon salt
-¹⁄2
-cup room-temperature water, plus extra if needed
-¹⁄4
-cup vegetable oil, plus extra for brushing
-2
-teaspoons toasted sesame oil
-6
-scallions, minced (¹⁄2 cup)
-2
-tablespoons minced fresh cilantro
-1
-recipe SCALLION DIPPING SAUCE
+#ingredients
+1-1⁄2 cups all-purpose flour
+1 teaspoon salt
+1⁄2 cup room-temperature water, plus extra if needed
+1⁄4 cup vegetable oil, plus extra for brushing
+2 teaspoons toasted sesame oil
+6 scallions, minced (¹⁄2 cup)
+2 tablespoons minced fresh cilantro
+1 recipe SCALLION DIPPING SAUCE
+#instructions
 1. Whisk flour and salt together in medium bowl. Add water and mix with dinner fork until combined. (If there are any floury bits left in bottom of bowl, add additional water, 1 teaspoon at a time, until dough comes together.) Turn dough out onto lightly floured counter and knead until smooth and satiny, about 5 minutes, adding extra flour to counter or your hands as needed to prevent sticking. Transfer dough to clean bowl, brush with thin layer of vegetable oil, and let rest at room temperature for 30 minutes.
 2. Divide dough into 4 equal pieces and cover to keep dough from drying out. Working with 1 piece of dough at a time, roll into 7-inch circle about ¹⁄8 inch thick on lightly floured counter. Brush dough round lightly with sesame oil, then sprinkle with 2 tablespoons scallions and 1¹⁄2 teaspoons cilantro.
 3. Following illustrations, roll dough into cylinder, then coil cylinder into round, tucking tail end underneath. Roll into 5-inch pancake about ¹⁄4 inch thick. Set aside and cover while repeating with remaining dough pieces.
 4. Heat 1 tablespoon vegetable oil in 12-inch nonstick skillet over medium heat until shimmering. Swirl oil to coat skillet, then add 1 dough round and cook until golden brown on both sides, 1¹⁄2 to 2 minutes per side. Transfer pancake to cutting board, tent with aluminum foil, and repeat 3 more times with remaining 3 tablespoons oil and remaining 3 dough rounds. Slice cooked pancakes into wedges and serve with Scallion Dipping Sauce.
+
 ROLLING AND FORMING SCALLION PANCAKES
 1. Divide dough into 4 equal pieces and cover. Working with 1 piece of dough at a time, roll dough into 7-inch circle about ¹⁄8 inch thick on lightly floured counter. Brush round lightly with sesame oil, then sprinkle with 2 tablespoons scallions and 1¹⁄2 teaspoons cilantro.
 2. Roll round into tight cylinder, brushing away any clumps of flour that have stuck to bottom of dough.
 3. Coil cylinder into tight round, tucking end underneath.
 4. Roll round into 5-inch pancake about ¹⁄4 inch thick, adding additional flour to counter as needed to prevent sticking.
-STEAMED CHINESE DUMPLINGS
-WHY THIS RECIPE WORKS
-The open-faced dumplings known as shu mai are ubiquitous on Cantonese menus, but homemade versions often disappoint us with their one-dimensional, mealy meatball flavor. For moist, tender, deeply flavored dumplings, we ground the pork ourselves from country-style pork ribs, since preground pork from the supermarket tends to cook up with unpredictable, inconsistent results. Grinding the meat to two textures ensured our filling held together but still had some texture, while adding a little gelatin and cornstarch kept the filling moist and supple. We tested a variety of wrappers and settled on delicate, easy-to-find egg roll wrappers.
-See “ASSEMBLING SHU MAI” illustrations that follow recipe.
+#end
+#title
 STEAMED CHINESE DUMPLINGS (SHU MAI)
+#quantity
 MAKES ABOUT 40 DUMPLINGS, SERVES 6 TO 8
-Do not trim the excess fat from the ribs; it contributes flavor and moistness. Use any size shrimp except popcorn shrimp; there’s no need to halve shrimp smaller than 26 to 30 per pound before processing.
-2
-tablespoons soy sauce
-¹⁄2
-teaspoon unflavored gelatin
-1
-pound boneless country-style pork ribs, cut into 1-inch pieces
-8
-ounces shrimp, peeled, tails removed and halved lengthwise
-¹⁄4
-cup water chestnuts, chopped
-4
-dried shiitake mushroom caps (about ³⁄4 ounce), soaked in hot water 30 minutes, squeezed dry, and chopped fine
-2
-tablespoons cornstarch
-2
-tablespoons minced fresh cilantro
-1
-tablespoon toasted sesame oil
-1
-tablespoon Chinese rice cooking wine or dry sherry
-1
-tablespoon rice vinegar
-2
-teaspoons sugar
-2
-teaspoons grated fresh ginger
-¹⁄2
-teaspoon salt
-¹⁄2
-teaspoon pepper
-1
-(1-pound) package 5¹⁄2-inch square egg roll wrappers
-¹⁄4
-cup finely grated carrot (optional)
-1
-recipe CHILI OIL, for serving (recipe follows)
+#instructions
+2 tablespoons soy sauce
+1⁄2 teaspoon unflavored gelatin
+1 pound boneless country-style pork ribs, cut into 1-inch pieces
+8 ounces shrimp, peeled, tails removed and halved lengthwise
+1⁄4 cup water chestnuts, chopped
+4 dried shiitake mushroom caps (about ³⁄4 ounce), soaked in hot water 30 minutes, squeezed dry, and chopped fine
+2 tablespoons cornstarch
+2 tablespoons minced fresh cilantro
+1 tablespoon toasted sesame oil
+1 tablespoon Chinese rice cooking wine or dry sherry
+1 tablespoon rice vinegar
+2 teaspoons sugar
+2 teaspoons grated fresh ginger
+1⁄2 teaspoon salt
+1⁄2 teaspoon pepper
+1 (1-pound) package 5¹⁄2-inch square egg roll wrappers
+1⁄4 cup finely grated carrot (optional)
+1 recipe CHILI OIL, for serving
+#instructions
 1. Combine soy sauce and gelatin in small bowl. Set aside to allow gelatin to soften, about 5 minutes.
 2. Meanwhile, place half of pork in food processor and pulse until coarsely ground into approximate ¹⁄8-inch pieces, about 10 pulses; transfer to large bowl. Add shrimp and remaining pork to food processor and pulse until coarsely chopped into approximate ¹⁄4-inch pieces, about 5 pulses. Transfer to bowl with more finely ground pork. Stir in soy sauce mixture, water chestnuts, mushrooms, cornstarch, cilantro, sesame oil, wine, vinegar, sugar, ginger, salt, and pepper.
 3. Divide egg roll wrappers into 3 stacks (6 to 7 per stack). Using 3-inch biscuit cutter, cut two 3-inch rounds from each stack of egg roll wrappers (you should have 40 to 42 rounds). Cover rounds with moist paper towels to prevent drying.
 4. Working with 6 rounds at a time, brush edges of each round lightly with water. Place heaping tablespoon of filling into center of each round. Following illustrations, form dumplings, crimping wrapper around sides of filling and leaving top exposed. Transfer to parchment paper–lined baking sheet, cover with clean, damp kitchen towel, and repeat with remaining wrappers and filling. Top center of each dumpling with pinch of grated carrot, if using.
 5. Cut piece of parchment slightly smaller than diameter of steamer basket and place in basket. Poke about 20 small holes in parchment and lightly coat with vegetable oil spray. Place batches of dumplings on parchment liner, making sure they are not touching. Set steamer over simmering water and cook, covered, until no longer pink, 8 to 10 minutes. Serve immediately with chili oil. (Dumplings may be frozen for up to 3 months; cook straight from the freezer for about an extra 5 minutes.)
+#end
+#title
 CHILI OIL
-MAKES ABOUT ¹⁄2 CUP
-1
-tablespoon soy sauce
-2
-teaspoons sugar
-¹⁄2
-teaspoon salt
-¹⁄2
-cup peanut oil
-¹⁄4
-cup red pepper flakes
-2
-garlic cloves, peeled
+#quantity
+MAKES ABOUT 1⁄2 CUP
+#instructions
+1 tablespoon soy sauce
+2 teaspoons sugar
+1⁄2 teaspoon salt
+1⁄2 cup peanut oil
+1⁄4 cup red pepper flakes
+2 garlic cloves, peeled
+#instructions
 Combine soy sauce, sugar, and salt in small bowl; set aside. Heat oil in small saucepan over medium heat until it is just shimmering and registers 300 degrees. Remove pan from heat and stir in pepper flakes, garlic, and soy sauce mixture. Let cool to room temperature, stirring occasionally, about 1 hour. Discard garlic before serving.
+
 ASSEMBLING SHU MAI
 1. Brush wrapper edges lightly with water. Place heaping tablespoon of filling in center.
 2. Pinch opposite sides of wrapper. Rotate 90 degrees and repeat. Continue until you have 8 equidistant folds.
 3. Gather sides of shu mai and squeeze gently at top to create “waist.”
 4. Hold shu mai in your hand and gently but firmly pack down filling with butter knife.
+#end
+#title
 PORK AND CABBAGE POTSTICKERS
-WHY THIS RECIPE WORKS
-Too often, potstickers are dense, flavorless meatballs wrapped in a doughy blanket. We wanted tender, well-seasoned dumplings. To lighten the filling, we increased the amount of cabbage (after first salting and draining it to get rid of excess moisture) and then added lightly beaten egg whites. Turning to the wrappers, we found that store-bought gyoza-style wrappers and wonton wrappers both made terrific potstickers, although tasters preferred the slightly chewy texture of the gyoza-style. To keep the filling in place and the wrapper from puffing up and away from the meat during cooking, we found it best to fold each meat-filled wrapper into a half-moon, pinch the middle closed, then carefully press out any air while sealing the edges. Our final challenge was the cooking procedure. A sequence of browning, steaming, then cranking up the heat produced potstickers with a pleasing balance of soft and crisp textures.
-See “WRAPPING POTSTICKERS” illustrations that follow recipe.
-PORK AND CABBAGE POTSTICKERS
+#quantity
 MAKES 24 DUMPLINGS, SERVES 6
-These dumplings are best served hot from the skillet; we recommend that you serve the first batch immediately, then cook the second batch.
+#ingredients
 FILLING
-¹⁄2
-head napa cabbage, chopped fine
-³⁄4
-teaspoon salt
-12
-ounces ground pork
-4
-scallions, minced
-1
-large egg, lightly beaten
-4
-teaspoons soy sauce
-1¹⁄2
-teaspoons grated fresh ginger
-1
-garlic clove, minced
-¹⁄8
-teaspoon pepper
+1⁄2 head napa cabbage, chopped fine
+3⁄4 teaspoon salt
+12 ounces ground pork
+4 scallions, minced
+1 large egg, lightly beaten
+4 teaspoons soy sauce
+1-1⁄2 teaspoons grated fresh ginger
+1 garlic clove, minced
+1⁄8 teaspoon pepper
+
 DUMPLINGS
-24
-round gyoza wrappers
-4
-teaspoons vegetable oil
-1
-cup water, plus extra for brushing
-1
-recipe SCALLION DIPPING SAUCE (recipe follows)
+24 round gyoza wrappers
+4 teaspoons vegetable oil
+1 cup water, plus extra for brushing
+1 recipe SCALLION DIPPING SAUCE
+#instructions
 1. FOR FILLING: Toss cabbage with salt in colander set over bowl and let stand until cabbage begins to wilt, about 20 minutes. Press cabbage gently with rubber spatula to squeeze out any excess moisture, then transfer to medium bowl. Add pork, scallions, egg, soy sauce, ginger, garlic, and pepper and mix thoroughly to combine. Cover with plastic wrap and refrigerate until mixture is cold, at least 30 minutes or up to 24 hours.
 2. FOR DUMPLINGS: Working with 4 wrappers at a time (keep remaining wrappers covered with plastic wrap), follow illustrations to fill, seal, and shape dumplings using generous 1 tablespoon of chilled filling per dumpling. Transfer dumplings to baking sheet and repeat with remaining wrappers and filling; you should have about 24 dumplings.
 3. Line large plate with double layer of paper towels. Brush 2 teaspoons oil over bottom of 12-inch nonstick skillet and arrange half of dumplings in skillet, flat side down (overlapping just slightly if necessary). Place skillet over medium-high heat and cook dumplings, without moving, until golden brown on bottom, about 5 minutes.
 4. Reduce the heat to low, add ¹⁄2 cup water, and cover immediately. Continue to cook, covered, until most of water is absorbed and wrappers are slightly translucent, about 10 minutes. Uncover skillet, increase heat to medium-high, and continue to cook, without stirring, until dumpling bottoms are well browned and crisp, 3 to 4 minutes more. Slide dumplings onto paper towel–lined plate, browned side facing down, and let drain briefly. Transfer dumplings to serving platter and serve with scallion dipping sauce. Let skillet cool until just warm, then wipe out with paper towels and repeat step 3 with remaining dumplings, oil, and water. (Uncooked dumplings can be placed on plate, wrapped tightly with plastic wrap, and refrigerated for 1 day, or frozen for 1 month. Once frozen, dumplings can be transferred to zipper-lock bag to save space in freezer; do not thaw before cooking.)
+
 SHRIMP POTSTICKERS
 Substitute 12 ounces peeled, deveined shrimp (any size), tails removed, pulsed 10 times in food processor, for pork.
+#end
+#title
 SCALLION DIPPING SAUCE
-MAKES ³⁄4 CUP
+MAKES 3⁄4 CUP
 The sauce can be refrigerated overnight.
-¹⁄4
-cup soy sauce
-2
-tablespoons rice vinegar
-2
-tablespoons mirin
-2
-tablespoons water
-1
-teaspoon chili oil (optional)
-¹⁄2
-teaspoon toasted sesame oil
-1
-scallion, minced
+1⁄4 cup soy sauce
+2 tablespoons rice vinegar
+2 tablespoons mirin
+2 tablespoons water
+1 teaspoon chili oil (optional)
+1⁄2 teaspoon toasted sesame oil
+1 scallion, minced
 Combine all ingredients in bowl and serve.
 WRAPPING POTSTICKERS
 1. Place rounded tablespoon of filling in center of wrapper.
 2. After moistening edge of wrapper, fold it in half to make half-moon shape.
 3. With forefinger and thumb, pinch dumpling closed, pressing out any air pockets.
 4. Place dumpling on its side and press gently to flatten bottom.
+#end
+#section
 Salads
 FOOLPROOF VINAIGRETTES
 WHY THIS RECIPE WORKS

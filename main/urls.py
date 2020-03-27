@@ -29,5 +29,7 @@ urlpatterns = [
      path("expired/",
           TemplateView.as_view(template_name="main/expired.html"),
           name="expired"),
-     
+     path("processing/",
+          TemplateView.as_view(template_name="main/processing.html"),
+          name="processing"),
     ]
