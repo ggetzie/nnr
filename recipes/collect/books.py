@@ -1,5 +1,6 @@
 import json
 import pathlib
+import queue
 import re
 
 
@@ -10,7 +11,7 @@ weird_nums = {chr(178): "2",
               chr(185): "1"}
 
 # re used to put ingredient amount and description on same line
-# fixed = re.sub(r'(?<=\n)([0-9⁄-]+)\n', r'\1 ', book_txt)
+# fixed = re.sub(r'(?<=\n)([0-9⁄–-]+)\n', r'\1 ', book_txt)
 
 def start_deleting(line):
     to_delete = {'WHY THIS RECIPE WORKS', 
@@ -48,6 +49,72 @@ def remove_dupes(booklines):
             outlines.append(line)
             last_line = line
     return outlines
+
+def tag_quantities(bookpath):
+    booklines = [l.strip() for l in open(bookpath)]
+    outlines = []
+    last_line = ""
+    for line in booklines:
+        if ((line.startswith("SERVES") or 
+             line.startswith("MAKES")) and not
+            last_line.startswith("#quantity")):
+            outlines.append("#quantity")
+            outlines.append(line)
+        else:
+            outlines.append(line)
+        last_line = line
+    out_txt = "\n".join([l+"  " for l in outlines])
+    with open("data/cibook_out.txt", "w") as outfile:
+        outfile.write(out_txt)
+    return outlines
+
+def tag_title_end(booklines, start_line):
+    outlines = []
+    last_line = booklines[start_line]
+    for line in booklines[start_line+1:]:
+        if line == "#quantity":
+            outlines.append("#end")
+            outlines.append("#title")
+            outlines.append(last_line)
+        else:
+            outlines.append(last_line)
+        last_line = line
+    outlines.append(last_line)
+    return booklines[:start_line] + outlines
+
+def tag_ingredients(booklines, start_line):
+    outlines = []
+    after_q = 0
+    for line in booklines[start_line:]:
+        if line == "#quantity":
+            after_q += 1
+            outlines.append(line)
+        elif after_q == 1:
+            after_q += 1
+            outlines.append(line)
+        elif after_q == 2:
+            outlines.append("#ingredients")
+            outlines.append(line)
+            after_q = 0
+        else:
+            outlines.append(line)
+    return booklines[:start_line] + outlines
+
+def tag_instructions(booklines, start_line):
+    outlines = []
+    for line in booklines[start_line:]:
+        if line.startswith("1."):
+            outlines.append("#instructions")
+        outlines.append(line)
+    return booklines[:start_line] + outlines
+
+def write_book(outlines):
+    out_txt = "\n".join([l + "  " for l in outlines])
+    with open("data/cibook_out.txt", "w") as outfile:
+        outfile.write(out_txt)
+
+def read_book():
+    return [l.strip() for l in open("data/cibook.txt")]
 
 def fix_weird_nums(book):
     out=""
