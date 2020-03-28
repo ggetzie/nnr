@@ -14,10 +14,14 @@ env = environ.Env()
 
 def handle_payment_success(event):
     customer_id = event.data.object.customer
+    customer_email = event.data.object.customer_email
     amount_paid = event.data.object.amount_paid
     logger.info("handling payment success")
     logger.info(f"customer_id={customer_id} paid {amount_paid}")
-    profile = Profile.objects.get(stripe_id=customer_id)
+    try:
+        profile = Profile.objects.get(stripe_id=customer_id)
+    except Profile.DoesNotExist:
+        profile = Profile.objects.get(user__email=customer_email)
     if amount_paid > 0:
         profile.payment_status = 3
         new_end = datetime.date.today() + relativedelta(years=1)
@@ -31,14 +35,22 @@ def handle_payment_success(event):
 
 def handle_payment_action(event):
     logger.info("handling payment action")
-    profile = Profile.objects.get(stripe_id=event.data.object.customer)
+    try:
+        profile = Profile.objects.get(stripe_id=event.data.object.customer)
+    except Profile.DoesNotExist:
+        customer_email = event.data.object.customer_email
+        profile = Profile.objects.get(user__email=customer_email)
     profile.payment_status = 1
     profile.sync_subscription()
     profile.save()
 
 def handle_payment_failure(event):
     logger.info("handling payment failure")
-    profile = Profile.objects.get(stripe_id=event.data.object.customer)
+    try:
+        profile = Profile.objects.get(stripe_id=event.data.object.customer)
+    except Profile.DoesNotExist:
+        customer_email = event.data.object.customer_email
+        profile = Profile.objects.get(user__email=customer_email)
     profile.payment_status = 0
     profile.sync_subscription()
     profile.save()
@@ -79,12 +91,22 @@ def handle_session_complete(event):
         
 def handle_subscription_updated(event):
     stripe_id = event.data.object.customer
-    profile = Profile.objects.get(stripe_id=stripe_id)
+    try:
+        profile = Profile.objects.get(stripe_id=stripe_id)
+    except Profile.DoesNotExist:
+        customer_email = event.data.object.customer_email
+        profile = Profile.objects.get(user__email=customer_email)
+        profile.stripe_id = stripe_id
+        profile.save()
     profile.sync_subscription()
 
 def handle_subscription_deleted(event):
     logger.info("Handling deleted subscription")
     stripe_id = event.data.object.customer
-    profile = Profile.objects.get(stripe_id=stripe_id)
-    profile.sync_subscription()
-    profile.subscription_end = datetime.date.today()
+    try:
+        profile = Profile.objects.get(stripe_id=stripe_id)
+        profile.sync_subscription()
+        profile.subscription_end = datetime.date.today()
+    except Profile.DoesNotExist:
+        # user must have been deleted before stripe customer /shrug?
+        pass
