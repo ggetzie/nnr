@@ -1,5 +1,5 @@
 #section  
-Appetizers  
+Appetizer  
 #title  
 WARM-SPICED PECANS WITH RUM GLAZE  
 #quantity  
@@ -521,7 +521,7 @@ MAKES ABOUT 1-1⁄2 CUPS
 #ingredients  
 3 slices bacon, cut into 1⁄4-inch pieces  
 3⁄4 cup sour cream  
-1⁄2 cup CARAMELIZED ONIONS (recipe follows)  
+1⁄2 cup CARAMELIZED ONIONS  
 2 scallions, minced  
 1⁄2 teaspoon cider vinegar  
 Salt and pepper  
@@ -962,7 +962,7 @@ MAKES 8 SPRING ROLLS
 8 (8-inch) round rice paper wrappers  
 1⁄2 cup loosely packed fresh Thai basil or mint, small leaves left whole, medium and large leaves torn into 1⁄2-inch pieces  
 1⁄2 cup loosely packed fresh cilantro leaves  
-1 recipe PEANUT DIPPING SAUCE (recipe follows)  
+1 recipe PEANUT DIPPING SAUCE  
 #instructions  
 1. Combine lime juice, fish sauce, and sugar in small bowl.  
 2. Bring 4 quarts water to boil in large pot. Remove from heat, stir in rice vermicelli and salt and let sit, stirring occasionally, until noodles are tender but not mushy, about 10 minutes. Drain noodles, transfer to medium bowl, and toss with 2 tablespoons fish sauce mixture.  
@@ -1118,7 +1118,7 @@ WRAPPING POTSTICKERS
 4. Place dumpling on its side and press gently to flatten bottom.  
 #end  
 #section  
-Salads  
+Salad  
 #title  
 FOOLPROOF VINAIGRETTE  
 #quantity  
@@ -1484,7 +1484,6 @@ CLASSIC CAESAR SALAD
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-If you can’t find ciabatta, a similar crusty, rustic loaf of bread can be substituted. A quarter cup of Egg Beaters may be substituted for the egg yolks. Since anchovy fillets vary in size, more than 6 fillets may be necessary to yield 1 tablespoon of minced anchovies. The easiest way to turn garlic cloves into a paste is to grate them on a rasp-style grater.  
 CROUTONS  
 2 garlic cloves, peeled  
 5 tablespoons extra-virgin olive oil  
@@ -1508,14 +1507,12 @@ Pepper
 3. FOR THE SALAD: Whisk 2 tablespoons lemon juice and reserved 3⁄4 teaspoon garlic paste together in large bowl. Let stand 10 minutes.  
 4. Whisk egg yolks, anchovies, and Worcestershire into garlic mixture. While whisking constantly, drizzle canola oil and olive oil into bowl in slow, steady stream until fully emulsified. Add 1⁄2 cup Parmesan and pepper to taste; whisk until incorporated.  
 5. Add romaine to dressing and toss to coat. Add croutons and mix gently until evenly distributed. Taste and season with up to additional 1 tablespoon lemon juice. Serve immediately, passing remaining 1⁄4 cup Parmesan separately.  
-THAI BEEF SALAD  
 #end  
 #title  
 GRILLED THAI BEEF SALAD  
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-Serve with rice, if desired. If fresh Thai chiles are unavailable, substitute 1⁄2 serrano chile. Don’t skip the toasted rice; it’s integral to the texture and flavor of the dish. Any variety of white rice can be used. Toasted rice powder (kao kua) can also be found in many Asian markets; substitute 1 tablespoon rice powder for the white rice.  
 1 teaspoon paprika  
 1 teaspoon cayenne pepper  
 1 tablespoon white rice  
@@ -1543,7 +1540,6 @@ GREEK SALAD
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-For the sake of efficiency, prepare the other salad ingredients while the onion and cucumber marinate.  
 VINAIGRETTE  
 6 tablespoons olive oil  
 3 tablespoons red wine vinegar  
@@ -1575,7 +1571,6 @@ SALAD NIÇOISE
 #quantity  
 SERVES 6  
 #ingredients  
-Prepare all the vegetables before you begin cooking the potatoes and this salad will come together very easily. Try to buy potatoes that are about 2 inches in diameter. Compose the salad on your largest, widest, flattest serving platter. Do not blanket the bed of lettuce with the other ingredients; leave some space between the mounds of potatoes, tomatoes and onions, and beans so that leaves of lettuce peek through.  
 VINAIGRETTE  
 3⁄4 cup extra-virgin olive oil  
 1⁄2 cup lemon juice (2 to 3 lemons)  
@@ -1604,8 +1599,8 @@ Salt and pepper
 3. While potatoes cook, toss lettuce with 1⁄4 cup vinaigrette in large bowl until coated. Arrange bed of lettuce on very large, flat serving platter. Place tuna in now-empty bowl and break up with fork. Add 1⁄2 cup vinaigrette and stir to combine; mound tuna in center of lettuce. Toss tomatoes, onion, 3 tablespoons vinaigrette, and salt and pepper to taste in now-empty bowl; arrange tomato-onion mixture in mound at edge of lettuce bed. Arrange reserved potatoes in separate mound at edge of lettuce bed.  
 4. Return water to boil; add 1 tablespoon salt and green beans. Cook until tender but crisp, 3 to 5 minutes. Meanwhile, fill medium bowl with 1 quart water and 1 tray ice cubes. Drain beans, transfer to ice water, and let stand until just cool, about 30 seconds; dry beans well on triple layer of paper towels. Toss beans, 3 tablespoons vinaigrette, and salt and pepper to taste in now-empty bowl; arrange in separate mound at edge of lettuce bed.  
 5. Arrange eggs, olives, and anchovies, if using, in separate mounds at edge of lettuce bed. Drizzle eggs with remaining 2 tablespoons dressing, sprinkle entire salad with capers, if using, and serve immediately.  
+
 SALAD NIÇOISE WITH GRILLED FRESH TUNA  
-#instructions  
 1. Combine two 8-ounce tuna steaks, each about 3⁄4 inch thick, with 2 tablespoons olive oil in gallon-size zipper-lock bag; seal bag, place in refrigerator, and marinate, turning several times, for at least 1 hour or overnight. Remove tuna from bag, sprinkle with salt and pepper, and set aside.  
 2A. FOR A CHARCOAL GRILL: Open bottom vent completely. Light large chimney starter filled with charcoal briquettes (6 quarts). When top coals are partially covered with ash, pour evenly over half of grill. Set cooking grate in place, cover grill, and heat grill until hot, about 5 minutes.  
 2B. FOR A GAS GRILL: Turn all burners to high, cover, and heat grill until hot, about 15 minutes.  
@@ -1616,7 +1611,6 @@ CHEF’S SALAD
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-At the deli counter, be sure to have the meats and cheeses sliced 1⁄4 inch thick.  
 VINAIGRETTE  
 6 tablespoons extra-virgin olive oil  
 3 tablespoons red wine vinegar  
@@ -1645,7 +1639,6 @@ CHEF’S SALAD WITH FENNEL, ASIAGO, AND SALAMI
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-If you can’t find water-packed artichoke hearts, use marinated artichoke hearts, but rinse and drain them before use. For this salad, opt for a mild, soft Asiago cheese that crumbles easily; avoid aged Asiago that has a hard, dry texture.  
 VINAIGRETTE  
 6 tablespoons extra-virgin olive oil  
 3 tablespoons balsamic vinegar  
@@ -1746,7 +1739,6 @@ PEAR AND CRANBERRY CHOPPED SALAD
 #quantity  
 SERVES 4  
 #ingredients  
-If you prefer to use a very mild and mellow blue cheese, we recommend Danish blue; if you prefer a sharp and piquant one, try Stilton.  
 1 cucumber, peeled, halved lengthwise, seeded, and cut into 1⁄2-inch dice  
 Salt and pepper  
 3 tablespoons extra-virgin olive oil  
@@ -1768,7 +1760,6 @@ RADISH AND ORANGE CHOPPED SALAD
 #quantity  
 SERVES 4  
 #ingredients  
-Pepitas, or pumpkin seeds, are available at most supermarkets and natural foods stores. For more information on preparing the oranges, see “CUTTING ORANGES”.  
 1 cucumber, peeled, halved lengthwise, seeded, and cut into 1⁄2-inch dice  
 Salt and pepper  
 3 tablespoons extra-virgin olive oil  
@@ -1786,14 +1777,12 @@ Salt and pepper
 1. Combine cucumber and 1⁄2 teaspoon salt in colander set over bowl and let stand 15 minutes. Whisk oil, lime juice, and garlic together in large bowl.  
 2. Peel oranges, making sure to remove all pith, and cut into 1⁄2-inch pieces. Add oranges, drained cucumber, radishes, avocado, onion, and cilantro; toss and let stand at room temperature to blend flavors, 5 minutes.  
 3. Add lettuce, cheese, and pepitas; toss to combine. Season with salt and pepper to taste and serve.  
-COBB SALAD  
 #end  
 #title  
 CLASSIC COBB SALAD  
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-You’ll need a large platter or shallow wide pasta bowl to accommodate this substantial salad. Though watercress is traditional, feel free to substitute an equal amount of arugula, chicory, curly endive, or a mixture of assertive lettuce greens. Grape tomatoes are preferred, but cherry tomatoes can be used.  
 VINAIGRETTE  
 1⁄2 cup extra-virgin olive oil  
 2 tablespoons red wine vinegar  
@@ -1819,14 +1808,12 @@ Salt and pepper
 1. FOR THE VINAIGRETTE: Whisk all ingredients in medium bowl until well combined; set aside.  
 2. FOR THE SALAD: Season chicken with salt and pepper. Adjust oven rack to 6 inches from broiler element; heat broiler. Spray broiler-pan top with vegetable oil spray; place chicken breasts on top and broil chicken until lightly browned, 4 to 8 minutes. Using tongs, flip chicken over and continue to broil until thickest part is no longer pink when cut into and registers about 160 degrees, 6 to 8 minutes. When cool enough to handle, cut chicken into 1⁄2-inch cubes and set aside.  
 3. Toss romaine and watercress with 5 tablespoons vinaigrette in large bowl until coated; arrange on very large, flat serving platter. Place chicken in now-empty bowl, add 1⁄4 cup vinaigrette and toss to coat; arrange in row along one edge of greens. Place tomatoes in now-empty bowl, add 1 tablespoon vinaigrette and toss gently to combine; arrange on opposite edge of greens. Arrange eggs and avocado in separate rows near center of greens and drizzle with remaining vinaigrette. Sprinkle bacon, cheese, and chives evenly over salad and serve immediately.  
-HERBED BAKED GOAT CHEESE SALAD  
 #end  
 #title  
 HERBED BAKED GOAT CHEESE  
 #quantity  
 MAKES 12 ROUNDS  
 #ingredients  
-The baked goat cheese should be served warm.  
 3 ounces white Melba toasts (2 cups)  
 1 teaspoon pepper  
 3 large eggs  
@@ -1845,7 +1832,6 @@ SALAD WITH HERBED BAKED GOAT CHEESE AND VINAIGRETTE
 #quantity  
 SERVES 6  
 #ingredients  
-Prepare the salad components while the cheese is in the freezer, then toss the greens and vinaigrette while the cheese cools a bit after baking. Hearty salad greens, such as a mix of arugula and frisée, work best here.  
 2 tablespoons red wine vinegar  
 1 tablespoon Dijon mustard  
 1 teaspoon minced shallot  
@@ -1897,8 +1883,8 @@ Pepper
 1⁄2 cup pine nuts, toasted  
 6 ounces thinly sliced prosciutto  
 1 recipe HERBED BAKED GOAT CHEESE  
+#instructions
 Combine vinegar, mustard, shallot, and salt in small bowl. Whisking constantly, drizzle in oil; season with pepper to taste. Place greens in large bowl, drizzle vinaigrette over, and toss to coat. Divide greens among individual plates; divide grapes and pine nuts among plates; and arrange 2 slices prosciutto and 2 rounds goat cheese on each salad. Serve immediately.  
-FRESH SPINACH SALAD  
 #end  
 #title  
 FRESH SPINACH SALAD WITH CARROT, ORANGE, AND SESAME  
@@ -1947,7 +1933,6 @@ FRESH SPINACH SALAD WITH FRISÉE AND STRAWBERRIES
 #quantity  
 SERVES 6  
 #ingredients  
-This salad is best when made with in-season strawberries.  
 6 ounces (6 cups) baby spinach  
 1 head frisée (6 ounces) torn into 2-inch pieces  
 10 ounces strawberries, hulled and quartered (2 cups)  
@@ -1969,7 +1954,6 @@ FRESH SPINACH SALAD WITH RADICCHIO AND MANGO
 #quantity  
 SERVES 6  
 #ingredients  
-This salad is especially good paired with grilled foods.  
 6 ounces (6 cups) baby spinach  
 1 small head radicchio (6 ounces), halved, cored, and sliced very thin  
 1 mango, peeled and cut into 1⁄2-inch pieces  
@@ -1985,14 +1969,12 @@ This salad is especially good paired with grilled foods.
 1. Place spinach, radicchio, mango, and cilantro in large bowl.  
 2. Combine lime zest and juice, honey, shallot, mustard, mayonnaise, and salt in small bowl. Whisk until mixture appears milky and no lumps remain. Place oil in liquid measuring cup so it is easy to pour. Whisking constantly, very slowly drizzle oil into mixture. If pools of oil gather on surface, stop addition of oil and whisk mixture well to combine, then resume whisking in oil in slow stream. Vinaigrette should be glossy and lightly thickened.  
 3. Pour dressing over spinach mixture and toss to coat. Serve immediately.  
-WILTED SPINACH SALAD  
 #end  
 #title  
 WILTED SPINACH SALAD WITH WARM BACON DRESSING  
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-This salad comes together quickly, so have the ingredients ready before you begin cooking. When adding the vinegar mixture to the skillet, step back from the stovetop—the aroma is quite potent.  
 6 ounces (6 cups) baby spinach  
 3 tablespoons cider vinegar  
 1⁄2 teaspoon sugar  
@@ -2005,7 +1987,6 @@ Pinch salt
 #instructions  
 1. Place spinach in large bowl. Stir vinegar, sugar, pepper, and salt together in small bowl until sugar dissolves; set aside.  
 2. Cook bacon in 10-inch skillet over medium-high heat, stirring occasionally, until crisp, about 5 minutes. Using slotted spoon, transfer bacon to paper towel–lined plate. Pour fat into heatproof bowl, then return 3 tablespoons fat to skillet. Add onion to skillet and cook over medium heat, stirring frequently, until slightly softened, about 3 minutes; stir in garlic until fragrant, about 15 seconds. Add vinegar mixture, then remove skillet from heat; working quickly, scrape bottom of skillet with wooden spoon to loosen browned bits. Pour hot dressing over spinach, add bacon, and toss gently with tongs until spinach is slightly wilted. Divide among individual plates, arrange egg quarters over each, and serve.  
-CUCUMBER SALAD  
 #end  
 #title  
 CREAMY DILL CUCUMBER SALAD  
@@ -2063,7 +2044,6 @@ SWEET-AND-TART CUCUMBER SALAD
 #quantity  
 SERVES 4  
 #ingredients  
-Based on a common Thai relish served with sautés, this salad is also great with grilled salmon or grilled chicken breasts.  
 3 cucumbers (2 pounds), peeled, halved lengthwise, seeded, and sliced 1⁄4 inch thick  
 1⁄2 red onion, sliced very thin  
 1 tablespoon salt  
@@ -2074,7 +2054,6 @@ Based on a common Thai relish served with sautés, this salad is also great with
 1. Toss cucumber and onion with salt in colander set over large bowl. Weight cucumbers with gallon-size zipper-lock bag filled with water; drain for 1 to 3 hours. Rinse and pat dry.  
 2. Bring 2⁄3 cup water and vinegar to boil in small nonreactive saucepan over medium heat. Stir in sugar to dissolve; reduce heat and simmer 15 minutes. Let cool to room temperature.  
 3. Meanwhile, mix cucumbers, onion, and jalapeños in medium bowl. Pour dressing over cucumber mixture; toss to coat. Serve chilled.  
-CHERRY TOMATO SALAD  
 #end  
 #title  
 GREEK CHERRY TOMATO SALAD  
@@ -2098,22 +2077,24 @@ Salt and pepper
 1. Toss tomatoes, 1⁄4 teaspoon salt, and sugar in medium bowl; let stand for 30 minutes. Transfer tomatoes to salad spinner and spin until seeds and excess liquid have been removed, 45 to 60 seconds, stirring to redistribute tomatoes several times during spinning. Return tomatoes to bowl and set aside. Strain tomato liquid through fine-mesh strainer into liquid measuring cup, pressing on solids to extract as much liquid as possible.  
 2. Bring 1⁄2 cup tomato liquid (discard any extra), garlic, oregano, shallot, and vinegar to simmer in small saucepan over medium heat. Simmer until reduced to 3 tablespoons, 6 to 8 minutes. Transfer mixture to small bowl and let cool to room temperature, about 5 minutes. Whisk in oil and pepper to taste until combined. Taste and season with up to 1⁄8 teaspoon salt.  
 3. Add cucumber, olives, feta, dressing, and parsley to bowl with tomatoes; toss gently and serve.  
+
 CHERRY TOMATO SALAD WITH BASIL AND FRESH MOZZARELLA  
 Substitute balsamic vinegar for red wine vinegar and omit garlic and oregano in step 2. Substitute 1-1⁄2 cups fresh basil leaves, roughly torn, and 8 ounces fresh mozzarella, cut into 1⁄2-inch cubes and patted dry with paper towels, for cucumber, olives, feta, and parsley in step 3.  
+
 CHERRY TOMATO SALAD WITH TARRAGON AND BLUE CHEESE  
 Substitute cider vinegar for red wine vinegar, omit garlic and oregano, and add 2 teaspoons Dijon mustard and 4 teaspoons honey to tomato liquid in step 2. Substitute 1⁄2 cup roughly chopped toasted pecans, 2 ounces crumbled blue cheese, and 1-1⁄2 tablespoons chopped fresh tarragon leaves for cucumber, olives, feta, and parsley in step 3.  
+
 CHERRY TOMATO SALAD WITH WATERMELON AND FETA CHEESE  
 Substitute white wine vinegar for red wine vinegar, omit garlic and oregano, and substitute vegetable oil for olive oil in step 2. Substitute 1 cup watermelon, cut into 1⁄2-inch cubes, and 3 tablespoons chopped fresh mint for cucumber, olives, and parsley in step 3.  
+
 CHERRY TOMATO SALAD WITH MANGO AND LIME CURRY VINAIGRETTE  
 Substitute 4 teaspoons fresh lime juice and 1⁄4 teaspoon curry powder for garlic and oregano in step 2. Substitute 1 mango, peeled, pitted, and cut into 1⁄2-inch dice, 1⁄2 cup toasted slivered almonds, and 3 tablespoons chopped fresh cilantro for cucumber, olives, and parsley in step 3.  
-PITA BREAD SALAD  
 #end  
 #title  
 PITA BREAD SALAD WITH CUCUMBERS, CHERRY TOMATOES, AND FRESH HERBS  
 #quantity  
 SERVES 6  
 #ingredients  
-This simple version of fattoush is dressed with the juice of fresh lemons instead of vinegar, which gives the salad a lovely, refreshing tartness. While draining the cucumbers is an extra step, it keeps the salad from becoming soggy.  
 1 cucumber, peeled, halved lengthwise, seeded, and cut into 1⁄4-inch dice  
 Salt and pepper  
 4 (6-inch) pita breads, several days old, torn into 1⁄2-inch pieces  
@@ -2126,14 +2107,12 @@ Salt and pepper
 #instructions  
 1. Heat oven to 375 degrees. Put cucumber in colander; sprinkle with 1⁄4 teaspoon salt. Weight cucumbers with gallon-size zipper-lock bag filled with water; drain to release most of liquid, about 30 minutes. Rinse and pat dry.  
 2. Put bread pieces on baking sheet; bake until crisp but not browned, 5 to 7 minutes. Transfer to large bowl; add cucumber, tomatoes, scallions, and herbs, and toss well. In small bowl, combine oil and lemon juice and salt and pepper to taste. Add to large bowl, toss again, and serve immediately.  
-ITALIAN BREAD SALAD  
 #end  
 #title  
 ITALIAN BREAD SALAD (PANZANELLA)  
 #quantity  
 SERVES 4  
 #ingredients  
-The success of this recipe depends on high-quality ingredients, including ripe, in-season tomatoes and fruity olive oil. Fresh basil is also a must. Your bread may vary in density, so you may not need the entire loaf for this recipe.  
 1 (1-pound) loaf rustic Italian or French bread, cut or torn into 1-inch pieces (about 6 cups)  
 1⁄2 cup extra-virgin olive oil  
 Salt and pepper  
@@ -2147,20 +2126,21 @@ Salt and pepper
 2. Gently toss tomatoes and 1⁄2 teaspoon salt in large bowl. Transfer to colander set over bowl; set aside to drain for 15 minutes, tossing occasionally.  
 3. Whisk remaining 6 tablespoons oil, vinegar, and 1⁄4 teaspoon pepper into tomato juices. Add bread pieces, toss to coat, and let stand for 10 minutes, tossing occasionally.  
 4. Add tomatoes, cucumber, shallot, and basil to bowl with bread pieces and toss to coat. Season with salt and pepper to taste and serve immediately.  
+
 ITALIAN BREAD SALAD WITH PEPPERS AND ARUGULA  
 Substitute 1 thinly sliced red pepper for cucumber and 1 cup coarsely chopped baby arugula for basil.  
+
 ITALIAN BREAD SALAD WITH OLIVES AND FETA  
 Add 1⁄3 cup coarsely chopped kalamata olives and 1⁄2 cup crumbled feta cheese to salad in step 4.  
+
 ITALIAN BREAD SALAD WITH GARLIC AND CAPERS  
 Add 1 minced garlic clove, 2 minced anchovy fillets, and 2 tablespoons rinsed capers to dressing in step 3.  
-ROASTED VEGETABLE SALAD  
 #end  
 #title  
 ROASTED BEET AND CARROT SALAD WITH WATERCRESS  
 #quantity  
 SERVES 4  
 #ingredients  
-To prevent the beets from staining your cutting board, lightly spray the board first with vegetable oil spray. A thin coating adds no discernible slickness and will allow you to quickly wipe the board clean with a paper towel.  
 1 pound beets, peeled and cut into 1⁄2-inch thick wedges, wedges cut in half crosswise if beets are large  
 1 pound carrots, peeled and cut on bias into 1⁄4-inch-thick slices  
 3 tablespoons extra-virgin olive oil  
@@ -2180,7 +2160,6 @@ ROASTED FENNEL AND MUSHROOM SALAD WITH RADISHES
 #quantity  
 SERVES 4  
 #ingredients  
-If fennel fronds (the delicate greenery attached to the fennel stems) are unavailable, substitute 1 to 2 tablespoons chopped fresh tarragon.  
 2 fennel bulbs, fronds chopped and 1⁄3 cup reserved, stalks discarded, bulbs quartered, cored, and cut crosswise into 1⁄2-inch-thick slices  
 1-1⁄4 pounds cremini mushrooms, trimmed and quartered if large or halved if medium  
 3 tablespoons extra-virgin olive oil  
@@ -2199,7 +2178,6 @@ ROASTED GREEN BEAN AND POTATO SALAD WITH RADICCHIO
 #quantity  
 SERVES 4  
 #ingredients  
-Avoid very thin beans as they’ll overcook and shrivel under the high heat of the oven.  
 1 pound green beans, trimmed and cut into 1-1⁄2-inch pieces  
 1 pound red potatoes, cut into 1⁄2-inch pieces  
 3 tablespoons extra-virgin olive oil  
@@ -2212,14 +2190,13 @@ Salt and pepper
 1. Adjust oven rack to lowest position, place large rimmed baking sheet on rack, and heat oven to 500 degrees. Toss beans and potatoes with 2 tablespoons oil, 1⁄2 teaspoon salt, 1⁄4 teaspoon pepper, and sugar in large bowl. Remove baking sheet from oven and, working quickly, carefully transfer beans and potatoes to hot baking sheet and spread in even layer. (Do not wash bowl.) Roast until vegetables are tender and well-browned on one side, 20 to 25 minutes (do not stir during roasting).  
 2. Meanwhile, whisk remaining 1 tablespoon oil, vinegar, garlic, 1⁄4 teaspoon salt, and 1⁄8 teaspoon pepper in now-empty bowl.  
 3. Toss hot vegetables with vinaigrette and let cool to room temperature, about 30 minutes. Stir in radicchio, transfer to serving platter, and serve.  
-ASPARAGUS SALAD  
 #end  
 #title  
 ASPARAGUS, RED PEPPER, SPINACH SALAD WITH SHERRY VINEGAR AND GOAT CHEESE  
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-Substitute feta for the goat cheese, if you like.  
+feta can be substituted for the goat cheese
 6 tablespoons extra-virgin olive oil  
 1 red bell pepper, stemmed, seeded, and cut into 1- by 1⁄4-inch strips  
 1 pound asparagus, trimmed and cut on bias into 1-inch lengths  
@@ -2238,7 +2215,6 @@ ASPARAGUS AND MESCLUN SALAD WITH CAPERS, CORNICHONS, AND HARD-COOKED EGGS
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-Mesclun is typically a mixture of such specialty greens as arugula, Belgian endive, and radicchio.  
 5 tablespoons extra-virgin olive oil  
 1 pound asparagus, trimmed and cut on bias into 1-inch lengths  
 Salt and pepper  
@@ -2258,7 +2234,6 @@ ASPARAGUS, WATERCRESS, AND CARROT SALAD WITH THAI FLAVORS
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-The asparagus in this salad tastes best chilled. Five minutes in the freezer makes quick work of cooling down the just-cooked asparagus.  
 2 tablespoons lime juice  
 2 tablespoons fish sauce  
 2 tablespoons water  
@@ -2281,7 +2256,6 @@ ASPARAGUS AND ARUGULA SALAD WITH CANNELLINI BEANS AND BALSAMIC VINEGAR
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-Rinsing the canned beans eliminates any slimy texture.  
 5 tablespoons extra-virgin olive oil  
 1⁄2 red onion, sliced 1⁄8 inch thick  
 1 pound asparagus, trimmed and cut on bias into 1-inch lengths  
@@ -2292,14 +2266,12 @@ Salt and pepper
 #instructions  
 1. Heat 2 tablespoons oil in 12-inch nonstick skillet over high heat until beginning to smoke; stir in onion and cook until beginning to brown, about 1 minute. Add asparagus, 1⁄4 teaspoon salt, and 1⁄4 teaspoon pepper; cook until asparagus is browned and crisp-tender, about 4 minutes, stirring once every minute. Off heat, stir in beans; transfer to large plate and let cool 5 minutes.  
 2. Meanwhile, whisk remaining 3 tablespoons oil, vinegar, 1⁄4 teaspoon salt, and 1⁄8 teaspoon pepper in medium bowl until combined. In large bowl, toss arugula with 2 tablespoons dressing and divide among salad plates. Toss asparagus mixture with remaining dressing, place a portion over arugula, and serve.  
-ORANGE SALAD  
 #end  
 #title  
 ORANGE AND RADISH SALAD WITH ARUGULA  
 #quantity  
 SERVES 4  
 #ingredients  
-For more information on preparing the oranges, CLICK HERE.  
 3 oranges  
 5 teaspoons lime juice  
 1⁄4 teaspoon Dijon mustard  
@@ -2318,7 +2290,6 @@ ORANGE, AVOCADO, AND WATERCRESS SALAD WITH GINGER-LIME VINAIGRETTE
 #quantity  
 SERVES 4  
 #ingredients  
-Do not use an overly ripe avocado here or it will turn the salad gluey.  
 3 oranges  
 1 tablespoon lime juice  
 1 tablespoon minced fresh mint  
@@ -2340,7 +2311,6 @@ ORANGE-JÍCAMA SALAD WITH SWEET AND SPICY PEPPERS
 #quantity  
 SERVES 4  
 #ingredients  
-If you’re not a fan of cilantro, substitute fresh parsley.  
 3 oranges  
 3 tablespoons lime juice (2 limes)  
 1⁄4 teaspoon Dijon mustard  
@@ -2350,23 +2320,21 @@ Salt
 1 jícama (1 pound), peeled and cut into 2-inch-long matchsticks  
 1 red bell pepper, stemmed, seeded and cut into 1⁄8-inch-wide strips  
 2 jalapeño chiles, stemmed, seeded, quartered lengthwise, then cut crosswise into 1⁄8-inch-thick slices  
-1⁄2 cup fresh cilantro, chopped  
+1⁄2 cup fresh cilantro or parsley, chopped  
 3 scallions, green parts only, sliced thin on bias  
 #instructions  
 1. Peel oranges, making sure to remove all pith, and cut into 1⁄4-inch pieces. Place orange pieces in mesh strainer set over bowl; let stand to drain excess juice. Meanwhile, whisk lime juice, mustard, cumin, and 1⁄4 teaspoon salt in large bowl until combined. Whisking constantly, gradually add oil.  
 2. Toss jícama and red bell pepper with 1⁄8 teaspoon salt in medium bowl until combined. Add jícama mixture, oranges, jalapeños, cilantro, and scallions to bowl with dressing and toss well to combine. Divide among individual plates, drizzle with any dressing in bowl, and serve immediately.  
+
 CUTTING ORANGES  
-#instructions  
 1. Cut thin slice from top and bottom, stand on end, and slice away rind and white pith.  
 2. Cut in half from end to end, remove stringy pith, cut each half into 3 wedges, and cut crosswise into pieces as directed in recipe.  
-PAN-ROASTED PEAR SALAD  
 #end  
 #title  
 PAN-ROASTED PEAR SALAD WITH WATERCRESS, PARMESAN, AND PECANS  
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-The test kitchen prefers Bartlett pears for this recipe, but Bosc pears can also be used. With either variety, the pears should be ripe but firm; the flesh at the neck of the pear should give slightly when pressed gently with a finger. If using Bartletts, look for pears that are starting to turn from green to yellow. Romaine lettuce may be substituted for green leaf.  
 3 (8-ounce) pears, quartered and cored  
 2-1⁄2 teaspoons sugar  
 Salt and pepper  
@@ -2380,18 +2348,18 @@ Salt and pepper
 #instructions  
 1. Toss pears, 2 teaspoons sugar, 1⁄4 teaspoon salt, and 1⁄8 teaspoon pepper in medium bowl. Heat 2 teaspoons oil in 12-inch skillet over medium-high heat until just smoking. Add pears cut side down in single layer and cook until golden brown, 2 to 4 minutes. Using small spatula or fork, tip each pear onto second cut side; continue to cook until second side is light brown, 2 to 4 minutes longer. Turn off heat, leave skillet on burner, and add 2 tablespoons vinegar; gently stir until vinegar becomes glazy and coats pears, about 30 seconds. Transfer pears to large plate and let cool to room temperature, about 45 minutes. Cut each pear quarter crosswise into 1⁄2-inch pieces.  
 2. Whisk remaining 2 tablespoons oil, remaining 2 tablespoons vinegar, remaining 1⁄2 teaspoon sugar, and shallot together in large bowl; season with salt and pepper to taste. Add lettuce, watercress, and cooled pears to bowl; toss and season with salt and pepper to taste. Divide salad among individual plates; top each with portions of cheese and nuts. Serve immediately.  
+
 PAN-ROASTED PEAR SALAD WITH RADICCHIO, BLUE CHEESE, AND WALNUTS  
 Substitute 1 large head radicchio, quartered, cored, and cut crosswise into 1⁄2-inch pieces (4 cups) for watercress, 4 ounces crumbled Gorgonzola or Stilton cheese (1 cup) for Parmesan, and 3⁄4 cup toasted and chopped walnuts for pecans.  
+
 PAN-ROASTED PEAR SALAD WITH FRISÉE, GOAT CHEESE, AND ALMONDS  
 Substitute 1 head frisée torn into 1-inch pieces (4 cups) for watercress, 4 ounces crumbled goat cheese (1 cup) for Parmesan, and 3⁄4 cup toasted sliced almonds for pecans.  
-THREE-BEAN SALAD  
 #end  
 #title  
 CLASSIC THREE-BEAN SALAD  
 #quantity  
 SERVES 8 TO 10  
 #ingredients  
-Allowing the beans to marinate in the dressing improves their flavor so prepare the salad 1 day before you plan to serve it.  
 1 cup red wine vinegar  
 3⁄4 cup sugar  
 1⁄2 cup canola oil  
@@ -2406,6 +2374,7 @@ Salt and pepper
 1. Heat vinegar, sugar, oil, garlic, 1 teaspoon salt, and pepper to taste in small saucepan over medium heat, stirring occasionally, until sugar dissolves, about 5 minutes. Transfer to a large bowl and let cool to room temperature.  
 2. Bring 3 quarts water to boil in large saucepan over high heat. Add 1 tablespoon salt and green and yellow beans; cook until crisp-tender, about 5 minutes. Meanwhile, fill medium bowl with ice water. When beans are done, drain and immediately plunge into ice water to stop cooking process; let sit until chilled, about 2 minutes. Drain well.  
 3. Add green and yellow beans, kidney beans, onion, and parsley to vinegar mixture; toss well to coat. Cover and refrigerate overnight to let flavors meld. Let stand at room temperature 30 minutes before serving. (Salad can be refrigerated for up to 4 days.)  
+
 THREE-BEAN SALAD WITH CUMIN, CILANTRO, AND ORANGES  
 Separate 2 oranges into segments, remove membrane from sides of each segment, then cut each segment into half lengthwise. Set aside. Substitute 1⁄4 cup lime juice for 1⁄4 cup red wine vinegar, and heat 1 teaspoon ground cumin with vinegar mixture. Substitute minced fresh cilantro for parsley and add halved orange segments to vinegar mixture along with beans.  
 #end  
@@ -2414,7 +2383,6 @@ TABBOULEH
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-Middle Eastern cooks frequently serve this salad with the crisp inner leaves of romaine lettuce, using them as spoons to scoop the salad from the serving dish.  
 1⁄2 cup bulgur, fine or medium grain, rinsed under running water and drained  
 1⁄3 cup lemon juice (2 lemons)  
 1⁄3 cup olive oil  
@@ -2433,7 +2401,6 @@ PASTA SALAD WITH PESTO
 #quantity  
 SERVES 8 TO 10  
 #ingredients  
-This salad is best served the day it is made; if it’s been refrigerated, bring it to room temperature before serving. Garnish with additional shaved or grated Parmesan.  
 3⁄4 cup pine nuts  
 2 garlic cloves, unpeeled  
 Salt  
@@ -2477,7 +2444,6 @@ PASTA SALAD WITH EGGPLANT, TOMATOES, AND BASIL
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-The eggplants can be broiled until golden brown if you prefer not to grill them.  
 1 pound eggplant, cut into 1⁄2-inch-thick rounds  
 1⁄2 cup extra-virgin olive oil, plus extra for brushing on eggplant  
 Salt and pepper  
@@ -2487,6 +2453,7 @@ Salt and pepper
 1 pound bite-size pasta, such as fusilli, farfalle, or orecchiette  
 2 large tomatoes, cored, seeded, and cut into 1⁄2-inch dice  
 1⁄2 cup chopped fresh basil  
+#instructions
 1A. FOR A CHARCOAL GRILL: Open bottom vent completely. Light large chimney starter filled with charcoal briquettes (6 quarts). When top coals are partially covered with ash, pour evenly over grill. Set cooking grate in place, cover, and open lid vent completely. Heat grill until hot, about 5 minutes.  
 1B. FOR A GAS GRILL: Turn all burners to high, cover, and heat grill until hot, about 15 minutes. Leave all burners on high. (Adjust burners as needed to maintain grill temperature around 350 degrees.)  
 2. Clean and oil cooking grate. Lightly brush eggplant with oil and sprinkle with salt and pepper to taste. Grill, turning once, until marked with dark stripes, about 10 minutes. Let cool and cut into bite-size pieces.  
@@ -2498,7 +2465,6 @@ PASTA SALAD WITH ARUGULA AND SUN-DRIED TOMATO VINAIGRETTE
 #quantity  
 SERVES 6  
 #ingredients  
-We like the assertive flavor of red wine vinegar in this recipe.  
 Salt  
 1 pound fusilli  
 1 tablespoon extra-virgin olive oil  
@@ -2520,7 +2486,6 @@ PASTA SALAD WITH FENNEL, RED ONIONS, AND SUN-DRIED TOMATOES
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-When roasted, fennel mellows and turns slightly sweet.  
 2 fennel bulbs, stalks discarded, halved, cored, and cut into 1⁄2-inch wedges  
 2 red onions, sliced into 1⁄2-inch-thick rings  
 1⁄2 cup plus 2 tablespoons extra-virgin olive oil  
@@ -2540,7 +2505,6 @@ PASTA SALAD WITH ASPARAGUS AND RED PEPPERS
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-Chives work particularly well with the asparagus and peppers, but you can substitute fresh mint, parsley, or basil.  
 1-1⁄2 pounds asparagus, trimmed and cut into 2-inch pieces  
 3 large red bell peppers, stemmed, seeded, and cut into 1-1⁄2-inch pieces  
 1⁄2 cup plus 2 tablespoons extra-virgin olive oil  
@@ -2554,14 +2518,12 @@ Salt and pepper
 1. Adjust oven rack to middle position and heat oven to 425 degrees. Toss asparagus and peppers with 2 tablespoons oil, salt and pepper to taste, and transfer to large baking sheet. Roast until tender and lightly browned, 15 to 17 minutes; let cool to room temperature.  
 2. Meanwhile, whisk lemon juice and zest, 3⁄4 teaspoon salt, garlic, and pepper to taste in large bowl; whisk in remaining 3⁄4 cup oil in slow, steady stream until smooth.  
 3. Bring 4 quarts water to boil in large pot over high heat. Add pasta and 1 tablespoon salt to boiling water. Cook until pasta is al dente and drain. Whisk dressing again to blend; add hot pasta, cooled asparagus and peppers, chives, and grated Parmesan; toss to mix thoroughly. Let cool to room temperature, season with salt and pepper to taste, and serve. (Pasta salad can be refrigerated for up to 1 day; return to room temperature before serving.)  
-CABBAGE SALAD  
 #end  
 #title  
 SWEET AND SOUR CABBAGE SALAD WITH APPLE AND FENNEL  
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-This salad pairs especially well with chicken or pork.  
 1⁄2 head green cabbage (1 pound), cored and shredded (6 cups)  
 Salt and pepper  
 1⁄2 small red onion, chopped fine  
@@ -2581,7 +2543,6 @@ CABBAGE AND RED PEPPER SALAD WITH LIME-CUMIN VINAIGRETTE
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-Serve this Southwestern-flavored slaw with grilled meat, poultry, or fish.  
 1⁄2 head green cabbage (1 pound), cored and shredded fine (6 cups)  
 Salt  
 1 teaspoon grated lime zest plus 2 tablespoons juice  
@@ -2617,11 +2578,13 @@ Salt
 #instructions  
 1. Toss shredded cabbage, carrot, and 1 teaspoon salt in colander or large-mesh strainer set over medium bowl. Let stand until cabbage wilts, at least 1 hour or up to 4 hours. Rinse cabbage and carrot under cold running water (or in large bowl of ice water if serving immediately). Press, but do not squeeze, to drain; pat dry with paper towels. (Vegetables can be stored in zipper-lock bag and refrigerated overnight.)  
 2. Puree peanut butter, oil, vinegar, soy sauce, honey, garlic, ginger, and jalapeño in food processor until smooth paste is formed, about 30 seconds. Toss cabbage and carrot, radishes, scallions, and dressing together in medium bowl. Season with salt to taste; cover and refrigerate until ready to serve. (Salad can be refrigerated for up to 1 day.)  
+
 TWO WAYS TO SHRED CABBAGE  
-#instructions  
 1. After quartering and coring cabbage, separate cabbage quarters into stacks of leaves that flatten when pressed lightly.  
+
 BY HAND  
 2A. Use chef’s knife to cut each stack of cabbage diagonally into thin shreds. To chop cabbage, turn pile of shredded cabbage crosswise, then cut shreds into fine dice.  
+
 IN A FOOD PROCESSOR  
 2B. Roll leaves crosswise and place them in feed tube. Using slicing disk and pressing lightly on pusher, shred cabbage. Repeat with other stacks.  
 #end  
@@ -2630,7 +2593,6 @@ CREAMY BUTTERMILK COLESLAW
 #quantity  
 SERVES 4  
 #ingredients  
-If you are planning to serve the coleslaw immediately, rinse the salted cabbage in a large bowl of ice water, drain it in a colander, pick out any ice cubes, then pat the cabbage dry before dressing. For information on shredding cabbage, CLICK HERE.  
 1⁄2 head red or green cabbage (1 pound), cored and shredded (6 cups)  
 Salt  
 1 carrot, peeled and shredded  
@@ -2646,8 +2608,10 @@ Salt
 #instructions  
 1. Toss shredded cabbage and 1 teaspoon salt in colander or large-mesh strainer set over medium bowl. Let stand until cabbage wilts, at least 1 hour or up to 4 hours. Rinse cabbage under cold running water. Press, but do not squeeze, to drain; pat dry with paper towels. Place wilted cabbage and carrot in large bowl.  
 2. Stir buttermilk, mayonnaise, sour cream, shallot, parsley, vinegar, sugar, mustard, 1⁄4 teaspoon salt, and pepper together in small bowl. Pour dressing over cabbage and toss to combine; refrigerate until chilled, about 30 minutes. (Coleslaw can be refrigerated for up to 3 days.)  
+
 BUTTERMILK COLESLAW WITH GREEN ONIONS AND CILANTRO  
 Omit mustard, substitute 1 tablespoon minced cilantro for parsley and 1 teaspoon lime juice for cider vinegar, and add 2 thinly sliced scallions to dressing.  
+
 LEMONY BUTTERMILK COLESLAW  
 Substitute 1 teaspoon lemon juice for vinegar and add 1 teaspoon minced fresh thyme and 1 tablespoon minced fresh chives to dressing.  
 #end  
@@ -2656,7 +2620,6 @@ DELI-STYLE COLESLAW
 #quantity  
 SERVES 4  
 #ingredients  
-If you like caraway or celery seeds in your coleslaw, you can add one-quarter teaspoon of either with the mayonnaise and vinegar. You can shred, salt, rinse, and pat the cabbage dry a day ahead, but dress it close to serving time. For information on shredding cabbage, CLICK HERE.  
 1⁄2 head red or green cabbage (1 pound), cored and shredded or chopped (6 cups)  
 1 large carrot, peeled and shredded  
 1 teaspoon salt  
@@ -2674,7 +2637,6 @@ CURRIED COLESLAW WITH APPLES AND RAISINS
 #quantity  
 SERVES 6  
 #ingredients  
-Since rice wine vinegar tends to mellow, you may want to use cider vinegar if making the slaw a day ahead. The presence of the sugar in this recipe keeps you from having to rinse off salt from the cabbage, as is ordinarily the case. For information on shredding cabbage, CLICK HERE.  
 1⁄2 head red or green cabbage (1 pound), cored and shredded or chopped (6 cups)  
 1 large carrot, peeled and grated  
 1⁄2 cup sugar  
@@ -2712,11 +2674,12 @@ Salt
 3. Transfer cabbage to salad spinner and spin cabbage until excess water is removed, 10 to 20 seconds. Remove bowl from freezer, add cabbage, carrots, and parsley to cold vinegar mixture, and toss to combine. Adjust flavor with sugar or vinegar and season with salt to taste. Refrigerate until chilled, about 15 minutes. Toss again before serving.  
 SWEET AND TANGY COLESLAW WITH RED PEPPER AND JALAPEÑO  
 Substitute 2 tablespoons lime juice for celery seeds, 1⁄2 thinly sliced red bell pepper and 1 or 2 seeded and minced jalapeños for carrot, and 1 thinly sliced scallion for parsley.  
+
 SWEET AND TANGY COLESLAW WITH FENNEL AND ORANGE  
 Increase cider vinegar to 1⁄3 cup. Substitute 1 teaspoon grated orange zest and 3 tablespoons orange juice for celery seeds, 1⁄2 thinly sliced fennel bulb and 1⁄4 cup golden raisins for carrot, and 1 tablespoon minced fennel fronds for parsley.  
+
 SWEET AND TANGY COLESLAW WITH APPLE AND TARRAGON  
 Reduce cider vinegar to 3 tablespoons. Substitute 1⁄2 teaspoon Dijon mustard for celery seeds, 1 Granny Smith apple cut into matchsticks for carrot, and 2 teaspoons minced fresh tarragon for parsley.  
-CELERY ROOT SALAD  
 #end  
 #title  
 CELERY ROOT SALAD WITH APPLE AND PARSLEY  
@@ -2741,11 +2704,14 @@ Salt and pepper
 #instructions  
 1. FOR THE DRESSING: In medium bowl, whisk together lemon juice, mustard, honey, and salt. Whisk in oil in slow, steady stream. Add sour cream; whisk to combine. Set aside.  
 2. FOR THE SALAD: If using food processor, cut celery root and apple into 1-1⁄2-inch pieces and grate with shredding disc. (Alternatively, grate on large holes of box grater.) You should have about 3 cups total. Add immediately to prepared dressing; toss to coat. Stir in scallions, parsley, and tarragon, if using. Season with salt and pepper to taste. Refrigerate until chilled, about 30 minutes. Serve. (Salad can be refrigerated for up to 1 day.)  
+
 CELERY ROOT SALAD WITH APPLE, CARAWAY, AND HORSERADISH  
 Add 1⁄2 teaspoon caraway seeds and 1-1⁄2 teaspoons prepared horseradish along with herbs.  
+
 CELERY ROOT SALAD WITH PEAR AND HAZELNUTS  
 To remove the skins from the hazelnuts, rub the hot toasted nuts in a clean kitchen towel.  
 Substitute 1⁄2 firm pear, grated, for apple and add 1⁄4 cup hazelnuts, toasted, skinned, and chopped along with herbs.  
+
 CELERY ROOT SALAD WITH RED ONION, MINT, ORANGE, AND FENNEL SEEDS  
 Substitute 2 tablespoons finely chopped red onion for scallion and add 2 teaspoons minced fresh mint, 1⁄2 teaspoon grated orange zest, and 1 teaspoon fennel seeds along with parsley.  
 #end  
@@ -2754,7 +2720,6 @@ ALL-AMERICAN POTATO SALAD
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-Note that this recipe calls for celery seeds, not celery salt; if only celery salt is available, use the same amount but omit the addition of salt in the dressing. When testing the potatoes for doneness, simply taste a piece; do not overcook the potatoes or they will become mealy and will break apart. The potatoes must be just warm, or even fully cooled, when you add the dressing. If the potato salad seems a little dry, add up to 2 tablespoons more mayonnaise.  
 2 pounds russet potatoes, peeled and cut into 3⁄4-inch cubes  
 Salt  
 2 tablespoons distilled white vinegar  
@@ -2777,7 +2742,6 @@ GARLICKY POTATO SALAD WITH TOMATOES AND BASIL
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-When testing the potatoes for doneness, simply taste a piece; do not overcook the potatoes or they will become mealy and will break apart. The potatoes must be just warm, or even fully cooled, when you add the dressing. If the potato salad seems a little dry, add up to 2 tablespoons more mayonnaise.  
 2 pounds russet potatoes, peeled and cut into 3⁄4-inch cubes  
 Salt  
 2 tablespoons distilled white vinegar  
@@ -2794,7 +2758,6 @@ Salt
 1. Place potatoes in large saucepan and add water to cover by 1 inch. Bring to boil over medium-high heat; add 1 tablespoon salt, reduce heat to medium, and simmer, stirring once or twice, until potatoes are tender, about 8 minutes.  
 2. Drain potatoes and transfer to large bowl. Add vinegar and, using rubber spatula, toss gently to combine. Let stand until potatoes are just warm, about 20 minutes.  
 3. Meanwhile, in small bowl, stir together celery, mayonnaise, onion, parsley, garlic, pepper, and 1⁄2 teaspoon salt. Using rubber spatula, gently fold dressing and eggs, if using, into potatoes. Cover with plastic wrap and refrigerate until chilled, about 1 hour. Just before serving, add basil and tomatoes; serve. (Potato salad can be refrigerated for up to 1 day.)  
-FRENCH POTATO SALAD  
 #end  
 #title  
 FRENCH POTATO SALAD WITH DIJON MUSTARD AND FINES HERBES  
@@ -2818,12 +2781,16 @@ If fresh chervil isn’t available, substitute an additional 1⁄2 tablespoon of
 1. Place potatoes and salt in large saucepan and add water to cover by 1 inch; bring to boil over high heat, then reduce heat to medium. Lower skewered garlic into simmering water and partially blanch, about 45 seconds. Immediately run garlic under cold running water to stop cooking; remove garlic from skewer and set aside. Continue to simmer potatoes, uncovered, until tender but still firm (thin-bladed paring knife can be slipped into and out of center of potato slice with no resistance), about 5 minutes. Drain potatoes, reserving 1⁄4 cup cooking water. Arrange hot potatoes close together in single layer on rimmed baking sheet.  
 2. Press garlic through garlic press or mince by hand. Whisk garlic, reserved potato cooking water, vinegar, mustard, oil, and pepper in small bowl until combined. Drizzle dressing evenly over warm potatoes; let stand 10 minutes.  
 3. Toss shallot and herbs in small bowl. Transfer potatoes to large serving bowl; add shallot-herb mixture and mix gently with rubber spatula to combine. Serve immediately.  
+
 TO MAKE AHEAD: Follow recipe through step 2, cover with plastic wrap, and refrigerate. Before serving, bring salad to room temperature, then add shallots and herbs.  
+
 FRENCH POTATO SALAD WITH ARUGULA, ROQUEFORT, AND WALNUTS  
 Omit herbs and toss dressed potatoes with 1⁄2 cup walnuts, toasted and coarsely chopped, 4 ounces Roquefort cheese, crumbled, and 3 ounces baby arugula, torn into bite-size pieces (3 cups) along with the shallots in step 3.  
+
 FRENCH POTATO SALAD WITH FENNEL, TOMATO, AND OLIVES  
 When chopping the fennel fronds for this variation, use only the delicate wispy leaves, not the tough, fibrous stems to which they are attached.  
 Trim stalks and fronds from 1 small fennel bulb; roughly chop and reserve 1⁄4 cup fronds. Halve bulb lengthwise; using paring knife, core 1 half of bulb, reserving second half for another use. Cut half crosswise into very thin slices. Omit chervil, chives, and tarragon, and increase parsley to 3 tablespoons. Toss dressed potatoes with fennel, 1 tomato, peeled, seeded, and diced medium, and 1⁄4 cup oil-cured black olives, pitted and quartered, along with shallots and parsley in step 3.  
+
 FRENCH POTATO SALAD WITH RADISHES, CORNICHONS, AND CAPERS  
 Omit herbs and substitute 2 tablespoons minced red onion for shallot. Toss dressed potatoes with 2 thinly sliced red radishes, 1⁄4 cup capers, rinsed and drained, and 1⁄4 cup cornichons, thinly sliced, along with red onion in step 3.  
 #end  
@@ -2867,7 +2834,6 @@ Salt and pepper
 1. Bring potatoes, broth, water, 1 teaspoon salt, sugar, and 1 tablespoon vinegar to boil in 12-inch skillet over high heat. Reduce heat to medium-low, cover, and cook until potatoes offer no resistance when pierced with paring knife, 15 to 17 minutes. Remove cover, increase heat to high (so cooking liquid will reduce), and cook 2 minutes.  
 2. Drain potatoes in colander set over large bowl, reserving cooking liquid. Set drained potatoes aside. Pour off and discard all but 1⁄2 cup cooking liquid (if 1⁄2 cup liquid does not remain, add water to make 1⁄2 cup). Whisk remaining tablespoon vinegar, mustard, and oil into cooking liquid.  
 3. Add 1⁄2 cup cooked potatoes to bowl with cooking liquid mixture and mash with potato masher or fork until thick sauce forms (mixture will be slightly chunky). Add remaining potatoes, onion, cornichons, and chives, folding gently with rubber spatula to combine. Season with salt and pepper to taste. Serve warm or at room temperature.  
-CHICKEN SALAD  
 #end  
 #title  
 CLASSIC CREAMY CHICKEN SALAD  
@@ -2888,21 +2854,22 @@ SALAD
 #instructions  
 1. Adjust oven rack to middle position and heat oven to 400 degrees. Set breasts on small, aluminum foil–lined rimmed baking sheet. Brush with oil and sprinkle generously with salt. Roast until chicken registers 160 degrees, 35 to 40 minutes. Let cool to room temperature, remove skin and bones, and shred meat into bite-size pieces (about 5 cups).  
 2. Using the lesser amounts of mayonnaise and lemon juice, mix all salad ingredients (including chicken) together in large bowl. Adjust flavor and consistency with additional mayonnaise and lemon juice and salt and pepper to taste. Serve. (Chicken salad can be refrigerated overnight.)  
+
 CURRIED CHICKEN SALAD WITH RAISINS AND HONEY  
 Add 6 tablespoons golden raisins, 1 tablespoon honey, and 2 teaspoons curry powder. Substitute cilantro for parsley.  
+
 WALDORF CHICKEN SALAD  
 Add 1 large crisp apple, cored and cut into medium dice, and 6 tablespoons chopped toasted walnuts.  
+
 CHICKEN SALAD WITH HOISIN DRESSING  
 Try serving this Asian-style salad on a bed of baby spinach leaves with sliced cucumber and radishes or rolled in a flour tortilla with shredded iceberg lettuce or watercress.  
 Omit mayonnaise and lemon juice. In small bowl, whisk together 1⁄3 cup rice vinegar, 3 tablespoons hoisin sauce, 1-1⁄2 tablespoons soy sauce, and 1 tablespoon minced or grated fresh ginger. Whisk in 3 tablespoons vegetable oil and 1 tablespoon toasted sesame oil until combined. Substitute cilantro for parsley.  
-DINNER-STYLE CHICKEN SALAD  
 #end  
 #title  
 CHICKEN SALAD WITH ASPARAGUS AND SUN-DRIED TOMATO DRESSING  
 #quantity  
 SERVES 6  
 #ingredients  
-This recipe is best served over salad greens.  
 1⁄2 cup extra-virgin olive oil plus 1 additional tablespoon  
 1⁄4 cup red wine vinegar  
 1⁄2 cup oil-packed sun-dried tomatoes, rinsed and minced  
@@ -2923,7 +2890,6 @@ THAI-STYLE CHICKEN SALAD WITH SPICY PEANUT DRESSING
 #quantity  
 SERVES 6  
 #ingredients  
-This recipe is best served over salad greens.  
 1⁄2 cup canola oil  
 3 tablespoons smooth peanut butter  
 1⁄2 cup lime juice (3 to 4 limes)  
@@ -2994,7 +2960,6 @@ SHRIMP SALAD
 #quantity  
 SERVES 4  
 #ingredients  
-This recipe can also be prepared with large shrimp (31 to 40 per pound); the cooking time will be 1 to 2 minutes less. The shrimp can be cooked up to 24 hours in advance, but hold off on dressing the salad until ready to serve. The recipe can be easily doubled; cook the shrimp in a 7-quart Dutch oven and increase the cooking time to 12 to 14 minutes. Serve the salad over greens or on buttered and grilled buns.  
 1 pound extra-large shrimp (21 to 25 per pound), peeled, deveined, and tails removed  
 5 tablespoons lemon juice (2 lemons), spent halves reserved  
 5 sprigs fresh parsley plus 1 teaspoon minced  
@@ -3033,6 +2998,7 @@ Be sure to use red onion; yellow onion is too harsh.
 2 teaspoons lemon juice  
 1⁄4 teaspoon salt  
 Pepper  
+#instructions
 Mix all ingredients together in medium bowl, including pepper to taste. Serve. (Egg salad can be refrigerated in an airtight container for 1 day.)  
 EGG SALAD WITH RADISH, SCALLIONS, AND DILL  
 Substitute 1 tablespoon minced fresh dill for parsley, 1 thinly sliced scallion for red onion, and add 3 minced radishes.  
@@ -3042,14 +3008,14 @@ CREAMY EGG SALAD WITH CAPERS AND ANCHOVIES
 Add 1 minced small garlic clove, 2 tablespoons chopped capers, and 1 minced anchovy fillet. Omit salt.  
 CREAMY EGG SALAD WITH BACON, SHALLOTS, AND WATERCRESS  
 In 10-inch skillet over medium heat, cook 4 slices bacon, cut into 1⁄4-inch pieces, until brown and crisp, 5 to 7 minutes. Transfer bacon with slotted spoon to paper towel–lined plate; pour off all but 1 tablespoon of fat from pan. Add 2 large shallots, chopped medium, and sauté until softened and browned, about 5 minutes. Omit celery and salt, substitute sautéed shallots for red onion, and add the bacon and 1⁄4 cup watercress leaves, chopped coarse.  
-Soups  
 #end  
+#section
+Soup  
 #title  
 QUICK CHICKEN STOCK  
 #quantity  
 MAKES ABOUT 8 CUPS  
 #ingredients  
-To defat hot stock, we recommend using a ladle or fat separator. Alternatively, after the stock has been refrigerated, the fat hardens on the surface and is very easy to remove with a spoon.  
 1 tablespoon vegetable oil  
 1 onion, chopped  
 4 pounds whole chicken legs or backs and wingtips, cut into 2-inch pieces  
@@ -3066,7 +3032,6 @@ RICH BEEF STOCK
 #quantity  
 MAKES 8 CUPS  
 #ingredients  
-To defat hot stock, we recommend using a ladle or fat separator. Alternatively, after the stock has been refrigerated, the fat hardens on the surface and is very easy to remove with a spoon. Make sure to use 6-quart or larger stockpot or Dutch oven for this recipe.  
 2 tablespoons vegetable oil  
 1 large onion, chopped  
 6 pounds beef shanks, meat cut from bone in large chunks, or 4 pounds beef chuck, cut into 3-inch chunks, and 2 pounds small marrowbones  
@@ -3078,14 +3043,12 @@ To defat hot stock, we recommend using a ladle or fat separator. Alternatively, 
 1. Heat 1 tablespoon oil in stockpot or Dutch oven over medium-high heat until shimmering. Add onion and cook, stirring occasionally, until slightly softened, 2 to 3 minutes. Transfer to large bowl.  
 2. Brown meat and bones on all sides in 3 or 4 batches, about 5 minutes per batch, adding remaining oil to pot as necessary; do not overcrowd. Transfer to bowl with onion. Add wine to pot and cook, scraping up browned bits with wooden spoon, until wine is reduced to about 3 tablespoons, about 2 minutes. Return browned beef and onion to pot, reduce heat to low, cover, and sweat until meat releases juices, about 20 minutes. Increase heat to high, add boiling water, salt, and bay leaves. Bring to boil, then reduce heat to low, cover, and simmer slowly until meat is tender and stock is flavorful, 1-1⁄2 to 2 hours, skimming foam off surface. Strain and discard bones and onion; reserve meat for another use, if desired.  
 3. Before using, defat stock. (Stock can be refrigerated for up to 4 days or frozen for up to 6 months.)  
-FISH STOCK  
 #end  
 #title  
 CLASSIC FISH STOCK  
 #quantity  
 MAKES ABOUT 8 CUPS  
 #ingredients  
-You can often buy fish frames (skeletons) cheaply at your local fish market, or ask for them at the fish counter of your local supermarket. We like frames from mild white fish the most. Note that the type of fish bones you use can make a big difference in the flavor of the stock; see below for more information. Make sure to use 6-quart or larger stockpot or Dutch oven for this recipe.  
 2 tablespoons unsalted butter  
 3 pounds fish frames, cleaned  
 2 onions, chopped  
@@ -3111,7 +3074,6 @@ CHEATER’S FISH STOCK
 #quantity  
 MAKES ABOUT 4 CUPS  
 #ingredients  
-Clam juice is very salty so don’t add salt to this stock until after you add the clam juice and taste it.  
 1 small onion, chopped  
 1 carrot, chopped  
 1 celery rib, chopped  
@@ -3122,19 +3084,14 @@ Clam juice is very salty so don’t add salt to this stock until after you add t
 8 whole black peppercorns  
 1⁄2 teaspoon dried thyme  
 Salt  
+#instructions
 Bring all ingredients to boil in medium saucepan and simmer to blend flavors, about 30 minutes. Strain stock through cheesecloth, pressing on solids with back of spoon to extract as much liquid as possible. Season with salt to taste. Use immediately.  
-CLEANING FISH FRAMES FOR STOCK  
-#instructions  
-1. Lift gill cover and detach gills with kitchen shears.  
-2. Remove and discard gills. Rinse fish frame under cool running water.  
-3. Cut fish frame into small pieces that will easily fit into stockpot.  
 #end  
 #title  
 ULTIMATE VEGETABLE STOCK  
 #quantity  
 MAKES ABOUT 4 CUPS  
 #ingredients  
-It is important to use a heavy-bottomed Dutch oven or stockpot so that the vegetables caramelize properly without burning. Lemon grass is available in some grocery stores and most Asian markets. You can omit lemon grass if you cannot find it; the flavor of the stock will still be very good.  
 2 onions, peeled and chopped  
 1 head garlic (10 to 12 cloves), cloves peeled and smashed  
 8 ounces shallots, sliced thin  
@@ -3157,6 +3114,7 @@ Stems from 1 bunch fresh parsley
 1. Combine onions, garlic, shallots, celery, and carrot in 8-quart stockpot or Dutch oven; spray vegetables lightly with vegetable oil spray and toss to coat. Cover and cook over low heat, stirring frequently, until pan bottom shows light brown glaze, 20 to 30 minutes. Add leeks and increase heat to medium; cook, covered, until leeks soften, about 10 minutes. Add 1-1⁄2 cups boiling water and cook, partially covered, until water has evaporated to a glaze and vegetables are very soft, 25 to 35 minutes.  
 2. Add parsley stems, bay leaves, salt, peppercorns, and remaining 7 cups boiling water. Increase heat to medium-high and bring to simmer; reduce heat to medium-low and simmer gently, covered, to blend flavors, about 15 minutes.  
 3. Add collard greens, cauliflower, thyme, lemon grass, and scallions. Increase heat to medium-high and bring to simmer; reduce heat to low and simmer gently, covered, to blend flavors, about 15 minutes longer. Strain stock through large strainer into large bowl or container, allowing stock to drip through to drain thoroughly (do not press on solids). Stir vinegar into stock. (Stock can be refrigerated for up to 4 days or frozen for up to 2 months.)  
+
 BRUISING LEMON GRASS  
 To bruise lemon grass, smack stalk with back of large chef’s knife.  
 #end  
@@ -3188,10 +3146,13 @@ Salt and pepper
 3. Remove breast pieces from pot. When cool enough to handle, remove skin from breasts, then remove meat from bones and shred into bite-size pieces; discard skin and bones. Strain stock through fine-mesh strainer into container, pressing on solids to extract as much liquid as possible; discard solids. Allow liquid to settle, about 5 minutes, then skim off fat; reserve 2 tablespoons, if desired (see note).  
 4. FOR THE SOUP: Heat reserved chicken fat in Dutch oven over medium-high heat. Add onion, carrot, and celery and cook until softened, about 5 minutes. Add thyme and reserved stock and simmer until the vegetables are tender, 10 to 15 minutes.  
 5. Add noodles and reserved shredded chicken and cook until just tender, 5 to 8 minutes. Stir in parsley, season with salt and pepper to taste, and serve. (After skimming broth in step 3, shredded chicken, strained stock, and fat can be refrigerated in separate containers for up to 2 days.)  
+
 CLASSIC CHICKEN SOUP WITH ORZO AND SPRING VEGETABLES  
 Substitute 1 leek, quartered lengthwise, sliced thin crosswise, and washed thoroughly, for onion and 1⁄2 cup orzo for egg noodles. Along with orzo, add 4 ounces trimmed asparagus, cut into 1-inch lengths, and 1⁄4 cup fresh or frozen peas. Substitute 2 tablespoons minced fresh tarragon for parsley.  
+
 CLASSIC CHICKEN SOUP WITH SHELLS, TOMATOES, AND ZUCCHINI  
 Add 1 zucchini, diced medium, to pot with onions, carrot, and celery in step 4, increasing cooking time to 7 minutes. Add 1 tomato, cored, seeded, and chopped, to pot along with broth in step 4. Substitute 1 cup small shells or macaroni for egg noodles and simmer until noodles are just tender. Substitute 1⁄4 cup minced fresh basil for parsley and serve with grated Parmesan, if desired.  
+
 #end  
 #title  
 CLASSIC CHICKEN SOUP WITH LEEKS, WILD RICE, AND MUSHROOMS  
@@ -3227,7 +3188,6 @@ HEARTY CHICKEN NOODLE SOUP
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-When skimming the fat off the stock, we prefer to leave a little bit on the surface to enhance the soup’s flavor.  
 STOCK  
 1 tablespoon vegetable oil  
 1 pound ground chicken  
@@ -3261,7 +3221,6 @@ GREEK EGG-LEMON SOUP
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-Homemade chicken stock gives this soup the best flavor and body, but in a pinch you can use low-sodium store-bought chicken broth. Make sure to zest the lemons before juicing them. The longer the final soup cooks after the eggs have been added, the thicker it becomes. About 5 minutes of heating produces a soft, velvety texture; any longer and the soup begins to turn pasty. Scallions and fresh mint, individually or together, make simple and flavorful garnishes. Serve the soup immediately; it thickens to a gravylike consistency when reheated.  
 8 cups QUICK CHICKEN STOCK  
 1⁄2 cup long-grain white rice  
 1 bay leaf  
@@ -3274,11 +3233,14 @@ Homemade chicken stock gives this soup the best flavor and body, but in a pinch 
 1. Bring chicken stock to boil in medium saucepan over high heat. Add rice, bay leaf, cardamom, lemon zest, and salt. Reduce heat to medium and simmer until rice is tender and stock is aromatic from lemon zest, 16 to 20 minutes.  
 2. Remove and discard bay leaf, cardamom, and zest strips. Increase heat to high and return stock to boil, then reduce heat to low.  
 3. Gently whisk whole eggs, egg yolks, and lemon juice in medium bowl until combined. Whisking constantly, slowly ladle about 2 cups hot stock into egg mixture and whisk until combined. Pour egg mixture back into saucepan and cook over low heat, stirring constantly, until soup is slightly thickened and wisps of steam appear, 4 to 5 minutes (do not simmer or boil). Divide soup among serving bowls, sprinkle with scallion and/or mint, and serve immediately.  
+
 EGG-LEMON SOUP WITH CINNAMON AND CAYENNE  
 This variation is based on a Tunisian-style egg-lemon soup.  
 Substitute one 2-inch stick cinnamon and pinch cayenne for cardamom.  
+
 EGG-LEMON SOUP WITH SAFFRON  
 Add 1⁄4 teaspoon saffron threads, crumbled, to stock along with rice, bay leaf, cardamom, zest, and salt.  
+
 EGG-LEMON SOUP WITH CHICKEN  
 Add two 6-ounce boneless, skinless chicken breasts, cut into 1⁄2-inch cubes, to stock along with rice, seasonings, and zest.  
 #end  
@@ -3287,7 +3249,6 @@ TORTILLA SOUP
 #quantity  
 SERVES 8  
 #ingredients  
-Despite its somewhat lengthy ingredient list, this recipe is very easy to prepare. If you desire a soup with mild spiciness, trim the ribs and seeds from the jalapeño (or omit the jalapeño altogether) and use 1 teaspoon chipotle chile pureed with tomatoes in step 3. If you want a spicier soup, add up to 1 tablespoon more adobo sauce in step 4 before you add the shredded chicken.  
 TORTILLA STRIPS  
 8 (6-inch) corn tortillas, cut into 1⁄2-inch-wide strips  
 1 tablespoon vegetable oil  
@@ -3322,7 +3283,6 @@ THAI-STYLE CHICKEN SOUP
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-For a lighter soup, substitute light coconut milk for one or both cans of regular coconut milk. The fresh lemon grass can be omitted, but the soup will lack some complexity; don’t be tempted to use jarred or dried lemon grass, as their flavor is characterless. If you want a spicier soup, add more red curry paste to taste. For a more substantial meal, serve the soup over 2 to 3 cups of cooked jasmine rice.  
 SOUP  
 1 teaspoon vegetable oil  
 3 lemon grass stalks, trimmed to bottom 6 inches, halved lengthwise and sliced thin crosswise  
@@ -3353,7 +3313,6 @@ HOT AND SOUR SOUP
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-To make slicing the pork chop easier, freeze it for 15 minutes. We prefer the distinctive flavor of Chinese black vinegar; look for it in Asian supermarkets. If you can’t find it, a combination of red wine vinegar and balsamic vinegar approximates its flavor. This soup is very spicy. For a less spicy soup, omit the chili oil altogether or add only 1 teaspoon. You can make your own CHILI OIL or use store-bought.  
 7 ounces extra-firm tofu, drained  
 1⁄4 cup soy sauce  
 1 teaspoon toasted sesame oil  
@@ -3381,7 +3340,6 @@ QUICK BEEF AND VEGETABLE SOUP
 #quantity  
 SERVES 6  
 #ingredients  
-Choose whole sirloin tip steaks over ones that have been cut into small pieces, often labeled for stir-fries. If sirloin tip steaks are unavailable, substitute blade or flank steak, removing any hard gristle or excess fat. White mushrooms can be used in place of the cremini. Feel free to add 1 cup of frozen peas, frozen corn, or frozen cut green beans during the last 5 minutes of cooking. For a heartier soup, add 10 ounces of red potatoes, cut into 1⁄2-inch pieces (2 cups), during the last 15 minutes of cooking.  
 1 pound sirloin tip steaks, trimmed and cut into 1⁄2-inch pieces  
 2 tablespoons soy sauce  
 1 teaspoon vegetable oil  
@@ -3405,14 +3363,12 @@ Salt and pepper
 3. Add beef and cook, stirring occasionally, until liquid evaporates and meat starts to brown, 6 to 10 minutes. Add tomato paste and garlic to pot and cook, stirring constantly, until aromatic, about 30 seconds. Stir in wine, scraping bottom of pot with wooden spoon to loosen browned bits, and cook until liquid reduces and becomes syrupy, 1 to 2 minutes.  
 4. Add beef broth, chicken broth, carrots, celery, bay leaf, and browned mushrooms and onion ginto pot and bring to boil. Reduce heat to low, cover, and simmer until vegetables and meat are tender, 25 to 30 minutes. Remove from heat and remove and discard bay leaf.  
 5. Meanwhile, sprinkle gelatin over cold water and allow to soften 5 minutes. Add gelatin mixture to pot with soup and stir until completely dissolved. Stir in parsley, season with salt and pepper to taste, and serve.  
-VIETNAMESE-STYLE SOUPS  
 #end  
 #title  
 VIETNAMESE-STYLE BEEF NOODLE SOUP  
 #quantity  
 SERVES 4  
 #ingredients  
-This recipe moves quickly; be sure to have all the vegetables and herbs prepped when you begin cooking.  
 NOODLES  
 8 ounces wide rice noodles  
 BROTH  
@@ -3471,6 +3427,7 @@ Lime wedges
 2. FOR THE BROTH AND CHICKEN: Bring all ingredients except salt to boil in medium saucepan over medium-high heat. Reduce heat to low and simmer, partially covered, to blend flavors, 10 to 15 minutes, until chicken is cooked through, about 10 minutes.  
 3. Remove chicken with slotted spoon and continue to simmer broth, about 10 minutes. When chicken is cool enough to handle, slice thin. Strain broth through fine-mesh strainer and return to pot. Season with salt to taste. Cover broth and keep hot over low heat until ready to serve.  
 4. FOR THE VEGETABLES: Divide cabbage and chicken among bowls with noodles, then ladle in broth. Sprinkle each serving with scallions, mint, cilantro, and peanuts and serve, passing lime wedges separately.  
+
 SMASHING GINGER  
 To release the flavorful oils from fresh ginger, thinly slice a knob and then use the end of a chef’s knife to smash each piece.  
 #end  
@@ -3503,7 +3460,6 @@ TO MAKE AHEAD: Onions can be prepared through step 1, cooled in pot, and refrige
 QUICKER FRENCH ONION SOUP  
 This variation uses a microwave for the initial cooking of the onions, which dramatically reduces the cooking time. The soup’s flavor, however, will not be quite as deep as with the stovetop method. If you don’t have a microwave-safe bowl large enough to accommodate all of the onions, microwave in a smaller bowl in 2 batches.  
 Combine onions and 1 teaspoon salt in large bowl and cover with large plate (plate should completely cover bowl and not rest on onions). Microwave for 20 to 25 minutes until onions are soft and wilted, stirring halfway through cooking. (Use oven mitts to remove bowl from microwave and remove plate away from you to avoid steam.) Drain onions (about 1⁄2 cup liquid should drain off) and proceed with step 2, melting butter in Dutch oven before adding wilted onions.  
-CREAM OF TOMATO SOUP  
 #end  
 #title  
 CLASSIC CREAM OF TOMATO SOUP  
@@ -3548,7 +3504,7 @@ Pinch red pepper flakes (optional)
 2 tablespoons brandy (optional)  
 Salt and pepper  
 1⁄4 cup chopped fresh chives  
-1 recipe BUTTER CROUTONS (recipe follows)  
+1 recipe BUTTER CROUTONS  
 #instructions  
 1. Heat 2 tablespoons oil in Dutch oven over medium-high heat until shimmering. Add onion, garlic, pepper flakes, if using, and bay leaf. Cook, stirring frequently, until onion is translucent, 3 to 5 minutes. Stir in tomatoes and their juice. Using potato masher, mash until no pieces bigger than 2 inches remain. Stir in bread and sugar. Bring soup to boil. Reduce heat to medium and cook, stirring occasionally, until bread is completely saturated and starts to break down, about 5 minutes. Remove and discard bay leaf.  
 2. Transfer half of soup to blender. Add 1 tablespoon oil and process until soup is smooth and creamy, 2 to 3 minutes. Transfer to large bowl and repeat with remaining soup and oil. Rinse out Dutch oven and return soup to pot. Stir in chicken broth and brandy, if using. Return soup to boil and season with salt and pepper to taste. Ladle soup into bowls, sprinkle with chives, and drizzle with olive oil. Serve.  
@@ -3583,7 +3539,7 @@ Salt and pepper
 1 teaspoon hot sauce (optional)  
 8 ice cubes  
 8–10 teaspoons extra-virgin olive oil, for serving  
-1 recipe GARLIC CROUTONS (recipe follows)  
+1 recipe GARLIC CROUTONS  
 #instructions  
 1. Combine tomatoes, bell peppers, cucumbers, onion, vinegar, garlic, and 2 teaspoons salt in large (at least 4-quart) bowl and season with pepper to taste. Let stand until vegetables just begin to release their juices, about 5 minutes. Stir in tomato juice, hot sauce, if using, and ice cubes. Cover tightly and refrigerate to blend flavors, at least 4 hours or up to 2 days.  
 2. Remove and discard unmelted ice cubes and season with salt and pepper to taste. Serve cold, drizzling each portion with 1 teaspoon oil and topping with desired garnishes.  
@@ -3634,7 +3590,6 @@ CREAMY GREEN PEA SOUP
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-Remove the peas from the freezer just before starting the soup so that when you are ready to process them, as the stock simmers, they will be only partially thawed. To preserve its delicate flavor and color, this soup is best served immediately.  
 4 tablespoons unsalted butter  
 5 shallots, minced, or 1 leek, white and light green parts only, halved lengthwise, chopped fine, and rinsed thoroughly  
 2 tablespoons all-purpose flour  
@@ -3676,7 +3631,6 @@ CREAMY LEEK-POTATO SOUP
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-Don’t fill the blender by more than two-thirds with hot soup; if necessary, process in three batches. You can also use an immersion blender to process the soup directly in the pot. Use the lowest setting on your toaster to dry out the bread without overbrowning it. A garnish is essential to add texture and flavor to this soup. In addition to the Fried Leeks, we also like to serve this soup with crisp bacon bits, a dollop of sour cream, freshly chopped chives, and GARLIC CHIPS or GARLIC CROUTONS.  
 4 medium leeks, white and light green parts halved lengthwise, sliced thin (4 cups), and washed thoroughly; dark green parts halved, cut into 2-inch pieces, and washed thoroughly  
 2 cups low-sodium chicken broth  
 2 cups water  
@@ -3687,7 +3641,7 @@ Salt and pepper
 1 bay leaf  
 1 sprig fresh thyme or tarragon  
 1 slice hearty white sandwich bread, lightly toasted and torn into 1⁄2-inch pieces  
-1 recipe FRIED LEEKS (recipe follows)  
+1 recipe FRIED LEEKS  
 #instructions  
 1. Bring dark green leek pieces, broth, and water to boil in large saucepan over high heat. Reduce heat to low, cover, and simmer 20 minutes. Strain broth through fine-mesh strainer into medium bowl, pressing on solids to extract as much liquid as possible; set aside. Discard solids in strainer and rinse out saucepan.  
 2. Melt butter in now-empty saucepan over medium-low heat. Stir in sliced leeks, onion, and 1 teaspoon salt, reduce heat to low, and cook, stirring frequently, until vegetables are softened, about 10 minutes.  
@@ -3703,6 +3657,7 @@ MAKES ABOUT 1⁄2 CUP
 2 tablespoons all-purpose flour  
 Salt and pepper  
 1⁄2 cup olive oil  
+#ingredients
 Toss leeks, flour, and pinch each salt and pepper in medium bowl. Heat oil in 12-inch skillet until shimmering. Add half of leeks and fry, stirring often, until golden brown, about 6 minutes. Using slotted spoon, transfer leeks to paper towel–lined plate, then sprinkle with salt and pepper to taste. Repeat with remaining leeks.  
 #end  
 #title  
@@ -3722,7 +3677,7 @@ Salt and pepper
 1⁄2 cup heavy cream  
 1-1⁄2 teaspoons minced fresh thyme  
 1⁄4 cup minced fresh chives  
-1 recipe GARLIC CHIPS (recipe follows)  
+1 recipe GARLIC CHIPS  
 #instructions  
 1. Melt butter in Dutch oven over medium heat. Add leeks and cook until soft (do not brown), 5 to 8 minutes. Stir in minced garlic and cook until fragrant, about 1 minute. Add garlic heads, 6 cups broth, bay leaves, and 3⁄4 teaspoon salt. Partially cover pot and bring to simmer over medium-high heat. Reduce heat and simmer until garlic is very tender when pierced with tip of knife, 30 to 40 minutes. Add russet potatoes and red potatoes and continue to simmer, partially covered, until potatoes are tender, 15 to 20 minutes.  
 2. Discard bay leaves. Remove garlic heads from pot and, using tongs or paper towels, squeeze at root end until cloves slip out of their skins into bowl. Using fork, mash garlic to smooth paste.  
@@ -3737,6 +3692,7 @@ MAKES ABOUT 1⁄4 CUP
 3 tablespoons olive oil  
 6 garlic cloves, sliced thin lengthwise  
 Salt  
+#instructions
 Heat oil and garlic in 10-inch skillet over medium-high heat. Cook, turning frequently, until light golden brown, about 3 minutes. Using slotted spoon, transfer garlic to paper towel–lined plate. Season with salt to taste.  
 #end  
 #title  
@@ -3762,7 +3718,6 @@ Salt and pepper
 #instructions  
 1. Melt butter in Dutch oven over medium-high heat. Add broccoli, onion, garlic, mustard, cayenne, and 1 teaspoon salt and cook, stirring frequently, until fragrant, about 6 minutes. Add 1 cup water and baking soda. Bring to simmer, cover, and cook until broccoli is very soft, about 20 minutes, stirring once during cooking.  
 2. Add broth and 2 cups water and increase heat to medium-high. When mixture begins to simmer, stir in spinach and cook until wilted, about 1 minute. Transfer half of soup to blender, add cheddar and Parmesan, and process until smooth, about 1 minute. Transfer soup to medium bowl and repeat with remaining soup. Return soup to Dutch oven, place over medium heat and bring to simmer. Adjust consistency of soup with up to 1 cup water. Season with salt and pepper to taste. Serve, passing extra Parmesan.  
-SILKY BUTTERNUT SQUASH SOUP  
 #end  
 #title  
 BUTTERNUT SQUASH SOUP  
@@ -3778,7 +3733,7 @@ Salt
 1⁄2 cup heavy cream  
 1 teaspoon dark brown sugar  
 Pinch ground nutmeg  
-BUTTERED CINNAMON-SUGAR CROUTONS (recipe follows)  
+BUTTERED CINNAMON-SUGAR CROUTONS  
 #instructions  
 1. Melt butter in Dutch oven over medium-low heat. Add shallot and cook, stirring frequently, until translucent, about 3 minutes. Add seeds and fibers from squash and cook, stirring occasionally, until butter turns saffron color, about 4 minutes.  
 2. Add water and 1 teaspoon salt to pot and bring to boil over high heat. Reduce heat to medium-low, place squash, cut side down, in steamer basket, and lower basket into pot. Cover and steam until squash is completely tender, about 30 minutes. Take pot off heat and use tongs to transfer squash to rimmed baking sheet. When cool enough to handle, use large spoon to scrape flesh from skin. Reserve squash flesh in bowl and discard skin.  
@@ -3819,7 +3774,7 @@ The mushroom garnish adds visual appeal and texture to this creamy soup.
 1 cup heavy cream  
 2 teaspoons lemon juice  
 Salt and pepper  
-1 recipe SAUTÉED WILD MUSHROOM GARNISH (recipe follows)  
+1 recipe SAUTÉED WILD MUSHROOM GARNISH  
 #instructions  
 1. Melt butter in Dutch oven over medium-low heat. Add shallots and sauté, stirring frequently, until softened, about 4 minutes. Stir in garlic and nutmeg; cook until fragrant, about 1 minute longer. Increase heat to medium; add white mushrooms and stir to coat with butter. Cook, stirring occasionally, until mushrooms release liquid, about 7 minutes. Reduce heat to medium-low, cover pot, and cook, stirring occasionally, until softened and mushrooms have released all liquid, about 20 minutes.  
 2. Add broth, water, and porcini mushrooms to pot. Cover and bring to simmer, then reduce heat to low and simmer until mushrooms are fully tender, about 20 minutes.  
@@ -3907,7 +3862,6 @@ SPLIT PEA AND HAM SOUP
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-Four ounces of regular sliced bacon can be used, but the thinner slices are a little harder to remove from the soup. Depending on the age and brand of split peas, the consistency of the soup may vary slightly. If the soup is too thin at the end of step 3, increase the heat and simmer, uncovered, until the desired consistency is reached. If it is too thick, thin it with a little water. In addition to sprinkling the soup with the Butter Croutons, we also like to garnish it with fresh peas, chopped mint, and a drizzle of aged balsamic vinegar.  
 2 tablespoons unsalted butter  
 1 large onion, chopped fine  
 Salt and pepper  
@@ -3931,7 +3885,6 @@ HEARTY LENTIL SOUP
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-Lentilles du Puy, sometimes called French green lentils, are our first choice for this recipe, but brown, black, or regular green lentils are fine, too. Note that cooking times will vary depending on the type of lentils used. Lentils lose flavor with age, and because most packaged lentils do not have expiration dates, try to buy them from a store that specializes in natural foods and grains. Before use, rinse and then carefully sort through the lentils to remove small stones and pebbles.  
 3 slices bacon, cut into 1⁄4-inch pieces  
 1 large onion, chopped fine  
 2 carrots, peeled and chopped  
@@ -3962,7 +3915,6 @@ PASTA E FAGIOLI
 #quantity  
 SERVES 8 TO 10  
 #ingredients  
-Parmesan rind is added for flavor, but can be replaced with a 2-inch chunk of the cheese. You can substitute another small pasta for the orzo, such as ditalini, tubettini, or conchigliette.  
 1 tablespoon extra-virgin olive oil, plus extra for drizzling  
 3 ounces pancetta or 3 slices bacon, chopped fine  
 1 onion, chopped fine  
@@ -3994,7 +3946,6 @@ TUSCAN WHITE BEAN SOUP
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-For a more authentic soup, place a small slice of lightly toasted Italian bread in the bottom of each bowl and ladle the soup over. To make this a vegetarian soup, omit the pancetta and add a piece of Parmesan rind to the pot along with the halved onion and unpeeled garlic in step 1.  
 6 ounces pancetta, cut into 1-inch cubes  
 12 cups water, plus extra as needed  
 1 pound dried cannellini beans (2 cups), picked over and rinsed  
@@ -4015,7 +3966,6 @@ WHITE BEAN SOUP WITH WINTER VEGETABLES
 #quantity  
 SERVES 10 TO 12  
 #ingredients  
-For a more authentic soup, place a small slice of lightly toasted Italian bread in the bottom of each bowl and ladle the soup over. To make this a vegetarian soup, omit the pancetta and add a piece of Parmesan rind to the pot along with the halved onion and unpeeled garlic in step 1.  
 6 ounces pancetta, cut into 1-inch cubes  
 12 cups water, plus extra as needed  
 1 pound dried cannellini beans (2 cups), picked over and rinsed  
@@ -4043,7 +3993,6 @@ QUICK TUSCAN WHITE BEAN SOUP
 #quantity  
 SERVES 6  
 #ingredients  
-This quick variation uses canned beans and can be on the table in just 40 minutes.  
 6 ounces pancetta, cut into 1-inch cubes  
 2 tablespoons extra-virgin olive oil, plus extra for serving  
 1 small onion, chopped  
@@ -4062,7 +4011,6 @@ BLACK BEAN SOUP
 #quantity  
 SERVES 6  
 #ingredients  
-Dried beans tend to cook unevenly, so be sure to taste several beans to determine their doneness in step 1. For efficiency, you can prepare the soup ingredients while the beans simmer and the garnishes while the soup simmers. Though you do not need to offer all of the garnishes listed below, do choose at least a couple; garnishes are essential for this soup as they add not only flavor but texture and color as well.  
 BEANS  
 5 cups water, plus extra as needed  
 1 pound dried black beans (2 cups), picked over and rinsed  
@@ -4102,7 +4050,6 @@ CLASSIC CORN CHOWDER
 #quantity  
 SERVES 6  
 #ingredients  
-Be sure to use salt pork, not fatback, for the chowder. Streaks of lean meat distinguish salt pork from fatback; fatback is pure fat. We prefer Spanish onions for their sweet, mild flavor, but all-purpose yellow onions will work fine, too.  
 10 ears corn, husks and silk removed  
 3 ounces salt pork, rind removed, cut into two 1-inch cubes  
 1 tablespoon unsalted butter  
@@ -4126,7 +4073,6 @@ MODERN CORN CHOWDER
 #quantity  
 SERVES 6  
 #ingredients  
-When removing the kernels from the cob make sure to remove only the part of the kernel sticking out of the cob. Cutting deeper will result in too much fibrous material coming off the corn. Yukon Gold potatoes can be substituted for the red potatoes. Minced chives can be used in place of the basil.  
 8 ears corn, husks and silk removed  
 3 tablespoons unsalted butter  
 1 onion, chopped fine  
@@ -4151,7 +4097,6 @@ NEW ENGLAND CLAM CHOWDER
 #quantity  
 SERVES 6  
 #ingredients  
-Be sure to use fresh clams. This chowder uses a combination of the clam steaming liquid and bottled clam juice; a chowder made entirely from the clam steaming liquid will taste unpalatably salty. Serve with oyster crackers.  
 3 cups water  
 6 pounds medium hard-shell clams, such as cherrystones, scrubbed  
 2 slices bacon, chopped fine  
@@ -4172,7 +4117,6 @@ Salt and pepper
 4. Gradually whisk in bottled clam juice and reserved clam steaming liquid, scraping up any browned bits and smoothing out any lumps. Stir in potatoes and bay leaf and bring to boil. Reduce to gentle simmer and cook until potatoes are tender, 20 to 25 minutes.  
 5. Stir in cream and return to brief simmer. Off heat, remove bay leaf, stir in parsley, and season with salt and pepper to taste. Stir in chopped clams, cover, and let stand until clams are warmed through, about 1 minute. Serve.  
 PREPARING CLAMS FOR CHOWDER  
-#instructions  
 1. Before cooking, use soft brush (sometimes sold as vegetable brush) to scrub away any bits of sand trapped in shells.  
 2. Steam clams until they just open, as seen on left, rather than completely open, as shown on right.  
 3. Carefully use paring knife to open steamed clams.  
@@ -4183,7 +4127,6 @@ RICH AND VELVETY SHRIMP BISQUE
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-Shrimp shells contribute a lot of flavor to the bisque, so be sure to purchase shell-on shrimp. Before flambéing, be sure to roll up long shirtsleeves, tie back long hair, and turn off the exhaust fan and any lit burners.  
 2 pounds extra-large shell-on shrimp (21 to 25 per pound)  
 3 tablespoons olive oil  
 1⁄3 cup brandy or cognac, warmed  
@@ -4213,7 +4156,6 @@ CREOLE-STYLE SHRIMP AND SAUSAGE GUMBO
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-Making a dark roux can be dangerous, as the mixture reaches temperatures in excess of 400 degrees. Therefore, use a deep pot for cooking the roux and long-handled utensils for stirring it, and be careful not to splash it on yourself. One secret to smooth gumbo is adding shrimp stock that is neither too hot nor too cold to the roux. For a stock that is at the right temperature when the roux is done, start preparing it before you tend to the vegetables and other ingredients, strain it, and then give it a head start on cooling by immediately adding the ice water and clam juice. So that your constant stirring of the roux will not be interrupted, start the roux only after you’ve made the stock. Spicy andouille sausage is a Louisiana specialty that may not be available everywhere; kielbasa or any fully cooked smoked sausage makes a fine substitute. Gumbo is traditionally served over white rice.  
 1-1⁄2 pounds small shrimp (51 to 60 per pound), peeled and deveined; shells reserved  
 3-1⁄2 cups ice water  
 1 (8-ounce) bottle clam juice  
@@ -4240,15 +4182,14 @@ Fresh okra may be used in place of frozen, though it tends to be more slippery, 
 Add 10 ounces thawed frozen cut okra to roux along with onions, bell pepper, and celery.  
 SHRIMP AND SAUSAGE GUMBO WITH FILÉ  
 Add 1-1⁄2 teaspoons filé powder along with parsley and scallions in step 4 after gumbo has been removed from heat. Let rest until slightly thickened, about 5 minutes. Adjust seasonings and serve.  
-Chilis, Stews, and Braises  
-SIMPLE BEEF CHILI  
 #end  
+#section
+Chili
 #title  
 SIMPLE BEEF CHILI WITH KIDNEY BEANS  
 #quantity  
 SERVES 8 TO 10  
 #ingredients  
-Good choices for condiments include diced fresh tomatoes, diced avocado, sliced scallions, finely chopped red onion, minced fresh cilantro, sour cream, and/or shredded Monterey Jack or cheddar cheese. If you are a fan of spicy food, consider using a little more of the red pepper flakes or cayenne—or both. The flavor of the chili improves with age; if possible, make it the day before you plan to serve it.  
 2 tablespoons vegetable oil  
 2 onions, chopped fine  
 1 red bell pepper, stemmed, seeded, and cut into 1⁄2-inch pieces  
@@ -4276,7 +4217,6 @@ CHILI CON CARNE
 #quantity  
 SERVES 6  
 #ingredients  
-For best flavor, we like to make this chili 1 day ahead. Select dried chiles that are moist and pliant. Toast the cumin seeds in a dry skillet over medium heat until fragrant, about 4 minutes. For hotter chili, boost the heat with a pinch of cayenne or a dash of hot pepper sauce near the end of cooking. Serve the chili with any of the following: warm pinto or kidney beans, cornbread or chips, corn tortillas or tamales, rice, biscuits, or crackers. Top with chopped fresh cilantro, finely chopped onion, diced avocado, shredded cheddar or Monterey Jack cheese, and/or sour cream.  
 3 tablespoons ancho chili powder or 3 chiles (about 1⁄2 ounce), toasted and ground  
 3 tablespoons New Mexican chili powder or 3 medium chiles (about 3⁄4 ounce), toasted and ground  
 2 tablespoons cumin seeds, toasted  
@@ -4297,7 +4237,6 @@ Salt and pepper
 3. Mix masa harina with remaining 2⁄3 cup water (or cornstarch with 3 tablespoons water) in small bowl to form smooth paste. Increase heat to medium, stir in paste, and simmer until thickened, 5 to 10 minutes. Season with salt and pepper to taste and serve. (Chili can be refrigerated for up to 2 days.)  
 SMOKY CHIPOTLE CHILI CON CARNE  
 Make sure you start with a chuck-eye roast that is at least 3 inches thick. The grilling is meant to flavor the meat by searing the surface and smoking it lightly, not to cook it.  
-#instructions  
 1. Do not cut meat into 1-inch pieces. Puree 4 garlic cloves with 2 teaspoons salt. Rub intact chuck roast with puree and sprinkle evenly with 2 tablespoons New Mexican chili powder. Using large piece of heavy-duty aluminum foil, wrap 1 cup soaked mesquite or hickory wood chips in foil packet and cut several vent holes in top.  
 2A. FOR A CHARCOAL GRILL: Open bottom vent halfway. Light large chimney starter filled with charcoal briquettes (6 quarts). When top coals are partially covered with ash, pour in even layer over half of grill. Place wood chip packet on coals. Set cooking grate in place, cover, and open lid vent halfway. Heat grill until hot and wood chips are smoking, about 5 minutes.  
 2B. FOR A GAS GRILL: Place wood chip packet over primary burner. Turn all burners to high, cover, and heat grill until hot and wood chips are smoking, about 15 minutes. Leave all burners on high.  
@@ -4339,7 +4278,6 @@ WHITE CHICKEN CHILI
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-Adjust the heat in this dish by adding the minced ribs and seeds from the jalapeño as directed in step 6. If New Mexican chiles cannot be found, add an additional poblano and jalapeño to the chili. Serve this chili with sour cream, tortilla chips, and lime wedges.  
 3 pounds bone-in split chicken breasts or thighs, trimmed  
 Salt and pepper  
 1 tablespoon vegetable oil, plus extra as needed  
@@ -4365,12 +4303,13 @@ Salt and pepper
 WHITE TURKEY CHILI  
 Substitute 1 bone-in, skin-on split turkey breast (about 2-1⁄2 pounds), trimmed, for chicken breast halves. In step 1, cook turkey, skin side down, until skin is golden brown, 6 to 8 minutes. Using tongs, flip turkey and lightly brown on other side, about 2 minutes. Transfer turkey to plate; remove and discard skin. In step 4, add turkey breast, bone side down, to Dutch oven, bring to boil over medium-high heat, reduce heat to medium-low and simmer, covered, stirring occasionally, until turkey registers 160 degrees, 30 to 35 minutes.  
 #end  
+#section
+Stew
 #title  
 LIGHTER CHICKEN AND DUMPLINGS  
 #quantity  
 SERVES 6  
 #ingredients  
-We strongly recommend buttermilk for the dumplings, but it’s acceptable to substitute 1⁄2 cup plain yogurt thinned with 1⁄4 cup milk. If you want to include white meat (and don’t mind losing a bit of flavor in the process), replace 2 chicken thighs with two 8-ounce boneless, skinless chicken breasts; brown the chicken breasts along with the thighs and remove them from the stew once they register 160 degrees, 20 to 30 minutes. The collagen in the wings helps thicken the stew; do not omit or substitute. Since the wings yield only about 1 cup of meat, using their meat is optional.  
 STEW  
 2-1⁄2 pounds bone-in chicken thighs, trimmed  
 Salt and pepper  
@@ -4429,7 +4368,6 @@ COQ AU VIN
 #quantity  
 SERVES 4  
 #ingredients  
-Use any $10 bottle of fruity, medium-bodied red wine such as a Pinot Noir or Zinfandel.  
 4 chicken leg quarters (about 3 pounds), trimmed, thighs and drumsticks separated  
 Salt and pepper  
 1 (750-ml) bottle medium-bodied red wine  
@@ -4459,7 +4397,6 @@ CHICKEN BOUILLABAISSE
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-The rouille and croutons (steps 4 and 5) can be prepared either as the chicken cooks or up to 2 days in advance. Leftover rouille will keep refrigerated for up to 1 week and can be used in sandwiches or as a sauce for vegetables and fish.  
 BOUILLABAISSE  
 3 pounds bone-in chicken pieces (breasts, thighs, and drumsticks, with breasts cut in half), trimmed  
 Salt and pepper  
@@ -4498,14 +4435,12 @@ Salt and pepper
 5. FOR THE CROUTONS: Cut remaining baguette into 3⁄4-inch-thick slices. Arrange slices in single layer on rimmed baking sheet. Drizzle with remaining 2 tablespoons olive oil and season with salt and pepper to taste. Bake on lower rack until light golden brown (can be toasted while bouillabaisse is in oven), 10 to 15 minutes.  
 6. Remove bouillabaisse and croutons from oven. Position oven rack 6 inches from broiler element and heat broiler. Return bouillabaisse to oven and cook until chicken skin is crisp and breast registers 160 degrees and drumsticks/thighs register 175 degrees, 5 to 10 minutes (smaller pieces may cook faster than larger pieces; remove individual pieces as they reach correct temperature).  
 7. Transfer chicken pieces to large plate. Skim excess fat from broth. Stir tarragon into broth and season with salt and pepper to taste. Transfer broth and potatoes to large shallow serving bowls and top with chicken pieces. Drizzle 1 tablespoon rouille over each portion and spread 1 teaspoon rouille on each crouton. Serve, floating 2 croutons in each bowl and passing remaining croutons and rouille separately.  
-CHICKEN CACCIATORE  
 #end  
 #title  
 CHICKEN CACCIATORE WITH PORTOBELLO MUSHROOMS AND SAGE  
 #quantity  
 SERVES 4  
 #ingredients  
-If your Dutch oven is large enough to hold all the chicken pieces in a single layer without crowding, brown all the pieces at once instead of in batches. The Parmesan cheese rind is optional, but we highly recommend it for the rich, savory flavor it adds to the dish. An equal amount of minced fresh rosemary can be substituted for the sage.  
 8 (5- to 7-ounce) bone-in chicken thighs, trimmed  
 Salt and pepper  
 1 teaspoon olive oil  
@@ -4556,7 +4491,6 @@ CHICKEN PROVENÇAL
 #quantity  
 SERVES 4  
 #ingredients  
-This dish is often served with rice or slices of crusty bread, but soft polenta is also a good accompaniment. Be sure to use niçoise olives here; other olives are too potent.  
 8 (5- to 7-ounce) bone-in chicken thighs, trimmed  
 Salt  
 1 tablespoon extra-virgin olive oil  
@@ -4611,7 +4545,6 @@ CHICKEN CANZANESE
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-When seasoning the dish at the end, be mindful that the prosciutto adds a fair amount of salt. It is important to use a piece of thickly sliced prosciutto in this recipe; thin strips will become tough and stringy. Serve the chicken with boiled potatoes, noodles, or polenta to absorb the extra sauce.  
 1 tablespoon olive oil  
 2 ounces prosciutto (1⁄4 inch thick), cut into 1⁄4-inch pieces  
 4 garlic cloves, sliced thin  
@@ -4638,7 +4571,6 @@ MOROCCAN CHICKEN WITH OLIVES AND LEMON
 #quantity  
 SERVES 4  
 #ingredients  
-Bone-in chicken parts can be substituted for the whole chicken. For best results, use four chicken thighs and two chicken breasts, each breast split in half; the dark meat contributes valuable flavor to the broth and should not be omitted. Use a vegetable peeler to remove wide strips of zest from the lemon before juicing it. Make sure to trim any white pith from the zest, as it can impart bitter flavor. If the olives are particularly salty, give them a rinse. Serve with couscous.  
 1-1⁄4 teaspoons paprika  
 1⁄2 teaspoon ground cumin  
 1⁄2 teaspoon ground ginger  
@@ -4671,7 +4603,6 @@ BOUILLABAISSE-STYLE FISH STEW
 #quantity  
 SERVES 8 TO 10  
 #ingredients  
-For the white wine, we prefer white Côtes de Provence. If you decide to make the fish stock ahead, it must be used within 2 days or frozen and defrosted. You will need a pot that holds at least 8 quarts for this recipe. We recommend buying “dry” scallops, those without chemical additives. Dry scallops will look ivory or pinkish and feel tacky; wet scallops look bright white and feel slippery. Use only the freshest fish. We prefer monkfish, sea bass, and ocean perch or red snapper. CLICK HERE for instructions on debearding mussels and CLICK HERE for instructions on cleaning fish frames. The chopped vegetables for the stock must be fairly small (no larger than 1 inch in diameter) and evenly cut.  
 FISH AND MARINADE  
 1-1⁄2 pounds skinless fish fillets, cut into 1- to 1-1⁄2-inch cubes  
 8 ounces medium shrimp (41 to 50 per pound) peeled and deveined, shells reserved  
@@ -4703,8 +4634,8 @@ FISH STOCK
 1⁄2 teaspoon saffron threads  
 STEW  
 2 pounds mussels, scrubbed and debearded  
-GARLIC TOASTS (recipe follows)  
-RED PEPPER ROUILLE (recipe follows)  
+GARLIC TOASTS  
+RED PEPPER ROUILLE  
 #instructions  
 1. FOR THE FISH AND MARINADE: Combine all ingredients (except shrimp shells) in large bowl. Toss well, cover flush with plastic wrap, and refrigerate 4 hours.  
 2. FOR THE FISH STOCK: Meanwhile, stir onions, fennel, carrot, and oil together in large stockpot or Dutch oven. Cover pot and set over medium-low heat; cook, stirring frequently, until vegetables are fragrant, about 15 minutes. Place garlic in large heavy-duty zipper-lock bag and seal. Smash garlic with rolling pin or meat pounder until flattened. Add smashed garlic to vegetables and continue to cook, stirring frequently, until vegetables are dry and just beginning to stick, about 15 minutes longer. (Take care not to let garlic burn.) Add wine and stir to scrape pot bottom, then add tomatoes with their juice, fish frames, shrimp shells, water, leeks, parsley stems, thyme, bay leaves, peppercorns, and salt. Bring to simmer over medium-high heat, reduce heat to medium-low, and simmer, pressing down on fish bones occasionally with spoon to submerge, until stock is rich and flavorful, about 1 hour.  
@@ -4719,6 +4650,7 @@ MAKES 10
 1 pound country-style French bread, cut into ten 1⁄2-inch-thick slices (remainder reserved for rouille if using for bouillabaisse)  
 6 garlic cloves, peeled and halved  
 3 tablespoons olive oil  
+#instructions
 Position oven rack 6 inches from broiler element and heat broiler. Arrange bread slices in single layer on baking sheet; broil until lightly toasted, about 1-1⁄2 minutes. Flip slices and rub second side of each slice with raw garlic, then brush with oil. Broil until light golden brown, about 1-1⁄2 minutes longer.  
 #end  
 #title  
@@ -4733,6 +4665,7 @@ CLICK HERE for instructions on roasting bell peppers.
 1⁄8 teaspoon cayenne pepper  
 1⁄2 cup extra-virgin olive oil  
 Salt  
+#instructions
 Process roasted pepper, bread, garlic, and cayenne in food processor until smooth, about 20 seconds. With processor running, drizzle oil in; process until rouille has thick, mayonnaise-like consistency. Season with salt to taste.  
 #end  
 #title  
@@ -4740,7 +4673,6 @@ HEARTY TUSCAN BEAN STEW
 #quantity  
 SERVES 8  
 #ingredients  
-We prefer the creamier texture of beans soaked overnight for this recipe. If you’re short on time, quick-soak them: Place the rinsed beans in a large heat-resistant bowl. Bring 8 cups water and 3 tablespoons salt to a boil. Pour the water over the beans and let them sit for 1 hour. Drain and rinse the beans well before proceeding with step 2. If pancetta is unavailable, substitute 4 slices of bacon.  
 Salt and pepper  
 1 pound dried cannellini beans (2 cups), picked over and rinsed  
 1 tablespoon extra-virgin olive oil, plus extra for drizzling  
@@ -4776,7 +4708,6 @@ FRENCH PORK AND WHITE BEAN CASSEROLE (CASSOULET)
 #quantity  
 SERVES 8 TO 10  
 #ingredients  
-Instead of an overnight soak, you can “quick brine” the beans: In step 1, combine the salt, water, and beans in a Dutch oven and bring to a boil over high heat. Remove the pot from the heat, cover, and let stand 1 hour. Drain and rinse the beans and proceed with the recipe. If you can’t find fresh French garlic sausage, Irish bangers or bratwurst may be substituted. To make a more authentic version of the dish, see our related recipe for FRENCH PORK AND WHITE BEAN CASSEROLE WITH HOMEMADE DUCK CONFIT (recipe follows).  
 Salt and pepper  
 1 pound dried cannellini beans (2 cups), picked over and rinsed  
 2 celery ribs  
@@ -4802,8 +4733,10 @@ Salt and pepper
 4. Stir in broth and beans, pressing beans into even layer, adding up to 1 cup water so beans are at least partially submerged (beans may still break surface of liquid). Increase heat to high and bring to simmer. Cover pot, transfer to oven, and cook until beans are tender, about 1-1⁄2 hours. Remove celery bundle and salt pork and discard. (Alternatively, dice salt pork and return to casserole.) Using large spoon, skim fat from surface and discard. Season with salt and pepper to taste. Increase oven temperature to 350 degrees and bake, uncovered, 20 minutes.  
 5. Meanwhile, pulse bread and remaining 2 tablespoons oil in food processor until crumbs are no larger than 1⁄8 inch, 8 to 10 pulses. Transfer to medium bowl, add parsley, and toss to combine. Season with salt and pepper to taste.  
 6. Sprinkle 1⁄2 cup bread-crumb mixture evenly over casserole; bake, covered, 15 minutes. Remove lid and bake 15 minutes longer. Sprinkle remaining bread-crumb mixture over top of casserole and bake until topping is golden brown, about 30 minutes. Let rest 15 minutes before serving.  
+#end
+#title
 FRENCH PORK AND WHITE BEAN CASSEROLE WITH HOMEMADE DUCK CONFIT  
-The two components of this recipe, the confit and the stew, are cooked simultaneously. In order for the confit and stew to finish cooking at the same time (step 7), start cooking the confit (step 3) and then wait about 1-1⁄2 hours before starting the stew (step 4). The cooked confit, covered with fat, will last up to 1 month. Three turkey drumsticks can be substituted for the duck legs. We prefer the duck confit prepared with duck fat, but canola oil can be substituted. We prefer the creamier texture of beans soaked overnight for this recipe. If you’re short on time, quick-soak them: Place the rinsed beans in a large heat-resistant bowl. Bring 8 cups water and 3 tablespoons salt to a boil. Pour the water over the beans and let them sit for 1 hour. Drain and rinse the beans well before proceeding with step 3. If you can’t find fresh French garlic sausage, Irish bangers or bratwurst may be substituted.  
+#ingredients
 DUCK CONFIT  
 1 large onion, cut into 1-inch pieces  
 1⁄4 cup salt  
@@ -4848,7 +4781,6 @@ OLD-FASHIONED BEEF STEW
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-Try to find beef that is well marbled with white veins of fat. Meat that is too lean will come out slightly dry. For the red wine in this stew, we like Cabernet Sauvignon.  
 1 (3-pound) boneless beef chuck-eye roast, pulled apart at seams, trimmed, and cut into 1-1⁄2-inch pieces  
 Salt and pepper  
 3 tablespoons vegetable oil  
@@ -4910,7 +4842,6 @@ Salt and pepper
 7. Increase heat to high, stir in softened gelatin mixture and peas; simmer until gelatin is fully dissolved and stew is thickened, about 3 minutes. Season with salt and pepper to taste; serve. (Stew can be refrigerated for up to 2 days.)  
 TRIMMING A CHUCK-EYE ROAST  
 To ensure consistent texture and flavor, avoid packaged stew meat (which can include odd-size pieces from all over the cow) and start with a chuck roast.  
-#instructions  
 1. Pull roast apart at its major seams (marked by lines of fat and silver skin). Use knife as necessary.  
 2. With a sharp chef’s knife or boning knife, trim off the thick layers of fat and silver skin.  
 #end  
@@ -4919,7 +4850,6 @@ DAUBE PROVENÇAL
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-Serve this French beef stew with buttered egg noodles or boiled potatoes. If niçoise olives are not available, kalamata olives, though not authentic, can be substituted. Cabernet Sauvignon is our favorite wine for this recipe, but Côtes du Rhône and Zinfandel also work. Our favorite cut of beef for this recipe is chuck-eye roast, but any boneless roast from the chuck will work. Because the tomatoes are added just before serving, it is preferable to use canned whole tomatoes and dice them yourself—uncooked, they are more tender than canned diced tomatoes. Once the salt pork, thyme, and bay leaves are removed in step 4, the daube can be cooled and refrigerated in an airtight container for up to 4 days. Before reheating, skim the hardened fat from the surface, then continue with the recipe.  
 3⁄4 ounce dried porcini mushrooms, rinsed  
 2 cups water  
 1 (3-1⁄2-pound) boneless beef chuck-eye roast, pulled apart at seams, trimmed, and cut into 2-inch pieces  
@@ -4947,7 +4877,6 @@ Serve this French beef stew with buttered egg noodles or boiled potatoes. If ni�
 3. Reduce heat to medium and add salt pork, carrots, onions, garlic, and tomato paste to now-empty pot; cook, stirring occasionally, until light brown, about 2 minutes. Stir in flour and cook, stirring constantly, about 1 minute. Slowly add wine, scraping bottom of pan to loosen browned bits. Add broth, remaining 1 cup water, and beef with any accumulated juices. Increase heat to medium-high and bring to simmer. Stir in mushrooms and their liquid, orange zest, 1⁄2 cup olives, anchovies, thyme, and bay leaves, arranging beef so it is completely covered by liquid; partially cover pot and place in oven. Cook until fork slips easily in and out of beef (meat should not be falling apart), 2-1⁄2 to 3 hours.  
 4. Discard salt pork, thyme, and bay leaves. Add tomatoes and remaining 1⁄2 cup olives and cook over medium-high heat until heated through, about 1 minute. Cover pot and let stew sit, about 5 minutes. Using large spoon, skim fat from surface of stew. Stir in parsley and serve.  
 MINCING ANCHOVIES  
-#instructions  
 1. Using chef’s knife, cut fillet lengthwise into 1⁄8-inch strips. Gather strips in bundle, turn it 90 degrees, and mince crosswise.  
 2. Using back of fork, press and smear the anchovies against surface of cutting board into uniform paste.  
 #end  
@@ -4956,7 +4885,6 @@ HUNGARIAN BEEF STEW
 #quantity  
 SERVES 6  
 #ingredients  
-Do not substitute hot, half-sharp, or smoked Spanish paprika for the sweet paprika in the stew, as they will compromise the flavor of the dish. Since paprika is vital to this recipe, it is best to use a fresh container. We prefer chuck-eye roast, but any boneless roast from the chuck will work. Cook the stew in a Dutch oven with a tight-fitting lid. (Alternatively, to ensure a tight seal, place a sheet of aluminum foil over the pot before adding the lid.) Serve the stew over boiled potatoes or buttered egg noodles.  
 1 (3-1⁄2- to 4-pound) boneless beef chuck-eye roast, pulled apart at seams, trimmed, and cut into 1-1⁄2-inch pieces  
 Salt and pepper  
 1⁄3 cup paprika  
@@ -4974,7 +4902,6 @@ Salt and pepper
 2. Combine oil, onions, and 1 teaspoon salt in Dutch oven; cover and set over medium heat. Cook, stirring occasionally, until onions soften but have not yet begun to brown, 8 to 10 minutes. (If onions begin to brown, reduce heat to medium-low and stir in 1 tablespoon water.)  
 3. Stir in paprika mixture; cook, stirring occasionally, until onions stick to bottom of pan, about 2 minutes. Add beef, carrots, and bay leaf; stir until beef is well coated. Using rubber spatula, scrape down sides of pot. Cover pot and transfer to oven. Cook until meat is almost tender and surface of liquid is 1⁄2 inch below top of meat, 2 to 2-1⁄2 hours, stirring every 30 minutes. Remove pot from oven and add enough beef broth so that surface of liquid is 1⁄4 inch from top of meat (beef should not be fully submerged). Return covered pot to oven and continue to cook until fork slips easily in and out of beef, about 30 minutes longer.  
 4. Using large spoon, skim fat from surface of stew; stir in remaining teaspoon vinegar and sour cream, if using. Remove bay leaf, season with salt and pepper to taste, and serve. (Stew, minus optional sour cream, can be refrigerated for up to 2 days. Stir sour cream into reheated stew just before serving.)  
-CARBONNADE À LA FLAMANDE  
 #end  
 #title  
 CARBONNADE À LA FLAMANDE (BELGIAN BEEF, BEER, AND ONION STEW)  
@@ -4999,8 +4926,8 @@ Salt and pepper
 1. Adjust oven rack to lower-middle position; heat oven to 300 degrees. Pat beef dry with paper towels and season with salt and pepper. Heat 2 teaspoons oil in Dutch oven over medium-high heat until beginning to smoke; add about one-third of beef to pot. Cook without moving until well browned, 2 to 3 minutes; using tongs, turn each piece and continue cooking until second side is well browned, about 5 minutes longer. Transfer browned beef to medium bowl. Repeat with 2 teaspoons oil and half of remaining beef. (If drippings in bottom of pot are very dark, add about 1⁄2 cup of chicken or beef broth and scrape pan bottom with wooden spoon to loosen browned bits; pour liquid into bowl with browned beef, then proceed.) Repeat once more with 2 teaspoons oil and remaining beef.  
 2. Add remaining 1 tablespoon oil to now-empty Dutch oven; reduce heat to medium-low. Add onions, 1⁄2 teaspoon salt, and tomato paste; cook, scraping bottom of pot to loosen browned bits, until onions have released some moisture, about 5 minutes. Increase heat to medium and continue to cook, stirring occasionally, until onions are lightly browned, 12 to 14 minutes. Stir in garlic and cook until fragrant, about 30 seconds. Add flour and stir until onions are evenly coated and flour is lightly browned, about 2 minutes. Stir in chicken and beef broths, scraping pan bottom to loosen browned bits; stir in beer, thyme, bay leaves, vinegar, browned beef with any accumulated juices, and salt and pepper to taste. Increase heat to medium-high and bring to simmer, stirring occasionally; cover partially, then place pot in oven. Cook until fork slips easily in and out of beef, about 2 hours.  
 3. Discard thyme and bay leaves. Season with salt and pepper to taste and serve. (Stew can be refrigerated for up to 2 days.)  
+
 TRIMMING BLADE STEAKS  
-#instructions  
 1. Halve each steak lengthwise, leaving gristle on one half.  
 2. Cut away gristle from half to which it is still attached, then cut trimmed meat into pieces.  
 #end  
@@ -5009,7 +4936,6 @@ BEEF BURGUNDY
 #quantity  
 SERVES 6  
 #ingredients  
-For the wine, we like to use a Burgundy or Pinot Noir. If you cannot find salt pork, thick-cut bacon can be substituted. Cut it crosswise into 1⁄4-inch pieces and treat it just as you would salt pork, but note that you will have no rind to include in the vegetable and herb bouquet. Boiled potatoes are the traditional accompaniment, but mashed potatoes or buttered noodles are nice as well.  
 BEEF STEW  
 6 ounces salt pork, rind removed and reserved, salt pork cut into 1 by 1⁄4 by 1⁄4-inch pieces  
 2 onions, chopped coarse  
@@ -5410,7 +5336,7 @@ Substitute 2 teaspoons minced fresh marjoram or 1 teaspoon dried for herbes de P
 LAMB SHANKS BRAISED WITH LEMON AND MINT  
 Add 1 quartered lemon to braising liquid. Substitute 1 tablespoon minced fresh mint for herbes de Provence and substitute dry white wine for red wine. After skimming fat from braising liquid, stir in 1 tablespoon grated lemon zest and 1 tablespoon more minced fresh mint.  
 LAMB SHANKS BRAISED WITH NORTH AFRICAN SPICES  
-Serve with couscous and one or more of the following: sautéed onion, lemon zest, parsley, mint, toasted almonds, or ras al hanout (recipe follows).  
+Serve with couscous and one or more of the following: sautéed onion, lemon zest, parsley, mint, toasted almonds, or ras al hanout.  
 Substitute 2 tablespoons ras al hanout for herbes de Provence. Add 2 minced ancho chile peppers (or 2 or 3 jalapeños) to onions, carrots, and celery.  
 #end  
 #title  
@@ -5556,8 +5482,8 @@ Salt
 1-1⁄2 cups frozen peas  
 1⁄4 cup heavy cream or coconut milk  
 CONDIMENTS  
-ONION RELISH (recipe follows)  
-CILANTRO-MINT CHUTNEY (recipe follows)  
+ONION RELISH  
+CILANTRO-MINT CHUTNEY  
 #instructions  
 1. Toast curry powder and garam masala in small skillet over medium-high heat, stirring constantly, until spices darken slightly and become fragrant, about 1 minute. Transfer to small bowl and set aside. Pulse tomatoes in food processor until coarsely chopped, 3 to 4 pulses.  
 2. Heat 3 tablespoons oil in large Dutch oven over medium-high heat until shimmering. Add onions and potatoes and cook, stirring occasionally, until onions are caramelized and potatoes are golden brown on edges, about 10 minutes. (Reduce heat to medium if onions darken too quickly.)  
@@ -13887,7 +13813,7 @@ PERUVIAN ROAST CHICKEN WITH GARLIC AND LIME
 #quantity  
 SERVES 3 TO 4  
 #ingredients  
-If habanero chiles are unavailable, 1 tablespoon of minced serrano chile can be substituted. Wear gloves when working with hot chiles. This recipe calls for a vertical poultry roaster. If you don’t have one, substitute a 12-ounce can of beer. Open the beer and pour out (or drink) about half of the liquid. Spray the can lightly with vegetable oil spray and proceed with the recipe. Serve with Spicy Mayonnaise (recipe follows).  
+If habanero chiles are unavailable, 1 tablespoon of minced serrano chile can be substituted. Wear gloves when working with hot chiles. This recipe calls for a vertical poultry roaster. If you don’t have one, substitute a 12-ounce can of beer. Open the beer and pour out (or drink) about half of the liquid. Spray the can lightly with vegetable oil spray and proceed with the recipe. Serve with Spicy Mayonnaise.  
 1⁄4 cup fresh mint leaves  
 6 garlic cloves, chopped coarse  
 3 tablespoons extra-virgin olive oil  
@@ -14320,7 +14246,7 @@ SAUTÉED TURKEY CUTLETS WITH HONEY-MUSTARD PAN SAUCE
 #quantity  
 SERVES 4  
 #ingredients  
-One cutlet per person makes a skimpy serving, so we call for a total of six to serve four people. If you prefer, replace the Honey-Mustard Pan Sauce with Warm-Spiced Pan Sauce with Currants and Almonds (recipe follows). The turkey can be prepared without the pan sauce; if not making a pan sauce, let the turkey rest for 5 minutes before serving in step 2.  
+One cutlet per person makes a skimpy serving, so we call for a total of six to serve four people. If you prefer, replace the Honey-Mustard Pan Sauce with Warm-Spiced Pan Sauce with Currants and Almonds. The turkey can be prepared without the pan sauce; if not making a pan sauce, let the turkey rest for 5 minutes before serving in step 2.  
 TURKEY  
 6 (4-ounce) turkey cutlets, trimmed  
 2 tablespoons olive oil  
@@ -14397,14 +14323,14 @@ SERVES 10 TO 12
 #ingredients  
 If using a self-basting turkey or kosher turkey, do not brine in step 1, and season with salt after brushing with melted butter in step 5. Resist the temptation to tent the roasted turkey with foil while it rests on the carving board. Covering the bird will make the skin soggy.  
 1 cup salt  
-1 (12- to 14-pound) turkey, trimmed, neck, giblets, and tailpiece removed and reserved for GIBLET PAN GRAVY (recipe follows)  
+1 (12- to 14-pound) turkey, trimmed, neck, giblets, and tailpiece removed and reserved for GIBLET PAN GRAVY  
 6 sprigs fresh thyme  
 2 onions, chopped coarse  
 2 carrots, peeled and chopped coarse  
 2 celery ribs, chopped coarse  
 3 tablespoons unsalted butter, melted  
 1 cup water, plus extra as needed  
-1 recipe GIBLET PAN GRAVY (recipe follows)  
+1 recipe GIBLET PAN GRAVY  
 #instructions  
 1. Dissolve salt in 2 gallons cold water in large container. Submerge turkey in brine, cover, and refrigerate or store in very cool spot (40 degrees or less) for 6 to 12 hours.  
 2. Set wire rack in rimmed baking sheet. Remove turkey from brine and pat dry, inside and out, with paper towels. Place turkey on prepared wire rack. Refrigerate, uncovered, for at least 8 hours or overnight.  
@@ -15221,11 +15147,11 @@ PAN-SEARED FILETS MIGNONS
 #quantity  
 SERVES 4  
 #ingredients  
-If you choose to serve the steaks with the Madeira sauce (recipe follows), have all the sauce ingredients ready before searing the steaks. Begin the sauce while the steaks are in the oven. To cook six steaks instead of four, switch to a 12-inch pan and use 8 teaspoons of olive oil.  
+If you choose to serve the steaks with the Madeira sauce, have all the sauce ingredients ready before searing the steaks. Begin the sauce while the steaks are in the oven. To cook six steaks instead of four, switch to a 12-inch pan and use 8 teaspoons of olive oil.  
 4 (7- to 8-ounce) center-cut filets mignons, 1-1⁄2 inches thick  
 6 teaspoons olive oil  
 Salt and pepper  
-1 recipe MADEIRA PAN SAUCE WITH MUSTARD AND ANCHOVIES (optional) (recipe follows)  
+1 recipe MADEIRA PAN SAUCE WITH MUSTARD AND ANCHOVIES (optional)  
 #instructions  
 1. Adjust oven rack to lower-middle position, place rimmed baking sheet on oven rack, and heat oven to 450 degrees. When oven reaches 450 degrees, heat 2 teaspoons oil in 10-inch skillet over high heat until just smoking.  
 2. Meanwhile, rub each side of steaks with 1⁄2 teaspoon oil and season with salt and pepper. Place steaks in skillet and cook, without moving them, until well browned, about 3 minutes. Turn steaks with tongs and cook until well browned on second side, about 3 minutes longer. Off heat, use tongs to transfer steaks to hot baking sheet in oven.  
@@ -15332,7 +15258,7 @@ In order to have four steaks that fit in a skillet at the same time, it is neces
 1 tablespoon vegetable oil  
 2 (1-pound) boneless strip or rib-eye steaks, cut in half  
 Kosher salt and pepper  
-1 recipe HERB BUTTER (recipe follows)  
+1 recipe HERB BUTTER  
 #instructions  
 1. Rinse cut potatoes in bowl under cold running water until water turns clear. Cover with cold water and refrigerate for 30 minutes or up to 12 hours.  
 2. Pour off water, spread potatoes onto kitchen towels, and dry thoroughly. Transfer potatoes to bowl and toss with cornstarch until evenly coated. Transfer potatoes to wire rack set in rimmed baking sheet and let rest until fine white coating forms, about 20 minutes.  
@@ -15494,7 +15420,7 @@ PERFECT PRIME RIB
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-With two pieces of kitchen twine running parallel to the bone, tie the roast at both ends to prevent the outer layer of meat from pulling away from the rib-eye muscle and overcooking. Serve with Individual Yorkshire Puddings (recipe follows), if desired.  
+With two pieces of kitchen twine running parallel to the bone, tie the roast at both ends to prevent the outer layer of meat from pulling away from the rib-eye muscle and overcooking. Serve with Individual Yorkshire Puddings, if desired.  
 1 (7-pound) first-cut beef rib roast, 3 ribs, set at room temperature for 3 hours, trimmed and tied  
 1 tablespoon vegetable oil  
 Salt and pepper  
@@ -15678,7 +15604,7 @@ TOP LOIN ROAST
 #quantity  
 SERVES 8 TO 10  
 #ingredients  
-If you do not own an ovensafe skillet, sear the roast in any skillet, then transfer it to a roasting pan for oven cooking. We prefer the flavor and texture of this roast when cooked rare. If medium-rare is more to your liking, cook the roast until it registers 120 to 125 degrees. Serve with Garlic-Herb Butter if desired (recipe follows).  
+If you do not own an ovensafe skillet, sear the roast in any skillet, then transfer it to a roasting pan for oven cooking. We prefer the flavor and texture of this roast when cooked rare. If medium-rare is more to your liking, cook the roast until it registers 120 to 125 degrees. Serve with Garlic-Herb Butter if desired.  
 1 (5- to 5-1⁄2-pound) boneless top loin roast  
 3 tablespoons olive oil  
 4 teaspoons kosher salt  
@@ -15706,7 +15632,7 @@ SLOW-ROASTED BEEF
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-We don’t recommend cooking this roast past medium. Open the oven door as little as possible and remove the roast from the oven while taking its temperature. If the roast has not reached the desired temperature in the time specified in step 3, heat the oven to 225 degrees for 5 minutes, shut it off, and continue to cook the roast to the desired temperature. For a smaller (2-1⁄2- to 3-1⁄2-pound) roast, reduce the amount of salt to 1 tablespoon and pepper to 1-1⁄2 teaspoons. For a 4-1⁄2- to 6-pound roast, cut in half crosswise before cooking to create 2 smaller roasts. Slice the roast as thin as possible and serve with Horseradish Cream Sauce (recipe follows), if desired.  
+We don’t recommend cooking this roast past medium. Open the oven door as little as possible and remove the roast from the oven while taking its temperature. If the roast has not reached the desired temperature in the time specified in step 3, heat the oven to 225 degrees for 5 minutes, shut it off, and continue to cook the roast to the desired temperature. For a smaller (2-1⁄2- to 3-1⁄2-pound) roast, reduce the amount of salt to 1 tablespoon and pepper to 1-1⁄2 teaspoons. For a 4-1⁄2- to 6-pound roast, cut in half crosswise before cooking to create 2 smaller roasts. Slice the roast as thin as possible and serve with Horseradish Cream Sauce, if desired.  
 1 (3-1⁄2- to 4-1⁄2-pound) boneless eye-round roast  
 4 teaspoons kosher salt  
 2 teaspoons plus 1 tablespoon vegetable oil  
@@ -15834,7 +15760,7 @@ Salt and pepper
 1⁄2 teaspoon vegetable oil  
 4 slices American cheese  
 Thinly sliced onion  
-1 recipe CLASSIC BURGER SAUCE (recipe follows)  
+1 recipe CLASSIC BURGER SAUCE  
 #instructions  
 1. Place beef chunks on baking sheet in single layer, leaving 1⁄2 inch of space around each chunk. Freeze meat until very firm and starting to harden around edges but still pliable, 15 to 25 minutes.  
 2. Pulse half of meat in food processor until coarsely ground, 10 to 15 pulses, stopping and redistributing meat around bowl as necessary to ensure beef is evenly ground. Transfer meat to baking sheet, overturning workbowl and without directly touching meat. Repeat grinding with remaining meat. Spread meat over sheet and inspect carefully, discarding any long strands of gristle or large chunks of hard meat or fat.  
@@ -15901,7 +15827,7 @@ STEAK TACOS
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-For a more spicy dish, add the seeds from the chiles. In addition to the toppings suggested below, try serving the tacos with Sweet and Spicy Pickled Onions (recipe follows), thinly sliced radishes or cucumber, or salsa.  
+For a more spicy dish, add the seeds from the chiles. In addition to the toppings suggested below, try serving the tacos with Sweet and Spicy Pickled Onions, thinly sliced radishes or cucumber, or salsa.  
 HERB PASTE  
 1⁄2 cup packed fresh cilantro leaves  
 3 garlic cloves, chopped coarse  
@@ -15965,7 +15891,7 @@ Salt and pepper
 2 teaspoons vinegar (preferably cider)  
 1 teaspoon packed brown sugar  
 SHELLS AND TOPPINGS  
-8 HOME-FRIED TACO SHELLS (recipe follows)  
+8 HOME-FRIED TACO SHELLS  
 4 ounces cheddar or Monterey Jack cheese, shredded (1 cup)  
 2 cups shredded iceberg lettuce  
 2 small tomatoes, cored and chopped fine  
@@ -16076,7 +16002,7 @@ SWEDISH MEATBALLS
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-The traditional accompaniments for Swedish meatballs are lingonberry preserves and Swedish Pickled Cucumbers (recipe follows). If you can’t find lingonberry preserves, cranberry preserves may be used. For a slightly less sweet dish, omit the brown sugar in the meatballs and reduce the brown sugar in the sauce to 2 teaspoons. A 12-inch slope-sided skillet can be used in place of the sauté pan—use 1-1⁄2 cups of oil to fry instead of 1-1⁄4 cups. Serve the meatballs with mashed potatoes, boiled red potatoes, or egg noodles.  
+The traditional accompaniments for Swedish meatballs are lingonberry preserves and Swedish Pickled Cucumbers. If you can’t find lingonberry preserves, cranberry preserves may be used. For a slightly less sweet dish, omit the brown sugar in the meatballs and reduce the brown sugar in the sauce to 2 teaspoons. A 12-inch slope-sided skillet can be used in place of the sauté pan—use 1-1⁄2 cups of oil to fry instead of 1-1⁄4 cups. Serve the meatballs with mashed potatoes, boiled red potatoes, or egg noodles.  
 MEATBALLS  
 1 large egg  
 1⁄4 cup heavy cream  
@@ -16465,7 +16391,7 @@ Salt and pepper
 4. Meanwhile, heat 1⁄2 cup oil in 12-inch nonstick skillet over medium-high heat until shimmering, about 2-1⁄2 minutes. Lay 3 cutlets in skillet; fry until deep golden brown and crisp on first side, gently pressing down on cutlets with wide metal spatula to help ensure even browning and checking browning partway through, about 2-1⁄2 minutes (smaller cutlets from tail end of tenderloin may cook faster). Using tongs, flip cutlets, reduce heat to medium, and continue to cook until meat feels firm when pressed gently and second side is deep golden brown and crisp, again checking browning partway through, about 2-1⁄2 minutes longer. Line warmed plate with double layer of paper towels and set cutlets on top; return plate to oven.  
 5. Discard oil in skillet and wipe skillet clean. Repeat step 4 using remaining 1⁄2 cup oil and preheating oil just 2 minutes to cook remaining 3 cutlets.  
 JAPANESE-STYLE CRISP BREADED PORK CUTLETS  
-Substitute 6 (3- to 4-ounce) boneless pork chops, trimmed, for pork tenderloin and pound to between 1⁄2 and 1⁄4 inch thick; substitute equal amount cornstarch for flour and panko for fresh bread crumbs. To serve, slice cutlets into 3⁄4-inch wide strips and drizzle with Tonkatsu Sauce (recipe follows).  
+Substitute 6 (3- to 4-ounce) boneless pork chops, trimmed, for pork tenderloin and pound to between 1⁄2 and 1⁄4 inch thick; substitute equal amount cornstarch for flour and panko for fresh bread crumbs. To serve, slice cutlets into 3⁄4-inch wide strips and drizzle with Tonkatsu Sauce.  
 #end  
 #title  
 TONKATSU SAUCE  
@@ -17307,7 +17233,7 @@ GARLIC-ROASTED LEG OF LAMB
 #quantity  
 SERVES 8 TO 10  
 #ingredients  
-Look for rolled, boneless leg of lamb wrapped in netting, not butterflied and wrapped on a tray. The desirable cut is the “shank end,” which is the whole boneless leg without the sirloin muscle attached. If only bone-in or semiboneless leg is available, ask your butcher to remove the bones for you. Plan on spending about 30 minutes trimming the lamb of fat and silver skin. This advance work is well worth the effort; your roasts will present elegantly and have a much cleaner flavor. (That said, even 10 minutes of trimming will improve the taste dramatically). If you opt for the 30-minute trim, you will have enough meat scraps left over to make the Roasted Garlic Jus (recipe follows).  
+Look for rolled, boneless leg of lamb wrapped in netting, not butterflied and wrapped on a tray. The desirable cut is the “shank end,” which is the whole boneless leg without the sirloin muscle attached. If only bone-in or semiboneless leg is available, ask your butcher to remove the bones for you. Plan on spending about 30 minutes trimming the lamb of fat and silver skin. This advance work is well worth the effort; your roasts will present elegantly and have a much cleaner flavor. (That said, even 10 minutes of trimming will improve the taste dramatically). If you opt for the 30-minute trim, you will have enough meat scraps left over to make the Roasted Garlic Jus.  
 LAMB AND BRINE  
 1⁄4 cup sugar  
 2 tablespoons salt  
@@ -17409,7 +17335,7 @@ GREEK-STYLE LAMB PITA SANDWICHES
 #quantity  
 SERVES 4  
 #ingredients  
-Since the yogurt and cucumbers in the TZATZIKI SAUCE (recipe follows) need to drain for 30 minutes, start making the sauce before the patties. For the patties, we prefer the flavor of fresh oregano, but 1 teaspoon of dried can be substituted. The skillet may appear crowded when you begin cooking the patties, but they will shrink slightly as they cook. If using pocketless pitas, heat them in a single layer on a baking sheet in a 350-degree oven for 5 minutes. Do not cut top quarters off pocketless pitas; instead, use a portion of a fifth pita to create crumbs in step 1. When cooking the patties, use a splatter screen to keep the mess to a minimum.  
+Since the yogurt and cucumbers in the TZATZIKI SAUCE need to drain for 30 minutes, start making the sauce before the patties. For the patties, we prefer the flavor of fresh oregano, but 1 teaspoon of dried can be substituted. The skillet may appear crowded when you begin cooking the patties, but they will shrink slightly as they cook. If using pocketless pitas, heat them in a single layer on a baking sheet in a 350-degree oven for 5 minutes. Do not cut top quarters off pocketless pitas; instead, use a portion of a fifth pita to create crumbs in step 1. When cooking the patties, use a splatter screen to keep the mess to a minimum.  
 LAMB PATTIES  
 4 (8-inch) pita breads  
 1⁄2 onion, chopped coarse  
@@ -17421,7 +17347,7 @@ LAMB PATTIES
 1 pound ground lamb  
 2 teaspoons vegetable oil  
 ACCOMPANIMENTS  
-1 recipe Tzatziki Sauce (recipe follows)  
+1 recipe Tzatziki Sauce  
 1 large tomato, cored and sliced thin  
 2 cups shredded iceberg lettuce  
 2 ounces feta cheese, crumbled (1⁄2 cup)  
@@ -17754,7 +17680,7 @@ CRUNCHY OVEN-FRIED FISH
 #quantity  
 SERVES 4  
 #ingredients  
-To prevent overcooking, buy fish fillets at least 1 inch thick. The bread crumbs can be made up to 3 days in advance, cooled, and stored at room temperature in an airtight container. Serve with Sweet and Tangy Tartar Sauce (recipe follows).  
+To prevent overcooking, buy fish fillets at least 1 inch thick. The bread crumbs can be made up to 3 days in advance, cooled, and stored at room temperature in an airtight container. Serve with Sweet and Tangy Tartar Sauce.  
 4 hearty slices white sandwich bread, torn into quarters  
 2 tablespoons unsalted butter, melted  
 Salt and pepper  
@@ -17818,7 +17744,7 @@ SIMPLE PAN-SEARED SALMON
 #quantity  
 SERVES 4  
 #ingredients  
-To ensure uniform pieces of fish that cook at the same rate, buy a whole center-cut fillet and cut it into 4 pieces. With the addition of the fish fillets, the pan temperature drops; compensate for the heat loss by keeping the heat on medium-high for 30 seconds after adding them. A splatter screen helps reduce the mess of pan-searing. Serve salmon with a sweet and sour chutney (recipe follows), a fresh salsa, an herb-spiked vinaigrette, or a squirt of lemon or lime.  
+To ensure uniform pieces of fish that cook at the same rate, buy a whole center-cut fillet and cut it into 4 pieces. With the addition of the fish fillets, the pan temperature drops; compensate for the heat loss by keeping the heat on medium-high for 30 seconds after adding them. A splatter screen helps reduce the mess of pan-searing. Serve salmon with a sweet and sour chutney, a fresh salsa, an herb-spiked vinaigrette, or a squirt of lemon or lime.  
 1 (1-1⁄2-pound) skin-on salmon fillet, about 1-1⁄2 inches thick  
 Salt and pepper  
 1 teaspoon canola oil or vegetable oil  
@@ -18113,7 +18039,7 @@ OVEN-POACHED SIDE OF SALMON
 #quantity  
 SERVES 8 TO 10  
 #ingredients  
-If serving a big crowd, you can oven-poach two individually wrapped sides of salmon in the same oven (on the upper-middle and lower-middle racks) without altering the cooking time. White wine vinegar can be substituted for the cider vinegar. The salmon is good on its own with just lemon wedges, or you can serve it with Horseradish Cream Sauce with Chives (recipe follows).  
+If serving a big crowd, you can oven-poach two individually wrapped sides of salmon in the same oven (on the upper-middle and lower-middle racks) without altering the cooking time. White wine vinegar can be substituted for the cider vinegar. The salmon is good on its own with just lemon wedges, or you can serve it with Horseradish Cream Sauce with Chives.  
 1 (4-pound) skin-on side of salmon, pinbones removed  
 Salt  
 2 tablespoons cider vinegar  
@@ -19349,7 +19275,7 @@ For more heat, add up to 1⁄2 teaspoon cayenne pepper.
 1⁄2 teaspoon ground coriander  
 Combine all ingredients in bowl. Use immediately.  
 GRILL-ROASTED WHOLE CHICKEN WITH SWEET AND TANGY BARBECUE SAUCE  
-If you like, barbecue sauce can be used along with the spice rub. Wait until the bird is almost done to brush on the barbecue sauce, so that it does not scorch. See our Sweet and Tangy Barbecue Sauce (recipe follows) or use your favorite.  
+If you like, barbecue sauce can be used along with the spice rub. Wait until the bird is almost done to brush on the barbecue sauce, so that it does not scorch. See our Sweet and Tangy Barbecue Sauce or use your favorite.  
 After rotating chicken breast side up in step 5, cook until thighs register 160 degrees, about 15 minutes. Working quickly, remove lid and brush outside and inside of chicken with 1⁄2 cup barbecue sauce. Cover and continue to cook until breast registers 160 degrees and thighs register 175 degrees, 10 to 15 minutes longer. Serve, passing additional barbecue sauce separately.  
 #end  
 #title  
@@ -19386,7 +19312,7 @@ Two medium wood chunks, soaked in water for 1 hour, can be substituted for the w
 1 (12-ounce) can beer  
 2 bay leaves  
 1 (3-1⁄2- to 4-pound) whole chicken  
-3 tablespoons SPICE RUB (recipe follows)  
+3 tablespoons SPICE RUB  
 2 cups wood chips, soaked in water for 15 minutes and drained  
 1 (13 by 9-inch) disposable aluminum roasting pan (if using charcoal)  
 #instructions  
@@ -20098,7 +20024,7 @@ GRILLED LONDON BROIL
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-While top round can be substituted for the bottom round in this recipe, it is harder to get an even sear on its less uniform surface. If desired, serve with Sweet and Smoky Grilled Tomato Salsa (recipe follows) or Chimichurri Sauce. We do not recommend cooking London broil beyond medium-rare.  
+While top round can be substituted for the bottom round in this recipe, it is harder to get an even sear on its less uniform surface. If desired, serve with Sweet and Smoky Grilled Tomato Salsa or Chimichurri Sauce. We do not recommend cooking London broil beyond medium-rare.  
 1 teaspoon salt  
 1 (2- to 2-1⁄2-pound) bottom round steak, 1-1⁄2 inches thick, trimmed  
 1 tablespoon vegetable oil  
@@ -20392,7 +20318,7 @@ It is important to use beef ribs with a decent amount of meat, not bony scraps; 
 1⁄2 teaspoon cayenne pepper  
 4 (1-1⁄4-pound) beef rib slabs, trimmed  
 2 cups wood chips, soaked in water for 15 minutes and drained  
-1 recipe BARBECUE SAUCE FOR TEXAS-STYLE BEEF RIBS (recipe follows)  
+1 recipe BARBECUE SAUCE FOR TEXAS-STYLE BEEF RIBS  
 #instructions  
 1. Combine chili powder, salt, pepper, and cayenne in bowl. Pat ribs dry with paper towels, rub evenly with spice mixture, and let sit at room temperature for 1 hour.  
 2. Using large piece of heavy-duty aluminum foil, wrap soaked chips in foil packet and cut several vent holes in top.  
@@ -20800,7 +20726,7 @@ CUBAN-STYLE GRILL-ROASTED PORK
 #quantity  
 SERVES 8 TO 10  
 #ingredients  
-Let the meat rest for a full hour before serving it or it will not be as tender. This roast has a crisp skin that should be served along with the meat. Top the meat with Mojo Sauce (recipe follows). Traditional accompaniments include black beans, rice, and fried plantains.  
+Let the meat rest for a full hour before serving it or it will not be as tender. This roast has a crisp skin that should be served along with the meat. Top the meat with Mojo Sauce. Traditional accompaniments include black beans, rice, and fried plantains.  
 PORK AND BRINE  
 1 (7- to 8- pound) bone-in, skin-on pork picnic shoulder  
 3 cups sugar  
@@ -20851,7 +20777,7 @@ BARBECUED PULLED PORK
 SERVES 8  
 #ingredients  
 Pulled pork can be made with a fresh ham or picnic roast, although our preference is for Boston butt. If using a fresh ham or picnic roast, remove the skin by cutting through it with the tip of a chef’s knife; slide the blade just under the skin and work around to loosen it while pulling it off with your other hand. Four medium wood chunks, soaked in water for 1 hour, can be substituted for the wood chip packet on a charcoal grill. Serve on plain white bread or warmed rolls with dill pickle chips and coleslaw.  
-3⁄4 cup DRY RUB FOR BARBECUE (recipe follows)  
+3⁄4 cup DRY RUB FOR BARBECUE  
 1 (6- to 8-pound) bone-in Boston butt roast  
 4 cups wood chips, soaked in water for 15 minutes and drained  
 1 (13 by 9-inch) disposable aluminum roasting pan  
@@ -20940,7 +20866,7 @@ SERVES 4 TO 6
 #ingredients  
 Two medium wood chunks, soaked in water for 1 hour, can be substituted for the wood chip packet on a charcoal grill. To remove the membrane (the thin white sheath that lines the concave side of the rack), insert a spoon handle between the membrane and the ribs of one rack to loosen slightly. Using a paper towel, grasp the loosened membrane and pull away gently to remove.  
 2 (2-1⁄2- to 3-pound) racks pork spareribs, preferably St. Louis cut, trimmed and membrane removed  
-3⁄4 cup DRY RUB (recipe follows)  
+3⁄4 cup DRY RUB  
 1 recipe barbecue sauce (recipes follow)  
 2 cups woods chips, soaked in water for 15 minutes and drained  
 #instructions  
@@ -21005,7 +20931,7 @@ SERVES 4 TO 6
 #ingredients  
 Don’t remove the membrane that runs along the bone side of the ribs; it prevents some of the fat from rendering out and is authentic to this style of ribs. Two medium wood chunks, soaked in water for 1 hour, can be substituted for the wood chip packet on a charcoal grill.  
 2 (2-1⁄2- to 3-pound) racks pork spareribs, preferably St. Louis cut, trimmed  
-1 recipe SPICE RUB (recipe follows)  
+1 recipe SPICE RUB  
 2 cup wood chips, soaked in water for 15 minutes and drained  
 1⁄2 cup apple juice  
 3 tablespoons apple cider vinegar  
@@ -21045,7 +20971,7 @@ Two medium wood chunks, soaked in water for 1 hour, can be substituted for the w
 1⁄2 cup sugar  
 1⁄2 cup salt  
 2 (1-1⁄2- to 2-pound) racks baby back or loin back ribs, trimmed, membrane removed  
-1 recipe SPICE RUB (recipe follows)  
+1 recipe SPICE RUB  
 2 cups wood chips, soaked in water for 15 minutes and drained  
 #instructions  
 1. Dissolve sugar and salt in 4 quarts cold water in large container. Submerge racks in brine, cover, and refrigerate for 1 hour. Remove pork from brine and pat dry with paper towels. Rub 1 tablespoon dry rub on each side of racks of ribs. Let ribs sit at room temperature for 1 hour.  
@@ -21957,7 +21883,7 @@ SPANISH TORTILLA WITH ROASTED RED PEPPERS AND PEAS
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-Spanish tortillas are often served warm or at room temperature with olives, pickles, and Garlic Mayonnaise (recipe follows) as an appetizer. They may also be served with a salad as a light entrée. For the most traditional tortilla, omit the roasted red peppers and peas.  
+Spanish tortillas are often served warm or at room temperature with olives, pickles, and Garlic Mayonnaise as an appetizer. They may also be served with a salad as a light entrée. For the most traditional tortilla, omit the roasted red peppers and peas.  
 6 tablespoons plus 1 teaspoon extra-virgin olive oil  
 1-1⁄2 pounds Yukon Gold potatoes, peeled, quartered, and cut into 1⁄8-inch-thick slices  
 1 small onion, halved and sliced thin  
@@ -22394,7 +22320,7 @@ MULTIGRAIN PANCAKES
 #quantity  
 MAKES SIXTEEN 4-INCH PANCAKES, SERVING 4 TO 6  
 #ingredients  
-The pancakes can be cooked on an electric griddle. Set the griddle temperature to 350 degrees and cook as directed. Familia brand no-sugar-added muesli is the best choice for this recipe. If you can’t find Familia, look for Alpen or any no-sugar-added muesli. (If you can’t find muesli without sugar, muesli with sugar added will work; reduce the brown sugar in the recipe to 1 tablespoon.) Mix the batter first and then heat the pan. Letting the batter sit while the pan heats will give the dry ingredients time to absorb the wet ingredients; otherwise, the batter will be runny. Serve with maple syrup or Apple, Cranberry, and Pecan Topping (recipe follows).  
+The pancakes can be cooked on an electric griddle. Set the griddle temperature to 350 degrees and cook as directed. Familia brand no-sugar-added muesli is the best choice for this recipe. If you can’t find Familia, look for Alpen or any no-sugar-added muesli. (If you can’t find muesli without sugar, muesli with sugar added will work; reduce the brown sugar in the recipe to 1 tablespoon.) Mix the batter first and then heat the pan. Letting the batter sit while the pan heats will give the dry ingredients time to absorb the wet ingredients; otherwise, the batter will be runny. Serve with maple syrup or Apple, Cranberry, and Pecan Topping.  
 2 cups whole milk  
 4 teaspoons fresh lemon juice  
 1-1⁄4 cups (6 ounces), plus 3 tablespoons no-sugar-added muesli  
@@ -22436,7 +22362,7 @@ GERMAN APPLE PANCAKE
 #quantity  
 SERVES 4  
 #ingredients  
-A 10-inch ovensafe skillet is necessary for this recipe; we highly recommend using a nonstick skillet for the sake of easy cleanup, but a regular skillet will work as well. If you prefer tart apples, use Granny Smiths; if you prefer sweet ones, use Braeburns. For serving, dust the apple pancake with confectioners’ sugar and pass warm maple syrup or Caramel Sauce (recipe follows) separately, if desired.  
+A 10-inch ovensafe skillet is necessary for this recipe; we highly recommend using a nonstick skillet for the sake of easy cleanup, but a regular skillet will work as well. If you prefer tart apples, use Granny Smiths; if you prefer sweet ones, use Braeburns. For serving, dust the apple pancake with confectioners’ sugar and pass warm maple syrup or Caramel Sauce separately, if desired.  
 1⁄2 cup (2-1⁄2 ounces) all-purpose flour  
 1 tablespoon granulated sugar  
 1⁄2 teaspoon salt  
@@ -22757,7 +22683,7 @@ BLUEBERRY SCONES
 #quantity  
 MAKES 8 SCONES  
 #ingredients  
-It is important to work the dough as little as possible—work quickly and knead and fold the dough only the number of times called for or else the scones will turn out tough, rather than tender. The butter should be frozen solid before grating. In hot or humid environments, chill the flour mixture and mixing bowls before use. While this recipe calls for 2 whole sticks of butter, only 10 tablespoons are actually used (see step 1). If fresh berries are unavailable, an equal amount of frozen berries, not thawed, can be substituted. An equal amount of raspberries, blackberries, or strawberries can be used in place of the blueberries. Cut larger berries into 1⁄4- to 1⁄2-inch pieces before incorporating. Serve with Homemade Clotted Cream (recipe follows), if desired.  
+It is important to work the dough as little as possible—work quickly and knead and fold the dough only the number of times called for or else the scones will turn out tough, rather than tender. The butter should be frozen solid before grating. In hot or humid environments, chill the flour mixture and mixing bowls before use. While this recipe calls for 2 whole sticks of butter, only 10 tablespoons are actually used (see step 1). If fresh berries are unavailable, an equal amount of frozen berries, not thawed, can be substituted. An equal amount of raspberries, blackberries, or strawberries can be used in place of the blueberries. Cut larger berries into 1⁄4- to 1⁄2-inch pieces before incorporating. Serve with Homemade Clotted Cream, if desired.  
 16 tablespoons unsalted butter (2 sticks), each stick frozen  
 7-1⁄2 ounces (1-1⁄2 cups) blueberries  
 1⁄2 cup whole milk  
@@ -23800,7 +23726,7 @@ MAKING ALMOST NO-KNEAD BREAD
 MAKES 2 LARGE ROUND LOAVES  
 #ingredients  
 SPONGE  
-1⁄2 cup (4-1⁄2 ounces) refreshed starter (recipe follows)  
+1⁄2 cup (4-1⁄2 ounces) refreshed starter  
 3⁄8–1⁄2 cup water, heated to 80 degrees  
 1 cup (5 ounces) all-purpose flour  
 DOUGH  
@@ -24171,7 +24097,7 @@ TOPPING
 3⁄4 teaspoon salt  
 6 ounces fontina cheese, shredded (1-1⁄2 cups)  
 1-1⁄2 ounces Parmesan cheese, grated fine (3⁄4 cup)  
-1 recipe SPICY GARLIC OIL (recipe follows)  
+1 recipe SPICY GARLIC OIL  
 1⁄2 cup chopped fresh basil  
 Kosher salt  
 #instructions  
@@ -26350,7 +26276,7 @@ If you like nuts in your cake, stir 1-1⁄2 cups toasted chopped pecans or walnu
 1⁄2 cup packed (3-1⁄2 ounces) light brown sugar  
 4 large eggs, room temperature  
 1-1⁄2 cups vegetable oil  
-1 recipe CREAM CHEESE FROSTING (recipe follows)  
+1 recipe CREAM CHEESE FROSTING  
 #instructions  
 1. Adjust oven rack to middle position and heat oven to 350 degrees. Grease 13 by 9-inch baking pan, line with parchment paper, grease parchment, and flour pan.  
 2. Whisk flour, baking powder, baking soda, cinnamon, nutmeg, cloves, and salt together in large bowl and set aside.  
@@ -26699,7 +26625,7 @@ CHOCOLATE SOUR CREAM BUNDT CAKE
 #quantity  
 SERVES 12  
 #ingredients  
-We prefer natural (or regular) cocoa here since Dutch-processed cocoa will result in a compromised rise. Because coating the Bundt pan with baking spray with flour will leave a whitish film on the baked cake, we prefer to coat the pan with a paste made from cocoa and melted butter, which ensures a clean release. For an accurate measurement of boiling water, bring a full kettle of water to a boil, then measure out the desired amount. The cake can be served with just a dusting of confectioners’ sugar but is easily made more impressive with Lightly Sweetened Raspberries (recipe follows) and TANGY WHIPPED CREAM.  
+We prefer natural (or regular) cocoa here since Dutch-processed cocoa will result in a compromised rise. Because coating the Bundt pan with baking spray with flour will leave a whitish film on the baked cake, we prefer to coat the pan with a paste made from cocoa and melted butter, which ensures a clean release. For an accurate measurement of boiling water, bring a full kettle of water to a boil, then measure out the desired amount. The cake can be served with just a dusting of confectioners’ sugar but is easily made more impressive with Lightly Sweetened Raspberries and TANGY WHIPPED CREAM.  
 3⁄4 cup (2-1⁄4 ounces) plus 1 tablespoon cocoa  
 1 tablespoon unsalted butter, melted, plus 12 tablespoons softened  
 6 ounces bittersweet chocolate, chopped  
@@ -26835,7 +26761,7 @@ CUPCAKES
 2 large eggs  
 2 teaspoons white vinegar  
 1 teaspoon vanilla extract  
-1 recipe frosting (recipe follows)  
+1 recipe frosting  
 #instructions  
 1. FOR THE FILLING: Microwave chocolate, cream, and sugar in medium bowl until mixture is warm to touch, about 30 seconds. Whisk until smooth, then transfer bowl to refrigerator and let sit until just chilled, no longer than 30 minutes.  
 2. FOR THE CUPCAKES: Adjust oven rack to middle position and heat oven to 350 degrees. Line 12-cup muffin tin with paper or foil liners. Place chocolate and cocoa in medium heatproof bowl. Pour hot coffee over mixture and let sit, covered, for 5 minutes. Whisk mixture gently until smooth, then transfer to refrigerator to cool completely, about 20 minutes.  
@@ -28970,7 +28896,7 @@ MAKES 8 ÉCLAIRS
 Be sure the pastry cream is thoroughly chilled before filling the pastries. The chocolate glaze should still be warm when glazing the éclairs.  
 1 recipe PÂTE À CHOUX  
 FILLING AND GLAZE  
-1 recipe PASTRY CREAM (recipe follows)  
+1 recipe PASTRY CREAM  
 2 ounces semisweet or bittersweet chocolate, chopped fine  
 3 tablespoons half-and-half  
 1 cup (4 ounces) confectioners’ sugar  
@@ -29677,7 +29603,7 @@ CLASSIC BREAD PUDDING
 #quantity  
 SERVES 8 TO 10  
 #ingredients  
-Challah is an egg-enriched bread that can be found in most bakeries and supermarkets. If you cannot find challah, a firm high-quality sandwich bread such as Arnold Country Classics White or Pepperidge Farm Farmhouse Hearty White may be substituted. If desired, serve this pudding with WHIPPED CREAM or with Bourbon–Brown Sugar Sauce (recipe follows). To retain a crisp top crust when reheating leftovers, cut the bread pudding into squares and heat, uncovered, in a 450-degree oven until warmed through, 6 to 8 minutes.  
+Challah is an egg-enriched bread that can be found in most bakeries and supermarkets. If you cannot find challah, a firm high-quality sandwich bread such as Arnold Country Classics White or Pepperidge Farm Farmhouse Hearty White may be substituted. If desired, serve this pudding with WHIPPED CREAM or with Bourbon–Brown Sugar Sauce. To retain a crisp top crust when reheating leftovers, cut the bread pudding into squares and heat, uncovered, in a 450-degree oven until warmed through, 6 to 8 minutes.  
 3⁄4 cup (5-1⁄4 ounces) plus 1 tablespoon granulated sugar  
 2 tablespoons light brown sugar  
 14 ounces challah bread, cut into 3⁄4-inch cubes  
@@ -29757,7 +29683,7 @@ CAPPUCCINO SEMIFREDDO WITH BISCOTTI
 #quantity  
 SERVES 8  
 #ingredients  
-For the best results, chill the bowl and whisk attachment before whipping the cream. Drizzle slices of semifreddo with Warm Bittersweet Chocolate Sauce (recipe follows), if desired.  
+For the best results, chill the bowl and whisk attachment before whipping the cream. Drizzle slices of semifreddo with Warm Bittersweet Chocolate Sauce, if desired.  
 1 cup heavy cream, chilled  
 1⁄2 cup plus 2 tablespoons (4-1⁄3 ounces) sugar  
 1⁄4 cup water plus 1 tablespoon warm tap water  
