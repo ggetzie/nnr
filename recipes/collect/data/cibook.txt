@@ -5014,7 +5014,6 @@ FRENCH-STYLE POT ROAST
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-A medium-bodied, fruity red wine, such as a Côtes du Rhône or Pinot Noir, is best for this recipe. The gelatin lends richness and body to the finished sauce; don’t omit it. Serve this dish with boiled potatoes, buttered noodles, or steamed rice.  
 1 (4- to 5-pound) boneless beef chuck-eye roast, pulled apart at seams and trimmed  
 Kosher salt and pepper  
 1 (750-ml) bottle red wine  
@@ -5049,7 +5048,6 @@ BEEF BRAISED IN BAROLO
 #quantity  
 SERVES 6  
 #ingredients  
-Purchase pancetta that is cut to order, about 1⁄4 inch thick. If pancetta is not available, substitute an equal amount of meaty salt pork, cut it into 1⁄4-inch cubes, and boil it in 3 cups of water for about 2 minutes to remove excess salt. After draining, use it as you would pancetta.  
 1 (3-1⁄2-pound) boneless beef chuck-eye roast, pulled apart at seams and trimmed  
 4 ounces pancetta, cut into 1⁄4-inch cubes  
 2 onions, chopped  
@@ -5070,18 +5068,6 @@ Purchase pancetta that is cut to order, about 1⁄4 inch thick. If pancetta is n
 3. Transfer beef to carving board; tent with foil to keep warm. Let braising liquid settle, about 5 minutes; using large spoon, skim fat from surface. Add minced thyme, bring liquid to boil over high heat, and cook, whisking vigorously to help vegetables break down, until mixture is thickened and reduced to about 3-1⁄2 cups, about 18 minutes. Strain liquid through large fine-mesh strainer, pressing on solids to extract as much liquid as possible; you should have 1-1⁄2 cups strained sauce (if necessary, return strained sauce to Dutch oven and reduce to 1-1⁄2 cups). Discard solids in strainer. Season sauce with salt and pepper to taste.  
 4. Remove twine from roasts and discard. Slice meat against grain into 1⁄2-inch-thick slices. Divide meat among warmed bowls or plates; pour about 1⁄4 cup sauce over top and serve immediately.  
 TO MAKE AHEAD: Follow recipe through step 2. Cool to room temperature, cover, and refrigerate for up to 2 days. To serve, skim fat from surface and gently warm until meat is heated through. Proceed with recipe from step 3.  
-IF YOUR FOOD IS…  
-ADD…  
-SUCH AS…  
-Too salty  
-An acid or sweetener  
-Vinegar, lemon or lime juice, unsalted canned tomatoes, sugar, honey, or maple syrup  
-Too sweet  
-An acid or seasonings  
-Vinegar, lemon or lime juice, chopped fresh herbs, a dash of cayenne, or, for sweet dishes, a bit of liqueur or instant espresso powder  
-Too spicy or acidic  
-A fat or sweetener  
-Butter, cream, sour cream, cheese, olive oil, sugar, honey, or maple syrup  
 #end  
 #title  
 BEEF STROGANOFF  
@@ -5116,7 +5102,7 @@ POT-AU-FEU
 #quantity  
 SERVES 8 TO 10  
 #ingredients  
-A stockpot with at least a 12-quart capacity is necessary for this recipe. Cheesecloth is ideal for straining the broth, although a quadruple layer of paper towels will do in a pinch. Once the beef braise reaches a boil, reduce the heat to maintain a steady simmer; if left to boil, the resulting broth will be murky. We prefer to use small red potatoes, measuring 1 to 2 inches in diameter, in this recipe. For serving, arrange the meat and vegetables on a large warmed platter and give diners individual shallow soup bowls to serve themselves.  
+A stockpot with at least a 12-quart capacity is necessary for this recipe. 
 BEEF BRAISE  
 2 onions, chopped  
 2 carrots, chopped  
@@ -5158,7 +5144,6 @@ BRAISED BONELESS BEEF SHORT RIBS
 #quantity  
 SERVES 6  
 #ingredients  
-Make sure that the ribs are at least 4 inches long and 1 inch thick. If boneless ribs are unavailable, substitute 7 pounds of bone-in beef short ribs at least 4 inches long with 1 inch of meat above the bone. To remove the meat from the bone, see the illustrations. We recommend a bold red wine such as a Cabernet Sauvignon. Serve with buttered egg noodles, mashed potatoes, or roasted potatoes.  
 3-1⁄2 pounds boneless beef short ribs, trimmed  
 Kosher salt and pepper  
 2 tablespoons vegetable oil  
@@ -5179,17 +5164,14 @@ Kosher salt and pepper
 BRAISED BONELESS BEEF SHORT RIBS WITH GUINNESS AND PRUNES  
 Substitute 1 cup Guinness (or other full-flavored porter or stout) for red wine and omit wine reduction time in step 2. Add 1⁄3 cup pitted prunes to pot along with broth.  
 BONING SHORT RIBS  
-#instructions  
 1. With chef’s knife as close as possible to bone, carefully remove meat.  
 2. Trim excess hard fat and silver skin from both sides of meat.  
-SHORT RIBS BRAISED IN RED WINE  
 #end  
 #title  
 SHORT RIBS BRAISED IN RED WINE WITH BACON, PARSNIPS, AND PEARL ONIONS  
 #quantity  
 SERVES 6  
 #ingredients  
-If braising and serving the ribs on the same day, bypass cooling the ribs in the braising liquid; instead, remove them from the pot straight out of the oven, strain the liquid, then let it settle so that the fat separates to the top. With a wide shallow spoon, skim off as much fat as possible and continue with the recipe. This recipe will work with either English-style short ribs or flanken-style short ribs. We recommend a full-bodied red wine, such as a Cabernet Sauvignon.  
 STEW  
 6 pounds bone-in English-style beefshort ribs, trimmed, or bone-in flanken-style beef short ribs, trimmed  
 Salt and Pepper  
@@ -5226,7 +5208,6 @@ ONION-BRAISED BEEF BRISKET
 #quantity  
 SERVES 6 TO 8  
 #ingredients  
-This recipe requires a few hours of unattended cooking as well as advance preparation. After cooking, the brisket must stand overnight in the braising liquid that later becomes the sauce; this helps to keep the brisket moist and flavorful. Defatting the sauce is essential. If you prefer a spicy sauce, increase the amount of cayenne pepper to 1⁄4 teaspoon. You will need 18-inch-wide heavy-duty aluminum foil for this recipe. Good accompaniments to braised brisket include mashed potatoes and buttered egg noodles. Matzo meal or potato starch can be substituted for the flour.  
 1 (4- to 5- pound) beef brisket, flat cut preferred, trimmed  
 Salt and pepper  
 Vegetable oil  
@@ -5251,14 +5232,12 @@ Vegetable oil
 6. About 45 minutes before serving, adjust oven rack to lower-middle position; heat oven to 350 degrees. While oven heats, transfer cold brisket to carving board. Scrape off and discard any fat from surface of sauce, then heat sauce in medium saucepan over medium heat until warm, skimming any fat on surface with wide shallow spoon (you should have about 2 cups sauce without onions; if necessary, simmer sauce over medium-high heat until reduced to 2 cups). Slice brisket against grain into 1⁄4-inch-thick slices and place slices in 13 by 9-inch baking dish. Stir reserved onions and vinegar into warmed sauce and season with salt and pepper to taste. Pour sauce over brisket slices, cover baking dish with foil, and bake until heated through, 25 to 30 minutes. Serve immediately.  
 SAME-DAY ONION-BRAISED BEEF BRISKET  
 After removing brisket from oven in step 4, reseal foil and let brisket sit at room temperature for 1 hour. Transfer brisket to carving board and continue with straining, defatting, and reheating sauce and slicing meat; omit step of returning brisket to oven once reheated sauce is poured over it.  
-CORNED BEEF AND CABBAGE  
 #end  
 #title  
 NEW ENGLAND–STYLE CORNED BEEF AND CABBAGE  
 #quantity  
 SERVES 8 TO 10  
 #ingredients  
-If you prefer a leaner piece of meat, feel free to use the flat cut. Leave a bit of fat attached for better texture and flavor. The meat is cooked fully when it is tender, the muscle fibers have loosened visibly, and a skewer slides in with minimal resistance. Serve with horseradish, either plain or mixed with sour cream, or with grainy mustard.  
 1⁄2 cup kosher salt  
 1 tablespoon black peppercorns, cracked  
 1 tablespoon dried thyme  
@@ -5289,7 +5268,6 @@ BRAISED LAMB SHOULDER CHOPS WITH TOMATOES AND RED WINE
 #quantity  
 SERVES 4  
 #ingredients  
-Because they are generally leaner, round bone chops, also called arm chops, are preferable for this braise. If available, however, lean blade chops also braise nicely.  
 4 lamb shoulder chops, about 3⁄4 inch thick, trimmed  
 Salt and pepper  
 2 tablespoons olive oil  
@@ -5314,7 +5292,6 @@ LAMB SHANKS BRAISED IN RED WINE WITH HERBES DE PROVENCE
 #quantity  
 SERVES 6  
 #ingredients  
-If you’re using smaller shanks than the ones called for in this recipe, reduce the braising time by up to 30 minutes. Serve with polenta or mashed potatoes. Côtes du Rhône works particularly well here.  
 6 (12- to 16-ounce) lamb shanks, trimmed  
 Salt and pepper  
 2 tablespoons vegetable oil  
@@ -5356,6 +5333,7 @@ MAKES ABOUT 1⁄2 CUP
 1⁄2 teaspoon cumin seeds  
 1⁄8 teaspoon red pepper flakes  
 1⁄8 teaspoon mace  
+#instructions
 Combine all ingredients and, using spice grinder, grind to fine powder. Transfer to small bowl.  
 #end  
 #title  
@@ -5392,14 +5370,12 @@ Salt
 2. FOR THE SAUCE: Heat oil in large Dutch oven over medium heat until shimmering. Add onion and cook, stirring frequently, until light golden, 8 to 10 minutes. Add garlic, ginger, serrano, tomato paste, and garam masala and cook, stirring frequently, until fragrant, about 3 minutes. Add crushed tomatoes, sugar, and 1⁄2 teaspoon salt and bring to boil. Reduce heat to medium-low, cover, and simmer for 15 minutes, stirring occasionally. Stir in cream and return to simmer. Remove pan from heat and cover to keep warm.  
 3. TO COOK THE CHICKEN: While sauce simmers, position oven rack 6 inches from heating element and heat broiler. Using tongs, dip chicken into yogurt mixture (chicken should be coated with thick layer of yogurt) and arrange on wire rack set in aluminum foil–lined rimmed baking sheet or broiler pan. Discard excess yogurt mixture. Broil chicken until thickest part registers 160 degrees and exterior is lightly charred in spots, 10 to 18 minutes, flipping chicken halfway through cooking.  
 4. Let chicken rest 5 minutes, then cut into 1-inch chunks and stir into warm sauce (do not simmer chicken in sauce). Stir in cilantro, season with salt to taste, and serve. (Sauce can be made ahead, refrigerated for up to 4 days and gently reheated before adding hot chicken.)  
-INDIAN CURRIES  
 #end  
 #title  
 INDIAN LAMB CURRY WITH WHOLE SPICES  
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-Gather and prepare all of your ingredients before you begin. Garlic and ginger may be pureed by hand or in a minichop food processor. If using a minichopper, process the garlic and ginger with 1 to 2 tablespoons of water until pureed. You may substitute a scant 1⁄2 teaspoon of cayenne pepper for the jalapeño, adding it to the skillet with the other ground dried spices. Feel free to increase the aromatics (garlic, ginger, jalapeños, and onions) or dry spice quantities. For a creamier curry, use the yogurt rather than the crushed tomatoes. Serve with BASMATI RICE PILAF.  
 WHOLE SPICE BLEND  
 1-1⁄2 (3-inch-long) cinnamon sticks  
 4 whole cloves  
@@ -5436,8 +5412,10 @@ In this variation, the spinach becomes the sauce.
 Omit whole spice blend. Add 1⁄2 teaspoon fenugreek along with cumin, coriander, and turmeric in step 3 and substitute 6 skinless chicken thighs for lamb. Add 1-1⁄2 pounds spinach, stemmed and chopped coarse, to pot before adding water in step 4. Once chicken is tender, 20 to 30 minutes, remove and keep warm and continue to cook sauce over high heat until thickened, about 10 minutes.  
 INDIAN SHRIMP CURRY WITH YOGURT AND PEAS  
 Omit whole spice blend, lamb, and potatoes and sauté onions in step 2 until golden brown, 5 to 7 minutes. Substitute 1⁄2 cup plain whole-milk cup for tomatoes. Add 1 cup chopped cilantro before adding water in step 4 and stir in 1-1⁄2 pounds extra-large shrimp (21 to 25 per pound), peeled and deveined, and 1 cup frozen peas, thawed, with cilantro in step 5, reducing cilantro to 2 tablespoons.  
+#end
+#title
 BEEF CURRY WITH CRUSHED SPICES AND CHANNA DAL  
-Channa dal is the name for yellow Indian split peas, available at Indian specialty food shops. Four red potatoes, peeled and cut into 3⁄4-inch pieces, or regular green split peas may be substituted for the channa dal. Gather and prepare all of your ingredients before you begin. You may substitute a scant 1⁄2 teaspoon of cayenne pepper for the jalapeño, adding it to the skillet with the other ground dried spices. Feel free to increase the aromatics (garlic, ginger, jalapeños, and onions) or dry spice quantities. Serve the curry with BASMATI RICE PILAF .  
+#ingredients
 1⁄4 cup vegetable oil  
 1 teaspoon cumin seeds  
 2 teaspoons coriander seeds  
@@ -5457,14 +5435,12 @@ Salt
 2. Crush garlic and ginger along with pinch salt in mortar and pestle. Stir crushed garlic-ginger mixture, beef, tomatoes, turmeric, and 1⁄2 teaspoon salt into pot and cook, stirring frequently, until liquid evaporates, oil separates and turns orange, and spices begin to fry, 5 to 7 minutes. Continue to cook, stirring constantly, until spices are very fragrant, about 30 seconds longer.  
 3. Add water and jalapeño. Bring to simmer, then reduce heat, cover, and simmer until meat is tender, 30 to 40 minutes.  
 4. Add channa dal and cook until tender, about 15 minutes. Stir in cilantro, simmer 3 minutes, season with salt to taste, and serve.  
-INDIAN-STYLE VEGETABLE CURRY  
 #end  
 #title  
 INDIAN CURRY WITH POTATOES, CAULIFLOWER, PEAS, AND CHICKPEAS  
 #quantity  
 SERVES 4 TO 6  
 #ingredients  
-This curry is moderately spicy when made with one chile. For more heat, use an additional half chile. For a mild curry, remove the chile’s ribs and seeds before mincing. The onions can be pulsed in a food processor. You can substitute 2 teaspoons ground coriander, 1⁄2 teaspoon ground black pepper, 1⁄4 teaspoon ground cardamom, and 1⁄4 teaspoon ground cinnamon for the garam masala. In addition to the suggested condiments, serve with BASMATI RICE PILAF and plain whole-milk yogurt.  
 2 tablespoons sweet or mild curry powder  
 1-1⁄2 teaspoons garam masala  
 1 (14.5-ounce) can diced tomatoes  
@@ -5505,6 +5481,7 @@ If using a regular yellow onion, increase the sugar to 1 teaspoon.
 1⁄2 teaspoon sugar  
 1⁄8 teaspoon salt  
 Pinch cayenne pepper  
+#instructions
 Combine all ingredients in medium bowl. (Relish can be refrigerated for up to 1 day.)  
 #end  
 #title  
@@ -5520,6 +5497,7 @@ MAKES ABOUT 1 CUP
 1-1⁄2 teaspoons sugar  
 1⁄2 teaspoon ground cumin  
 1⁄4 teaspoon salt  
+#instructions
 Process all ingredients in food processor until smooth, about 20 seconds, scraping down sides of bowl halfway through. (Chutney can be refrigerated for up to 1 day.)  
 #end  
 #title  
@@ -5547,7 +5525,6 @@ To make this dish vegetarian, substitute 4 ounces shiitake mushrooms, stemmed an
 1. Stir together soy sauce, water, sherry, sugar, cornstarch, white pepper, pepper flakes, and dry mustard in small bowl until sugar dissolves.  
 2. Heat oil in 12-inch nonstick skillet over high heat until just smoking. Add beans and cook, stirring frequently, until crisp-tender and skins are shriveled and blackened in spots, 5 to 8 minutes (reduce heat to medium-high if beans darken too quickly). Transfer beans to large plate.  
 3. Reduce heat to medium-high and add pork to skillet. Cook, breaking pork into small pieces, until no pink remains, about 2 minutes. Add garlic and ginger and cook, mashing mixture into pan, until fragrant, 15 to 20 seconds. Stir sauce to recombine and return beans to skillet with sauce. Toss and cook until sauce is thickened, 5 to 10 seconds. Remove from heat and stir in scallions and sesame oil. Serve immediately.  
-THAI-STYLE STIR-FRIED VEGETABLES  
 #end  
 #title  
 STIR-FRIED EGGPLANT WITH GARLIC AND BASIL SAUCE  
@@ -5619,7 +5596,6 @@ CAULIFLOWER
 #instructions  
 1. FOR THE SAUCE: Whisk all ingredients together in small bowl until smooth.  
 2. FOR THE CAULIFLOWER: Heat 1 tablespoon oil in 12-inch nonstick skillet over high heat until shimmering, 2 to 3 minutes. Add cauliflower and cook, stirring occasionally, until just barely tender, about 3 minutes. Clear center of skillet; add remaining 1 teaspoon oil, garlic, and ginger and cook, mashing mixture into pan, until fragrant, 15 to 20 seconds. Stir mixture into cauliflower. Reduce heat to medium-high and stir in sauce mixture. Simmer, stirring occasionally, until cauliflower is just tender, about 2 minutes. Add snow peas and continue to simmer until cauliflower is fully tender, about 3 minutes longer. Sprinkle with basil. Serve immediately.  
-STIR-FRIED BROCCOLI  
 #end  
 #title  
 STIR-FRIED BROCCOLI WITH CHILI-GARLIC SAUCE  
