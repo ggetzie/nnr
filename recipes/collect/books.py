@@ -10,6 +10,8 @@ weird_nums = {chr(178): "2",
               chr(179): "3",
               chr(185): "1"}
 
+recipe_title = re.compile(r'([A-ZÂÀÉÛ -])(,| )')              
+
 # re used to put ingredient amount and description on same line
 # fixed = re.sub(r'(?<=\n)([0-9⁄–-]+)\n', r'\1 ', book_txt)
 
@@ -128,7 +130,52 @@ def fix_weird_nums(book):
             out += c
     return out
 
-def ci_book(filepath):
+
+def parse_ci(filepath):
     with open(filepath) as book:
-        for line in book:
-            pass
+        booklines = [l.strip() for l in book]
+    recipes = []
+    state = ""
+    title = ""
+    quantity = ""
+    ingredients = []
+    instructions = []
+    tag = ""
+    print(len(booklines))
+    for i, line in enumerate(booklines):
+        if line and line[0] == "#":
+            print("command line")
+            state = line[1:]
+            if not state == "end":
+                continue
+        if state == "title":
+            print(state)
+            title = line
+        elif state == "section":
+            print(state)
+            tag = line
+        elif state == "quantity":
+            print(state)
+            quantity = line
+        elif state == "ingredients":
+            print(state)
+            ingredients.append(line + "  ")
+        elif state == "instructions":
+            print(state)
+            instructions.append(line + "  ")
+        elif state == "end":
+            print(state)
+            recipes.append({
+                "title": title,
+                "quantity": quantity,
+                "ingredients": "\n".join(ingredients),
+                "instructions": "\n".join(instructions),
+                "tag": tag
+            })
+            title = ""
+            quantity = ""
+            ingredients = []
+            instructions = []
+        else:
+            print(f"Undefined state {state} @ line {i}")
+    return recipes
