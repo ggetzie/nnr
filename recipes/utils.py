@@ -22,4 +22,3 @@ def sortify(slug, stopwords=STOPWORDS):
             first_letter = "0-9" if word[0].isdigit() else word[0].upper()
             sort_title = "-".join(title_words[i:])
             return first_letter, sort_title
-
