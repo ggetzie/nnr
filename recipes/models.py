@@ -43,6 +43,12 @@ class Recipe(models.Model):
     ingredients_html = models.TextField(_("Ingredients HTML"))
     instructions_text = models.TextField(_("Instructions"))
     instructions_html = models.TextField(_("Instructions HTML"))
+    quantity_text = models.CharField(_("Quantity"), 
+                                     max_length=200, 
+                                     default="")
+    quantity_html = models.CharField(_("Quantity HTML"), 
+                                     max_length=400, 
+                                     default="")
     tags = models.ManyToManyField("Tag", through="UserTag")
     user = models.ForeignKey(settings.AUTH_USER_MODEL, 
                              on_delete=models.SET_NULL,
@@ -58,6 +64,7 @@ class Recipe(models.Model):
                                      default=datetime.date(year=1970, 
                                                            month=1, 
                                                            day=1))
+    see_also = models.ManyToManyField("self")
 
     class Meta:
         ordering = ["sort_title"]
@@ -65,6 +72,7 @@ class Recipe(models.Model):
     def save(self, *args, **kwargs):
         self.ingredients_html = markdown.markdown(self.ingredients_text)
         self.instructions_html = markdown.markdown(self.instructions_text)
+        self.quantity_html = markdown.markdown(self.quantity_text)
         self.title_slug = slugify(self.title)
         self.first_letter, self.sort_title = sortify(self.title_slug)
         lc, created = LetterCount.objects.get_or_create(letter=self.first_letter,
