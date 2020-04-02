@@ -74,6 +74,7 @@ class Recipe(models.Model):
         self.instructions_html = markdown.markdown(self.instructions_text)
         self.quantity_html = markdown.markdown(self.quantity_text)
         self.title_slug = slugify(self.title)
+        self.title = self.title.title()
         self.first_letter, self.sort_title = sortify(self.title_slug)
         lc, created = LetterCount.objects.get_or_create(letter=self.first_letter,
                                                         defaults={"quantity": 1})
