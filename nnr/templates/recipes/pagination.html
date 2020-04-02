@@ -9,11 +9,11 @@
         </li>            
         {% endif %}
         <li class="page-item active">
-            <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a>
+            <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</a>
         </li>
         {% if page_obj.has_next %}
         <li class="page-item">
-            <a class="page-linke" href="?page{{ page_obj.next_page_number }}">next</a>
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a>
         </li>
         <li class="page-item">
             <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
