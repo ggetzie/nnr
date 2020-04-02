@@ -3,7 +3,6 @@ import pathlib
 import queue
 import re
 
-
 CI_PATH = pathlib.Path("/usr/local/src/nnr/recipes/collect/data/cibook.txt")
 
 weird_nums = {chr(178): "2",
