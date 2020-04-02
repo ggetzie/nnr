@@ -144,38 +144,35 @@ def parse_ci(filepath):
     print(len(booklines))
     for i, line in enumerate(booklines):
         if line and line[0] == "#":
-            print("command line")
             state = line[1:]
             if not state == "end":
                 continue
         if state == "title":
-            print(state)
             title = line
         elif state == "section":
-            print(state)
             tag = line
         elif state == "quantity":
-            print(state)
             quantity = line
         elif state == "ingredients":
-            print(state)
             ingredients.append(line + "  ")
         elif state == "instructions":
-            print(state)
             instructions.append(line + "  ")
         elif state == "end":
-            print(state)
-            recipes.append({
-                "title": title,
-                "quantity": quantity,
-                "ingredients": "\n".join(ingredients),
-                "instructions": "\n".join(instructions),
-                "tag": tag
-            })
+            if title and ingredients and instructions:
+                recipes.append({
+                    "title": title,
+                    "quantity": quantity,
+                    "ingredients": "\n".join(ingredients),
+                    "instructions": "\n".join(instructions),
+                    "tag": tag
+                })
             title = ""
             quantity = ""
             ingredients = []
             instructions = []
         else:
             print(f"Undefined state {state} @ line {i}")
+    with open("data/cibook.json", "w") as outfile:
+        outfile.write(json.dumps(recipes))
+        print("recipes saved")
     return recipes
