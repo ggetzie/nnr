@@ -11,12 +11,12 @@ import markdown
 import string
 
 def setup_lettercounts():            
-    nums, created = LetterCount.objects.get_or_create(letter="0-9", 
-                                             defaults={"quantity":0})
+    nums = LetterCount.objects.get_or_create(letter="0-9", 
+                                            defaults={"quantity":0})[0]
     nums.save()
     for letter in string.ascii_uppercase:
-        lc, created = LetterCount.objects.get_or_create(letter=letter, 
-                                                       defaults={"quantity":0})
+        lc = LetterCount.objects.get_or_create(letter=letter, 
+                                               defaults={"quantity":0})[0]
         lc.save()
     for r in Recipe.objects.all():
         r.save()    
