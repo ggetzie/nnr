@@ -1,5 +1,6 @@
 import json
 import random
+import re
 import string
 
 from django.contrib.auth import get_user_model
@@ -31,3 +32,17 @@ def add_recipes(jsonfile):
             recipe.save()
         ut = UserTag(tag=tag, user=user, recipe=recipe)
         ut.save()
+
+recipe_title = re.compile(r'(?<=RECIPE )([A-ZÂÀÉÛ -]+)([,\(\n\r])')
+def find_related():
+    count = 0
+    for recipe in Recipe.objects.all():
+        q_results = recipe_title.findall(recipe.quantity_text.upper())
+        ing_results = recipe_title.findall(recipe.ingredients_text.upper())
+        slugs = ([slugify(t[0]) for t in q_results] + 
+                 [slugify(t[0]) for t in ing_results])
+        related = Recipe.objects.filter(title_slug__in=slugs)
+        if related:
+            recipe.see_also.add(*related)
+            count += 1
+    print(f"Found related recipes for {count} recipes")

@@ -9,8 +9,6 @@ weird_nums = {chr(178): "2",
               chr(179): "3",
               chr(185): "1"}
 
-recipe_title = re.compile(r'([A-ZÂÀÉÛ -])(,| )')              
-
 # re used to put ingredient amount and description on same line
 # fixed = re.sub(r'(?<=\n)([0-9⁄–-]+)\n', r'\1 ', book_txt)
 
