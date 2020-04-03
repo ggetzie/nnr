@@ -22,3 +22,17 @@ def sortify(slug, stopwords=STOPWORDS):
             first_letter = "0-9" if word[0].isdigit() else word[0].upper()
             sort_title = "-".join(title_words[i:])
             return first_letter, sort_title
+
+def spacing(text):
+    """
+    Add blank line before all uppercase lines
+    """
+    outlines = []
+    lines = text.split("\n")
+    last = ""
+    for line in lines:
+        if line.isupper() and last.isprintable():
+            outlines.append("")
+        outlines.append(line)
+        last = line
+    return "\n".join(outlines)

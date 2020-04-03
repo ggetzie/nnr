@@ -9,6 +9,7 @@ from django.conf import settings
 
 from recipes.models import *
 from recipes.forms import *
+from recipes.utils import *
 
 from comments.models import *
 from comments.forms import *
