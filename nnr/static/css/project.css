@@ -147,6 +147,10 @@ blockquote {
   font-size: 1.1rem;
 }
 
+.quantity {
+  font-size: 1.1rem;
+}
+
 .instructions ol li {
   margin-bottom: 1rem;
 }

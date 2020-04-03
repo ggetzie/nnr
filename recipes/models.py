@@ -43,7 +43,7 @@ class Recipe(models.Model):
     ingredients_html = models.TextField(_("Ingredients HTML"))
     instructions_text = models.TextField(_("Instructions"))
     instructions_html = models.TextField(_("Instructions HTML"))
-    quantity_text = models.CharField(_("Quantity"), 
+    quantity_text = models.CharField(_("Yield"), 
                                      max_length=200, 
                                      default="")
     quantity_html = models.CharField(_("Quantity HTML"), 

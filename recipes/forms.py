@@ -30,7 +30,11 @@ class CreateRecipeForm(forms.ModelForm):
                            help_text=TAGS_HELP)
     class Meta:
         model = Recipe
-        fields = ("title", "ingredients_text", "instructions_text", "user")
+        fields = ("title", 
+                  "ingredients_text", 
+                  "instructions_text", 
+                  "user", 
+                  "quantity_text")
         widgets = {
             "user": forms.HiddenInput()
         }
@@ -44,6 +48,10 @@ class CreateRecipeForm(forms.ModelForm):
         self.helper.layout = Layout(
             Div(
                 Field("title", wrapper_class="form-group col-md-12"),
+                css_class="form-row"
+            ),
+            Div(
+                Field("quantity_text", wrapper_class="form-group col-md-12"),
                 css_class="form-row"
             ),
             Div(
@@ -100,7 +108,7 @@ class UpdateRecipeForm(forms.ModelForm):
 
     class Meta:
         model = Recipe
-        fields = ("title", "ingredients_text", "instructions_text")
+        fields = ("title", "quantity_text", "ingredients_text", "instructions_text")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -111,6 +119,10 @@ class UpdateRecipeForm(forms.ModelForm):
         self.helper.layout = Layout(
             Div(
                 Field("title", wrapper_class="form-group col-md-12"),
+                css_class="form-row"
+            ),
+            Div(
+                Field("quantity_text", wrapper_class="form-group col-md-12"),
                 css_class="form-row"
             ),
             Div(

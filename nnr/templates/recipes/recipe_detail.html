@@ -38,6 +38,15 @@
         {{ recipe.instructions_html|safe }}
     </div>
 
+    {% if recipe.see_also.count > 0 %}
+    <h3>Related Recipes</h3>
+    <div class="recipe-section">
+        {% for related in recipe.see_also.all %}
+        <a href="{% url 'recipes:recipe_detail' related.title_slug %}">{{ related.title }}</a>{% if not forloop.last %};{% endif %} 
+        {% endfor %}
+    </div>
+    {% endif %}
+
     <div class="user-options row recipe-section">
         <div class="col-sm-4">
             {% crispy rateform %}
