@@ -19,9 +19,11 @@
     ],
     "cSpell.ignoreWords": [
         "auafir",
+        "cibook",
         "ckogb",
         "devel",
         "elasticbeanstalk",
+        "isprintable",
         "path",
         "postgresql",
         "wsgi",

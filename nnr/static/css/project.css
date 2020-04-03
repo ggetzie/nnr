@@ -139,3 +139,14 @@ blockquote {
 .recipe-section {
   margin-top: 15px;
 }
+
+.ingredients {
+  font-size: 1.1rem;
+}
+.instructions {
+  font-size: 1.1rem;
+}
+
+.instructions ol li {
+  margin-bottom: 1rem;
+}
