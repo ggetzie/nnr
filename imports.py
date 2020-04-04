@@ -1,6 +1,7 @@
 import pathlib
 import datetime
 import random
+
 from importlib import reload
 
 from main.models import *
@@ -19,8 +20,9 @@ from nnr.users.models import *
 gabe = User.objects.get(username="gabe")
 
 recipe_data = pathlib.Path("/usr/local/src/nnr/recipes/collect/data")
-from recipes.collect import books, ingest
+from recipes.collect import books, ingest, scrape
 
+import requests
 import stripe
 
 stripe.api_key = settings.STRIPE_SK
