@@ -24,6 +24,7 @@
         {% else %}
         <em>deleted</em>
         {% endif %}
+        on {{ recipe.created|date:"F j, Y" }}
     </div>
     <div class="quantity recipe-section">
         {{ recipe.quantity_html|safe }}
