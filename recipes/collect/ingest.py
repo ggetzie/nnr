@@ -13,7 +13,7 @@ User = get_user_model()
 
 def add_recipes(jsonfile):
     recipe_list = json.loads(open(jsonfile).read())
-    user = User.objects.get(username="gabe")
+    user = User.objects.get(username="admin")
     for rd in recipe_list:
         tag = Tag.objects.get_or_create(name_slug=slugify(rd["tag"]),
                                         defaults={"name": rd["tag"]})[0]
