@@ -1,5 +1,5 @@
 import pathlib
-
+import re
 import subprocess
 import time
 
@@ -21,6 +21,15 @@ recipe_data = pathlib.Path("/usr/local/src/nnr/recipes/collect/data")
 ar_categories = recipe_data / "ar_categories.txt"
 ar_recipe_links = recipe_data / "ar_recipe_links.txt"
 ar_remaining = recipe_data / "ar_remaining.txt"
+
+def check_slug(slug):
+    try:
+        return Recipe.objects.get(title_slug=slug)
+    except Recipe.DoesNotExist:
+        return None
+
+def get_slug(url):
+    return url.split("/")[-2]
 
 def get_recipe_links():
     
@@ -50,9 +59,8 @@ def get_page(url):
                                     "--dump-dom", url])
     return res
 
-def parse_recipe_page(page_text):
-    print("parsing page")
-    soup = BeautifulSoup(page_text, "html.parser")
+def parse_recipe_page(soup):
+    print("parsing page normal")
     ingredient_list = soup.select('[itemprop="recipeIngredient"]')
     instruction_list = soup.select('ol[itemprop="recipeInstructions"]')
     quantity_list = soup.select(".servings-count")
@@ -65,20 +73,54 @@ def parse_recipe_page(page_text):
         quantity = quantity_list[0].text
         instructions = "".join([s.text for s in instruction_list])
         title = title_list[0].text
-        return Recipe(quantity_text = quantity,
-                    ingredients_text = ingredients,
-                    instructions_text = instructions,
-                    title = title,
-                    user = admin)
+        return Recipe(quantity_text=quantity,
+                    ingredients_text=ingredients,
+                    instructions_text=instructions,
+                    title=title,
+                    user=admin)
     else:
         return None
 
-def get_recipes():
-    with open(ar_remaining) as recipe_file:
+def parse_recipe_page_alt(soup):
+    print("parsing page alt")
+    ingredients_list = [s.text.strip() 
+                        for s in soup.select("ul.ingredients-section")]
+    instructions_list = [s.text.strip()
+                         for s in soup.select("ul.instructions-section")]
+    quantity_list = [s.text.strip() 
+                     for s in soup.select("div.recipe-adjust-servings__original-serving")]
+    if all([quantity_list,
+            ingredients_list,
+            instructions_list]):
+
+        ingredients = ingredients_list[0]
+        ingredients = re.sub(r'\n\s+', '  \n', ingredients)
+
+        instructions = instructions_list[0]
+        instructions = re.sub(r'Advertisement', '', instructions, flags=re.IGNORECASE)
+        instructions = re.sub(r'\n\s+', '  \n', instructions)
+        instructions = re.sub(r'\nStep', '\n\nStep', instructions)
+
+        quantity = re.sub(r'Original recipe yields ', 
+                          '', 
+                          quantity_list[0], 
+                          flags=re.IGNORECASE)
+        return Recipe(title=soup.h1.text,
+                      quantity_text=quantity,
+                      ingredients_text=ingredients,
+                      instructions_text=instructions,
+                      user=admin,
+                     )
+    else:
+        return None
+
+def get_recipes(link_filepath=ar_remaining, remaining_filepath=ar_remaining):
+    with open(link_filepath) as recipe_file:
         urls = [l.strip() for l in recipe_file]
     for i, url in enumerate(urls):
         res = get_page(url)
-        recipe = parse_recipe_page(res)
+        soup = BeautifulSoup(res, "html.parser")
+        recipe = parse_recipe_page(soup) or parse_recipe_page_alt(soup)
         if not recipe:
             print(f"Could not parse page at {url}")
             continue
@@ -90,7 +132,7 @@ def get_recipes():
         except IntegrityError:
             # duplicate recipe
             pass
-        with open(ar_remaining, "w") as remaining_file:
+        with open(remaining_filepath, "w") as remaining_file:
             try:
                 remaining_file.write("\n".join(urls[i+1:]))
             except IndexError:
