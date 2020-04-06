@@ -1,0 +1,28 @@
+{% extends "users/user_base.html" %}
+{% load static %}
+
+{% block title %}{{ user.username }}'s Tags{% endblock %}
+
+
+{% block user_content  %}
+<h1>{{ user.username }}'s Tags</h1>
+<div class="main-list">
+    <div class="row">
+            {% for tag in object_list %}
+            <div class="col-sm-2">
+                <a href="{% url 'users:usertag_detail' user.username tag.name_slug %}">{{ tag }}</a>
+            </div>
+            {% if forloop.counter|divisibleby:6 %}
+            </div>
+            <div class="row">
+            {% endif %}
+            {% empty %}
+            <p>No tags found</p>
+            {% endfor %}
+        </div>
+</div>
+{% include "recipes/pagination.html" %}
+    
+{% endblock user_content %}
+
+

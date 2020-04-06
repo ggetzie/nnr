@@ -22,6 +22,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'users:submitted_recipes' user.username %}">Submitted</a>
                         </li>                 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'users:user_tags' user.username %}">Tagged</a>
+                        </li>                        
                         {% if  request.user == user %}   
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'users:saved_recipes' user.username %}">Saved</a>
@@ -29,6 +32,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'users:rated_recipes' user.username %}">Rated</a>
                         </li>
+                        
                         {% endif %}
                     </ul>
                 </li>

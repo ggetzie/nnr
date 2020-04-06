@@ -1,0 +1,16 @@
+{% extends "users/user_base.html" %}
+{% load static %}
+
+{% block title %}Recipes {{ user.username }} tagged "{{ tag }}"{% endblock %}
+
+
+{% block user_content  %}
+<h1>Recipes {{ user.username }} tagged "{{ tag }}"</h1>
+<div class="main-list">
+    {% include "recipes/recipe_ul.html" %}
+</div>
+{% include "recipes/pagination.html" %}
+    
+{% endblock user_content %}
+
+

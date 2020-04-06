@@ -157,6 +157,33 @@ class TagDetail(ValidUserMixin, ListView):
         context["tag"] = self.tag
         return context    
 
+class UserTagList(ValidUserMixin, ListView):
+    model = Tag
+    paginate_by = 144
+    template_name = "users/usertag_list.html"
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs["username"])
+        qs = Tag.objects.filter(usertag__user=user).distinct()
+        return qs
+
+class UserTagDetail(ValidUserMixin, ListView):
+    model = Recipe
+    paginate_by = 25
+    template_name = "users/usertag_detail.html"
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs["username"])
+        self.tag = get_object_or_404(Tag, name_slug=self.kwargs["tag_slug"])
+        qs = Recipe.objects.filter(usertag__tag=self.tag,
+                                   usertag__user=user).distinct()
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["tag"] = self.tag
+        return context
+
 
 class TagRecipe(ValidUserMixin, FormView):
     form_class = TagRecipeForm
