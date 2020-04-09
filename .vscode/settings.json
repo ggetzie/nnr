@@ -15,7 +15,8 @@
         "sortify",
         "static",
         "storage",
-        "tabindex"
+        "tabindex",
+        "untag"
     ],
     "cSpell.ignoreWords": [
         "auafir",

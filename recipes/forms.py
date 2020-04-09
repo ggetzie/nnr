@@ -188,9 +188,15 @@ class TagRecipeForm(forms.Form):
             usertag = UserTag.objects.get_or_create(recipe=recipe,
                                                     user=user,
                                                     tag=tag)[0]
-            usertag.save()                                                    
+            usertag.save()
 
-        
+
+class UntagRecipeForm(forms.Form):
+    recipe = forms.ModelChoiceField(widget=forms.HiddenInput(),
+                                    queryset=Recipe.objects.all())
+    tag_slug = forms.SlugField(widget=forms.HiddenInput())
+
+
 class SaveRecipeForm(forms.Form):
     recipe = forms.ModelChoiceField(widget=forms.HiddenInput(),
                                     queryset=Recipe.objects.all())

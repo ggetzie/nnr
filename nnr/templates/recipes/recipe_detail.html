@@ -70,13 +70,13 @@
 
     <div class="tags recipe-section">
         <h2>Tags</h2>
-        <p>
+        <div id="tag-container">
             {% for tag in tag_list %}
             <a href="{% url 'recipes:tag_detail' tag.slug %}" 
                title="{{ tag.count }} user{{ tag.count|pluralize }} tagged this recipe as {{ tag.name }}">
-                {{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+                {{ tag.name }}</a>{% if tag.untag_form %}{% include 'recipes/usertag_delete.html' %}{% endif %}{% if not forloop.last %}, {% endif %}
             {% endfor %}
-        </p>
+        </div>
         {% crispy tagform %}
         <small class="form-text text-muted">{{ tagform.fields.tags.help_text }}</small>
     </div>
@@ -87,4 +87,5 @@
 
 {% block morejs %}
 <script src="{% static 'js/comments.js' %}"></script>
+<script src="{% static 'js/tags.js' %}"></script>
 {% endblock morejs %}

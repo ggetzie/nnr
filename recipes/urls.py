@@ -41,12 +41,15 @@ tag_urls = [
      path("",
           view=views.TagList.as_view(),
           name="tag_list"),
-     path("<slug:slug>",
-          view=views.TagDetail.as_view(),
-          name="tag_detail"),
      path("tagrecipe/",
           view=views.TagRecipe.as_view(),
           name="tag_recipe"),
+     path("untag/",
+          view=views.untag,
+          name="untag"),
+     path("<slug:slug>",
+          view=views.TagDetail.as_view(),
+          name="tag_detail"),
 ]
 
 urlpatterns = [

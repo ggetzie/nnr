@@ -154,3 +154,17 @@ blockquote {
 .instructions ol li {
   margin-bottom: 1rem;
 }
+
+.untag-container {
+  display: inline;
+}
+
+span.your-tag {
+  color: mediumblue;
+  font-weight: bold;
+  font-size: 1.15rem;
+}
+
+#tag-container {
+  margin-bottom: 10px;
+}

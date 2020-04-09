@@ -1,0 +1,31 @@
+{% load static %}
+<div class="untag-container" id="untag-container_{{ tag.slug }}">
+    <a id="untag_link_{{ tag.slug }}" href="#" class="untag-link" data-toggle="modal" data-target="#untag_{{ tag.slug }}">
+        <img src="{% static 'images/delete.svg' %}" width="14px" height="14px" />
+    </a>
+    <div id="untag_{{ tag.slug }}"class="modal" tagindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Remove Tag</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Remove your tag <span class="your-tag">{{ tag.name }}</span> from this recipe?</p>
+                </div>
+                <div class="modal-footer">
+                    <form action="{% url 'recipes:untag' %}" class="untag-form">
+                        {% csrf_token %}
+                        {% for field in tag.untag_form  %}
+                        {{ field }}
+                        {% endfor %}
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn btn-danger" value="Remove Tag">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

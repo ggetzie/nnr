@@ -1,17 +1,23 @@
+import json
+from operator import itemgetter
+
 from crispy_forms.layout import Submit
 
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.postgres.search import (SearchQuery, 
                                             SearchRank, 
                                             SearchVector)
 from django.core.exceptions import PermissionDenied                                            
 from django.db.models import Avg, Count
+from django.http import JsonResponse
 from django.middleware.csrf import get_token
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
+from django.views.decorators.http import require_POST
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
                                   DetailView, FormView)                                            
 
@@ -20,7 +26,8 @@ from mixins import ValidUserMixin, RateLimitMixin
 from comments.forms import CreateCommentForm
 
 from recipes.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
-                           SaveRecipeForm, RateRecipeForm, RecipeSearchForm,)
+                           SaveRecipeForm, RateRecipeForm, RecipeSearchForm,
+                           UntagRecipeForm)
                            
 
 from recipes.models import (Recipe, Tag, UserTag, RecipeRating, 
@@ -52,13 +59,27 @@ class RecipeDetail(ValidUserMixin, DetailView):
         comment_form = CreateCommentForm(initial={"user": self.request.user,
                                                   "recipe": self.object})
         context["comment_form"] = comment_form
+        user_slugs = {ut.tag.name_slug for ut 
+                      in UserTag.objects.filter(user=self.request.user,
+                                                recipe=self.object)}
         tags = self.object.usertag_set.values("tag__name", "tag__name_slug").\
                annotate(Count("tag")).\
                order_by("-tag__count")
+
+        def add_untag_form(tag_slug):
+            if tag_slug in user_slugs:
+                return UntagRecipeForm(initial={"tag_slug": tag_slug,
+                                                "recipe": self.object})
+            else:
+                return None
+
         tag_list = [{"name": tag["tag__name"],
                      "slug": tag["tag__name_slug"],
-                     "count": tag["tag__count"]}
+                     "count": tag["tag__count"],
+                     "untag_form": add_untag_form(tag["tag__name_slug"])}
                     for tag in tags]
+        tag_list.sort(key=lambda x : x["untag_form"] is None)
+                      
         context["tag_list"] = tag_list
         context["tagform"] = TagRecipeForm(initial={"user": self.request.user,
                                                     "recipe": self.object})
@@ -200,6 +221,26 @@ class TagRecipe(ValidUserMixin, FormView):
         form.save_tags()
         kw = {"slug": form.cleaned_data["recipe"].title_slug}
         return redirect(reverse_lazy("recipes:recipe_detail", kwargs=kw))        
+
+@login_required
+@require_POST
+def untag(request):
+    form = UntagRecipeForm(json.loads(request.body))
+    if form.is_valid():
+        try:
+            ut = UserTag.objects.get(user=request.user,
+                                     recipe=form.cleaned_data["recipe"],
+                                     tag__name_slug=form.cleaned_data["tag_slug"])
+            ut.delete()
+            response = {"message": "Tag Removed"}
+        except UserTag.DoesNotExist:
+            response = {"error": "Tag does not exist"}
+    else:
+        response = {"error": form.errors}
+    return JsonResponse(response)
+
+
+
 
 
 class SaveRecipe(ValidUserMixin, FormView):
