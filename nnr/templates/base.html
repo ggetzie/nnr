@@ -39,7 +39,11 @@
   <body>
     <nav id="main-nav" class="navbar navbar-expand-md navbar-light bg-light">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon">
+          <svg viewBox="0 0 30 30" xmlns="https://www.w3.org/2000/svg">
+            <path stroke="rgba(0, 0, 0, 0.5)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/>
+          </svg>
+        </span>
       </button>
       <a class="navbar-brand" href="{% url 'home' %}">
         <img src="{% static 'images/logos/SocialProfile/twitter-profilepicture-whitebg.png' %}"
