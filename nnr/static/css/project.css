@@ -1,8 +1,4 @@
 /* These styles are generated from project.scss. */
-.alert {
-  max-width: 400px;
-}
-
 .alert-debug {
   color: black;
   background-color: white;
