@@ -11,6 +11,14 @@
             Save, Organize, and Discover your favorite recipes.
         </p>
         <div class="row benefit-row">
+            <div class="col-md-1 benefit-index">
+                <img src="{% static 'images/circle-check.svg' %}" alt="yes"/>
+            </div>
+            <div class="col-md-6 benefit-text">
+                Recipes. Tons of them. Presented simply and cleanly.
+            </div>
+        </div>
+        <div class="row benefit-row">
             <div class="col-md-1 benefit-index">🚫</div>
             <div class="col-md-6 benefit-text">
                 No ads or tracking. We respect your privacy.
@@ -20,14 +28,6 @@
             <div class="col-md-1 benefit-index">🚫</div>
             <div class="col-md-6 benefit-text">
                 No long-winded stories, endless photo collages or other SEO tricks
-            </div>
-        </div>
-        <div class="row benefit-row">
-            <div class="col-md-1 benefit-index">
-                <img src="{% static 'images/circle-check.svg' %}" alt="yes"/>
-            </div>
-            <div class="col-md-6 benefit-text">
-                Recipes. Tons of them. Presented simply and cleanly.
             </div>
         </div>
         {% if not request.user.is_authenticated %}
