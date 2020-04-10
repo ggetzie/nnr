@@ -27,15 +27,14 @@ async function untag(untagForm) {
         if (responseJSON.error) {
             const res = createAlert(responseJSON.error, ["alert-danger"]);
             $(`#untag_${untagForm["tag_slug"].value}`).modal("hide");
+            document.getElementById("tag-container").before(res);
         } else {
-            console.log(responseJSON);
-            console.log(responseJSON.message)
             const res = createAlert(responseJSON.message, ["alert-success"]);
-            console.log(res)
             $(`#untag_${untagForm["tag_slug"].value}`).modal("hide");
+            document.getElementById("tag-container").before(res);
             document.getElementById(`untag-container_${untagForm["tag_slug"].value}`).remove();
         }
-        document.getElementById("tag-container").before(res);
+        
     })
         
 }
