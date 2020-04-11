@@ -26,5 +26,5 @@ import stripe
 stripe.api_key = settings.STRIPE_SK
 
 if settings.DEBUG:
-    recipe_data = pathlib.Path("/usr/local/src/nnr/recipes/collect/data")
+    recipe_data = pathlib.Path("/usr/local/src/recipe_data")
     from recipes.collect import books, ingest, scrape

@@ -17,7 +17,7 @@ ar_tag = Tag.objects.get(name="ar")
 
 last_recipe = "https://www.allrecipes.com/recipe/23788/bacon-quiche-tarts/"
 
-recipe_data = pathlib.Path("/usr/local/src/nnr/recipes/collect/data")
+recipe_data = pathlib.Path("/usr/local/src/recipe_data")
 ar_categories = recipe_data / "ar_categories.txt"
 ar_recipe_links = recipe_data / "ar_recipe_links.txt"
 ar_remaining = recipe_data / "ar_remaining.txt"
