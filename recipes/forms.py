@@ -172,10 +172,19 @@ class TagRecipeForm(forms.Form):
         self.helper.form_class = "form-inline"
         self.helper.field_template = "bootstrap4/layout/inline_field.html"
         self.helper.layout = Layout(
-            InlineField("tags", css_class="form-control-sm"),
-            "recipe",
-            "user",
-            Submit("Add Tags", "Add Tags", css_class="btn-sm"),
+            Div (
+                Div(
+                    InlineField("tags", css_class="form-control-sm"),
+                    "recipe",
+                    "user",
+                    css_class="col-sm-10"
+                ),
+                Div(
+                    Submit("Add Tags", "Add Tags", css_class="btn-sm"),
+                    css_class="col-sm-2"
+                ),
+                css_class="form-row"
+            ),
         )        
 
     def save_tags(self):
@@ -208,7 +217,7 @@ class SaveRecipeForm(forms.Form):
         self.helper = FormHelper()
         self.helper.form_method = "post"
         self.helper.form_action = "recipes:save_recipe"
-
+        
     def save_recipe(self):
         profile = self.cleaned_data["user"].profile
         recipe = self.cleaned_data["recipe"]
@@ -236,12 +245,20 @@ class RateRecipeForm(forms.Form):
         self.helper.form_class = "form-inline"
         self.helper.field_template = "bootstrap4/layout/inline_field.html"
         self.helper.layout = Layout(
-            InlineField("rating", css_class="form-control-sm"),
-            "recipe",
-            "user",
-            Submit("Rate", "Rate", css_class="btn-sm")
+            Div(
+                Div(
+                    InlineField("rating", css_class="form-control-sm"),
+                    "recipe",
+                    "user",
+                    css_class="col-sm-8"
+                ),
+                Div(
+                    Submit("Rate", "Rate", css_class="btn-sm"),
+                    css_class="col-sm-2"
+                ),
+                css_class="form-row"                
+            )
         )
-        
 
     def rate_recipe(self):
 

@@ -1,4 +1,5 @@
 /* These styles are generated from project.scss. */
+
 .alert-debug {
   color: black;
   background-color: white;
@@ -166,4 +167,14 @@ span.your-tag {
 
 #tag-container {
   margin-bottom: 10px;
+}
+
+.recipe-section div[class^="col-sm"] {
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+input[name~="save"] {
+  margin-bottom: 2px;
+  margin-top: 2px;
 }
