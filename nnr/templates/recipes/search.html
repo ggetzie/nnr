@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load humanize %}
 
 {% block title %}
 {{ title|default:"Search" }}
@@ -12,6 +13,7 @@
     </div>
     {% if terms %}    
     <h1>{{ title|default:"Search results" }} for "{{ terms }}"</h1>
+    <p>Found {{ results.count|intcomma }} recipes</p>
     {% with object_list=results%}
     <div class="main-list">
         {% include "recipes/recipe_ul.html" %}

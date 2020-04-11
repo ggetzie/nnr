@@ -4,9 +4,13 @@ import random
 
 from importlib import reload
 
+from django.conf import settings
+from django.contrib.postgres.search import (SearchQuery, 
+                                            SearchRank, 
+                                            SearchVector)
+
 from main.models import *
 from main.forms import *
-from django.conf import settings
 
 from recipes.models import *
 from recipes.forms import *

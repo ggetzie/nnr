@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.contrib.postgres.search import SearchVectorField
 from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
@@ -65,6 +66,7 @@ class Recipe(models.Model):
                                                            month=1, 
                                                            day=1))
     see_also = models.ManyToManyField("self")
+    search_vector = SearchVectorField(null=True)
 
     class Meta:
         ordering = ["sort_title"]

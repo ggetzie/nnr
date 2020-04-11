@@ -126,7 +126,7 @@ class RecipeOfTheDay(DetailView):
 
 class RecipeList(ValidUserMixin, ListView):
     model = Recipe
-    paginate_by = 25
+    paginate_by = 50
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -355,7 +355,7 @@ class SearchRecipes(ValidUserMixin, FormView):
 
             query = SearchQuery(terms)
             results = (Recipe.objects
-                      .annotate(search=vector).filter(search=terms)
+                      .filter(search_vector=terms)
                       .annotate(rank=SearchRank(vector, query))
                       .order_by("-rank"))
             context["results"] = results

@@ -56,7 +56,7 @@ DJANGO_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "django.contrib.humanize", # Handy template tags
+    "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
     "django.contrib.postgres",
 ]
@@ -260,6 +260,7 @@ ACCOUNT_ADAPTER = "nnr.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "nnr.users.adapters.SocialAccountAdapter"
 ACCOUNT_FORMS = {"signup": "main.forms.NNRSignupForm"}
+# ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = "/browse"
 
 
 # Your stuff...
