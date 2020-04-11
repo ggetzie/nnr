@@ -353,9 +353,9 @@ class SearchRecipes(ValidUserMixin, FormView):
             instructions_vector = SearchVector("instructions_text", weight="B")
             vector = title_vector + ingredients_vector + instructions_vector
 
-            query = SearchQuery(terms)
+            query = SearchQuery(terms, config="pg_catalog.english")
             results = (Recipe.objects
-                      .filter(search_vector=terms)
+                      .filter(search_vector=query)
                       .annotate(rank=SearchRank(vector, query))
                       .order_by("-rank"))
             context["results"] = results
