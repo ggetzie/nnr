@@ -361,3 +361,22 @@ class SearchRecipes(ValidUserMixin, FormView):
             context["page_obj"] = page_obj
             context["terms"] = terms
         return context                
+
+@login_required
+def dashboard(request):
+    saved_none = """
+    Looks like you haven't saved any recipes yet. Try clicking the "Save" button
+    at the bottom of a recipe page to quickly find it later.
+    """
+    context = {
+        "recent": Recipe.objects.order_by("-created")[:5],
+        "highest": (Recipe.objects.filter(reciperating__isnull=False)
+                    .annotate(average_rating=Avg("reciperating__rating"))
+                    .order_by("-average_rating")[:5]),
+        "saved": request.user.profile.saved_recipes.all(),
+        "user_tags": (Tag.objects.filter(usertag__user=request.user)
+                      .annotate(numtags=Count("name_slug"))
+                      .order_by("-numtags"))[:10],
+        "saved_none": saved_none
+    }
+    return render(request, "recipes/dashboard.html", context=context)

@@ -14,7 +14,7 @@
     {% if terms %}    
     <h1>{{ title|default:"Search results" }} for "{{ terms }}"</h1>
     <p>Found {{ page_obj.paginator.count|intcomma }} recipes</p>
-    {% with object_list=page_obj.object_list%}
+    {% with object_list=page_obj.object_list %}
     <div class="main-list">
         {% include "recipes/recipe_ul.html" %}
     </div>

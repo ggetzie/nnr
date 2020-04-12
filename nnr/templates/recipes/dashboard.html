@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main-content">
+    <div class="row">
+        <div class="col-lg-6">
+            <h3>Recently added</h3>
+            {% with object_list=recent %}
+            {% include "recipes/recipe_ul.html" %}
+            {% endwith %}
+        </div>
+        <div class="col-lg-6">
+            <h3>Highest Rated</h3>
+            {% with object_list=highest %}
+            {% include "recipes/recipe_ul.html" %}
+            {% endwith %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+        <h3>Your saved recipes</h3>
+        {% with object_list=saved empty_text=saved_none %}
+        {% include "recipes/recipe_ul.html" %}
+        {% endwith %}
+        <p><a href="{% url 'users:saved_recipes' request.user.username %}">View all saved recipes</a></p>
+        </div>
+        <div class="col-lg-6">
+        <h3>Your Tags</h3>
+        <p>
+            {% for tag in user_tags  %}
+            <a href="{% url 'users:usertag_detail' request.user.username tag.name_slug %}"
+               title="You have {{ tag.numtags }} recipes with this tag">{{ tag.name }}</a>{% if not forloop.last %}, {% else %}...{% endif %}
+            {% empty %}
+            Looks like you haven't tagged any recipes yet. Try adding some tags
+            to recipes you like using the form at the bottom of the recipe page
+            to organize your favorites!
+            {% endfor %}
+            
+        </p>
+        <p><a href="{% url 'users:user_tags' request.user.username %}">View all tags</a></p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

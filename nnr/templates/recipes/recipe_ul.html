@@ -5,7 +5,7 @@
     </li>
     {% empty %}
     <li class="list-group-item">
-        No Recipes Found
+        {{ empty_text|default:"No Recipes Found" }}
     </li>
     {% endfor %}
 </ul>
