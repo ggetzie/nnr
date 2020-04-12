@@ -57,7 +57,7 @@ urlpatterns = [
           view=views.RecipeOfTheDay.as_view(),
           name="rotd"),
      path("home/",
-          view=views.dashboard,
+          view=views.DashboardView.as_view(),
           name="home"),
     path("tags/", include(tag_urls)),
     path("", include(recipe_urls)),    

@@ -92,7 +92,7 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
 AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
-LOGIN_REDIRECT_URL = "recipes:recipe_list"
+LOGIN_REDIRECT_URL = "recipes:home"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = "account_login"
 
@@ -260,8 +260,6 @@ ACCOUNT_ADAPTER = "nnr.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "nnr.users.adapters.SocialAccountAdapter"
 ACCOUNT_FORMS = {"signup": "main.forms.NNRSignupForm"}
-# ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = "/browse"
-
 
 # Your stuff...
 # ------------------------------------------------------------------------------

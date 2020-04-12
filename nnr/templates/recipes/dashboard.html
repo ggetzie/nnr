@@ -22,7 +22,9 @@
         {% with object_list=saved empty_text=saved_none %}
         {% include "recipes/recipe_ul.html" %}
         {% endwith %}
+        {% if saved %}
         <p><a href="{% url 'users:saved_recipes' request.user.username %}">View all saved recipes</a></p>
+        {% endif %}
         </div>
         <div class="col-lg-6">
         <h3>Your Tags</h3>
@@ -35,9 +37,10 @@
             to recipes you like using the form at the bottom of the recipe page
             to organize your favorites!
             {% endfor %}
-            
         </p>
+        {% if user_tags %}
         <p><a href="{% url 'users:user_tags' request.user.username %}">View all tags</a></p>
+        {% endif %}
         </div>
     </div>
 </div>

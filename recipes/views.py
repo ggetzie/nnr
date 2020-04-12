@@ -20,7 +20,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
-                                  DetailView, FormView)                                            
+                                  DetailView, FormView, TemplateView) 
 
 from mixins import ValidUserMixin, RateLimitMixin
 
@@ -362,21 +362,24 @@ class SearchRecipes(ValidUserMixin, FormView):
             context["terms"] = terms
         return context                
 
-@login_required
-def dashboard(request):
-    saved_none = """
+class DashboardView(ValidUserMixin, TemplateView):
+    template_name = "recipes/dashboard.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        saved_none = """
     Looks like you haven't saved any recipes yet. Try clicking the "Save" button
     at the bottom of a recipe page to quickly find it later.
     """
-    context = {
-        "recent": Recipe.objects.order_by("-created")[:5],
-        "highest": (Recipe.objects.filter(reciperating__isnull=False)
-                    .annotate(average_rating=Avg("reciperating__rating"))
-                    .order_by("-average_rating")[:5]),
-        "saved": request.user.profile.saved_recipes.all(),
-        "user_tags": (Tag.objects.filter(usertag__user=request.user)
-                      .annotate(numtags=Count("name_slug"))
-                      .order_by("-numtags"))[:10],
-        "saved_none": saved_none
-    }
-    return render(request, "recipes/dashboard.html", context=context)
+        context.update({
+            "recent": Recipe.objects.order_by("-created")[:5],
+            "highest": (Recipe.objects.filter(reciperating__isnull=False)
+                        .annotate(average_rating=Avg("reciperating__rating"))
+                        .order_by("-average_rating")[:5]),
+            "saved": self.request.user.profile.saved_recipes.all(),
+            "user_tags": (Tag.objects.filter(usertag__user=self.request.user)
+                        .annotate(numtags=Count("name_slug"))
+                        .order_by("-numtags"))[:10],
+            "saved_none": saved_none
+        })
+        return context
