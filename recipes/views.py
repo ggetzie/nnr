@@ -11,7 +11,8 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.postgres.search import (SearchQuery, 
                                             SearchRank, 
                                             SearchVector)
-from django.core.exceptions import PermissionDenied                                            
+from django.core.exceptions import PermissionDenied
+from django.core.paginator import Paginator                                        
 from django.db.models import Avg, Count
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
@@ -165,7 +166,7 @@ class TagList(ValidUserMixin, ListView):
 class TagDetail(ValidUserMixin, ListView):
     model = Recipe
     slug_field = "name_slug"
-    paginate_by = 25
+    paginate_by = 50
     template_name = "recipes/tag_detail.html"
 
     def get_queryset(self):
@@ -196,7 +197,7 @@ class UserTagList(ValidUserMixin, ListView):
 
 class UserTagDetail(ValidUserMixin, ListView):
     model = Recipe
-    paginate_by = 25
+    paginate_by = 50
     template_name = "users/usertag_detail.html"
 
     def get_queryset(self):
@@ -240,9 +241,6 @@ def untag(request):
     return JsonResponse(response)
 
 
-
-
-
 class SaveRecipe(ValidUserMixin, FormView):
     form_class = SaveRecipeForm
 
@@ -268,7 +266,7 @@ class RateRecipe(ValidUserMixin, FormView):
 class SavedRecipeList(UserPassesTestMixin, ListView):
     model = Recipe
     template_name = "users/saved_recipes.html"
-    paginate_by = 25
+    paginate_by = 50
 
     def test_func(self):
         return (self.request.user.is_staff or
@@ -288,7 +286,7 @@ class SavedRecipeList(UserPassesTestMixin, ListView):
 class SubmittedRecipeList(ValidUserMixin, ListView):
     model = Recipe
     template_name = "users/submitted_recipes.html"
-    paginate_by = 25
+    paginate_by = 50
 
     def get_queryset(self):
         self.user = get_object_or_404(User, username=self.kwargs["username"])
@@ -304,7 +302,7 @@ class SubmittedRecipeList(ValidUserMixin, ListView):
 class RatedRecipeList(UserPassesTestMixin, ListView):
     model = RecipeRating
     template_name = "users/rated_recipes.html"
-    paginate_by = 25
+    paginate_by = 50
 
     def test_func(self):
         return (self.request.user.is_staff or 
@@ -325,7 +323,7 @@ class RatedRecipeList(UserPassesTestMixin, ListView):
 
 class RecipeByLetterList(ValidUserMixin, ListView):
     model = Recipe
-    paginate_by = 25
+    paginate_by = 50
 
     def get_queryset(self):
         qs = Recipe.objects.filter(first_letter=self.kwargs["first_letter"])
@@ -358,6 +356,8 @@ class SearchRecipes(ValidUserMixin, FormView):
                       .filter(search_vector=query)
                       .annotate(rank=SearchRank(vector, query))
                       .order_by("-rank"))
-            context["results"] = results
+            paginator = Paginator(results, 50)
+            page_obj = paginator.page(self.request.GET.get("page", 1))
+            context["page_obj"] = page_obj
             context["terms"] = terms
         return context                

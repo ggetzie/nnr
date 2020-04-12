@@ -13,12 +13,13 @@
     </div>
     {% if terms %}    
     <h1>{{ title|default:"Search results" }} for "{{ terms }}"</h1>
-    <p>Found {{ results.count|intcomma }} recipes</p>
-    {% with object_list=results%}
+    <p>Found {{ page_obj.paginator.count|intcomma }} recipes</p>
+    {% with object_list=page_obj.object_list%}
     <div class="main-list">
         {% include "recipes/recipe_ul.html" %}
     </div>
     {% endwith %}
+    {% include "recipes/pagination.html" %}
     {% endif %}
 </div>
 {% endblock %}
