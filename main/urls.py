@@ -1,6 +1,5 @@
 # included in config.urls with prefix "main"
 from django.urls import include, path, register_converter
-from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView
 import main.views as views
 
@@ -28,9 +27,9 @@ urlpatterns = [
           views.reactivate_subscription,
           name="reactivate_subscription"),
      path("expired/",
-          cache_page(60*60*24)(TemplateView.as_view(template_name="main/expired.html")),
+          TemplateView.as_view(template_name="main/expired.html"),
           name="expired"),
      path("processing/",
-          cache_page(60*60*24)(TemplateView.as_view(template_name="main/processing.html")),
+          TemplateView.as_view(template_name="main/processing.html"),
           name="processing"),
     ]
