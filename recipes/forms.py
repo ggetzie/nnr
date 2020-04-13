@@ -141,6 +141,7 @@ class UpdateRecipeForm(forms.ModelForm):
         r.title = self.cleaned_data["title"]
         r.ingredients_text = self.cleaned_data["ingredients_text"]
         r.instructions_text = self.cleaned_data["instructions_text"]
+        r.quantity_text = self.cleaned_data["quantity_text"]
         r.save()
         return r
 

@@ -76,9 +76,10 @@ class Recipe(models.Model):
         self.instructions_html = markdown.markdown(self.instructions_text)
         self.quantity_html = markdown.markdown(self.quantity_text)
         self.title_slug = slugify(self.title)
-        self.title = self.title.title()
-        self.title = self.title.replace("’S", "’s")
-        self.title = self.title.replace("'S", "'s")
+        if self.title.isupper():
+            self.title = self.title.title()
+            self.title = self.title.replace("’S", "’s")
+            self.title = self.title.replace("'S", "'s")
         self.first_letter, self.sort_title = sortify(self.title_slug)
         lc, created = LetterCount.objects.get_or_create(letter=self.first_letter,
                                                         defaults={"quantity": 1})
