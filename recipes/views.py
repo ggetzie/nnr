@@ -162,6 +162,11 @@ class TagList(ValidUserMixin, ListView):
     model = Tag
     paginate_by = 144
 
+    def get_queryset(self):
+        qs = (Tag.objects.annotate(ut_count=Count("usertag"))
+                         .filter(ut_count__gt=0))
+        return qs
+
 
 class TagDetail(ValidUserMixin, ListView):
     model = Recipe
