@@ -42,7 +42,7 @@ def list_comments(request):
 # @payinguser
 # @ratelimited
 @require_POST
-@user_is_paying_api
+@user_is_valid_api
 @rate_limited_api
 def add_comment(request):
     data = json.loads(request.body)
@@ -57,7 +57,7 @@ def add_comment(request):
     }
     return JsonResponse(data=response_data)
 
-@user_is_paying_api
+@user_is_valid_api
 def edit_comment(request):
     data = json.loads(request.body)
     comment = Comment.objects.get(id=data["id"])
@@ -70,7 +70,7 @@ def edit_comment(request):
                          "message": "Comment updated",
                          "comment": comment.json()})
 
-@user_is_paying_api
+@user_is_valid_api
 def delete_comment(request):
     data = json.loads(request.body)
     comment = Comment.objects.get(id=data["id"])
