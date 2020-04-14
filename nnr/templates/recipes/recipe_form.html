@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block title %}
 {% if object %}Update{% else %}Add{% endif %} Recipe
@@ -14,3 +15,7 @@
     {% crispy form %}
 </div>
 {% endblock %}
+
+{% block morejs %}
+<script src="{% static 'js/add.js' %}"></script>
+{% endblock morejs %}
