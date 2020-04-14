@@ -1,15 +1,19 @@
+import csv
 import pathlib
+import pickle
 import re
 import subprocess
 import time
+
+from collections import defaultdict
 
 from django.contrib.auth import get_user_model
 from django.db import IntegrityError
 
 from ..models import Recipe, Tag, UserTag
 
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 
 User = get_user_model()
 admin = User.objects.get(username="admin")
@@ -51,6 +55,25 @@ def get_recipe_links():
             recipe_links = recipe_links.union(links)
             print(f"Found {len(links)} at {url}")
             time.sleep(5)
+
+def get_ar_tags():
+    with open(recipe_data / "ar_titles.csv", newline="") as ar_titles:
+        reader = csv.reader(ar_titles)
+        rows = [tuple(r) for r in reader]
+    tag_dict = defaultdict(set)
+    for tag, url in rows:
+        for page in range(1, 21):
+            print(f"collecting tags at {url}?page={page}")
+            p = requests.get(f"{url}?page={page}")
+            soup = BeautifulSoup(p.text, "html.parser")
+            links = {l.get("href") for l in soup.select('a[href^="https://www.allrecipes.com/recipe/"]')}
+            slugs = {get_slug(l) for l in links}
+            tag_dict[tag] = tag_dict[tag].union(slugs)
+            time.sleep(4)
+    with open(recipe_data / "ar_tags.pickle", "wb") as outfile:
+        outfile.write(pickle.dumps(tag_dict))
+    print(f"pickled {len(tag_dict)} tags")
+    
 
 def get_page(url):
     print(f"getting {url}")

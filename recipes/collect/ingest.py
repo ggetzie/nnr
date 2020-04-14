@@ -1,4 +1,5 @@
 import json
+import pickle
 import random
 import re
 import string
@@ -8,8 +9,10 @@ from django.db import IntegrityError
 from django.utils.text import slugify
 
 from ..models import Recipe, Tag, UserTag
+from .scrape import recipe_data
 
 User = get_user_model()
+
 
 def add_recipes(jsonfile):
     recipe_list = json.loads(open(jsonfile).read())
@@ -46,3 +49,24 @@ def find_related():
             recipe.see_also.add(*related)
             count += 1
     print(f"Found related recipes for {count} recipes")
+
+def tag_ar(tagpath):
+    admin = User.objects.get(username="admin")
+    with open(tagpath, "rb") as tagfile:
+        tag_dict = pickle.loads(tagfile.read())
+    
+    for tag_name, slugs in tag_dict.items():
+        tag = Tag.objects.get_or_create(name_slug=slugify(tag_name), 
+                                        defaults={"name": tag_name})[0]
+        recipes = Recipe.objects.filter(title_slug__in=slugs)
+        usertags = [UserTag(tag=tag, 
+                            recipe=recipe,
+                            user=admin) for recipe in recipes]
+        UserTag.objects.bulk_create(usertags)
+
+def fix_romans():
+    roman_re = r' (Ii|Iii|Iv|Vi|Vii|Viii|Ix|Xi|Xii)$' 
+    romans = Recipe.objects.filter(title__regex=roman_re)
+    for recipe in romans:
+        recipe.title = re.sub(roman_re, lambda m: m[0].upper(), recipe.title)
+        recipe.save()
