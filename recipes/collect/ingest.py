@@ -62,7 +62,7 @@ def tag_ar(tagpath):
         usertags = [UserTag(tag=tag, 
                             recipe=recipe,
                             user=admin) for recipe in recipes]
-        UserTag.objects.bulk_create(usertags)
+        UserTag.objects.bulk_create(usertags, ignore_conflicts=True)
 
 def fix_romans():
     roman_re = r' (Ii|Iii|Iv|Vi|Vii|Viii|Ix|Xi|Xii)$' 
