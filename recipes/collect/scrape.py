@@ -17,7 +17,6 @@ from bs4 import BeautifulSoup
 
 User = get_user_model()
 admin = User.objects.get(username="admin")
-ar_tag = Tag.objects.get(name="ar")
 
 last_recipe = "https://www.allrecipes.com/recipe/23788/bacon-quiche-tarts/"
 
@@ -138,6 +137,7 @@ def parse_recipe_page_alt(soup):
         return None
 
 def get_recipes(link_filepath=ar_remaining, remaining_filepath=ar_remaining):
+    ar_tag = Tag.objects.get(name="ar")
     with open(link_filepath) as recipe_file:
         urls = [l.strip() for l in recipe_file]
     for i, url in enumerate(urls):
