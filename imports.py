@@ -8,6 +8,7 @@ from django.conf import settings
 from django.contrib.postgres.search import (SearchQuery, 
                                             SearchRank, 
                                             SearchVector)
+from django.core.cache import cache                                            
 
 from main.models import *
 from main.forms import *

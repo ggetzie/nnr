@@ -18,3 +18,7 @@ def add_page_num(request, page):
     vars["page"] = page
     var_string = "&".join([f"{k}={v}" for k, v in vars.items()])
     return f"{request.path}?{var_string}"
+
+@register.filter
+def path_to_key(path):
+    return path.replace("/", "")

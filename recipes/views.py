@@ -11,6 +11,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.postgres.search import (SearchQuery, 
                                             SearchRank, 
                                             SearchVector)
+from django.core.cache import cache                                            
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator                                        
 from django.db.models import Avg, Count
@@ -63,9 +64,15 @@ class RecipeDetail(ValidUserMixin, DetailView):
         user_slugs = {ut.tag.name_slug for ut 
                       in UserTag.objects.filter(user=self.request.user,
                                                 recipe=self.object)}
-        tags = self.object.usertag_set.values("tag__name", "tag__name_slug").\
-               annotate(Count("tag")).\
-               order_by("-tag__count")
+        tag_key = f"{self.object.title_slug}-tags"
+        tags = cache.get_or_set(tag_key,
+                                (self.object.usertag_set
+                                .values("tag__name", "tag__name_slug")
+                                .annotate(Count("tag"))
+                                .order_by("-tag__count")),
+                                60*60*24)
+
+        logger.info(f"Cached - {cache.get(tag_key)}")
 
         def add_untag_form(tag_slug):
             if tag_slug in user_slugs:
@@ -225,6 +232,8 @@ class TagRecipe(ValidUserMixin, FormView):
 
     def form_valid(self, form):
         form.save_tags()
+        tag_key = f"{form.cleaned_data['recipe'].title_slug}-tags"
+        cache.delete(tag_key)
         kw = {"slug": form.cleaned_data["recipe"].title_slug}
         return redirect(reverse_lazy("recipes:recipe_detail", kwargs=kw))        
 

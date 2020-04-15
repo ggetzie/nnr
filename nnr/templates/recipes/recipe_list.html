@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load cache %}
+{% load main_extra %}
 
 {% block title %}
 {{ title }}
@@ -14,6 +16,7 @@
             <li class="page-item">
                 <a class="page-link" href="{% url 'recipes:tag_list' %}">Tags</a>
             </li>
+            {% cache 604800 lettercounts request.path|path_to_key %}
             {% for lc in lettercounts %}
             <li class="page-item {% if lc.quantity < 1 %}disabled{% endif %}{% if lc.letter == current %}active{% endif %}">
                 <a class="page-link" href="{% url 'recipes:letter_recipe' lc.letter %}">
@@ -21,10 +24,13 @@
                 </a>
             </li>
             {% endfor %}
+            {% endcache %}
         </ul>
     </nav>
     <div class="main-list">
+        {% cache 3600 recipe_list request.path %}
         {% include "recipes/recipe_ul.html" %}
+        {% endcache %}
     </div>
     {% include "recipes/pagination.html" %}
 </div>

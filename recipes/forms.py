@@ -17,8 +17,6 @@ from recipes.models import (Recipe, Tag, UserTag, RecipeRating,
 import datetime                    
 import logging
 
-
-
 User = get_user_model()
 DUPE_MSG = _("A recipe with that title already exists!")
 logger = logging.getLogger(__name__)
@@ -267,9 +265,9 @@ class RateRecipeForm(forms.Form):
         defaults = {"rating": self.cleaned_data["rating"]}
         recipe = self.cleaned_data["recipe"]
         user = self.cleaned_data["user"]
-        rr, created = RecipeRating.objects.update_or_create(recipe=recipe,
-                                                            user=user,
-                                                            defaults=defaults)
+        rr = RecipeRating.objects.update_or_create(recipe=recipe,
+                                                    user=user,
+                                                    defaults=defaults)[0]
         
 
 class RecipeSearchForm(forms.Form):
