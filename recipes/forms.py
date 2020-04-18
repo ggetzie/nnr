@@ -6,6 +6,7 @@ from crispy_forms.layout import Layout, Submit, Fieldset, Div, HTML, Field
 from django import forms
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.core.cache import cache                                            
 from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
@@ -154,6 +155,7 @@ class UpdateRecipeForm(forms.ModelForm):
             return self.cleaned_data["title"]
 
     def clean_ingredients_text(self):
+        # make sure lines end with two spaces to keep line breaks
         lines = self.cleaned_data["ingredients_text"].split("\n")
         return "\n".join([f"{ing.strip()}  " for ing in lines])
 

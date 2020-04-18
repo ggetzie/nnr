@@ -56,6 +56,15 @@ class RecipeDetail(ValidUserMixin, DetailView):
     slug_field = "title_slug"
     context_object_name = "recipe"
 
+    def get_object(self, queryset=None):
+        slug = self.kwargs["slug"]
+        recipe_key = f"{slug}-detail"
+        self.object = cache.get(recipe_key)
+        if not self.object:
+            self.object = Recipe.objects.get(title_slug=slug)
+            cache.set(recipe_key, self.object, 60*60*24)
+        return self.object
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         comment_form = CreateCommentForm(initial={"user": self.request.user,
@@ -65,28 +74,27 @@ class RecipeDetail(ValidUserMixin, DetailView):
                       in UserTag.objects.filter(user=self.request.user,
                                                 recipe=self.object)}
         tag_key = f"{self.object.title_slug}-tags"
-        tags = cache.get_or_set(tag_key,
-                                (self.object.usertag_set
-                                .values("tag__name", "tag__name_slug")
-                                .annotate(Count("tag"))
-                                .order_by("-tag__count")),
-                                60*60*24)
+        tag_list = cache.get(tag_key)
+        if not tag_list:
+            tags = (self.object.usertag_set
+                        .values("tag__name", "tag__name_slug")
+                        .annotate(Count("tag"))
+                        .order_by("-tag__count"))
 
-        logger.info(f"Cached - {cache.get(tag_key)}")
+            def add_untag_form(tag_slug):
+                if tag_slug in user_slugs:
+                    return UntagRecipeForm(initial={"tag_slug": tag_slug,
+                                                    "recipe": self.object})
+                else:
+                    return None
 
-        def add_untag_form(tag_slug):
-            if tag_slug in user_slugs:
-                return UntagRecipeForm(initial={"tag_slug": tag_slug,
-                                                "recipe": self.object})
-            else:
-                return None
-
-        tag_list = [{"name": tag["tag__name"],
-                     "slug": tag["tag__name_slug"],
-                     "count": tag["tag__count"],
-                     "untag_form": add_untag_form(tag["tag__name_slug"])}
-                    for tag in tags]
-        tag_list.sort(key=lambda x : x["untag_form"] is None)
+            tag_list = [{"name": tag["tag__name"],
+                        "slug": tag["tag__name_slug"],
+                        "count": tag["tag__count"],
+                        "untag_form": add_untag_form(tag["tag__name_slug"])}
+                        for tag in tags]
+            tag_list.sort(key=lambda x : x["untag_form"] is None)
+            cache.set(tag_key, tag_list, 60*60*24)
                       
         context["tag_list"] = tag_list
         context["tagform"] = TagRecipeForm(initial={"user": self.request.user,
@@ -152,6 +160,11 @@ class UpdateRecipe(UserPassesTestMixin, UpdateView):
         self.object = self.get_object()
         return (self.request.user.is_staff or 
                 self.request.user == self.object.user)        
+
+    def form_valid(self, form):
+        recipe_key = f"{self.object.title_slug}-detail"
+        cache.delete(recipe_key) # Invalidate cache before updating
+        return super().form_valid(form)
 
 
 class DeleteRecipe(UserPassesTestMixin, DeleteView):

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load cache %}
 
 {% block title %}
 Recipe of the Day - {{ recipe.title }}
@@ -8,6 +9,8 @@ Recipe of the Day - {{ recipe.title }}
 
 {% block content %}
 <div class="main-content">
+
+    {% cache 86400 rotd %}
     {% if recipe %}
     <h1>Recipe of the Day - {{ recipe.title }}</h1>
     <div class="byline">
@@ -22,6 +25,10 @@ Recipe of the Day - {{ recipe.title }}
     <div class="instructions">
         {{ recipe.instructions_html|safe }}
     </div>
+    {% else %}
+    <p>Oops! Looks like there's no recipe today.</p>
+    {% endif %}
+    {% endcache %}
     {% if  not request.user.is_authenticated %}
     <p class="call-to-action">
         Want more great recipes?
@@ -29,9 +36,6 @@ Recipe of the Day - {{ recipe.title }}
     <p class="call-to-action">
             <a class="btn btn-lg btn-success signup-button" href="{% url 'account_signup' %}">Sign up now</a> for a 30-day free trial, then only $19 per year for unlimited access.
     </p>
-    {% endif %}
-    {% else %}
-    <p>Oops! Looks like there's no recipe today.</p>
     {% endif %}
     
 </div>
