@@ -2,9 +2,11 @@
     "python.pythonPath": "/usr/local/src/env/nnr/bin/python",
     "python.linting.pylintEnabled": true,
     "cSpell.words": [
+        "and",
         "boto",
         "csrftoken",
         "dateutil",
+        "get",
         "haspopup",
         "labelledby",
         "nononsense",
@@ -16,6 +18,7 @@
         "static",
         "storage",
         "tabindex",
+        "unpickle",
         "untag"
     ],
     "cSpell.ignoreWords": [

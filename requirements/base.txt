@@ -20,3 +20,5 @@ coreapi==2.3.3  # https://github.com/core-api/python-client
 gunicorn==19.9.0  # https://github.com/benoitc/gunicorn
 Markdown==3.0.1
 stripe==2.40.0
+django-redis==4.11.0
+redis==3.4.1

@@ -1,4 +1,6 @@
 import json
+import pickle
+
 from operator import itemgetter
 
 from crispy_forms.layout import Submit
@@ -11,7 +13,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.postgres.search import (SearchQuery, 
                                             SearchRank, 
                                             SearchVector)
-from django.core.cache import cache                                            
+from django.core.cache import cache
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator                                        
 from django.db.models import Avg, Count
@@ -33,13 +35,14 @@ from recipes.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
                            
 
 from recipes.models import (Recipe, Tag, UserTag, RecipeRating, 
-                            LetterCount)
+                            LetterCount, make_detail_key)
 
 import logging                            
 
 User = get_user_model()                                                    
 
 logger = logging.getLogger(__name__)
+
 
 class CreateRecipe(ValidUserMixin, RateLimitMixin, CreateView):
     model = Recipe
@@ -58,11 +61,14 @@ class RecipeDetail(ValidUserMixin, DetailView):
 
     def get_object(self, queryset=None):
         slug = self.kwargs["slug"]
-        recipe_key = f"{slug}-detail"
+        recipe_key = make_detail_key(slug)
         self.object = cache.get(recipe_key)
         if not self.object:
+            logger.info(f"Cache miss: {recipe_key}")
             self.object = Recipe.objects.get(title_slug=slug)
             cache.set(recipe_key, self.object, 60*60*24)
+        else:
+            logger.info(f"Cache hit: {recipe_key}")
         return self.object
 
     def get_context_data(self, **kwargs):
@@ -73,14 +79,12 @@ class RecipeDetail(ValidUserMixin, DetailView):
         user_slugs = {ut.tag.name_slug for ut 
                       in UserTag.objects.filter(user=self.request.user,
                                                 recipe=self.object)}
-        tag_key = f"{self.object.title_slug}-tags"
-        tag_list = cache.get(tag_key)
-        if not tag_list:
-            tags = (self.object.usertag_set
-                        .values("tag__name", "tag__name_slug")
-                        .annotate(Count("tag"))
-                        .order_by("-tag__count"))
-
+        tags = (self.object.usertag_set
+                    .values("tag__name", "tag__name_slug")
+                    .annotate(Count("tag"))
+                    .order_by("-tag__count"))
+        
+        if tags:
             def add_untag_form(tag_slug):
                 if tag_slug in user_slugs:
                     return UntagRecipeForm(initial={"tag_slug": tag_slug,
@@ -94,7 +98,8 @@ class RecipeDetail(ValidUserMixin, DetailView):
                         "untag_form": add_untag_form(tag["tag__name_slug"])}
                         for tag in tags]
             tag_list.sort(key=lambda x : x["untag_form"] is None)
-            cache.set(tag_key, tag_list, 60*60*24)
+        else:
+            tag_list = []
                       
         context["tag_list"] = tag_list
         context["tagform"] = TagRecipeForm(initial={"user": self.request.user,
@@ -161,12 +166,7 @@ class UpdateRecipe(UserPassesTestMixin, UpdateView):
         return (self.request.user.is_staff or 
                 self.request.user == self.object.user)        
 
-    def form_valid(self, form):
-        recipe_key = f"{self.object.title_slug}-detail"
-        cache.delete(recipe_key) # Invalidate cache before updating
-        return super().form_valid(form)
-
-
+    
 class DeleteRecipe(UserPassesTestMixin, DeleteView):
     model = Recipe
     success_url = reverse_lazy("recipes:recipe_list")
@@ -245,8 +245,6 @@ class TagRecipe(ValidUserMixin, FormView):
 
     def form_valid(self, form):
         form.save_tags()
-        tag_key = f"{form.cleaned_data['recipe'].title_slug}-tags"
-        cache.delete(tag_key)
         kw = {"slug": form.cleaned_data["recipe"].title_slug}
         return redirect(reverse_lazy("recipes:recipe_detail", kwargs=kw))        
 

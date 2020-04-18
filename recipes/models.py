@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.postgres.search import SearchVectorField
+from django.core.cache import cache
 from django.urls import reverse
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
@@ -10,6 +11,9 @@ from .utils import sortify
 import datetime
 import markdown
 import string
+
+import logging
+logger = logging.getLogger(__name__)
 
 def setup_lettercounts():            
     nums = LetterCount.objects.get_or_create(letter="0-9", 
@@ -21,6 +25,10 @@ def setup_lettercounts():
         lc.save()
     for r in Recipe.objects.all():
         r.save()    
+
+
+def make_detail_key(slug):
+    return f"{slug}-detail"
 
 class LetterCount(models.Model):
     letter = models.CharField(_("Letter"), default="", max_length=3, 
@@ -85,17 +93,29 @@ class Recipe(models.Model):
                                                         defaults={"quantity": 1})
         if not created:
             lc.quantity += 1
+            logger.info(f"Deleting key {self.detail_key}")
+            cache.delete(self.detail_key)
         lc.save()
         return super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("recipes:recipe_detail", kwargs={"slug": self.title_slug})
+
+    @property
+    def detail_key(self):
+        # key for caching the detail of this recipe
+        return f"{self.title_slug}-detail"
+
+    def delete(self, *args, **kwargs):
+        cache.delete(self.detail_key)
+        return super().delete(*args, **kwargs)
     
     def __str__(self):
         if len(self.title) < 15:
             return self.title
         else:
             return f"{self.title[:15]}..."        
+
 
 class Tag(models.Model):
     name = models.CharField(_("name"), max_length=100)
@@ -124,6 +144,16 @@ class UserTag(models.Model):
 
     def __str__(self):
         return f"{self.recipe} - {self.user} - {self.tag}"            
+
+    # def save(self, *args, **kwargs):
+    #     logger.info(f"Deleting tags cache: {self.recipe.tags_key}")
+    #     cache.delete(self.recipe.tags_key)
+    #     return super().save(*args, **kwargs)
+
+    # def delete(self, *args, **kwargs):
+    #     logger.info(f"Deleting tags cache: {self.recipe.tags_key}")
+    #     cache.delete(self.recipe.tags_key)
+    #     return super().delete(*args, **kwargs)
 
 RATING_CHOICES = ((1, "⭐"),
                   (2, "⭐⭐"),
