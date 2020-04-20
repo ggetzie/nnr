@@ -76,9 +76,11 @@ class RecipeDetail(ValidUserMixin, DetailView):
         comment_form = CreateCommentForm(initial={"user": self.request.user,
                                                   "recipe": self.object})
         context["comment_form"] = comment_form
-        user_slugs = {ut.tag.name_slug for ut 
-                      in UserTag.objects.filter(user=self.request.user,
-                                                recipe=self.object)}
+
+        user_slugs = {tag.name_slug for tag
+                      in Tag.objects.filter(usertag__user=self.request.user,
+                                            recipe=self.object)}
+
         tags = (self.object.usertag_set
                     .values("tag__name", "tag__name_slug")
                     .annotate(Count("tag"))
