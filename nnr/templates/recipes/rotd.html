@@ -31,10 +31,14 @@ Recipe of the Day - {{ recipe.title }}
     {% endcache %}
     {% if  not request.user.is_authenticated %}
     <p class="call-to-action">
-        Want more great recipes?
+        This is what every recipe page looks like on No Nonsense Recipes. Notice
+        anything missing? We don't show ads or spam you with photos or
+        long-winded stories to try and boost our search engine rankings. We just
+        show you the recipe, because that's what you came for, isn't it?
     </p>    
     <p class="call-to-action">
-            <a class="btn btn-lg btn-success signup-button" href="{% url 'account_signup' %}">Sign up now</a> for a 30-day free trial, then only $19 per year for unlimited access.
+            <a class="btn btn-lg btn-success signup-button" href="{% url 'account_signup' %}">Sign up now</a> to view all your recipes just like this. 
+            The first 30-days are free, cancel at any time. Then it's only $19 per year for unlimited access.
     </p>
     {% endif %}
     
