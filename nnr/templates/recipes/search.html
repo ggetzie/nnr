@@ -11,8 +11,14 @@
     <div class="search-form">
         {% crispy form %}
     </div>
+    {% if tag_results %}
+    <h2>Tags related to {{ terms }}:</h2>
+    <p>
+        {% for tag in tag_results  %}<a href="{% url 'recipes:tag_detail' tag.name_slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+    </p>
+    {% endif %}
     {% if terms %}    
-    <h1>{{ title|default:"Search results" }} for "{{ terms }}"</h1>
+    <h2>{{ title|default:"Search results" }} for "{{ terms }}"</h2>
     <p>Found {{ page_obj.paginator.count|intcomma }} recipes</p>
     {% with object_list=page_obj.object_list %}
     <div class="main-list">

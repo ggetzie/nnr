@@ -385,8 +385,12 @@ class SearchRecipes(ValidUserMixin, FormView):
                       .order_by("-rank"))
             paginator = Paginator(results, 50)
             page_obj = paginator.page(self.request.GET.get("page", 1))
+
+            tag_results = Tag.objects.filter(name__search=query)
+
             context["page_obj"] = page_obj
             context["terms"] = terms
+            context["tag_results"] = tag_results
         return context                
 
 class DashboardView(ValidUserMixin, TemplateView):
