@@ -66,7 +66,7 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "rest_framework",
-    "pipeline",
+    # "pipeline",
 ]
 
 LOCAL_APPS = [
@@ -143,7 +143,7 @@ STATICFILES_DIRS = [str(APPS_DIR.path("static"))]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    "pipeline.finders.PipelineFinder"
+#    "pipeline.finders.PipelineFinder"
 ]
 
 # MEDIA
