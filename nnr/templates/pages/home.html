@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
+{% load cache %}
 
 {% block content %}
 
@@ -10,6 +12,11 @@
         <p class="lead landing-lead landing-info">
             Save, Organize, and Discover your favorite recipes.
         </p>
+        {% cache recipe_count 3600 %}
+        <p class="lead landing-lead landing-info">
+            {{ recipe_count|intcomma }} recipes and counting!
+        </p>
+        {% endcache %}
         <div class="row benefit-row">
             <div class="col-md-1 benefit-index">
                 <img src="{% static 'images/circle-check.svg' %}" alt="yes"/>
