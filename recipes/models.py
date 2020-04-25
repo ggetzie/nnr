@@ -68,6 +68,8 @@ class Recipe(models.Model):
     sort_title = models.CharField(_("Sort Title"), max_length=150, 
                                   default="")
     created = models.DateField(_("Date Created"), auto_now_add=True)
+    created_dt = models.DateTimeField(_("Datetime Created"), auto_now_add=True, 
+                                      blank=True, null=True)
     featured = models.BooleanField(_("Recipe of the Day"), default=False)
     last_featured = models.DateField(_("Last Featured"), 
                                      default=datetime.date(year=1970, 

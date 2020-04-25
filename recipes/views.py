@@ -403,7 +403,7 @@ class DashboardView(ValidUserMixin, TemplateView):
     at the bottom of a recipe page to quickly find it later.
     """
         context.update({
-            "recent": Recipe.objects.order_by("-created")[:5],
+            "recent": Recipe.objects.order_by("-created_dt", "-id")[:5],
             "highest": (Recipe.objects.filter(reciperating__isnull=False)
                         .annotate(average_rating=Avg("reciperating__rating"))
                         .order_by("-average_rating")[:5]),
