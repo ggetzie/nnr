@@ -133,3 +133,27 @@ LOGGING = {
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+STATICFILES_STORAGE = "pipeline.storage.PipelineCachedStorage"
+PIPELINE = {
+    "PIPELINE_ENABLED": True,
+    "STYLESHEETS": {
+        "styles": {
+            "source_filenames": (
+                "css/*.css",
+            ),
+            "output_filename": "css/nnr.css",
+            "extra_context": {
+                "media": "screen,projection",
+            },
+                
+        },
+    },
+    "JAVASCRIPT": {
+        "scripts": {
+            "source_filenames": (
+                "js/*.js",
+            ),
+            "output_filename": "js/nnr.js"
+        }
+    }
+}
