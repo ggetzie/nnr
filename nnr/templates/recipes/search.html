@@ -11,14 +11,17 @@
     <div class="search-form">
         {% crispy form %}
     </div>
+    {% if terms %}
+    <h2>Search Results</h2>
+    {% endif %}
     {% if tag_results %}
-    <h2>Tags related to {{ terms }}:</h2>
+    <h3>Tags related to "{{ terms }}":</h3>
     <p>
         {% for tag in tag_results  %}<a href="{% url 'recipes:tag_detail' tag.name_slug %}">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
     </p>
     {% endif %}
     {% if terms %}    
-    <h2>{{ title|default:"Search results" }} for "{{ terms }}"</h2>
+    <h3>{{ title|default:"Recipes related to" }} "{{ terms }}"</h3>
     <p>Found {{ page_obj.paginator.count|intcomma }} recipes</p>
     {% with object_list=page_obj.object_list %}
     <div class="main-list">
