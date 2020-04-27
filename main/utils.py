@@ -1,7 +1,10 @@
 import datetime
+import hashlib
 
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
+from django.core.cache import cache
+from django.utils.http import urlquote
 
 import logging
 
@@ -23,4 +26,3 @@ def get_subscription_plan():
         # production plan
         plan = "plan_G9ZcHdJbqG4WBs"
     return plan
-    
