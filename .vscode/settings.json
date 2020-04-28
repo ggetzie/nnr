@@ -23,10 +23,13 @@
     ],
     "cSpell.ignoreWords": [
         "auafir",
+        "aws",
         "cibook",
         "ckogb",
         "devel",
         "elasticbeanstalk",
+        "gzipped",
+        "is",
         "isprintable",
         "path",
         "plpgsql",
