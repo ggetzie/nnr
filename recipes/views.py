@@ -28,7 +28,7 @@ from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
 from mixins import ValidUserMixin, RateLimitMixin
 
 from comments.forms import CreateCommentForm
-
+from decorators import user_is_valid_api
 from recipes.forms import (CreateRecipeForm, UpdateRecipeForm, TagRecipeForm,
                            SaveRecipeForm, RateRecipeForm, RecipeSearchForm,
                            UntagRecipeForm)
@@ -250,7 +250,7 @@ class TagRecipe(ValidUserMixin, FormView):
         kw = {"slug": form.cleaned_data["recipe"].title_slug}
         return redirect(reverse_lazy("recipes:recipe_detail", kwargs=kw))        
 
-@login_required
+@user_is_valid_api
 @require_POST
 def untag(request):
     form = UntagRecipeForm(json.loads(request.body))
@@ -414,3 +414,10 @@ class DashboardView(ValidUserMixin, TemplateView):
             "saved_none": saved_none
         })
         return context
+
+@user_is_valid_api
+def all_tags(request):
+    qs = (Tag.objects.annotate(ut_count=Count("usertag"))
+                     .filter(ut_count__gt=0))
+    return JsonResponse({"tag_list": [t.name for t in qs]})
+

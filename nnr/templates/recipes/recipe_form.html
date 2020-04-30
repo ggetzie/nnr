@@ -6,6 +6,11 @@
 {% if object %}Update{% else %}Add{% endif %} Recipe
 {% endblock %}
 
+{% block morecss %}
+{% if not object %}<link href="{% static 'css/nnr_autocomplete.css' %}" rel="stylesheet">{% endif %}
+{% endblock morecss %}
+
+
 
 {% block content %}
 <div class="form-container main-content">
@@ -18,4 +23,5 @@
 
 {% block morejs %}
 <script src="{% static 'js/add.js' %}"></script>
+{% if not object %}<script src="{% static 'js/tags.js' %}"></script>{% endif %}
 {% endblock morejs %}

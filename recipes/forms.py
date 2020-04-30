@@ -43,7 +43,8 @@ class CreateRecipeForm(forms.ModelForm):
         self.helper = FormHelper()        
         self.helper.form_method = "post"
         self.helper.form_action = "recipes:recipe_create"
-        self.helper.attrs = {"id": "recipe-form"}
+        self.helper.attrs = {"id": "recipe-form",
+                             "autocomplete": "off"}
         self.helper.layout = Layout(
             Div(
                 Field("title", wrapper_class="form-group col-md-12"),
@@ -60,7 +61,7 @@ class CreateRecipeForm(forms.ModelForm):
                 css_class="form-row"
             ),
             Div(
-                Field("tags", wrapper_class="form-group col-md-12"),
+                Field("tags", wrapper_class="form-group col-md-12 autocomplete"),
                 css_class="form-row"
             ),
             "user",
