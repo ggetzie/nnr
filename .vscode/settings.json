@@ -29,16 +29,23 @@
         "devel",
         "elasticbeanstalk",
         "elmnt",
+        "ge",
         "gzipped",
         "is",
         "isprintable",
+        "nw",
+        "p",
         "path",
         "plpgsql",
+        "pmjc",
         "postgresql",
+        "prod",
         "to",
         "tsvector",
         "tsvectorupdate",
         "wsgi",
+        "x",
+        "yp",
         "zâàéû"
     ]
 }

@@ -18,8 +18,13 @@ var setupElements = function() {
       });
   };
 
-var createCheckoutSession = function() {
-    fetch("/main/create-checkout-session/", {
+var createCheckoutSession = function(plan) {
+    if (!plan) {
+      ad = createAlert("Please select a plan to continue.", ["alert-danger"]);
+      document.getElementById("payment_plan_form").before(ad);
+      return
+    }
+    fetch(`/main/create-checkout-session/?plan=${plan}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +41,16 @@ var createCheckoutSession = function() {
 };
 
 setupElements();
-createCheckoutSession();
+
+document.querySelectorAll("[type='radio'][name='plan']")
+        .forEach(inp => {
+          inp.addEventListener("change", function (event){
+            if (this.checked) {
+              document.getElementById("enterPaymentInfo").disabled = false;
+              createCheckoutSession(this.value);
+            }
+          })
+        })
 
 document.getElementById("enterPaymentInfo").addEventListener("click", function (event) {
   event.preventDefault();

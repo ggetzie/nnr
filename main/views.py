@@ -13,10 +13,11 @@ from django.http import JsonResponse, HttpResponseBadRequest, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_POST, require_GET
 from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
                                   DetailView, FormView)
-from main.forms import NNRSignupForm
+
+from main.forms import NNRSignupForm, PaymentPlanForm
 
 from main.models import Profile
 
@@ -50,42 +51,38 @@ def public_key(request):
 def create_checkout_session(request):
     if not request.is_ajax():
         return HttpResponse("Bad Request")
+    if not "plan" in request.GET:
+        return JsonResponse({"error": "Please choose a plan."})
+    plan = request.GET["plan"]
+    logger.info(f"plan id: {plan}")
     stripe.api_key = settings.STRIPE_SK
     success_url=(DOMAIN_URL + 
                  reverse("main:checkout_success") + 
                  "?session_id={CHECKOUT_SESSION_ID}")
     cancel_url=DOMAIN_URL+reverse("main:payment")
     if request.user.profile.checkout_session:
-        # User already has an active checkout session
-        return JsonResponse({"checkoutSessionId": ""})
+        # User already has an active checkout session, delete it
+        request.user.profile.checkout_session = ""
+    # free trial only if new user (no existing stripe id)
+    params = {
+        "success_url": success_url,
+        "cancel_url": cancel_url,
+        "payment_method_types": ["card"],
+        "subscription_data": {
+            "items": [{
+                "plan": plan
+            }],
+            "trial_from_plan": not request.user.profile.stripe_id
+        }
+    }
+
     if request.user.profile.stripe_id:
-        # User already had a subscription that expired. No free trial.
-        checkout_session = stripe.checkout.Session.create(
-            customer=request.user.profile.stripe_id,
-            success_url=success_url,
-            cancel_url=cancel_url,
-            payment_method_types=["card"],
-            subscription_data={
-                    "items": [{
-                        "plan": get_subscription_plan()
-                        }],
-                    "trial_from_plan": False
-                }
-        )
+        params["customer"] = request.user.profile.stripe_id
     else:
-        # New user, include free trial
-        checkout_session = stripe.checkout.Session.create(
-                customer_email=request.user.email,
-                success_url=success_url,
-                cancel_url=cancel_url,
-                payment_method_types=["card"],
-                subscription_data={
-                    "items": [{
-                        "plan": get_subscription_plan()
-                        }],
-                    "trial_from_plan": True
-                }
-        )
+        params["customer_email"] = request.user.email
+        
+    checkout_session = stripe.checkout.Session.create(**params)
+
     request.user.profile.checkout_session = checkout_session["id"]
     request.user.profile.save()
     return JsonResponse({"checkoutSessionId": checkout_session["id"]})
@@ -259,3 +256,11 @@ def webhook(request):
         logger.info(f"Received unhandled event: {event.type}")
 
     return HttpResponse(status=200)
+
+@login_required
+@require_GET
+def payment(request):
+    return render(request,
+                  template_name="main/payment.html", 
+                  context={"form": PaymentPlanForm()})
+

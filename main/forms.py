@@ -16,6 +16,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
 
 from main.models import Profile
+from main.payments import get_payment_plans
 import datetime                    
 import logging
 
@@ -27,12 +28,12 @@ class NNRSignupForm(SignupForm):
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        today = datetime.date.today()
-        paydate = today + relativedelta(days=30)
-        payinfo = ("Your card will be charged an annual fee of $19 "
-                   "USD. The first charge will take place at the end of the "
-                   f"30 day free trial period on {paydate:%B %d, %Y} and thereafter "
-                   "annually on that date.")
+        # today = datetime.date.today()
+        # paydate = today + relativedelta(days=30)
+        # payinfo = ("Your card will be charged an annual fee of $19 "
+        #            "USD. The first charge will take place at the end of the "
+        #            f"30 day free trial period on {paydate:%B %d, %Y} and thereafter "
+        #            "annually on that date.")
         TOS_LINK = (f"""<a href="{reverse_lazy('tos')}" """ 
                      """target="_blank">Terms of Service</a>""")
         PP_LINK = (f"""<a href="{reverse_lazy('privacy')}" """ 
@@ -49,7 +50,6 @@ class NNRSignupForm(SignupForm):
             "password1",
             "password2",
             "tos",
-            HTML(f'<div id="pay-info">{payinfo}</div>'),
             Div(
                 Submit("signup", "&raquo; Signup"),
                 css_class="form-row float-right"
@@ -84,4 +84,21 @@ class ReactivateForm(forms.Form):
         self.helper.layout = Layout(
             Submit("reactivate", "Turn On Automatic Renewal", 
                    css_class="btn btn-success")
-        )        
+        )     
+
+class PaymentPlanForm(forms.Form):
+    plan = forms.ChoiceField(choices=get_payment_plans, 
+                             widget=forms.RadioSelect)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = "payment_plan_form"
+        self.helper.form_method = "post"
+        self.helper.form_action = reverse("main:create_checkout_session")
+        self.helper.layout = Layout(
+            Div(
+                "plan",
+                css_class="form-container"
+            )
+        )

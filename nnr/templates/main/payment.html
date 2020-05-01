@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="main-content">
@@ -7,10 +8,11 @@
         We will now redirect you to our payment processor, Stripe, to securely collect your payment information.
     </p>
     <p>
-        When ready, please click the button below to continue.
+        Please select either a monthly or annual plan and click the button below to continue.
     </p>
-    {% csrf_token %}
-    <button id="enterPaymentInfo" class="btn btn-primary btn-lg">&raquo; Enter payment information.</button>
+
+    {% crispy form %}
+    <button id="enterPaymentInfo" class="btn btn-primary btn-lg" disabled="true">&raquo; Enter payment information.</button>
 </div>
 {% endblock content %}
 

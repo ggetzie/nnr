@@ -1,6 +1,7 @@
 # included in config.urls with prefix "main"
 from django.urls import include, path, register_converter
 from django.views.generic import TemplateView
+
 import main.views as views
 
 app_name = "main"
@@ -18,7 +19,7 @@ urlpatterns = [
          TemplateView.as_view(template_name="main/cancel.html"),
          name="checkout_cancel"),
      path("payment/",
-          TemplateView.as_view(template_name="main/payment.html"),
+          views.payment,
           name="payment"),
      path("cancel_subscription/",
           views.cancel_subscription,

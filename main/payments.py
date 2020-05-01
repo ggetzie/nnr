@@ -12,6 +12,19 @@ import stripe
 logger = logging.getLogger(__name__)
 env = environ.Env()
 
+def get_product_id():
+    return "prod_GE5pYP4NwXPmjc" if settings.DEBUG else "prod_G9ZbbNuFBeBF1Y"
+
+def display_plan(plan):
+    """Print out the payment plan name and details from stripe API plan object"""
+    return (f"{plan.metadata.display_name} - ${plan.amount / 100:.2f} "
+            f"USD per {plan.interval}")
+
+def get_payment_plans():
+    stripe.api_key = settings.STRIPE_SK
+    plans = stripe.Plan.list(active=True, product=get_product_id())
+    return [(p.id, display_plan(p)) for p in plans["data"]]
+
 def handle_payment_success(event):
     customer_id = event.data.object.customer
     customer_email = event.data.object.customer_email

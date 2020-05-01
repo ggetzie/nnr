@@ -12,6 +12,7 @@ from django.core.cache import cache
 
 from main.models import *
 from main.forms import *
+from main.payments import *
 
 from recipes.models import *
 from recipes.forms import *
@@ -29,6 +30,7 @@ import requests
 import stripe
 
 stripe.api_key = settings.STRIPE_SK
+product = get_product_id()
 
 if settings.DEBUG:
     recipe_data = pathlib.Path("/usr/local/src/recipe_data")
