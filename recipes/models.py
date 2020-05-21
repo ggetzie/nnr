@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.postgres.search import SearchVectorField
 from django.core.cache import cache
 from django.urls import reverse
+from django.utils.html import strip_tags
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 
@@ -111,6 +112,15 @@ class Recipe(models.Model):
     def delete(self, *args, **kwargs):
         cache.delete(self.detail_key)
         return super().delete(*args, **kwargs)
+
+    def text_only(self):
+        return f"""{self.title}
+
+Ingredients
+{strip_tags(self.ingredients_html)}
+
+Instructions
+{strip_tags(self.instructions_html)}"""
     
     def __str__(self):
         if len(self.title) < 15:
