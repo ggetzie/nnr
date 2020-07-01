@@ -205,7 +205,7 @@ class DeleteRecipe(UserPassesTestMixin, DeleteView):
 
 class TagList(ListView):
     model = Tag
-    paginate_by = 144
+    paginate_by = 150
 
     def get_queryset(self):
         qs = (Tag.objects.annotate(ut_count=Count("usertag"))
