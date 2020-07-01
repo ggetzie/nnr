@@ -7,6 +7,23 @@
 <link href="{% static 'css/nnr_autocomplete.css' %}" rel="stylesheet">
 <meta name="user_id" content="{{ request.user.id }}">
 <meta name="recipe_id" content="{{ recipe.id }}">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Recipe",
+    "name": "{{ recipe.title }}",
+    "datePublished": "{{ recipe.created_dt|date:'Y-m-d' }}",
+    "recipeIngredient": [
+        {% for line in recipe.ingredients_list %}
+        "{{ line }}"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ],
+    "recipeInstructions": [
+        {{ recipe.get_instructions_text }}
+    ]
+}
+</script>
 {% endblock morecss %}
 
 

@@ -127,6 +127,15 @@ Ingredients
 
 Instructions
 {strip_tags(self.instructions_html)}"""
+
+    def ingredients_list(self):
+        return (line.strip() for line in strip_tags(self.ingredients_html).split("\n") if line)
+
+    def get_ingredients_text(self):
+        return strip_tags(self.ingredients_html).strip()
+
+    def get_instructions_text(self):
+        return strip_tags(self.instructions_html).strip()
     
 
 
