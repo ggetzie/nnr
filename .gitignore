@@ -289,3 +289,4 @@ workspace.code-workspace
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+*.rdb
