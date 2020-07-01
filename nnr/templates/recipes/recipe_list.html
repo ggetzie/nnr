@@ -28,7 +28,7 @@
         </ul>
     </nav>
     <div class="main-list">
-        {% cache 3600 recipe_list request.path %}
+        {% cache 3600 recipe_list request.path page_obj.number %}
         {% include "recipes/recipe_ul.html" %}
         {% endcache %}
     </div>
