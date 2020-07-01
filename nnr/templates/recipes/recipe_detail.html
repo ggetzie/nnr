@@ -50,24 +50,29 @@
     {% endif %}
 
     <div class="user-options row recipe-section">
-        <div class="col-sm-4">
-            {% crispy rateform %}
-        </div>
         <div class="col-sm-2">
             {% if average_rating %}
             {{ average_rating }} ⭐ avg.
             {% endif %}
         </div>
+        {% if request.user.is_authenticated %}
+        <div class="col-sm-4">
+            {% crispy rateform %}
+        </div>
+        
         <div class="col-sm-2">
             {% crispy saveform %}
         </div>
-    {% if recipe.user == request.user or request.user.is_staff %}
+        {% endif %}
+        {% if recipe.user == request.user or request.user.is_staff %}
         <div class="col-sm-4">
             <a href="{% url 'recipes:recipe_update' recipe.title_slug %}" class="btn btn-primary btn-sm">Edit</a>
             <a href="{% url 'recipes:recipe_delete' recipe.title_slug %}" class="btn btn-danger btn-sm">Delete</a>
         </div>
-    {% endif %}
+        {% endif %}
     </div>
+
+
 
     <div class="tags recipe-section">
         <h2>Tags</h2>
@@ -78,15 +83,21 @@
                 {{ tag.name }}</a>{% if tag.untag_form %}{% include 'recipes/usertag_delete.html' %}{% endif %}{% if not forloop.last %}, {% endif %}
             {% endfor %}
         </div>
-        {% crispy tagform %}
-        <small class="form-text text-muted">{{ tagform.fields.tags.help_text }}</small>
+        {% if request.user.is_authenticated %}
+            {% crispy tagform %}
+            <small class="form-text text-muted">{{ tagform.fields.tags.help_text }}</small>
+        {% endif %}
     </div>
-
-    {% include 'comment_container.html' %}
+    {% if request.user.is_authenticated %}
+        {% include 'comment_container.html' %}
+    {% endif %}
 </div>
 {% endblock %}
 
+
+{% if request.user.is_authenticated %}
 {% block morejs %}
-<script src="{% static 'js/comments.js' %}"></script>
-<script src="{% static 'js/tags.js' %}"></script>
+    <script src="{% static 'js/comments.js' %}"></script>
+    <script src="{% static 'js/tags.js' %}"></script>
 {% endblock morejs %}
+{% endif %}

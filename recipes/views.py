@@ -54,7 +54,7 @@ class CreateRecipe(ValidUserMixin, RateLimitMixin, CreateView):
         return initial
         
 
-class RecipeDetail(ValidUserMixin, DetailView):
+class RecipeDetail(DetailView):
     model = Recipe
     slug_field = "title_slug"
     context_object_name = "recipe"
@@ -73,62 +73,84 @@ class RecipeDetail(ValidUserMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        comment_form = CreateCommentForm(initial={"user": self.request.user,
-                                                  "recipe": self.object})
-        context["comment_form"] = comment_form
-
-        user_slugs = {tag.name_slug for tag
-                      in Tag.objects.filter(usertag__user=self.request.user,
-                                            recipe=self.object)}
 
         tags = (self.object.usertag_set
                     .values("tag__name", "tag__name_slug")
                     .annotate(Count("tag"))
                     .order_by("-tag__count"))
-        
-        if tags:
-            def add_untag_form(tag_slug):
-                if tag_slug in user_slugs:
-                    return UntagRecipeForm(initial={"tag_slug": tag_slug,
-                                                    "recipe": self.object})
-                else:
-                    return None
 
+        if self.request.user.is_authenticated:
+            # For authenticated users show comments, comment form, tags they've added
+            # untag, add tags, save/unsave, submit ratings
+
+            # Comments
+            comment_form = CreateCommentForm(initial={"user": self.request.user,
+                                                    "recipe": self.object})
+            context["comment_form"] = comment_form
+
+            # Tags for logged in users
+            user_slugs = {tag.name_slug for tag
+                        in Tag.objects.filter(usertag__user=self.request.user,
+                                                recipe=self.object)}
+            if tags:
+                def add_untag_form(tag_slug):
+                    if (tag_slug in user_slugs and 
+                        self.request.user.is_authenticated):
+                        return UntagRecipeForm(initial={"tag_slug": tag_slug,
+                                                        "recipe": self.object})
+                    else:
+                        return None
+
+                tag_list = [{"name": tag["tag__name"],
+                            "slug": tag["tag__name_slug"],
+                            "count": tag["tag__count"],
+                            "untag_form": add_untag_form(tag["tag__name_slug"])}
+                            for tag in tags]
+
+                # Put user's own tags first (ones that have option to untag)
+                tag_list.sort(key=lambda x : x["untag_form"] is None)
+            else:
+                tag_list = []
+
+            context["tagform"] = TagRecipeForm(initial={"user": self.request.user,
+                                                        "recipe": self.object})
+
+            # Save / Unsave                                                        
+            saveform = SaveRecipeForm(initial={"user": self.request.user,
+                                            "recipe": self.object})                                                        
+            if self.object in self.request.user.profile.saved_recipes.all():
+                btn = "Unsave"
+                css = "btn btn-outline-primary btn-sm"
+            else:
+                btn = "Save"
+                css = "btn btn-primary btn-sm"
+            submit = Submit(btn, btn)
+            submit.field_classes=css
+            saveform.helper.add_input(submit)
+            context["saveform"] = saveform
+
+            # Rating form
+            rate_initial = {"user": self.request.user,
+                            "recipe": self.object}
+            try:
+                rr = RecipeRating.objects.get(recipe=self.object,
+                                                user=self.request.user)
+                rate_initial["rating"] = rr.rating
+            except RecipeRating.DoesNotExist:
+                pass
+
+            context["rateform"] = RateRecipeForm(initial=rate_initial)
+
+        else:
+            # Users not logged in get tags only
             tag_list = [{"name": tag["tag__name"],
-                        "slug": tag["tag__name_slug"],
-                        "count": tag["tag__count"],
-                        "untag_form": add_untag_form(tag["tag__name_slug"])}
-                        for tag in tags]
-            tag_list.sort(key=lambda x : x["untag_form"] is None)
-        else:
-            tag_list = []
-                      
+                         "slug": tag["tag__name_slug"],
+                         "count": tag["tag__count"]} for tag in tags]
+                            
+
+        # Everyone gets a list of tags and the recipe rating        
         context["tag_list"] = tag_list
-        context["tagform"] = TagRecipeForm(initial={"user": self.request.user,
-                                                    "recipe": self.object})
-        saveform = SaveRecipeForm(initial={"user": self.request.user,
-                                           "recipe": self.object})                                                        
-        if self.object in self.request.user.profile.saved_recipes.all():
-            btn = "Unsave"
-            css = "btn btn-outline-primary btn-sm"
-        else:
-            btn = "Save"
-            css = "btn btn-primary btn-sm"
-        submit = Submit(btn, btn)
-        submit.field_classes=css
-        saveform.helper.add_input(submit)
-        context["saveform"] = saveform
 
-        rate_initial = {"user": self.request.user,
-                        "recipe": self.object}
-        try:
-            rr = RecipeRating.objects.get(recipe=self.object,
-                                              user=self.request.user)
-            rate_initial["rating"] = rr.rating
-        except RecipeRating.DoesNotExist:
-            pass
-
-        context["rateform"] = RateRecipeForm(initial=rate_initial)
         context["average_rating"] = RecipeRating.objects.\
                                     filter(recipe=self.object).\
                                     aggregate(Avg("rating"))["rating__avg"]
@@ -147,7 +169,8 @@ class RecipeOfTheDay(DetailView):
             obj = None
         return obj
 
-class RecipeList(ValidUserMixin, ListView):
+
+class RecipeList(ListView):
     model = Recipe
     paginate_by = 50
 
@@ -180,7 +203,7 @@ class DeleteRecipe(UserPassesTestMixin, DeleteView):
                 self.request.user == self.object.user)
 
 
-class TagList(ValidUserMixin, ListView):
+class TagList(ListView):
     model = Tag
     paginate_by = 144
 
@@ -190,7 +213,7 @@ class TagList(ValidUserMixin, ListView):
         return qs
 
 
-class TagDetail(ValidUserMixin, ListView):
+class TagDetail(ListView):
     model = Recipe
     slug_field = "name_slug"
     paginate_by = 50
@@ -348,7 +371,7 @@ class RatedRecipeList(UserPassesTestMixin, ListView):
         return context
 
 
-class RecipeByLetterList(ValidUserMixin, ListView):
+class RecipeByLetterList(ListView):
     model = Recipe
     paginate_by = 50
 

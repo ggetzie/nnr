@@ -59,18 +59,18 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'recipes:rotd' %}">Recipe of the Day</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'recipes:recipe_list' %}">Browse</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'recipes:tag_list' %}">Tags</a>
+          </li>            
           {% if request.user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'recipes:recipe_create' %}">Add</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'recipes:recipe_list' %}">Browse</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="{% url 'recipes:search_recipes' %}">Search</a>
-          </li>            
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'recipes:tag_list' %}">Tags</a>
           </li>            
           {% endif %}
           </ul>

@@ -82,6 +82,12 @@ class Recipe(models.Model):
     class Meta:
         ordering = ["sort_title"]
 
+    def __str__(self):
+        if len(self.title) < 15:
+            return self.title
+        else:
+            return f"{self.title[:15]}..."        
+
     def save(self, *args, **kwargs):
         self.ingredients_html = markdown.markdown(self.ingredients_text)
         self.instructions_html = markdown.markdown(self.instructions_text)
@@ -122,11 +128,7 @@ Ingredients
 Instructions
 {strip_tags(self.instructions_html)}"""
     
-    def __str__(self):
-        if len(self.title) < 15:
-            return self.title
-        else:
-            return f"{self.title[:15]}..."        
+
 
 
 class Tag(models.Model):
