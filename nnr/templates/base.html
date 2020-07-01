@@ -72,6 +72,12 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'recipes:search_recipes' %}">Search</a>
           </li>            
+          {% else %}
+          <li class="nav-item ml-5">
+              {# URL provided by django-allauth/account/urls.py #}
+              <a id="sign-up-link" class="nav-link btn btn-success text-light" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+          </li>            
+          <span class="navbar-text ml-2">for search, save and more features</span>
           {% endif %}
           </ul>
           <ul class="nav navbar-nav pull-xs-right">
@@ -88,13 +94,11 @@
               </div>
             </li>
           {% else %}
+          
+
             <li class="nav-item">
               {# URL provided by django-allauth/account/urls.py #}
               <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-            </li>            
-            <li class="nav-item">
-              {# URL provided by django-allauth/account/urls.py #}
-              <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
             </li>            
           {% endif %}
         </ul>

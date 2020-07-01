@@ -34,6 +34,7 @@
 
 {% block content %}
 <div class="container main-content">
+
     <h1>{{ recipe.title }}</h1>
     <div class="byline">
         Submitted by: 
@@ -108,6 +109,31 @@
     {% if request.user.is_authenticated %}
         {% include 'comment_container.html' %}
     {% endif %}
+
+    {% if not request.user.is_authenticated %}
+    <div class="alert-success p-3 border border-success rounded">
+        <h2>Hi There!</h2>
+        <p>
+            Thanks for using No Nonsense Recipes. We strive to make it a pleasant ad-free, long-boring-story-free experience. If you're enjoying the site, please consider <a href="{% url 'account_signup' %}">signing up</a> for an account. Not only will you be helping to support the site, you'll also gain access to additional awesome features, such as:
+        </p>
+        <ul class="list-unstyled">
+            <li class="font-weight-bold">Search recipes</li>
+            <li class="font-weight-bold">Submit your own recipes</li>
+            <li class="font-weight-bold">View and make comments on recipes</li>
+            <li class="font-weight-bold">Rate recipes</li>
+            <li class="font-weight-bold">Save and tag recipes to quickly find them later</li>
+        </ul>
+
+        <p> 
+            Accounts are free for 30 days and then only $19 USD per year or $2.57 per month. What have you got to lose? 😃 
+        </p>
+        <p>
+            <a class="btn btn-success" href="{% url 'account_signup' %}">Sign Up</a> today!
+        </p>
+    </div>
+    {% endif %}
+
+    
 </div>
 {% endblock %}
 
