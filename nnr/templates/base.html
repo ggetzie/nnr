@@ -60,11 +60,12 @@
             <a class="nav-link" href="{% url 'recipes:rotd' %}">Recipe of the Day</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'recipes:recipe_list' %}">Browse</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="{% url 'recipes:tag_list' %}">Tags</a>
           </li>            
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'recipes:recipe_list' %}">Browse</a>
+          </li>
+          
           {% if request.user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'recipes:recipe_create' %}">Add</a>
@@ -73,11 +74,12 @@
             <a class="nav-link" href="{% url 'recipes:search_recipes' %}">Search</a>
           </li>            
           {% else %}
+          <span class="navbar-text ml-2 font-weight-bold text-dark">« Browse for free!</span>
           <li class="nav-item ml-5">
               {# URL provided by django-allauth/account/urls.py #}
               <a id="sign-up-link" class="nav-link btn btn-success text-light" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
           </li>            
-          <span class="navbar-text ml-2">for search, save and more features</span>
+          <span class="navbar-text ml-2 font-weight-bold text-dark">to search and save recipes (and more!)</span>
           {% endif %}
           </ul>
           <ul class="nav navbar-nav pull-xs-right">
