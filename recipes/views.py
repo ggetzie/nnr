@@ -65,7 +65,7 @@ class RecipeDetail(DetailView):
         self.object = cache.get(recipe_key)
         if not self.object:
             logger.info(f"Cache miss: {recipe_key}")
-            self.object = Recipe.objects.get(title_slug=slug)
+            self.object = get_object_or_404(Recipe, title_slug=slug)
             cache.set(recipe_key, self.object, 60*60*24)
         else:
             logger.info(f"Cache hit: {recipe_key}")
