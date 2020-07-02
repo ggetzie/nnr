@@ -138,9 +138,11 @@
 {% endblock %}
 
 
-{% if request.user.is_authenticated %}
+
 {% block morejs %}
+    {% if request.user.is_authenticated %}
     <script src="{% static 'js/comments.js' %}"></script>
     <script src="{% static 'js/tags.js' %}"></script>
+    {% endif %}
 {% endblock morejs %}
-{% endif %}
+

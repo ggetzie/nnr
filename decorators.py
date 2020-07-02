@@ -12,6 +12,8 @@ def user_is_valid_api(view_func):
     """
     @wraps(view_func)
     def _wrapped_view(request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return JsonResponse({"error": "You must be logged in to access this feature."})
         if request.user.profile.is_valid():
             return view_func(request, *args, **kwargs)
         return JsonResponse({"error": ERROR_MSG})
