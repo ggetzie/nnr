@@ -78,6 +78,7 @@ class Recipe(models.Model):
                                                            day=1))
     see_also = models.ManyToManyField("self")
     search_vector = SearchVectorField(null=True)
+    approved = models.BooleanField(_("Approved"), default=False)
 
     class Meta:
         ordering = ["sort_title"]
@@ -153,6 +154,10 @@ class Tag(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+    def get_absolute_url(self):
+        return reverse("recipes:tag_detail", kwargs={"slug": self.name_slug})
+    
 
 class UserTag(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
