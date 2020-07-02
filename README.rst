@@ -13,4 +13,4 @@ Just recipes, no nonsense
 
 :License: MIT
 
-`No Nonsense Recipes <https:/nononsense.recipes>` is an ad-free, subscription recipe website.
+https:/nononsense.recipes is an ad-free, subscription recipe website.
