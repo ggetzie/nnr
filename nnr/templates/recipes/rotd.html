@@ -12,7 +12,7 @@ Recipe of the Day - {{ recipe.title }}
 
     {% cache 86400 rotd %}
     {% if recipe %}
-    <h1>Recipe of the Day - {{ recipe.title }}</h1>
+    <h1>Recipe of the Day - <a href="{% url 'recipes:recipe_detail' recipe.title_slug %}">{{ recipe.title }}</a></h1>
     <div class="byline">
         Submitted by: <a href="{% url 'users:detail' recipe.user.username %}">{{ recipe.user.username }}</a>
     </div>
@@ -30,16 +30,20 @@ Recipe of the Day - {{ recipe.title }}
     {% endif %}
     {% endcache %}
     {% if  not request.user.is_authenticated %}
-    <p class="call-to-action">
+    <div class="alert-success p-3 border border-success rounded">
+      <p>
         This is what every recipe page looks like on No Nonsense Recipes. Notice
         anything missing? We don't show ads or spam you with photos or
         long-winded stories to try and boost our search engine rankings. We just
         show you the recipe, because that's what you came for, isn't it?
-    </p>    
-    <p class="call-to-action">
-            <a class="btn btn-lg btn-success signup-button" href="{% url 'account_signup' %}">Sign up now</a> to view all your recipes just like this. 
-            The first 30-days are free, cancel at any time. Then it's only $19 per year for unlimited access.
-    </p>
+      </p>
+      <p>
+	<a class="btn btn-lg btn-success signup-button" href="{% url 'account_signup' %}">Start your Free Trial</a>
+      </p>
+      <p>
+         Enjoy the full features of No Nonsense Recipes free for 30 days, then it's only $19 per year for unlimited access.
+      </p>
+    </div>
     {% endif %}
     
 </div>
