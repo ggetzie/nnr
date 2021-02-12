@@ -9,8 +9,6 @@ from django.utils.translation import ugettext_lazy as _
 
 import datetime
 import logging
-import markdown
-import string
 
 UTC = datetime.timezone.utc
 BASE_RATE = 30 if settings.DEBUG else 5
