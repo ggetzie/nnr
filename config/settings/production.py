@@ -12,14 +12,13 @@ ALLOWED_HOSTS = ["*"]
 
 # DATABASES
 # ------------------------------------------------------------------------------
-# TODO Replace with config for RDS later
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'nnr_db',
         'USER': 'nnr_db_user',
         'PASSWORD': env('nnr_DB_PW'),
-        'HOST': env('DB_HOST'), # 'nnr-db-1.ckogb2auafir.us-east-1.rds.amazonaws.com'
+        'HOST': env('DB_HOST'), 
         'PORT': '5432',
         }
 }

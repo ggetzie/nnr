@@ -92,7 +92,7 @@ DATABASES = {
         'NAME': 'nnr_db',
         'USER': 'nnr_db_user',
         'PASSWORD': env('nnr_DB_PW'),
-        'HOST': 'localhost',
+        'HOST': env('DB_HOST'),
         'PORT': '',
         }
 }
