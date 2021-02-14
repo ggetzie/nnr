@@ -1,0 +1,12 @@
+{
+    "cSpell.ignoreWords": [
+        "dbname",
+        "dbpool",
+        "jackc",
+        "omago",
+        "pgsql",
+        "pgxpool",
+        "rotd",
+        "row"
+    ]
+}
