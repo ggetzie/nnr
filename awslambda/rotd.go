@@ -9,6 +9,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/dghubble/go-twitter/twitter"
+	"github.com/dghubble/oauth1"
 	"github.com/jackc/pgx/v4/pgxpool"
 )
 
@@ -25,12 +27,24 @@ func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
+var rotdURL = "https://nononsense.recipes/rotd"
+
 func stripTags(html string) string {
 	// remove html tags
 	res := strings.ReplaceAll(html, "</p>", "\n")
 	re := regexp.MustCompile(`<[^>]*>`)
 	res = re.ReplaceAllLiteralString(res, "")
 	return res
+}
+
+func getTweetTitle(title string) string {
+	maxTitleLen := 280 - len("Recipe of the Day - ") - len(rotdURL) - 2
+	titleLen := len(title)
+	if titleLen > maxTitleLen {
+		return title[:maxTitleLen]
+	}
+	return title
+
 }
 
 func main() {
@@ -112,4 +126,23 @@ func main() {
 	// TODO post new recipe of the day to Facebook page
 
 	// TODO tweet title and link to rotd page to Twitter
+	tweetStatus := fmt.Sprintf("Recipe of the Day - %s: %s", getTweetTitle(newRotd.title), rotdURL)
+	fmt.Println(tweetStatus)
+	twitterConsumerKey := os.Getenv("TWITTER_CONSUMER_KEY")
+	twitterConsumerSecret := os.Getenv("TWITTER_CONSUMER_SECRET")
+	twitterAccessToken := os.Getenv("TWITTER_ACCESS_TOKEN")
+	twitterAccessSecret := os.Getenv("TWITTER_ACCESS_SECRET")
+	config := oauth1.NewConfig(twitterConsumerKey, twitterConsumerSecret)
+	token := oauth1.NewToken(twitterAccessToken, twitterAccessSecret)
+
+	httpClient := config.Client(oauth1.NoContext, token)
+	client := twitter.NewClient(httpClient)
+
+	tweet, resp, err := client.Statuses.Update(tweetStatus, nil)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error sending tweet: %v\n", err)
+	}
+	fmt.Println(tweet)
+	fmt.Println(resp)
+
 }
