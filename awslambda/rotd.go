@@ -9,6 +9,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
 	"github.com/jackc/pgx/v4/pgxpool"
@@ -37,17 +39,17 @@ func stripTags(html string) string {
 	return res
 }
 
-func getTweetTitle(title string) string {
-	maxTitleLen := 280 - len("Recipe of the Day - ") - len(rotdURL) - 2
+func getTweetTitle(title string, url string) string {
+	maxTitleLen := 280 - len("Recipe of the Day - ") - len(url) - 2
 	titleLen := len(title)
 	if titleLen > maxTitleLen {
-		return title[:maxTitleLen]
+		return fmt.Sprintf("%s...", title[:maxTitleLen-3])
 	}
 	return title
-
 }
 
-func main() {
+func handler(ctx context.Context, event events.CloudWatchEvent) (string, error) {
+
 	dbPW := os.Getenv("nnr_DB_PW")
 	dbHost := os.Getenv("DB_HOST")
 	dbUser := "nnr_db_user"
@@ -56,10 +58,11 @@ func main() {
 	dbDSN := fmt.Sprintf("host=%s user=%s password=%s dbname= %s sslmode=disable",
 		dbHost, dbUser, dbPW, dbName)
 
+	fmt.Println("Attempting to access db")
+
 	dbpool, err := pgxpool.Connect(context.Background(), dbDSN)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
-		os.Exit(1)
+		return fmt.Sprintf("Unable to connect to database: %v\n", err), err
 	}
 	defer dbpool.Close()
 
@@ -68,8 +71,7 @@ func main() {
 	query := "SELECT id FROM recipes_recipe WHERE featured = TRUE"
 	err = dbpool.QueryRow(context.Background(), query).Scan(&oldRotdID)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Find old rotd failed: %v\n", err)
-		os.Exit(1)
+		return fmt.Sprintf("Find old rotd failed: %v\n", err), err
 	}
 
 	// Select a recipe that hasn't been featured in the last 30 days
@@ -80,8 +82,7 @@ func main() {
 	var candidateCount int
 	err = dbpool.QueryRow(context.Background(), countQuery).Scan(&candidateCount)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Count candidates failed: %v\n", err)
-		os.Exit(1)
+		return fmt.Sprintf("Count candidates failed: %v\n", err), err
 	}
 
 	// Pick a random candidate from the eligible recipes
@@ -104,30 +105,28 @@ func main() {
 	newRotd.instructions = stripTags(newRotd.instructions)
 	newRotd.url = fmt.Sprintf("https://nononsense.recipes/%s/", newRotd.slug)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Select new Rotd failed: %v\n", err)
-		os.Exit(1)
+		return fmt.Sprintf("Select new Rotd failed: %v\n", err), err
+
 	}
 
 	// Update the old recipe of the day so it's no longer featured
 	_, err = dbpool.Exec(context.Background(), "UPDATE recipes_recipe SET featured = FALSE WHERE id = $1", oldRotdID)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error updating old rotd: %v\n", err)
+		return fmt.Sprintf("Error updating old rotd: %v\n", err), err
 	}
 
 	// Update the new recipe of the day so it is featured
 	_, err = dbpool.Exec(context.Background(), "UPDATE recipes_recipe SET featured = TRUE, last_featured = $1 WHERE id = $2",
 		time.Now().Format("2006-01-02"), newRotd.id)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error updating new rotd: %v\n", err)
+		return fmt.Sprintf("Error updating new rotd: %v\n", err), err
 	}
 	fmt.Println("Selected new Recipe of the Day")
-	fmt.Println(fmt.Sprintf("%+v", newRotd))
-
 	// TODO post new recipe of the day to Facebook page
 
-	// TODO tweet title and link to rotd page to Twitter
-	tweetStatus := fmt.Sprintf("Recipe of the Day - %s: %s", getTweetTitle(newRotd.title), rotdURL)
-	fmt.Println(tweetStatus)
+	// Tweet title and link to rotd page to Twitter
+	tweetStatus := fmt.Sprintf("Recipe of the Day - %s: %s",
+		getTweetTitle(newRotd.title, newRotd.url), newRotd.url)
 	twitterConsumerKey := os.Getenv("TWITTER_CONSUMER_KEY")
 	twitterConsumerSecret := os.Getenv("TWITTER_CONSUMER_SECRET")
 	twitterAccessToken := os.Getenv("TWITTER_ACCESS_TOKEN")
@@ -138,11 +137,17 @@ func main() {
 	httpClient := config.Client(oauth1.NoContext, token)
 	client := twitter.NewClient(httpClient)
 
+	fmt.Println("sending tweet")
 	tweet, resp, err := client.Statuses.Update(tweetStatus, nil)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error sending tweet: %v\n", err)
+		return fmt.Sprintf("Error sending tweet: %v\n", err), err
 	}
 	fmt.Println(tweet)
 	fmt.Println(resp)
+	return "Recipe of the Day updated", nil
 
+}
+
+func main() {
+	lambda.Start(handler)
 }
