@@ -12,7 +12,7 @@ django-allauth==0.41.0	# https://github.com/pennersr/django-allauth
 django-crispy-forms==1.8.1  # https://github.com/django-crispy-forms/django-crispy-forms
 
 # Django REST Framework
-djangorestframework==3.10.2  # https://github.com/encode/django-rest-framework
+djangorestframework==3.11.2  # https://github.com/encode/django-rest-framework
 coreapi==2.3.3  # https://github.com/core-api/python-client
 
 gunicorn==19.9.0  # https://github.com/benoitc/gunicorn
