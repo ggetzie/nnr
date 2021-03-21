@@ -56,7 +56,7 @@ ipython-genutils==0.2.0
 isort==4.3.21
 itypes==1.1.0
 jedi==0.15.1
-Jinja2==2.10.1
+Jinja2==2.11.3
 jmespath==0.9.5
 lazy-object-proxy==1.5.2
 lockfile==0.12.2
