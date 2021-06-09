@@ -47,5 +47,6 @@
         "x",
         "yp",
         "zâàéû"
-    ]
+    ],
+    "restructuredtext.languageServer.disabled": true
 }
