@@ -42,7 +42,7 @@ gunicorn==19.9.0
 idna==2.10
 imagesize==1.2.0
 ipdb==0.12.2
-ipython==7.24.1
+ipython==7.16.1
 ipython-genutils==0.2.0
 isort==5.8.0
 itypes==1.2.0
@@ -104,7 +104,7 @@ stripe==2.40.0
 termcolor==1.1.0
 text-unidecode==1.2
 toml==0.10.2
-traitlets==5.0.5
+traitlets==4.3.3
 typed-ast==1.4.3
 typing==3.7.4.3
 typing-extensions==3.10.0.0
