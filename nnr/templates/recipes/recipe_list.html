@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 {% load cache %}
 {% load main_extra %}
+{% load static %}
 
 {% block title %}
 {{ title }}
@@ -34,4 +35,13 @@
     </div>
     {% include "recipes/pagination.html" %}
 </div>
+{% endblock %}
+
+{% block morejs %}
+<script src="{% static 'js/responsive-paginate.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        $(".pagination").rPage();
+    });
+</script>
 {% endblock %}
