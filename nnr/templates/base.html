@@ -73,6 +73,11 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'recipes:search_recipes' %}">Search</a>
           </li>            
+            {% if request.user.is_staff %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+            </li>
+            {% endif %}
           {% else %}
           <span class="navbar-text ml-2 font-weight-bold text-dark">« Browse for free!</span>
           <li class="nav-item ml-5">

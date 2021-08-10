@@ -101,6 +101,7 @@ class Recipe(models.Model):
         self.first_letter, self.sort_title = sortify(self.title_slug)
         lc, created = LetterCount.objects.get_or_create(letter=self.first_letter,
                                                         defaults={"quantity": 1})
+        self.approved = self.user.is_staff
         if not created:
             lc.quantity += 1
             logger.info(f"Deleting key {self.detail_key}")
