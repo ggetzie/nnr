@@ -9,7 +9,7 @@ Recipe of the Day - {{ recipe.title }}
 
 {% block content %}
 
-{% comment %} {% cache 86400 rotd %} {% endcomment %}
+{% cache 86400 rotd %}
 {% if recipe %}
 <h1 class="mb-3">
   <p class="p-0 m-0">Recipe of the Day</p>
@@ -36,7 +36,7 @@ Recipe of the Day - {{ recipe.title }}
 {% else %}
 <p>Oops! Looks like there's no recipe today.</p>
 {% endif %}
-{% comment %} {% endcache %} {% endcomment %}
+{% endcache %}
 
 {% if  not request.user.is_authenticated %}
 <div class="alert-success p-3 border border-success rounded w-50 m-auto">
