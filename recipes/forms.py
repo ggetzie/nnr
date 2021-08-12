@@ -47,21 +47,21 @@ class CreateRecipeForm(forms.ModelForm):
                              "autocomplete": "off"}
         self.helper.layout = Layout(
             Div(
-                Field("title", wrapper_class="form-group col-md-12"),
+                Field("title", wrapper_class="form-group col-md-8"),
                 css_class="form-row"
             ),
             Div(
-                Field("quantity_text", wrapper_class="form-group col-md-12"),
+                Field("quantity_text", wrapper_class="form-group col-md-4"),
                 css_class="form-row"
             ),
             Div(
-                Field("ingredients_text", wrapper_class="form-group col-md-6"),
-                Field("instructions_text", wrapper_class="form-group col-md-6"),
+                Field("ingredients_text", wrapper_class="form-group col-md-4"),
+                Field("instructions_text", wrapper_class="form-group col-md-8"),
 
                 css_class="form-row"
             ),
             Div(
-                Field("tags", wrapper_class="form-group col-md-12 autocomplete"),
+                Field("tags", wrapper_class="form-group col-md-8 autocomplete"),
                 css_class="form-row"
             ),
             "user",
@@ -119,16 +119,16 @@ class UpdateRecipeForm(forms.ModelForm):
         self.helper.attrs = {"id": "recipe-form"}
         self.helper.layout = Layout(
             Div(
-                Field("title", wrapper_class="form-group col-md-12"),
+                Field("title", wrapper_class="form-group col-md-8"),
                 css_class="form-row"
             ),
             Div(
-                Field("quantity_text", wrapper_class="form-group col-md-12"),
+                Field("quantity_text", wrapper_class="form-group col-md-4"),
                 css_class="form-row"
             ),
             Div(
-                Field("ingredients_text", wrapper_class="form-group col-md-6"),
-                Field("instructions_text", wrapper_class="form-group col-md-6"),
+                Field("ingredients_text", wrapper_class="form-group col-md-4"),
+                Field("instructions_text", wrapper_class="form-group col-md-8"),
 
                 css_class="form-row"
             ),

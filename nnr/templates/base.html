@@ -82,7 +82,7 @@
           <span class="navbar-text ml-2 font-weight-bold text-dark">« Browse for free!</span>
           <li class="nav-item ml-5">
               {# URL provided by django-allauth/account/urls.py #}
-              <a id="sign-up-link" class="nav-link btn btn-success text-light" href="{% url 'account_signup' %}">Start Your Free Trial</a>
+              <a id="sign-up-link" class="nav-link btn btn-primary text-light" href="{% url 'account_signup' %}">Start Your Free Trial</a>
           </li>            
           <span class="navbar-text ml-2 font-weight-bold text-dark">to search and save recipes (and more!)</span>
           {% endif %}
@@ -112,17 +112,20 @@
       </div>
     </nav>
 
-    {% if messages %}
-    <div class="container" id="messages">
-        {% for message in messages %}
-            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
-        {% endfor %}
-    </div>
-    {% endif %}
+    <div class="container main-content">
 
-    {% block content %}
-      <p>Use this document as a way to quick start any new project.</p>
-    {% endblock content %}
+      {% if messages %}
+      <div class="container" id="messages">
+          {% for message in messages %}
+              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+          {% endfor %}
+      </div>
+      {% endif %}
+
+      {% block content %}
+        <p>Use this document as a way to quick start any new project.</p>
+      {% endblock content %}
+    </div>
 
     
 

@@ -33,108 +33,113 @@
 
 
 {% block content %}
-<div class="container main-content">
 
-    <h1>{{ recipe.title }}</h1>
-    <div class="byline">
-        Submitted by: 
-        {% if recipe.user %}
-        <a href="{% url 'users:detail' recipe.user.username %}">{{ recipe.user.username }}</a>
-        {% else %}
-        <em>deleted</em>
-        {% endif %}
-        on {{ recipe.created_dt|date:"F j, Y" }}
-    </div>
-    <div class="quantity recipe-section">
-        {{ recipe.quantity_html|safe }}
-    </div>
-    
-    <h2>Ingredients</h2>
-    <div class="ingredients">
-        {{ recipe.ingredients_html|safe }}
-    </div>
-    <h2>Instructions</h2>
-    <div class="instructions">
-        {{ recipe.instructions_html|safe }}
-    </div>
 
-    {% if recipe.see_also.count > 0 %}
-    <h3>Related Recipes</h3>
-    <div class="recipe-section">
-        {% for related in recipe.see_also.all %}
-        <a href="{% url 'recipes:recipe_detail' related.title_slug %}">{{ related.title }}</a>{% if not forloop.last %};{% endif %} 
-        {% endfor %}
-    </div>
+<h1>{{ recipe.title }}</h1>
+<div class="byline">
+    Submitted by: 
+    {% if recipe.user %}
+    <a href="{% url 'users:detail' recipe.user.username %}">{{ recipe.user.username }}</a>
+    {% else %}
+    <em>deleted</em>
     {% endif %}
+    on {{ recipe.created_dt|date:"F j, Y" }}
+</div>
+<div class="quantity recipe-section">
+    {{ recipe.quantity_html|safe }}
+</div>
 
-    <div class="user-options row recipe-section">
-        <div class="col-sm-2">
-            {% if average_rating %}
-            {{ average_rating }} ⭐ avg.
-            {% endif %}
+<div class="row">
+    <div class="col-lg-4">
+        <h2>Ingredients</h2>
+        <div class="ingredients">
+            {{ recipe.ingredients_html|safe }}
         </div>
-        {% if request.user.is_authenticated %}
-        <div class="col-sm-4">
-            {% crispy rateform %}
-        </div>
-        
-        <div class="col-sm-2">
-            {% crispy saveform %}
-        </div>
-        {% endif %}
-        {% if recipe.user == request.user or request.user.is_staff %}
-        <div class="col-sm-4">
-            <a href="{% url 'recipes:recipe_update' recipe.title_slug %}" class="btn btn-primary btn-sm">Edit</a>
-            <a href="{% url 'recipes:recipe_delete' recipe.title_slug %}" class="btn btn-danger btn-sm">Delete</a>
-        </div>
-        {% endif %}
     </div>
-
-
-
-    <div class="tags recipe-section">
-        <h2>Tags</h2>
-        <div id="tag-container">
-            {% for tag in tag_list %}
-            <a href="{% url 'recipes:tag_detail' tag.slug %}" 
-               title="{{ tag.count }} user{{ tag.count|pluralize }} tagged this recipe as {{ tag.name }}">
-                {{ tag.name }}</a>{% if tag.untag_form %}{% include 'recipes/usertag_delete.html' %}{% endif %}{% if not forloop.last %}, {% endif %}
-            {% endfor %}
+    <div class="col-lg-8">
+        <h2>Instructions</h2>
+        <div class="instructions">
+            {{ recipe.instructions_html|safe }}
         </div>
-        {% if request.user.is_authenticated %}
-            {% crispy tagform %}
-            <small class="form-text text-muted">{{ tagform.fields.tags.help_text }}</small>
+    </div>
+</div>
+
+{% if recipe.see_also.count > 0 %}
+<h3>Related Recipes</h3>
+<div class="recipe-section">
+    {% for related in recipe.see_also.all %}
+    <a href="{% url 'recipes:recipe_detail' related.title_slug %}">{{ related.title }}</a>{% if not forloop.last %};{% endif %} 
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="user-options row recipe-section">
+    <div class="col-sm-2">
+        {% if average_rating %}
+        {{ average_rating }} ⭐ avg.
         {% endif %}
     </div>
     {% if request.user.is_authenticated %}
-        {% include 'comment_container.html' %}
-    {% endif %}
-
-    {% if not request.user.is_authenticated %}
-    <div class="alert-success p-3 border border-success rounded">
-        <h2>Hi There!</h2>
-        <p>
-            Thanks for using No Nonsense Recipes. We strive to make it a pleasant experience. You won't find ads or long, boring stories here. If you're enjoying the site, consider <a href="{% url 'account_signup' %}">signing up</a> for an account. You will be supporting the project and gaining access to additional awesome features, such as:
-        </p>
-        <ul class="list-unstyled">
-            <li class="font-weight-bold">Search recipes</li>
-            <li class="font-weight-bold">Submit your own recipes</li>
-            <li class="font-weight-bold">View and make comments on recipes</li>
-            <li class="font-weight-bold">Rate recipes</li>
-            <li class="font-weight-bold">Save and tag recipes to quickly find them later</li>
-        </ul>
-
-        <p> 
-            Accounts are free for 30 days and then only $19 USD per year or $2.57 per month. What have you got to lose? 😃 
-        </p>
-        <p>
-            <a class="btn btn-success" href="{% url 'account_signup' %}">Start your Free Trial</a> today!
-        </p>
+    <div class="col-sm-4">
+        {% crispy rateform %}
+    </div>
+    
+    <div class="col-sm-2">
+        {% crispy saveform %}
     </div>
     {% endif %}
-
-    
+    {% if recipe.user == request.user or request.user.is_staff %}
+    <div class="col-sm-4">
+        <a href="{% url 'recipes:recipe_update' recipe.title_slug %}" class="btn btn-primary btn-sm">Edit</a>
+        <a href="{% url 'recipes:recipe_delete' recipe.title_slug %}" class="btn btn-danger btn-sm">Delete</a>
+    </div>
+    {% endif %}
 </div>
+
+<div class="tags recipe-section">
+    <h2>Tags</h2>
+    <div id="tag-container">
+        {% for tag in tag_list %}
+        <a href="{% url 'recipes:tag_detail' tag.slug %}" 
+            title="{{ tag.count }} user{{ tag.count|pluralize }} tagged this recipe as {{ tag.name }}">
+            {{ tag.name }}</a>{% if tag.untag_form %}{% include 'recipes/usertag_delete.html' %}{% endif %}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </div>
+    {% if request.user.is_authenticated %}
+        {% crispy tagform %}
+        <small class="form-text text-muted">{{ tagform.fields.tags.help_text }}</small>
+    {% endif %}
+</div>
+{% if request.user.is_authenticated %}
+    {% include 'comment_container.html' %}
+{% endif %}
+
+{% if not request.user.is_authenticated %}
+<div class="alert-success p-3 border border-success rounded w-50 m-auto">
+    <h2>Hi There!</h2>
+    <p>
+        Thanks for using No Nonsense Recipes. We strive to make it a pleasant experience. 
+        You won't find ads or long, boring stories here. 
+        If you're enjoying the site, consider <a href="{% url 'account_signup' %}">signing up</a> for an account. 
+        You'll be supporting the project and gaining access to additional awesome features, such as:
+    </p>
+    <ul class="list-unstyled">
+        <li class="font-weight-bold">Search recipes</li>
+        <li class="font-weight-bold">Submit your own recipes</li>
+        <li class="font-weight-bold">View and make comments on recipes</li>
+        <li class="font-weight-bold">Rate recipes</li>
+        <li class="font-weight-bold">Save and tag recipes to quickly find them later</li>
+    </ul>
+
+    <p> 
+        Accounts are free for 30 days and then only $19 USD per year or $2.57 per month. What have you got to lose? 😃 
+    </p>
+    <p>
+        <a class="btn btn-primary" href="{% url 'account_signup' %}">Start your Free Trial</a> today!
+    </p>
+</div>
+{% endif %}
+
 {% endblock %}
 
 

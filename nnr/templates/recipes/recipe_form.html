@@ -13,12 +13,12 @@
 
 
 {% block content %}
-<div class="form-container main-content">
-    <h1>{% if object %}Update{% else %}Add{% endif %} Recipe</h1>
-    <p class="text-muted">* indicates field is required <br></p>
-    {% include "markdown_help.html" %}
-    {% crispy form %}
-</div>
+
+<h1>{% if object %}Update{% else %}Add{% endif %} Recipe</h1>
+<p class="text-muted">* indicates field is required <br></p>
+{% include "markdown_help.html" %}
+{% crispy form %}
+
 {% endblock %}
 
 {% block morejs %}

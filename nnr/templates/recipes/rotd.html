@@ -8,43 +8,53 @@ Recipe of the Day - {{ recipe.title }}
 
 
 {% block content %}
-<div class="main-content">
 
-    {% cache 86400 rotd %}
-    {% if recipe %}
-    <h1>Recipe of the Day - <a href="{% url 'recipes:recipe_detail' recipe.title_slug %}">{{ recipe.title }}</a></h1>
-    <div class="byline">
-        Submitted by: <a href="{% url 'users:detail' recipe.user.username %}">{{ recipe.user.username }}</a>
-    </div>
-    
-    <h2>Ingredients</h2>
+{% comment %} {% cache 86400 rotd %} {% endcomment %}
+{% if recipe %}
+<h1 class="mb-3">
+  <p class="p-0 m-0">Recipe of the Day</p>
+  <p class="p-0 m-0"><a href="{% url 'recipes:recipe_detail' recipe.title_slug %}">{{ recipe.title }}</a></p>
+</h1>
+<div class="byline">
+    Submitted by: <a href="{% url 'users:detail' recipe.user.username %}">{{ recipe.user.username }}</a>
+</div>
+
+<div class="row">
+  <div class="col-lg-4">
+  <h2>Ingredients</h2>
     <div class="ingredients">
         {{ recipe.ingredients_html|safe }}
     </div>
+  </div>
+  <div class="col-lg-8">
     <h2>Instructions</h2>
     <div class="instructions">
         {{ recipe.instructions_html|safe }}
     </div>
-    {% else %}
-    <p>Oops! Looks like there's no recipe today.</p>
-    {% endif %}
-    {% endcache %}
-    {% if  not request.user.is_authenticated %}
-    <div class="alert-success p-3 border border-success rounded">
-      <p>
-        This is what every recipe page looks like on No Nonsense Recipes. Notice
-        anything missing? We don't show ads or spam you with photos or
-        long-winded stories to try and boost our search engine rankings. We just
-        show you the recipe, because that's what you came for, isn't it?
-      </p>
-      <p>
-	<a class="btn btn-lg btn-success signup-button" href="{% url 'account_signup' %}">Start your Free Trial</a>
-      </p>
-      <p>
-         Enjoy the full features of No Nonsense Recipes free for 30 days, then it's only $19 per year for unlimited access.
-      </p>
-    </div>
-    {% endif %}
-    
+  </div>
 </div>
+{% else %}
+<p>Oops! Looks like there's no recipe today.</p>
+{% endif %}
+{% comment %} {% endcache %} {% endcomment %}
+
+{% if  not request.user.is_authenticated %}
+<div class="alert-success p-3 border border-success rounded w-50 m-auto">
+  <h2>Notice anything missing?</h2>
+  <p>
+    This is what every recipe page looks like on No Nonsense Recipes. 
+    We don't show ads or spam you with photos or
+    long-winded stories to try and boost our search engine rankings. We just
+    show you the recipe, because that's what you came for, isn't it?
+  </p>
+  <p>
+    <a class="btn btn-lg btn-primary signup-button" href="{% url 'account_signup' %}">Start your Free Trial</a>
+  </p>
+  <p>
+      Enjoy the full features of No Nonsense Recipes free for 30 days, then it's only $19 per year for unlimited access.
+  </p>
+</div>
+{% endif %}
+    
+
 {% endblock %}
