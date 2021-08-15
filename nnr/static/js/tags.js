@@ -34,10 +34,9 @@ async function untag(untagForm) {
             document.getElementById("tag-container").before(res);
             document.getElementById(`untag-container_${untagForm["tag_slug"].value}`).remove();
         }
-        
     })
-        
 }
+
 get_all_tags();
 
 async function get_all_tags() {
@@ -101,11 +100,7 @@ function autocomplete(inp, arr) {
             b = document.createElement("div");
             // highlight occurrences of val in match, but retain case of match
             let sub = new RegExp(val, "gi");
-            occurrences = m.match(sub, val);
-            let res = m;
-            for (occ of occurrences) {
-                res = res.replace(occ, `<strong>${occ}</strong>`)
-            }
+            res = m.replace(sub, (x) => (`<strong>${x}</strong>`))
             b.innerHTML = res;
             b.innerHTML += `<input type='hidden' value='${m}'>`;
             b.addEventListener("click", function (e) {
