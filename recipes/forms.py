@@ -71,11 +71,13 @@ class CreateRecipeForm(forms.ModelForm):
         )
 
     def save(self):
+        user = self.cleaned_data["user"]
         r = Recipe(title=self.cleaned_data["title"],
                    ingredients_text=self.cleaned_data["ingredients_text"],
                    instructions_text=self.cleaned_data["instructions_text"],
-                   user=self.cleaned_data["user"],
+                   user=user,
                    quantity_text=self.cleaned_data["quantity_text"])
+        r.approved = user.is_staff
         r.save()                   
         # for each tag, get it and add it to the recipe, creating a new one if 
         # it doesn't exist
