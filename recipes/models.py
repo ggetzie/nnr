@@ -6,12 +6,14 @@ from django.urls import reverse
 from django.utils.html import strip_tags
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
+from django.views.generic import edit
 
-from .utils import sortify
+from .utils import sortify, utc_now
 
 import datetime
 import markdown
 import string
+import uuid
 
 import logging
 logger = logging.getLogger(__name__)
@@ -201,3 +203,62 @@ class RecipeRating(models.Model):
 
     def __str__(self):
         return f"{self.user.username} rated {self.recipe} {self.rating} stars"
+
+SCREEN_SIZES = ["1140", "960", "720", "540"]
+
+def recipe_photo_path(instance, filename):
+    stem, ext = filename.rsplit('.', maxsplit=1)
+    ext = ext.lower()
+    # standardize on "jpg" extension for jpegs
+    if ext == "jpeg":
+        ext = "jpg"
+    path = f"{instance.recipe.slug}/{stem}/orig.{ext}"
+    return path
+
+class RecipePhoto(models.Model):
+    id = models.UUIDField("id", primary_key=True, 
+                          default=uuid.uuid4, editable=False)
+    recipe = models.ForeignKey("Recipe", on_delete=models.CASCADE)
+    uploaded_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        null=True, blank=True,
+        on_delete=models.SET_NULL)
+    photo = models.ImageField("Photo", max_length=200, 
+                              upload_to=recipe_photo_path)
+    reviewed = models.BooleanField("Reviewed", default=False)
+    approved = models.BooleanField("Approved", default=False)
+    resized = models.BooleanField("Resized options created", default=False)
+    timestamp = models.DateTimeField("Timestamp", 
+                                     default=utc_now, editable=False)
+    caption = models.CharField("Caption", max_length=200, 
+                               default="", blank=True)
+    order = models.PositiveSmallIntegerField("Order", default=0)
+
+    class Meta:
+        ordering = ["recipe__sort_title", "-timestamp"]
+
+    @property
+    def breakpoint0_url(self):
+        return self.photo.url.replace("orig", SCREEN_SIZES[0])
+
+    @property
+    def breakpoint1_url(self):
+        return self.photo.url.replace("orig", SCREEN_SIZES[1])
+
+    @property
+    def breakpoint2_url(self):
+        return self.photo.url.replace("orig", SCREEN_SIZES[2])
+
+    @property
+    def breakpoint3_url(self):
+        return self.photo.url.replace("orig", SCREEN_SIZES[2])
+
+    
+
+
+    
+
+    
+
+    
+        
