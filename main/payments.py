@@ -115,6 +115,19 @@ def handle_subscription_updated(event):
         profile.save()
     profile.sync_subscription()
 
+def handle_subscription_created(event):
+    stripe_id = event.data.object.customer
+    try:
+        profile = Profile.objects.get(stripe_id=stripe_id)
+    except Profile.DoesNotExist:
+        stripe.api_key = settings.STRIPE_SK
+        customer = stripe.Customer.retrieve(stripe_id)
+        customer_email = customer.email
+        profile = Profile.objects.get(user__email=customer_email)
+        profile.stripe_id = stripe_id
+        profile.save()
+    profile.sync_subscription()    
+
 def handle_subscription_deleted(event):
     logger.info("Handling deleted subscription")
     stripe_id = event.data.object.customer

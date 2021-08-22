@@ -25,7 +25,8 @@ from main.payments import (handle_payment_success, handle_payment_action,
                            handle_payment_failure, handle_payment_update,
                            update_customer_card, handle_session_complete,
                            handle_subscription_updated, 
-                           handle_subscription_deleted)
+                           handle_subscription_deleted,
+                           handle_subscription_created)
 
 from main.utils import (get_trial_end, get_subscription_plan)
 
@@ -250,6 +251,8 @@ def webhook(request):
         handle_session_complete(event)
     elif event.type == "customer.subscription.updated":
         handle_subscription_updated(event)
+    elif event.type == "customer.subscription.created":
+        handle_subscription_created(event)
     elif event.type == "customer.subscription.deleted":
         handle_subscription_deleted(event)
     else:
