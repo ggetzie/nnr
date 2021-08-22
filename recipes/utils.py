@@ -1,3 +1,5 @@
+import datetime 
+
 STOPWORDS = {"i","me","my","myself","we","our","ours","ourselves","you","your",
              "yours", "yourself","yourselves","he","him","his","himself","she",
              "her","hers","herself","it","its","itself","they","them","their",
@@ -36,3 +38,7 @@ def spacing(text):
         outlines.append(line)
         last = line
     return "\n".join(outlines)
+
+def utc_now():
+    return datetime.datetime.now(tz=datetime.timezone.utc)
+
