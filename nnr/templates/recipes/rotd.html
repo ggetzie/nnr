@@ -38,6 +38,14 @@ Recipe of the Day - {{ recipe.title }}
 {% endif %}
 {% endcache %}
 
+<div class="social mt-5 mb-5 text-center">
+  <h2>Never miss the Recipe of the Day</h2>
+  <p class="font-weight-bold">
+    Follow us on <a href="https://twitter.com/n_n_recipes">Twitter</a> or <a href="https://www.facebook.com/no.nonsense.recipes">Facebook</a>
+  </p>
+</div>
+
+
 {% if  not request.user.is_authenticated %}
 <div class="alert-success p-3 border border-success rounded m-auto signup-pitch">
   <h2>Notice anything missing?</h2>
