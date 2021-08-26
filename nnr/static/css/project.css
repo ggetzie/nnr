@@ -186,3 +186,15 @@ input[name~="save"] {
 .footer {
   height: 40px;
 }
+
+@media (min-width: 961px) {
+  .signup-pitch {
+    width: 50%;
+  }
+}
+
+@media (max-width: 960px) {
+  .signup-pitch {
+    width: 100%;
+  }
+}
