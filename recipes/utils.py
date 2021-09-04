@@ -1,4 +1,8 @@
 import datetime 
+import json
+import os
+
+import requests
 
 STOPWORDS = {"i","me","my","myself","we","our","ours","ourselves","you","your",
              "yours", "yourself","yourselves","he","him","his","himself","she",
@@ -41,4 +45,36 @@ def spacing(text):
 
 def utc_now():
     return datetime.datetime.now(tz=datetime.timezone.utc)
+
+FB_GRAPH_URL = "https://graph.facebook.com"
+
+def get_fb_long_token(short_token):
+    app_id = os.environ["FB_APP_ID"]
+    app_secret = os.environ["FB_APP_SECRET"]
+    url = (
+        f"{FB_GRAPH_URL}/oauth/access_token?grant_type=fb_exchange_token"
+        f"&client_id={app_id}&client_secret={app_secret}"
+        f"&fb_exchange_token={short_token}"
+    )
+    r = requests.get(url)
+    return r
+
+def get_fb_page_token(long_token):
+    page_id = os.environ["FB_PAGE_ID"]
+    r = requests.get(f"{FB_GRAPH_URL}/{page_id}?fields=access_token&access_token={long_token}")
+    return r
+
+def test_post_recipe(recipe):
+    message = f"{recipe.text_only()}\nhttps://nononsense.recipes/{recipe.title_slug}/"
+    page_id = os.environ["FB_PAGE_ID"]
+    page_token = os.environ["FB_PAGE_TOKEN"]
+    r = requests.post(
+        f"{FB_GRAPH_URL}/{page_id}/feed",
+        headers={"Content-Type": "application/json"},
+        data=json.dumps({
+            "message": message,
+            "access_token": page_token
+        }))
+    return r
+    
 

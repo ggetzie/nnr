@@ -1,9 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"math/rand"
+	"net/http"
 	"os"
 	"regexp"
 	"strings"
@@ -46,6 +50,45 @@ func getTweetTitle(title string, url string) string {
 		return fmt.Sprintf("%s...", title[:maxTitleLen-3])
 	}
 	return title
+}
+
+func postToFacebook(rotd recipe) (string, error) {
+	fbPageId := os.Getenv("FB_PAGE_ID")
+	fbPageToken := os.Getenv("FB_PAGE_TOKEN")
+	fbUrlBase := "https://graph.facebook.com"
+
+	message := fmt.Sprintf(
+		"%s\n\n%s\n%s\n%s",
+		rotd.title,
+		stripTags(rotd.ingredients),
+		stripTags(rotd.instructions),
+		rotd.url,
+	)
+
+	fullUrl := fmt.Sprintf("%s/%s/feed", fbUrlBase, fbPageId)
+
+	requestBody, err := json.Marshal(map[string]string{
+		"message":      message,
+		"access_token": fbPageToken,
+	})
+	if err != nil {
+		return fmt.Sprintf("Error building FB request json: %v", err), err
+	}
+
+	resp, err := http.Post(fullUrl, "application/json", bytes.NewBuffer((requestBody)))
+	if err != nil {
+		return fmt.Sprintf("Error from http.Post to FB: %v", err), err
+	}
+
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return fmt.Sprintf("Error reading FB response body: %v", err), err
+	}
+
+	return string(body), nil
+
 }
 
 func handler(ctx context.Context, event events.CloudWatchEvent) (string, error) {
@@ -101,8 +144,6 @@ func handler(ctx context.Context, event events.CloudWatchEvent) (string, error) 
 		&newRotd.ingredients,
 		&newRotd.instructions)
 
-	newRotd.ingredients = stripTags(newRotd.ingredients)
-	newRotd.instructions = stripTags(newRotd.instructions)
 	newRotd.url = fmt.Sprintf("https://nononsense.recipes/%s/", newRotd.slug)
 	if err != nil {
 		return fmt.Sprintf("Select new Rotd failed: %v\n", err), err
@@ -122,7 +163,6 @@ func handler(ctx context.Context, event events.CloudWatchEvent) (string, error) 
 		return fmt.Sprintf("Error updating new rotd: %v\n", err), err
 	}
 	fmt.Println("Selected new Recipe of the Day")
-	// TODO post new recipe of the day to Facebook page
 
 	// Tweet title and link to rotd page to Twitter
 	tweetStatus := fmt.Sprintf("Recipe of the Day - %s: %s",
@@ -144,6 +184,14 @@ func handler(ctx context.Context, event events.CloudWatchEvent) (string, error) 
 	}
 	fmt.Println(tweet)
 	fmt.Println(resp)
+
+	// Post new recipe of the day to Facebook page
+	fbResponse, err := postToFacebook(newRotd)
+	if err != nil {
+		return fmt.Sprintf("Error posting to Facebook: %v\n", err), err
+	}
+	fmt.Println("Response from Facebook post:", fbResponse)
+
 	return "Recipe of the Day updated", nil
 
 }
