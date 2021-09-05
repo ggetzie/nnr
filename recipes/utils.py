@@ -65,16 +65,15 @@ def get_fb_page_token(long_token):
     return r
 
 def test_post_recipe(recipe):
-    message = f"{recipe.text_only()}\nhttps://nononsense.recipes/{recipe.title_slug}/"
+    link = f"https://nononsense.recipes/{recipe.title_slug}/"
     page_id = os.environ["FB_PAGE_ID"]
     page_token = os.environ["FB_PAGE_TOKEN"]
     r = requests.post(
         f"{FB_GRAPH_URL}/{page_id}/feed",
         headers={"Content-Type": "application/json"},
         data=json.dumps({
-            "message": message,
+            "message": recipe.text_only(),
+            "link": link,
             "access_token": page_token
         }))
     return r
-    
-
