@@ -146,6 +146,7 @@ Instructions
 class Tag(models.Model):
     name = models.CharField(_("name"), max_length=100)
     name_slug = models.SlugField(_("slug"), max_length=100, unique=True)
+    hashtag = models.BooleanField("Use as hashtag", default=False)
 
     class Meta:
         ordering = ["name_slug"]
