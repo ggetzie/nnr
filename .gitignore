@@ -291,5 +291,4 @@ workspace.code-workspace
 !.elasticbeanstalk/*.global.yml
 *.rdb
 
-awslambda/rotd
-awslambda/rotd.zip
+awslambda/build/*
