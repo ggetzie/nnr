@@ -1,3 +1,11 @@
 {
-  "cSpell.ignoreWords": ["rotd"]
+  "cSpell.ignoreWords": [
+    "dbname",
+    "dbpool",
+    "dghubble",
+    "jackc",
+    "omago",
+    "pgxpool",
+    "rotd"
+  ]
 }

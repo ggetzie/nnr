@@ -21,12 +21,6 @@ import (
 	"github.com/jackc/pgx/v4/pgxpool"
 )
 
-// SQL to select tags for use as hashtags in tweets
-// SELECT t.name_slug FROM recipes_usertag ut INNER JOIN recipes_tag t
-// ON t.id = ut.tag_id
-// WHERE ut.recipe_id = 9502 AND t.hashtag = TRUE GROUP BY t.name_slug
-// ORDER BY Count(*) DESC LIMIT 2
-
 type recipe struct {
 	id           int
 	title        string
@@ -34,10 +28,17 @@ type recipe struct {
 	instructions string
 	url          string
 	slug         string
+	hashtags     []string
 }
 
 func init() {
 	rand.Seed(time.Now().UnixNano())
+}
+
+func slugToHashtag(slug string) string {
+	output := "#" + strings.Title(slug)
+	output = strings.ReplaceAll(output, "-", "")
+	return output
 }
 
 func setRotd() (recipe, error) {
@@ -91,8 +92,6 @@ func setRotd() (recipe, error) {
 		&newRotd.slug,
 		&newRotd.ingredients,
 		&newRotd.instructions)
-
-	newRotd.url = fmt.Sprintf("https://nononsense.recipes/%s/", newRotd.slug)
 	if err != nil {
 		return recipe{}, err
 	}
@@ -109,6 +108,28 @@ func setRotd() (recipe, error) {
 	if err != nil {
 		return recipe{}, err
 	}
+
+	newRotd.url = fmt.Sprintf("https://nononsense.recipes/%s/", newRotd.slug)
+	newRotd.hashtags = []string{"#Recipes"}
+
+	// Select tags for use as hashtags in tweets
+	slugsQuery := `SELECT t.name_slug FROM recipes_usertag ut INNER JOIN recipes_tag t 
+	ON t.id = ut.tag_id WHERE ut.recipe_id = $1 AND t.hashtag = TRUE 
+	GROUP BY t.name_slug ORDER BY Count(*) DESC LIMIT 2`
+	rows, err := dbpool.Query(context.Background(), slugsQuery, newRotd.id)
+	if err != nil {
+		return newRotd, err
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var slug string
+		err = rows.Scan(&slug)
+		if err != nil {
+			return newRotd, err
+		}
+		newRotd.hashtags = append(newRotd.hashtags, slugToHashtag(slug))
+	}
+
 	return newRotd, nil
 }
 
@@ -120,19 +141,47 @@ func stripTags(html string) string {
 	return res
 }
 
-func slugToHastag(slug string) string {
-	output := "#" + strings.Title(slug)
-	output = strings.ReplaceAll(output, "-", "")
-	return output
+func recipeToTweet(rotd recipe) string {
+	// Generate the tweet text with url and hashtags from the recipe
+	intro := "Recipe of the Day - "
+	title := rotd.title
+	maxLength := 280
+	minTweetLength := len(intro) + len(title) + len(rotd.url) + 1
+	if minTweetLength > maxLength {
+		// Need to truncate title
+		overrun := minTweetLength - maxLength
+		shortened := len(rotd.title) - overrun - 3
+		title = rotd.title[:shortened] + "..."
+	}
+	tweet := intro + title + " " + rotd.url
+	// add hashtags if there's room
+	for _, hashtag := range rotd.hashtags {
+		newLength := len(tweet) + len(hashtag) + 1
+		if newLength <= maxLength {
+			tweet += (" " + hashtag)
+		}
+	}
+	return tweet
 }
 
-func getTweetTitle(title string, url string) string {
-	maxTitleLen := 280 - len("Recipe of the Day - ") - len(url) - 2
-	titleLen := len(title)
-	if titleLen > maxTitleLen {
-		return fmt.Sprintf("%s...", title[:maxTitleLen-3])
+func postToTwitter(rotd recipe) (string, error) {
+	// Tweet title and link to rotd page to Twitter
+	tweetStatus := recipeToTweet(rotd)
+	twitterConsumerKey := os.Getenv("TWITTER_CONSUMER_KEY")
+	twitterConsumerSecret := os.Getenv("TWITTER_CONSUMER_SECRET")
+	twitterAccessToken := os.Getenv("TWITTER_ACCESS_TOKEN")
+	twitterAccessSecret := os.Getenv("TWITTER_ACCESS_SECRET")
+	config := oauth1.NewConfig(twitterConsumerKey, twitterConsumerSecret)
+	token := oauth1.NewToken(twitterAccessToken, twitterAccessSecret)
+
+	httpClient := config.Client(oauth1.NoContext, token)
+	client := twitter.NewClient(httpClient)
+	_, _, err := client.Statuses.Update(tweetStatus, nil)
+	if err != nil {
+		return fmt.Sprintf("Error sending tweet: %v\n", err), err
 	}
-	return title
+
+	return "Successful Twitter post", nil
 }
 
 func postToFacebook(rotd recipe) (string, error) {
@@ -170,27 +219,6 @@ func postToFacebook(rotd recipe) (string, error) {
 
 	return string(body), nil
 
-}
-
-func postToTwitter(rotd recipe) (string, error) {
-	// Tweet title and link to rotd page to Twitter
-	tweetStatus := fmt.Sprintf("Recipe of the Day - %s: %s",
-		getTweetTitle(rotd.title, rotd.url), rotd.url)
-	twitterConsumerKey := os.Getenv("TWITTER_CONSUMER_KEY")
-	twitterConsumerSecret := os.Getenv("TWITTER_CONSUMER_SECRET")
-	twitterAccessToken := os.Getenv("TWITTER_ACCESS_TOKEN")
-	twitterAccessSecret := os.Getenv("TWITTER_ACCESS_SECRET")
-	config := oauth1.NewConfig(twitterConsumerKey, twitterConsumerSecret)
-	token := oauth1.NewToken(twitterAccessToken, twitterAccessSecret)
-
-	httpClient := config.Client(oauth1.NoContext, token)
-	client := twitter.NewClient(httpClient)
-	_, _, err := client.Statuses.Update(tweetStatus, nil)
-	if err != nil {
-		return fmt.Sprintf("Error sending tweet: %v\n", err), err
-	}
-
-	return "Successful Twitter post", nil
 }
 
 func handler(ctx context.Context, event events.CloudWatchEvent) (string, error) {
