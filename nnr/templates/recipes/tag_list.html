@@ -1,28 +1,22 @@
-{% extends "base.html" %}
-
-{% block title %}
-Tags
-{% endblock %}
-
-
+{% extends "base.html" %} 
+{% block title %} Tags {% endblock %} 
 {% block content %}
 <div class="main-content">
-    <h1>Tags</h1>
-    <div class="main-list">
-        <div class="row no-gutters">
-            {% for tag in object_list %}
-            <div class="col-sm-2 text-center mr-1 mb-1 align-middle">
-                <a class="btn btn-outline-info" href="{% url 'recipes:tag_detail' tag.name_slug %}">{{ tag }}</a>
-            </div>
-            {% if forloop.counter|divisibleby:5 %}
-            </div>
-            <div class="row no-gutters">
-            {% endif %}
-            {% empty %}
-            <p>No tags found</p>
-            {% endfor %}
-        </div>
+  <h1>Tags</h1>
+  <div class="main-list">
+    <div class="row no-gutters">
+      {% for tag in object_list %}
+      <div class="col-sm-2 mr-1 mb-1 align-middle">
+        <a href="{% url 'recipes:tag_detail' tag.name_slug %}">{{ tag }}</a>
+      </div>
+      {% if forloop.counter|divisibleby:5 %}
     </div>
-    {% include "recipes/pagination.html" %}
+    <div class="row no-gutters">
+      {% endif %} {% empty %}
+      <p>No tags found</p>
+      {% endfor %}
+    </div>
+  </div>
+  {% include "recipes/pagination.html" %}
 </div>
 {% endblock %}
