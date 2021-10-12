@@ -18,9 +18,9 @@ known_first_party=nnr
 multi_line_output=3
 default_section=THIRDPARTY
 
-[*.{html,css,scss,json,yml}]
-indent_style = space
-indent_size = 2
+; [*.{html,css,scss,json,yml}]
+; indent_style = space
+; indent_size = 2
 
 [*.md]
 trim_trailing_whitespace = false
