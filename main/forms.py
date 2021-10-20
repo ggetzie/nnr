@@ -153,7 +153,7 @@ class AddFriendForm(forms.Form):
         self.helper = FormHelper()
         self.helper.form_id = "add-friend-form"
         self.helper.form_method = "post"
-        self.helper.form_class = "signup-pitch mt-5"
+        self.helper.form_class = "signup-pitch mt-3"
         self.helper.layout = Layout(
             "email",
             "username",
