@@ -14,21 +14,32 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
-from django.views.generic import (CreateView, UpdateView, DeleteView, ListView,
-                                  DetailView, FormView)
+from django.views.generic import (
+    CreateView,
+    UpdateView,
+    DeleteView,
+    ListView,
+    DetailView,
+    FormView,
+)
 
-from main.forms import NNRSignupForm, PaymentPlanForm
+from main.forms import AddFriendForm, NNRSignupForm, PaymentPlanForm
 
 from main.models import Profile
 
-from main.payments import (handle_payment_success, handle_payment_action,
-                           handle_payment_failure, handle_payment_update,
-                           update_customer_card, handle_session_complete,
-                           handle_subscription_updated, 
-                           handle_subscription_deleted,
-                           handle_subscription_created)
+from main.payments import (
+    handle_payment_success,
+    handle_payment_action,
+    handle_payment_failure,
+    handle_payment_update,
+    update_customer_card,
+    handle_session_complete,
+    handle_subscription_updated,
+    handle_subscription_deleted,
+    handle_subscription_created,
+)
 
-from main.utils import (get_trial_end, get_subscription_plan)
+from main.utils import get_trial_end, get_subscription_plan
 
 from mixins import ValidUserMixin
 
@@ -42,11 +53,13 @@ logger = logging.getLogger(__name__)
 
 DOMAIN_URL = "http://nnr" if settings.DEBUG else "https://nononsense.recipes"
 
+
 def public_key(request):
     if request.is_ajax():
         return JsonResponse({"publicKey": settings.STRIPE_PK})
     else:
-        return HttpResponseBadRequest("<h1>Bad Request</h1>")                            
+        return HttpResponseBadRequest("<h1>Bad Request</h1>")
+
 
 @login_required
 def create_checkout_session(request):
@@ -57,10 +70,12 @@ def create_checkout_session(request):
     plan = request.GET["plan"]
     logger.info(f"plan id: {plan}")
     stripe.api_key = settings.STRIPE_SK
-    success_url=(DOMAIN_URL + 
-                 reverse("main:checkout_success") + 
-                 "?session_id={CHECKOUT_SESSION_ID}")
-    cancel_url=DOMAIN_URL+reverse("main:payment")
+    success_url = (
+        DOMAIN_URL
+        + reverse("main:checkout_success")
+        + "?session_id={CHECKOUT_SESSION_ID}"
+    )
+    cancel_url = DOMAIN_URL + reverse("main:payment")
     if request.user.profile.checkout_session:
         # User already has an active checkout session, delete it
         request.user.profile.checkout_session = ""
@@ -70,33 +85,33 @@ def create_checkout_session(request):
         "cancel_url": cancel_url,
         "payment_method_types": ["card"],
         "subscription_data": {
-            "items": [{
-                "plan": plan
-            }],
-            "trial_from_plan": not request.user.profile.stripe_id
-        }
+            "items": [{"plan": plan}],
+            "trial_from_plan": not request.user.profile.stripe_id,
+        },
     }
 
     if request.user.profile.stripe_id:
         params["customer"] = request.user.profile.stripe_id
     else:
         params["customer_email"] = request.user.email
-        
+
     checkout_session = stripe.checkout.Session.create(**params)
 
     request.user.profile.checkout_session = checkout_session["id"]
     request.user.profile.save()
     return JsonResponse({"checkoutSessionId": checkout_session["id"]})
 
+
 def checkout_success(request):
     stripe.api_key = settings.STRIPE_SK
     session_id = request.GET.get("session_id", "")
     if session_id:
         logger.info(f"Successful checkout: {session_id}")
-    return render(request, 
-                  "main/thankyou.html", 
-                  context={"checkout_session_id": session_id})
-    
+    return render(
+        request, "main/thankyou.html", context={"checkout_session_id": session_id}
+    )
+
+
 @login_required
 def update_payment(request):
     user = request.user
@@ -106,59 +121,62 @@ def update_payment(request):
         payment_method = data["payment_method"]
         if user.is_staff:
             errmsg = "Payment not required"
-            return JsonResponse({"status": "error",
-                                 "error": {"message": errmsg}})
-        
+            return JsonResponse({"status": "error", "error": {"message": errmsg}})
+
         if not user.profile.stripe_id:
             errmsg = "User has no customer id"
-            return JsonResponse({"status": "error",
-                                 "error" : {"message": errmsg}})
+            return JsonResponse({"status": "error", "error": {"message": errmsg}})
 
-        pm, _ = update_customer_card(payment_method, 
-                                     user.profile.stripe_id)        
-        open_invoices = stripe.Invoice.list(customer=user.profile.stripe_id,
-                                            status="open")     
+        pm, _ = update_customer_card(payment_method, user.profile.stripe_id)
+        open_invoices = stripe.Invoice.list(
+            customer=user.profile.stripe_id, status="open"
+        )
         if not open_invoices:
-            logger.info(f"No open invoices found for {user.username}")                                            
+            logger.info(f"No open invoices found for {user.username}")
         # attempt to pay open invoices with new default payment method
-        _ = [invoice.pay(expand=["payment_intent"]) 
-             for invoice in open_invoices.data]
-        newpay = (f"{pm.card.brand.title()} ending with {pm.card.last4} "
-                  f"expires {pm.card.exp_month}/{pm.card.exp_year}")
+        _ = [invoice.pay(expand=["payment_intent"]) for invoice in open_invoices.data]
+        newpay = (
+            f"{pm.card.brand.title()} ending with {pm.card.last4} "
+            f"expires {pm.card.exp_month}/{pm.card.exp_year}"
+        )
 
-        return JsonResponse({"status": "success", 
-                             "message": "Default payment method updated",
-                             "newPay" : newpay})
+        return JsonResponse(
+            {
+                "status": "success",
+                "message": "Default payment method updated",
+                "newPay": newpay,
+            }
+        )
 
-    if user.profile.stripe_id:    
+    if user.profile.stripe_id:
         customer = stripe.Customer.retrieve(user.profile.stripe_id)
-        pms = stripe.PaymentMethod.list(customer=user.profile.stripe_id, 
-                                        type="card")
-                            
-        return render(request, "users/update_payment.html", 
-                    context={"user": user,
-                            "payment_methods": pms.data,
-                            "customer": customer})
+        pms = stripe.PaymentMethod.list(customer=user.profile.stripe_id, type="card")
+
+        return render(
+            request,
+            "users/update_payment.html",
+            context={"user": user, "payment_methods": pms.data, "customer": customer},
+        )
     else:
-        return render(request, "users/update_payment.html", 
-                    context={"user": user,
-                            "payment_methods": [],
-                            "customer": None})
+        return render(
+            request,
+            "users/update_payment.html",
+            context={"user": user, "payment_methods": [], "customer": None},
+        )
 
 
-@require_POST                            
+@require_POST
 @login_required
 def cancel_subscription(request):
     """
-    User wants to turn off automatic renewal. 
+    User wants to turn off automatic renewal.
     Subscription will expire at end date.
     """
     stripe.api_key = settings.STRIPE_SK
     stripe_id = request.user.profile.stripe_id
     subs = stripe.Subscription.list(customer=stripe_id)
     if subs.data:
-        _ = stripe.Subscription.modify(subs.data[0].id,
-                                       cancel_at_period_end=True)
+        _ = stripe.Subscription.modify(subs.data[0].id, cancel_at_period_end=True)
         end_date = datetime.datetime.fromtimestamp(subs.data[0].current_period_end)
         msg = f"""
               Automatic renewal has been turned off for your subscription.
@@ -181,14 +199,13 @@ def reactivate_subscription(request):
     stripe_id = request.user.profile.stripe_id
     subs = stripe.Subscription.list(customer=stripe_id)
     if subs.data:
-        _ = stripe.Subscription.modify(subs.data[0].id,
-                                       cancel_at_period_end=False)
+        _ = stripe.Subscription.modify(subs.data[0].id, cancel_at_period_end=False)
         end_date = datetime.datetime.fromtimestamp(subs.data[0].current_period_end)
         msg = f"""
               Automatic renewal has been turned on for your subscription.
               Your subscription will be renewed on {end_date:%B %d, %Y}.
               """
-        messages.success(request, msg)                                       
+        messages.success(request, msg)
     else:
         messages.info(request, "Could not find any active subscription")
     return redirect("users:detail", username=request.user.username)
@@ -203,11 +220,13 @@ def confirm_payment(request):
         invoice_id = customer.subscriptions.data[0].latest_invoice
         latest_invoice = stripe.Invoice.retrieve(invoice_id)
         invoice_url = latest_invoice.hosted_invoice_url
-        return render(request, "users/confirm_payment.html",
-                    context={"invoice_url": invoice_url})
+        return render(
+            request, "users/confirm_payment.html", context={"invoice_url": invoice_url}
+        )
     except IndexError:
         # no outstanding invoice
         return redirect("home")
+
 
 @csrf_exempt
 def webhook(request):
@@ -219,25 +238,22 @@ def webhook(request):
         signature = request.META["HTTP_STRIPE_SIGNATURE"]
         logger.info(request.META)
         logger.info(signature)
-        try: 
+        try:
             event = stripe.Webhook.construct_event(
-                payload=json.loads(payload),
-                sig_header=signature, 
-                secret=webhook_secret)
+                payload=json.loads(payload), sig_header=signature, secret=webhook_secret
+            )
         except Exception as e:
             logger.error(f"Could not parse event (webhook secret)")
             logger.error(e)
             return HttpResponse(status=400)
     else:
         try:
-            event = stripe.Event.construct_from(
-                json.loads(payload), stripe.api_key
-            )
+            event = stripe.Event.construct_from(json.loads(payload), stripe.api_key)
         except ValueError:
             logger.error(f"Could not parse event")
             return HttpResponse(status=400)
 
-    logger.info(f"received event - {event.type}")        
+    logger.info(f"received event - {event.type}")
 
     if event.type == "invoice.payment_succeeded":
         handle_payment_success(event)
@@ -260,10 +276,24 @@ def webhook(request):
 
     return HttpResponse(status=200)
 
+
 @login_required
 @require_GET
 def payment(request):
-    return render(request,
-                  template_name="main/payment.html", 
-                  context={"form": PaymentPlanForm()})
+    return render(
+        request, template_name="main/payment.html", context={"form": PaymentPlanForm()}
+    )
 
+
+class AddFriend(UserPassesTestMixin, FormView):
+    template_name = "main/addfriend.html"
+    form_class = AddFriendForm
+    success_url = reverse_lazy("main:addfriend")
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+    def form_valid(self, form):
+        user = form.save()
+        messages.success(self.request, f"{user} created")
+        return super().form_valid(form)

@@ -45,6 +45,7 @@
     "pmjc",
     "postgresql",
     "prod",
+    "raquo",
     "strongify",
     "to",
     "tsvector",
@@ -55,6 +56,5 @@
     "zâàéû"
   ],
   "restructuredtext.languageServer.disabled": true,
-  "python.formatting.provider": "black",
-  
+  "python.formatting.provider": "black"
 }

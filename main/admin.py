@@ -6,7 +6,7 @@ from main.models import Profile, PaymentPlan
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ["user"]
-    readonly_fields = ["stripe_id", "checkout_session"]
+    readonly_fields = ["stripe_id", "checkout_session", "user"]
     exclude = ["saved_recipes"]
 
 

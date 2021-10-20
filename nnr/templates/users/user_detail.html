@@ -26,5 +26,9 @@
 
   {% endif %}
 
+  {% if request.user.is_staff %}
+  <a class="btn btn-primary" href="{% url 'main:addfriend' %}">Add Friend</a>
+  {% endif %}
+
 {% endblock user_content %}
 
