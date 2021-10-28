@@ -16,14 +16,14 @@ func TestPrintMetadata(t *testing.T) {
 
 func TestBuildPath(t *testing.T) {
 	want := "/media/images/recipes/3/1040.jpeg"
-	result := buildPath("/media/images/recipes/3", 1040, bimg.JPEG)
+	result := buildPath("/media/images/recipes/3", "1040", bimg.JPEG)
 	if result != want {
 		t.Fatalf(`buildPath Failed. Wanted %q Got %v`, want, result)
 	}
 }
 
 func TestProcessImage(t *testing.T) {
-	folder := "/media/gabe/data/pictures/websites/nnr/test/1"
+	folder := "/media/gabe/data/pictures/websites/nnr/test/2"
 	file := "orig.jpeg"
 	filepath := path.Join(folder, file)
 	img, err := loadImageLocal(filepath)
@@ -35,7 +35,7 @@ func TestProcessImage(t *testing.T) {
 	dims := getDefaultDims()
 	for screenSize := range dims {
 		for _, iType := range iTypes {
-			filename := fmt.Sprintf("%d.%s", screenSize, bimg.ImageTypeName(iType))
+			filename := fmt.Sprintf("%s.%s", screenSize, bimg.ImageTypeName(iType))
 			filepath := path.Join(folder, filename)
 			_, err := os.Stat(filepath)
 			if errors.Is(err, os.ErrNotExist) {

@@ -24,13 +24,13 @@ func getDefaultImageTypes() []bimg.ImageType {
 	return []bimg.ImageType{bimg.PNG, bimg.WEBP}
 }
 
-func getDefaultDims() map[int]bimg.ImageSize {
+func getDefaultDims() map[string]bimg.ImageSize {
 	// Array of {width, height} to resize photos to
-	dims := map[int]bimg.ImageSize{
-		1200: {Width: 1090, Height: 818},
-		992:  {Width: 910, Height: 683},
-		768:  {Width: 670, Height: 503},
-		576:  {Width: 515, Height: 386},
+	dims := map[string]bimg.ImageSize{
+		"1200": {Width: 1090, Height: 818},
+		"992":  {Width: 910, Height: 683},
+		"768":  {Width: 670, Height: 503},
+		"576":  {Width: 515, Height: 386},
 	}
 	return dims
 }
@@ -47,17 +47,19 @@ func printMetadata(filepath string) {
 	fmt.Printf("metadata\n%+v", metadata)
 }
 
-func buildPath(folder string, width int, iType bimg.ImageType) string {
-	filename := fmt.Sprintf("%d.%v", width, bimg.ImageTypeName(iType))
+func buildPath(folder string, name string, iType bimg.ImageType) string {
+	filename := fmt.Sprintf("%s.%v", name, bimg.ImageTypeName(iType))
 	return path.Join(folder, filename)
 }
 
 func resizeToHeight(originalDims bimg.ImageSize, height int) bimg.ImageSize {
+	// adjust dimensions to match height, preserving aspect ratio
 	newWidth := originalDims.Width * height / originalDims.Height
 	return bimg.ImageSize{Width: newWidth, Height: height}
 }
 
 func resizeToWidth(originalDims bimg.ImageSize, width int) bimg.ImageSize {
+	// adjust dimensions to match width, perserving aspect ratio
 	newHeight := originalDims.Height * width / originalDims.Width
 	return bimg.ImageSize{Width: width, Height: newHeight}
 }
