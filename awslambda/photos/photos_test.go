@@ -30,9 +30,9 @@ func TestProcessImage(t *testing.T) {
 	if err != nil {
 		t.Fatalf(`failed to load test image: %v`, filepath)
 	}
-	processImage(img, folder)
 	iTypes := getDefaultImageTypes()
 	dims := getDefaultDims()
+	processImage(img, iTypes, dims, folder)
 	for screenSize := range dims {
 		for _, iType := range iTypes {
 			filename := fmt.Sprintf("%s.%s", screenSize, bimg.ImageTypeName(iType))
@@ -44,4 +44,15 @@ func TestProcessImage(t *testing.T) {
 		}
 
 	}
+}
+
+func TestInvalid(t *testing.T) {
+	filepath := "/media/gabe/data/pictures/websites/nnr/test/project.css"
+	img, err := loadImageLocal(filepath)
+	if err != nil {
+		t.Fatalf("Failed to load %s, %v", filepath, err)
+	}
+	iType := img.Type()
+	t.Logf("Image Type Supported? %t", bimg.IsTypeNameSupported(iType))
+
 }
