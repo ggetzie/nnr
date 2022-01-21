@@ -32,6 +32,21 @@ func getDefaultImageTypes() []bimg.ImageType {
 	return []bimg.ImageType{bimg.PNG, bimg.WEBP}
 }
 
+func getImageType(format string) (bimg.ImageType, error) {
+	unsupported := errors.New("unsupported image type")
+	for t, name := range bimg.ImageTypes {
+		if format == name {
+			supported := bimg.IsTypeSupported(t)
+			if supported {
+				return t, nil
+			} else {
+				return t, unsupported
+			}
+		}
+	}
+	return bimg.UNKNOWN, unsupported
+}
+
 func getDefaultDims() map[string]bimg.ImageSize {
 	// Array of {width, height} to resize photos to
 	dims := map[string]bimg.ImageSize{
@@ -183,28 +198,29 @@ func downloadImage(url string) (string, error) {
 	return filepath, nil
 }
 
-type urls struct {
-	Download string
-	Upload   string
+func uploadImage(filepath string, url string) (int, error) {
+
+	return 200, nil
 }
 
 type payloadInput struct {
-	Url string
+	Url           string
+	StripMetadata bool
+	AutoRotate    bool
 }
 
 type payloadOutput struct {
-	Filename       string
-	Width          int
-	Height         int
-	UploadUrl      string
-	StripMetadata  bool
-	AutoRotate     bool
-	UploadOriginal bool
+	Filename  string
+	Format    string
+	Width     int
+	Height    int
+	UploadUrl string
 }
 
 type payload struct {
-	Input  payloadInput
-	Output []payloadOutput
+	Input     payloadInput
+	Output    []payloadOutput
+	AuthToken string
 }
 
 func decodeRequest(event events.APIGatewayProxyRequest) (payload, error) {
@@ -231,28 +247,88 @@ func decodeRequest(event events.APIGatewayProxyRequest) (payload, error) {
 }
 
 func Handler(ctx context.Context, event events.APIGatewayProxyRequest) (Response, error) {
-	// download photo to /tmp
+
+	// decode request JSON
 	body, err := decodeRequest(event)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		return Response{StatusCode: 500}, err
 	}
 
+	// check auth token
+	validToken := os.Getenv("AuthToken")
+	if body.AuthToken != validToken {
+		return Response{StatusCode: 403}, errors.New("unauthorized user")
+	}
+
+	// download photo to /tmp
 	filepath, err := downloadImage(body.Input.Url)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		return Response{StatusCode: 500}, err
 	}
-	// resize photo in /tmp
-	img, err := loadImageLocal(filepath)
+	// load original image
+	original, err := loadImageLocal(filepath)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		return Response{StatusCode: 500}, err
 	}
-	dims := getDefaultDims()
-	imageTypes := getDefaultImageTypes()
-	processImage(img, imageTypes, dims, "/tmp")
-	// upload to S3
+
+	// AutoRotate if requested
+	if body.Input.AutoRotate {
+		buffer, err := original.AutoRotate()
+		if err != nil {
+			return Response{StatusCode: 500}, err
+		}
+		original = bimg.NewImage(buffer)
+	}
+
+	// Strip EXIF data if requested
+	if body.Input.StripMetadata {
+		buffer, err := original.Process(bimg.Options{StripMetadata: true})
+		if err != nil {
+			return Response{StatusCode: 500}, err
+		}
+		original = bimg.NewImage(buffer)
+	}
+
+	originalDims, err := original.Size()
+	if err != nil {
+		return Response{StatusCode: 500}, err
+	}
+	originalType := original.Type()
+
+	// resize and convert to each requested size and format
+	for _, output := range body.Output {
+		result := original.Image() // get byte array of original
+		targetType, err := getImageType(output.Format)
+		if err != nil {
+			return Response{StatusCode: 500}, err
+		}
+		requestDims := bimg.ImageSize{Height: output.Height, Width: output.Width}
+		if output.Format != originalType {
+			result, err = bimg.NewImage(result).Convert(targetType)
+			if err != nil {
+				return Response{StatusCode: 500}, err
+			}
+		}
+		if originalDims.Width != requestDims.Width || originalDims.Height != requestDims.Height {
+			newDims := smartDims(originalDims, requestDims)
+			result, err = bimg.NewImage(result).Resize(newDims.Width, newDims.Height)
+			if err != nil {
+				return Response{StatusCode: 500}, err
+			}
+		}
+		savePath := path.Join("/tmp/output", output.Filename)
+		saveImageLocal(result, savePath)
+
+		// upload to s3 with presigned url
+		_, err = uploadImage(savePath, output.UploadUrl)
+		if err != nil {
+			return Response{StatusCode: 500}, err
+		}
+	}
+
 	response, err := createResponse(map[string]interface{}{
 		"message": "Success",
 	}, 200)
