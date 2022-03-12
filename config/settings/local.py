@@ -13,23 +13,6 @@ SECRET_KEY = env(
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "nnr"]
 
-# CACHES
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#caches
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": env("REDIS_URL"),
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            # Mimicing memcache behavior.
-            # http://niwinz.github.io/django-redis/latest/#_memcached_exceptions_behavior
-            "IGNORE_EXCEPTIONS": True,
-        },
-        "KEY_PREFIX": "nnr"
-    }
-}
-
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
@@ -39,19 +22,16 @@ EMAIL_PORT = 1025
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-host
 # EMAIL_HOST = 'localhost'
-INSTALLED_APPS += ["anymail"] # noqa
+INSTALLED_APPS += ["anymail"]  # noqa
 AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
 
-EMAIL_BACKEND = 'anymail.backends.amazon_ses.EmailBackend'
+EMAIL_BACKEND = "anymail.backends.amazon_ses.EmailBackend"
 
-ANYMAIL = {
-    "AMAZON_SES_CLIENT_PARAMS": {
-        "region_name": "us-east-1"
-    }
-}
+ANYMAIL = {"AMAZON_SES_CLIENT_PARAMS": {"region_name": "us-east-1"}}
 DEFAULT_FROM_EMAIL = env(
-    "DJANGO_DEFAULT_FROM_EMAIL", default="No Nonsense Recipes <support@nononsense.recipes>"
+    "DJANGO_DEFAULT_FROM_EMAIL",
+    default="No Nonsense Recipes <support@nononsense.recipes>",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = "server@nononsense.recipes"
@@ -87,14 +67,14 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nnr_db',
-        'USER': 'nnr_db_user',
-        'PASSWORD': env('nnr_DB_PW'),
-        'HOST': env('DB_HOST'),
-        'PORT': '',
-        }
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "nnr_db",
+        "USER": "nnr_db_user",
+        "PASSWORD": env("nnr_DB_PW"),
+        "HOST": env("DB_HOST"),
+        "PORT": "",
+    }
 }
 
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
@@ -133,4 +113,3 @@ LOGGING = {
 
 # Your stuff...
 # ------------------------------------------------------------------------------
-

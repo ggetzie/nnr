@@ -4,9 +4,7 @@ Base settings to build other settings files upon.
 
 import environ
 
-ROOT_DIR = (
-    environ.Path(__file__) - 3
-)  # (nnr/config/settings/base.py - 3 = nnr/)
+ROOT_DIR = environ.Path(__file__) - 3  # (nnr/config/settings/base.py - 3 = nnr/)
 APPS_DIR = ROOT_DIR.path("nnr")
 
 env = environ.Env()
@@ -39,7 +37,6 @@ USE_TZ = True
 LOCALE_PATHS = [ROOT_DIR.path("locale")]
 
 
-
 # URLS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
@@ -56,7 +53,7 @@ DJANGO_APPS = [
     "django.contrib.sites",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django.contrib.humanize", # Handy template tags
+    "django.contrib.humanize",  # Handy template tags
     "django.contrib.admin",
     "django.contrib.postgres",
 ]
@@ -68,12 +65,7 @@ THIRD_PARTY_APPS = [
     "rest_framework",
 ]
 
-LOCAL_APPS = [
-    "nnr.users.apps.UsersConfig",
-    "main",
-    "recipes",
-    "comments"
-]
+LOCAL_APPS = ["nnr.users.apps.UsersConfig", "main", "recipes", "comments"]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -221,7 +213,7 @@ MANAGERS = ADMINS
 
 # LOGGING
 # ------------------------------------------------------------------------------
-# SEE DEPLOYMENT SPECIFIC CONFIG (local.py or production.py) 
+# SEE DEPLOYMENT SPECIFIC CONFIG (local.py or production.py)
 # FOR LOGGING SETTINGS
 # https://docs.djangoproject.com/en/dev/ref/settings/#logging
 # See https://docs.djangoproject.com/en/dev/topics/logging for
@@ -260,6 +252,22 @@ ACCOUNT_ADAPTER = "nnr.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "nnr.users.adapters.SocialAccountAdapter"
 ACCOUNT_FORMS = {"signup": "main.forms.NNRSignupForm"}
+
+# CACHES
+# ------------------------------------------------------------------------------
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": env("REDIS_URL"),
+        # "OPTIONS": {
+        #     # "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        #     # Mimicing memcache behavior.
+        #     # http://niwinz.github.io/django-redis/latest/#_memcached_exceptions_behavior
+        #     "IGNORE_EXCEPTIONS": True,
+        # },
+        "KEY_PREFIX": "nnr",
+    }
+}
 
 # Your stuff...
 # ------------------------------------------------------------------------------

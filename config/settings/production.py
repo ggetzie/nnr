@@ -13,14 +13,14 @@ ALLOWED_HOSTS = ["*"]
 # DATABASES
 # ------------------------------------------------------------------------------
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nnr_db',
-        'USER': 'nnr_db_user',
-        'PASSWORD': env('nnr_DB_PW'),
-        'HOST': env('DB_HOST'), 
-        'PORT': '5432',
-        }
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "nnr_db",
+        "USER": "nnr_db_user",
+        "PASSWORD": env("nnr_DB_PW"),
+        "HOST": env("DB_HOST"),
+        "PORT": "5432",
+    }
 }
 
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
@@ -35,15 +35,15 @@ DATABASES["default"]["ATOMIC_REQUESTS"] = True
 # ------------------------------------------------------------------------------
 CACHES = {
     "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
+        "BACKEND": "django.core.cache.backends.RedisCache",
         "LOCATION": env("REDIS_URL"),
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            # Mimicing memcache behavior.
-            # http://niwinz.github.io/django-redis/latest/#_memcached_exceptions_behavior
-            "IGNORE_EXCEPTIONS": True,
-        },
-        "KEY_PREFIX": "nnr"
+        # "OPTIONS": {
+        #     # "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        #     # Mimicing memcache behavior.
+        #     # http://niwinz.github.io/django-redis/latest/#_memcached_exceptions_behavior
+        #     "IGNORE_EXCEPTIONS": True,
+        # },
+        "KEY_PREFIX": "nnr",
     }
 }
 
@@ -97,9 +97,10 @@ AWS_DEFAULT_ACL = None
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_S3_REGION_NAME = env("DJANGO_AWS_S3_REGION_NAME", default=None)
 
-AWS_S3_CUSTOM_DOMAIN = env("AWS_S3_CUSTOM_DOMAIN", 
-                           default="d1q0lpl7gly8q2.cloudfront.net")
-AWS_IS_GZIPPED = True                           
+AWS_S3_CUSTOM_DOMAIN = env(
+    "AWS_S3_CUSTOM_DOMAIN", default="d1q0lpl7gly8q2.cloudfront.net"
+)
+AWS_IS_GZIPPED = True
 
 # STATIC
 # ------------------------
@@ -110,10 +111,12 @@ STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 # region http://stackoverflow.com/questions/10390244/
 # Full-fledge class: https://stackoverflow.com/a/18046120/104731
 from storages.backends.s3boto3 import S3Boto3Storage  # noqa E402
+
 # from django.contrib.staticfiles.storage import ManifestFilesMixin
 # import pathlib
 # import os
 # import json
+
 
 class StaticRootS3Boto3Storage(S3Boto3Storage):
     location = "static"
@@ -127,13 +130,14 @@ class StaticRootS3Boto3Storage(S3Boto3Storage):
     #         return None
 
     # def save_manifest(self):
-    #     payload = {'paths': self.hashed_files, 
+    #     payload = {'paths': self.hashed_files,
     #                'version': self.manifest_version}
     #     manifest_path = pathlib.Path(APPS_DIR.path(f"static/{self.manifest_name}"))
     #     if manifest_path.exists(): os.remove(manifest_path)
     #     contents = json.dumps(payload).encode()
     #     with open(manifest_path, "wb") as manifest_file:
     #         manifest_file.write(contents)
+
 
 class MediaRootS3Boto3Storage(S3Boto3Storage):
     location = "media"
@@ -161,7 +165,8 @@ TEMPLATES[0]["OPTIONS"]["loaders"] = [  # noqa F405
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
 DEFAULT_FROM_EMAIL = env(
-    "DJANGO_DEFAULT_FROM_EMAIL", default="No Nonsense Recipes <support@nononsense.recipes>"
+    "DJANGO_DEFAULT_FROM_EMAIL",
+    default="No Nonsense Recipes <support@nononsense.recipes>",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = "server@nononsense.recipes"
@@ -169,7 +174,6 @@ SERVER_EMAIL = "server@nononsense.recipes"
 EMAIL_SUBJECT_PREFIX = env(
     "DJANGO_EMAIL_SUBJECT_PREFIX", default="[No Nonsense Recipes]"
 )
-
 
 
 # ADMIN
@@ -181,14 +185,10 @@ ADMIN_URL = env("DJANGO_ADMIN_URL")
 # ------------------------------------------------------------------------------
 # https://anymail.readthedocs.io/en/stable/installation/#installing-anymail
 INSTALLED_APPS += ["anymail"]  # noqa F405
-EMAIL_BACKEND = 'anymail.backends.amazon_ses.EmailBackend'
+EMAIL_BACKEND = "anymail.backends.amazon_ses.EmailBackend"
 # https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
 
-ANYMAIL = {
-    "AMAZON_SES_CLIENT_PARAMS": {
-        "region_name": "us-east-1"
-    }
-}
+ANYMAIL = {"AMAZON_SES_CLIENT_PARAMS": {"region_name": "us-east-1"}}
 
 # Collectfast
 # ------------------------------------------------------------------------------
@@ -243,4 +243,4 @@ LOGGING = {
 
 # Your stuff...
 # ------------------------------------------------------------------------------
-INSTALLED_APPS += ['django_extensions']
+INSTALLED_APPS += ["django_extensions"]

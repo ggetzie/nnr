@@ -1,5 +1,4 @@
 import datetime
-import hashlib
 
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
