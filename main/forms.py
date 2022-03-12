@@ -1,33 +1,17 @@
-from dateutil.relativedelta import relativedelta
 from allauth.account.forms import SignupForm
 from allauth.account.models import EmailAddress
 
-from crispy_forms.bootstrap import (
-    InlineField,
-    FormActions,
-    Accordion,
-    AccordionGroup,
-    FieldWithButtons,
-    StrictButton,
-)
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Fieldset, Div, HTML
+from crispy_forms.layout import Layout, Submit, Div
 
 from django import forms
-from django.conf import settings
-from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.urls import reverse, reverse_lazy
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
-from django.utils.text import slugify
 
-from main.models import Profile
 from main.payments import get_payment_plans
-import datetime
 import logging
-import string
 
 User = get_user_model()
 logger = logging.getLogger(__name__)
@@ -53,7 +37,7 @@ class NNRSignupForm(SignupForm):
             """target="_blank">Privacy Policy</a>"""
         )
         self.fields["tos"].label = mark_safe(
-            _("I have read and agree to the " f"{TOS_LINK} and {PP_LINK}")
+            "I have read and agree to the " f"{TOS_LINK} and {PP_LINK}"
         )
         self.helper = FormHelper()
         self.helper.form_id = "signup_form"

@@ -3,39 +3,33 @@ import uuid
 
 from django.conf import settings
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
 
 import markdown
 from dateutil.relativedelta import relativedelta
 
 from recipes.models import Recipe
 
+
 def utc_now():
     return datetime.datetime.now(tz=datetime.timezone.utc)
 
-EPOCH_START = datetime.datetime(year=1970, 
-                                month=1, 
-                                day=1, 
-                                tzinfo=datetime.timezone.utc)
+
+EPOCH_START = datetime.datetime(year=1970, month=1, day=1, tzinfo=datetime.timezone.utc)
+
 
 class Comment(models.Model):
-    id = models.UUIDField(_("id"), 
-                          primary_key=True, 
-                          editable=False,
-                          default=uuid.uuid4)
-    text = models.TextField(_("Comment"))
-    html = models.TextField(_("Comment HTML"))
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, 
-                             on_delete=models.CASCADE)
+    id = models.UUIDField("id", primary_key=True, editable=False, default=uuid.uuid4)
+    text = models.TextField("Comment")
+    html = models.TextField("Comment HTML")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     parent = models.ForeignKey("self", on_delete=models.SET_NULL, null=True)
     recipe = models.ForeignKey(Recipe, on_delete=models.SET_NULL, null=True)
-    nesting = models.PositiveSmallIntegerField(_("Nesting"), default=0)
-    deleted = models.BooleanField(_("Deleted"), default=False)
-    timestamp = models.DateTimeField(_("Timestamp"), default=utc_now)
-    last_edited = models.DateTimeField(_("Last Edited"), 
-                                       default=EPOCH_START)
-    spam = models.BooleanField(_("Marked Spam"), default=False)
-    flag_count = models.IntegerField(_("Flag Count"), default=0)
+    nesting = models.PositiveSmallIntegerField("Nesting", default=0)
+    deleted = models.BooleanField("Deleted", default=False)
+    timestamp = models.DateTimeField("Timestamp", default=utc_now)
+    last_edited = models.DateTimeField("Last Edited", default=EPOCH_START)
+    spam = models.BooleanField("Marked Spam", default=False)
+    flag_count = models.IntegerField("Flag Count", default=0)
 
     class Meta:
         ordering = ["-timestamp"]
@@ -83,7 +77,7 @@ class Comment(models.Model):
             val = 0
 
         return f"{val} {unit} ago"
-    
+
     def json(self):
         # return dict for use in json response
         return {
@@ -97,23 +91,20 @@ class Comment(models.Model):
             "timestamp": self.time_ago(),
             "edited": self.has_been_edited(),
             "parent": self.parent,
-            "nesting": self.nesting
+            "nesting": self.nesting,
         }
-        
+
 
 class Flag(models.Model):
-    id = models.UUIDField(_("id"), 
-                          primary_key=True, 
-                          editable=False,
-                          default=uuid.uuid4)
-    comment = models.ForeignKey(Comment, 
-                                on_delete=models.CASCADE)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, 
-                             on_delete=models.CASCADE)
-    timestamp = models.DateTimeField(_("timestamp"),
-                                     default=utc_now)
+    id = models.UUIDField("id", primary_key=True, editable=False, default=uuid.uuid4)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField("timestamp", default=utc_now)
 
     class Meta:
         ordering = ["-timestamp"]
-        constraints = [models.UniqueConstraint(fields=["comment", "user"],
-                                               name="unique_comment_flag")]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["comment", "user"], name="unique_comment_flag"
+            )
+        ]

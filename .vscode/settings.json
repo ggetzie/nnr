@@ -56,5 +56,6 @@
     "zâàéû"
   ],
   "restructuredtext.languageServer.disabled": true,
-  "python.formatting.provider": "black"
+  "python.formatting.provider": "black",
+  "esbonio.server.enabled": false
 }

@@ -6,12 +6,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.views.generic import DetailView, RedirectView, UpdateView
 from django.contrib import messages
-from django.utils.translation import ugettext_lazy as _
 
 import stripe
 
 from main.forms import CancelForm, ReactivateForm
+
 User = get_user_model()
+
 
 class UserDetailView(LoginRequiredMixin, DetailView):
 
@@ -21,8 +22,8 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     context_object_name = "user"
 
     def get_context_data(self, **kwargs):
-        
-        context =  super().get_context_data(**kwargs)
+
+        context = super().get_context_data(**kwargs)
         subs = None
         has_sub = not self.object.profile.subscription_status in ("admin", "free", "")
         if has_sub:
@@ -37,6 +38,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
             context["cancel_form"] = CancelForm()
             context["reactivate_form"] = ReactivateForm()
         return context
+
 
 user_detail_view = UserDetailView.as_view()
 
@@ -54,9 +56,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         return User.objects.get(username=self.request.user.username)
 
     def form_valid(self, form):
-        messages.add_message(
-            self.request, messages.INFO, _("Infos successfully updated")
-        )
+        messages.add_message(self.request, messages.INFO, "Infos successfully updated")
         return super().form_valid(form)
 
 
