@@ -59,7 +59,9 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "rest_framework",
+    "django_extensions",
 ]
+# https://django-extensions.readthedocs.io/en/latest/installation_instructions.html#configuration
 
 LOCAL_APPS = ["nnr.users.apps.UsersConfig", "main", "recipes", "comments"]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
