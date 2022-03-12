@@ -74,7 +74,7 @@ class Recipe(models.Model):
     last_featured = models.DateField(
         "Last Featured", default=datetime.date(year=1970, month=1, day=1)
     )
-    see_also = models.ManyToManyField("self")
+    see_also = models.ManyToManyField("self", blank=True)
     search_vector = SearchVectorField(null=True)
     approved = models.BooleanField("Approved", default=False)
 

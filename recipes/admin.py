@@ -6,12 +6,17 @@ from recipes.models import Recipe, Tag
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ["title", "username", "created_dt", "approved"]
     list_editable = ["approved"]
+    list_filter = ["approved"]
+    autocomplete_fields = ["see_also"]
+    search_fields = ["title"]
     exclude = [
         "search_vector",
         "ingredients_html",
         "instructions_html",
         "quantity_html",
         "title_slug",
+        "featured",
+        "last_featured",
     ]
     ordering = ["-created_dt"]
 
