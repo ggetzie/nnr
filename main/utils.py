@@ -3,12 +3,11 @@ import hashlib
 
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
-from django.core.cache import cache
-from django.utils.http import urlquote
 
 import logging
 
 logger = logging.getLogger(__name__)
+
 
 def get_trial_end():
     if settings.DEBUG:
@@ -17,6 +16,7 @@ def get_trial_end():
         trial_period = relativedelta(days=30)
     trial_end = datetime.datetime.now() + trial_period
     return int(trial_end.timestamp())
+
 
 def get_subscription_plan():
     if settings.DEBUG:
