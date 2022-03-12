@@ -14,18 +14,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
-from django.views.generic import (
-    CreateView,
-    UpdateView,
-    DeleteView,
-    ListView,
-    DetailView,
-    FormView,
-)
+from django.views.generic import FormView
 
-from main.forms import AddFriendForm, NNRSignupForm, PaymentPlanForm
-
-from main.models import Profile
+from main.forms import AddFriendForm, PaymentPlanForm
 
 from main.payments import (
     handle_payment_success,
@@ -39,10 +30,6 @@ from main.payments import (
     handle_subscription_created,
 )
 
-from main.utils import get_trial_end, get_subscription_plan
-
-from mixins import ValidUserMixin
-
 import datetime
 import logging
 import json
@@ -55,7 +42,7 @@ DOMAIN_URL = "http://nnr" if settings.DEBUG else "https://nononsense.recipes"
 
 
 def public_key(request):
-    if request.is_ajax():
+    if request.headers.get("x-requested-with") == "XMLHttpRequest":
         return JsonResponse({"publicKey": settings.STRIPE_PK})
     else:
         return HttpResponseBadRequest("<h1>Bad Request</h1>")
@@ -63,7 +50,7 @@ def public_key(request):
 
 @login_required
 def create_checkout_session(request):
-    if not request.is_ajax():
+    if request.headers.get("x-requested-with") != "XMLHttpRequest":
         return HttpResponse("Bad Request")
     if not "plan" in request.GET:
         return JsonResponse({"error": "Please choose a plan."})
@@ -116,7 +103,7 @@ def checkout_success(request):
 def update_payment(request):
     user = request.user
     stripe.api_key = settings.STRIPE_SK
-    if request.is_ajax():
+    if request.headers.get("x-requested-with") == "XMLHttpRequest":
         data = json.loads(request.body)
         payment_method = data["payment_method"]
         if user.is_staff:
