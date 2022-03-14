@@ -10,33 +10,45 @@ from recipes.models import Recipe
 support_context = {"support_email": settings.SUPPORT_EMAIL}
 
 urlpatterns = [
-    path("", 
-         TemplateView.as_view(template_name="pages/home.html",
-                              extra_context={"recipe_count": Recipe.objects.count()}), 
-         name="home"),
-    path("about/", 
-         TemplateView.as_view(template_name="pages/about.html"), 
-         name="about"),
+    path(
+        "",
+        TemplateView.as_view(
+            template_name="pages/home.html",
+            extra_context={"recipe_count": Recipe.objects.count()},
+        ),
+        name="home",
+    ),
+    path(
+        "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
+    ),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
     path("users/", include("nnr.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
-
     # Custom urls
-    path("privacy/", TemplateView.as_view(template_name="privacy.html", 
-                                          extra_context=support_context),
-                    name="privacy"),
-    path("support", TemplateView.as_view(template_name="support.html", 
-                                         extra_context=support_context),
-                    name="support"),
-    path("tos/", TemplateView.as_view(template_name="tos.html", 
-                                      extra_context=support_context),
-                 name="tos"),
+    path(
+        "privacy/",
+        TemplateView.as_view(
+            template_name="privacy.html", extra_context=support_context
+        ),
+        name="privacy",
+    ),
+    path(
+        "support",
+        TemplateView.as_view(
+            template_name="support.html", extra_context=support_context
+        ),
+        name="support",
+    ),
+    path(
+        "tos/",
+        TemplateView.as_view(template_name="tos.html", extra_context=support_context),
+        name="tos",
+    ),
     path("main/", include("main.urls", namespace="main")),
     path("comments/", include("comments.urls", namespace="comments")),
     path("", include("recipes.urls", namespace="recipes")),
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
@@ -60,7 +72,3 @@ if settings.DEBUG:
         ),
         path("500/", default_views.server_error),
     ]
-    if "debug_toolbar" in settings.INSTALLED_APPS:
-        import debug_toolbar
-
-        urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns

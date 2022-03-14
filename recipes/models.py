@@ -12,6 +12,7 @@ import datetime
 import markdown
 import string
 import uuid
+from textwrap import dedent
 
 import logging
 
@@ -120,13 +121,15 @@ class Recipe(models.Model):
         return super().delete(*args, **kwargs)
 
     def text_only(self):
-        return f"""{self.title}
+        return dedent(
+            f"""{self.title}
 
-Ingredients
-{strip_tags(self.ingredients_html)}
+            Ingredients
+            {strip_tags(self.ingredients_html)}
 
-Instructions
-{strip_tags(self.instructions_html)}"""
+            Instructions
+            {strip_tags(self.instructions_html)}"""
+        )
 
     def ingredients_list(self):
         return (
@@ -142,10 +145,30 @@ Instructions
         return strip_tags(self.instructions_html).strip()
 
 
+SCREEN_SIZES = ["1140", "960", "720", "540"]
+
+
+def photo_urls(url):
+    res = [url.replace("orig", s) for s in SCREEN_SIZES]
+    res += [url]
+    return res
+
+
+def tag_photo_path(instance, filename):
+    _, ext = filename.rsplit(".", maxsplit=1)
+    ext = ext.lower()
+    # standardize on "jpg" extension for jpegs
+    if ext == "jpeg":
+        ext = "jpg"
+    path = f"images/tags/{instance.name_slug}/orig.{ext}"
+    return path
+
+
 class Tag(models.Model):
     name = models.CharField("name", max_length=100)
     name_slug = models.SlugField("slug", max_length=100, unique=True)
     hashtag = models.BooleanField("Use as hashtag", default=False)
+    photo = models.ImageField("Photo", blank=True, null=True, upload_to=tag_photo_path)
 
     class Meta:
         ordering = ["name_slug"]
@@ -159,6 +182,26 @@ class Tag(models.Model):
 
     def get_absolute_url(self):
         return reverse("recipes:tag_detail", kwargs={"slug": self.name_slug})
+
+    @property
+    def caption(self):
+        return self.name
+
+    def picture_tag(self):
+        sources = "\n".join(
+            [
+                f"""<source media="(min-width: {size}px)" srcset="{self.photo.url.replace('orig', size)}">"""
+                for size in SCREEN_SIZES
+            ]
+        )
+        return dedent(
+            f"""
+        <picture>
+            {sources}
+            <img src="{self.photo.url}">
+        </picture>
+        """
+        )
 
 
 class UserTag(models.Model):
@@ -177,16 +220,6 @@ class UserTag(models.Model):
 
     def __str__(self):
         return f"{self.recipe} - {self.user} - {self.tag}"
-
-    # def save(self, *args, **kwargs):
-    #     logger.info(f"Deleting tags cache: {self.recipe.tags_key}")
-    #     cache.delete(self.recipe.tags_key)
-    #     return super().save(*args, **kwargs)
-
-    # def delete(self, *args, **kwargs):
-    #     logger.info(f"Deleting tags cache: {self.recipe.tags_key}")
-    #     cache.delete(self.recipe.tags_key)
-    #     return super().delete(*args, **kwargs)
 
 
 RATING_CHOICES = ((1, "⭐"), (2, "⭐⭐"), (3, "⭐⭐⭐"), (4, "⭐⭐⭐⭐"), (5, "⭐⭐⭐⭐⭐"))
@@ -209,16 +242,13 @@ class RecipeRating(models.Model):
         return f"{self.user.username} rated {self.recipe} {self.rating} stars"
 
 
-SCREEN_SIZES = ["1140", "960", "720", "540"]
-
-
 def recipe_photo_path(instance, filename):
     stem, ext = filename.rsplit(".", maxsplit=1)
     ext = ext.lower()
     # standardize on "jpg" extension for jpegs
     if ext == "jpeg":
         ext = "jpg"
-    path = f"{instance.recipe.slug}/{stem}/orig.{ext}"
+    path = f"images/recipes/{instance.recipe.slug}/{instance.id}/orig.{ext}"
     return path
 
 
@@ -238,6 +268,22 @@ class RecipePhoto(models.Model):
 
     class Meta:
         ordering = ["recipe__sort_title", "-timestamp"]
+
+    def picture_tag(self):
+        sources = "\n".join(
+            [
+                f"""<source media="(min-width: {size}px)" srcset="{self.photo.url.replace('orig', size)}">"""
+                for size in SCREEN_SIZES
+            ]
+        )
+        return dedent(
+            f"""
+        <picture>
+            {sources}
+            <img src="{self.photo.url}">
+        </picture>
+        """
+        )
 
     @property
     def breakpoint0_url(self):

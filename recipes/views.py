@@ -1,14 +1,8 @@
 import json
-import pickle
-
-from operator import itemgetter
 
 from crispy_forms.layout import Submit
 
-from django.conf import settings
-from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.core.cache import cache
@@ -16,8 +10,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
 from django.db.models import Avg, Count
 from django.http import JsonResponse
-from django.middleware.csrf import get_token
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
 from django.views.generic import (
@@ -187,6 +180,11 @@ class RecipeDetail(DetailView):
         context["average_rating"] = RecipeRating.objects.filter(
             recipe=self.object
         ).aggregate(Avg("rating"))["rating__avg"]
+        recipe_photos = self.object.recipephoto_set.filter(approved=True)
+        tag_photos = Tag.objects.filter(
+            photo__isnull=False, usertag__recipe=self.object
+        )
+        context["photos"] = recipe_photos or tag_photos
         return context
 
 

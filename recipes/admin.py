@@ -1,5 +1,9 @@
 from django.contrib import admin
-from recipes.models import Recipe, Tag
+from recipes.models import Recipe, Tag, RecipePhoto
+
+
+class RecipePhotoInline(admin.TabularInline):
+    model = RecipePhoto
 
 
 @admin.register(Recipe)
@@ -19,6 +23,7 @@ class RecipeAdmin(admin.ModelAdmin):
         "last_featured",
     ]
     ordering = ["-created_dt"]
+    inlines = [RecipePhotoInline]
 
     def username(self, obj):
         return obj.user.username
