@@ -29,7 +29,7 @@ func saveImageLocal(buffer []byte, filepath string) {
 }
 
 func getDefaultImageTypes() []bimg.ImageType {
-	return []bimg.ImageType{bimg.PNG, bimg.WEBP}
+	return []bimg.ImageType{bimg.JPEG, bimg.WEBP}
 }
 
 func getImageType(format string) (bimg.ImageType, error) {
@@ -54,6 +54,8 @@ func getDefaultDims() map[string]bimg.ImageSize {
 		"992":  {Width: 910, Height: 683},
 		"768":  {Width: 670, Height: 503},
 		"576":  {Width: 515, Height: 386},
+		"408":  {Width: 400, Height: 300},
+		"320":  {Width: 310, Height: 225},
 	}
 	return dims
 }

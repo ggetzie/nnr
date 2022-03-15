@@ -23,7 +23,7 @@ func TestBuildPath(t *testing.T) {
 }
 
 func TestProcessImage(t *testing.T) {
-	folder := "/media/gabe/data/pictures/websites/nnr/test/2"
+	folder := "/usr/local/src/nnr/nnr/media/images/tags/breakfast/"
 	file := "orig.jpeg"
 	filepath := path.Join(folder, file)
 	img, err := loadImageLocal(filepath)

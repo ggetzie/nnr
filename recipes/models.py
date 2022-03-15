@@ -145,7 +145,8 @@ class Recipe(models.Model):
         return strip_tags(self.instructions_html).strip()
 
 
-SCREEN_SIZES = ["1140", "960", "720", "540"]
+SCREEN_SIZES = ["1200", "992", "768", "576", "408", "320"]
+PHOTO_EXTENSIONS = ["webp", "jpeg"]
 
 
 def photo_urls(url):
@@ -157,9 +158,9 @@ def photo_urls(url):
 def tag_photo_path(instance, filename):
     _, ext = filename.rsplit(".", maxsplit=1)
     ext = ext.lower()
-    # standardize on "jpg" extension for jpegs
-    if ext == "jpeg":
-        ext = "jpg"
+    # standardize on "jpeg" extension for jpegs
+    if ext == "jpg":
+        ext = "jpeg"
     path = f"images/tags/{instance.name_slug}/orig.{ext}"
     return path
 
@@ -188,15 +189,17 @@ class Tag(models.Model):
         return self.name
 
     def picture_tag(self):
+        filename = self.photo.url.rsplit("/", maxsplit=1)[1]
         sources = "\n".join(
             [
-                f"""<source media="(min-width: {size}px)" srcset="{self.photo.url.replace('orig', size)}">"""
+                f"""<source media="(min-width: {size}px)" srcset="{self.photo.url.replace(filename, size+'.'+ext)}">"""
                 for size in SCREEN_SIZES
+                for ext in PHOTO_EXTENSIONS
             ]
         )
         return dedent(
             f"""
-        <picture>
+        <picture class="d-block w-100">
             {sources}
             <img src="{self.photo.url}">
         </picture>
@@ -245,9 +248,9 @@ class RecipeRating(models.Model):
 def recipe_photo_path(instance, filename):
     stem, ext = filename.rsplit(".", maxsplit=1)
     ext = ext.lower()
-    # standardize on "jpg" extension for jpegs
-    if ext == "jpeg":
-        ext = "jpg"
+    # standardize on "jpeg" extension for jpegs
+    if ext == "jpg":
+        ext = "jpeg"
     path = f"images/recipes/{instance.recipe.slug}/{instance.id}/orig.{ext}"
     return path
 

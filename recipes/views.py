@@ -180,11 +180,12 @@ class RecipeDetail(DetailView):
         context["average_rating"] = RecipeRating.objects.filter(
             recipe=self.object
         ).aggregate(Avg("rating"))["rating__avg"]
-        recipe_photos = self.object.recipephoto_set.filter(approved=True)
-        tag_photos = Tag.objects.filter(
-            photo__isnull=False, usertag__recipe=self.object
-        )
-        context["photos"] = recipe_photos or tag_photos
+        photos = self.object.recipephoto_set.filter(approved=True)
+        if not photos:
+            photos = Tag.objects.filter(
+                photo__isnull=False, usertag__recipe=self.object
+            )
+        context["photos"] = photos
         return context
 
 

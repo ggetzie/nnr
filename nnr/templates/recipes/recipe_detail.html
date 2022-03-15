@@ -50,8 +50,8 @@
     <div class="carousel-inner">
         {% for photo in photos %}
         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-            {% comment %} {{ photo.picture_tag|safe }} {% endcomment %}
-            <img class="d-block w-100" src="{{ photo.photo.url }}">
+            {{ photo.picture_tag|safe }}
+            {% comment %} <img class="d-block w-100" src="{{ photo.photo.url }}"> {% endcomment %}
             <div class="carousel-caption d-none d-md-block">
                 <p>{{ photo.caption }}</p>
             </div>
