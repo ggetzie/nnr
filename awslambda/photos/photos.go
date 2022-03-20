@@ -1,10 +1,7 @@
 package main
 
 import (
-	"bytes"
 	"context"
-	"encoding/base64"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"io"
@@ -13,6 +10,8 @@ import (
 	"path"
 
 	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/aws/aws-lambda-go/lambdacontext"
 	"github.com/h2non/bimg"
 )
 
@@ -30,21 +29,6 @@ func saveImageLocal(buffer []byte, filepath string) {
 
 func getDefaultImageTypes() []bimg.ImageType {
 	return []bimg.ImageType{bimg.JPEG, bimg.WEBP}
-}
-
-func getImageType(format string) (bimg.ImageType, error) {
-	unsupported := errors.New("unsupported image type")
-	for t, name := range bimg.ImageTypes {
-		if format == name {
-			supported := bimg.IsTypeSupported(t)
-			if supported {
-				return t, nil
-			} else {
-				return t, unsupported
-			}
-		}
-	}
-	return bimg.UNKNOWN, unsupported
 }
 
 func getDefaultDims() map[string]bimg.ImageSize {
@@ -156,28 +140,6 @@ func processImage(
 	return "Success", nil
 }
 
-type Response events.APIGatewayProxyResponse
-
-func createResponse(payload map[string]interface{}, status int) (Response, error) {
-
-	body, err := json.Marshal(payload)
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		return Response{StatusCode: 500}, err
-	}
-	var buf bytes.Buffer
-	json.HTMLEscape(&buf, body)
-	return Response{
-		StatusCode:      status,
-		IsBase64Encoded: false,
-		Body:            buf.String(),
-		Headers: map[string]string{
-			"Content-Type": "application/json",
-		},
-	}, nil
-
-}
-
 func downloadImage(url string) (string, error) {
 	response, err := http.Get(url)
 	if err != nil {
@@ -200,143 +162,35 @@ func downloadImage(url string) (string, error) {
 	return filepath, nil
 }
 
-func uploadImage(filepath string, url string) (int, error) {
+func Handler(ctx context.Context, event events.S3Event) (string, error) {
 
-	return 200, nil
-}
-
-type payloadInput struct {
-	Url           string
-	StripMetadata bool
-	AutoRotate    bool
-}
-
-type payloadOutput struct {
-	Filename  string
-	Format    string
-	Width     int
-	Height    int
-	UploadUrl string
-}
-
-type payload struct {
-	Input     payloadInput
-	Output    []payloadOutput
-	AuthToken string
-}
-
-func decodeRequest(event events.APIGatewayProxyRequest) (payload, error) {
-	var requestPayload payload
-	if event.IsBase64Encoded {
-		decoded, err := base64.StdEncoding.DecodeString(event.Body)
-		if err != nil {
-			fmt.Fprintln(os.Stderr, err)
-			return requestPayload, err
-		}
-		err = json.Unmarshal(decoded, &requestPayload)
-		if err != nil {
-			fmt.Fprintln(os.Stderr, err)
-			return requestPayload, err
-		}
-	} else {
-		err := json.Unmarshal([]byte(event.Body), &requestPayload)
-		if err != nil {
-			fmt.Fprintln(os.Stderr, err)
-			return requestPayload, err
-		}
-	}
-	return requestPayload, nil
-}
-
-func Handler(ctx context.Context, event events.APIGatewayProxyRequest) (Response, error) {
-
-	// decode request JSON
-	body, err := decodeRequest(event)
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		return Response{StatusCode: 500}, err
-	}
-
-	// check auth token
-	validToken := os.Getenv("AuthToken")
-	if body.AuthToken != validToken {
-		return Response{StatusCode: 403}, errors.New("unauthorized user")
-	}
+	// get bucket item from event
 
 	// download photo to /tmp
-	filepath, err := downloadImage(body.Input.Url)
+	filepath, err := downloadImage("https://image")
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		return Response{StatusCode: 500}, err
+		return "Error downloading image", err
 	}
 	// load original image
 	original, err := loadImageLocal(filepath)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		return Response{StatusCode: 500}, err
+		return "Error opening image file", err
 	}
 
-	// AutoRotate if requested
-	if body.Input.AutoRotate {
-		buffer, err := original.AutoRotate()
-		if err != nil {
-			return Response{StatusCode: 500}, err
-		}
-		original = bimg.NewImage(buffer)
-	}
+	processImage(original, getDefaultImageTypes(), getDefaultDims(), "/tmp/output")
+	return "Success", nil
+}
 
-	// Strip EXIF data if requested
-	if body.Input.StripMetadata {
-		buffer, err := original.Process(bimg.Options{StripMetadata: true})
-		if err != nil {
-			return Response{StatusCode: 500}, err
-		}
-		original = bimg.NewImage(buffer)
-	}
+func testHandler(ctx context.Context, event events.S3Event) (string, error) {
+	lc, _ := lambdacontext.FromContext(ctx)
+	fmt.Println(fmt.Sprintf("Lambda Context %v", lc))
+	fmt.Println(fmt.Sprintf("Bucket: %s", event.Records[0].S3.Bucket.Name))
+	fmt.Println(fmt.Sprintf("Object: %s", event.Records[0].S3.Object.Key))
+	return "success", nil
+}
 
-	originalDims, err := original.Size()
-	if err != nil {
-		return Response{StatusCode: 500}, err
-	}
-	originalType := original.Type()
-
-	// resize and convert to each requested size and format
-	for _, output := range body.Output {
-		result := original.Image() // get byte array of original
-		targetType, err := getImageType(output.Format)
-		if err != nil {
-			return Response{StatusCode: 500}, err
-		}
-		requestDims := bimg.ImageSize{Height: output.Height, Width: output.Width}
-		if output.Format != originalType {
-			result, err = bimg.NewImage(result).Convert(targetType)
-			if err != nil {
-				return Response{StatusCode: 500}, err
-			}
-		}
-		if originalDims.Width != requestDims.Width || originalDims.Height != requestDims.Height {
-			newDims := smartDims(originalDims, requestDims)
-			result, err = bimg.NewImage(result).Resize(newDims.Width, newDims.Height)
-			if err != nil {
-				return Response{StatusCode: 500}, err
-			}
-		}
-		savePath := path.Join("/tmp/output", output.Filename)
-		saveImageLocal(result, savePath)
-
-		// upload to s3 with presigned url
-		_, err = uploadImage(savePath, output.UploadUrl)
-		if err != nil {
-			return Response{StatusCode: 500}, err
-		}
-	}
-
-	response, err := createResponse(map[string]interface{}{
-		"message": "Success",
-	}, 200)
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		return Response{StatusCode: 500}, err
-	}
-	return response, nil
+func main() {
+	lambda.Start(testHandler)
 }
