@@ -156,12 +156,12 @@ def photo_urls(url):
 
 
 def tag_photo_path(instance, filename):
-    _, ext = filename.rsplit(".", maxsplit=1)
+    stem, ext = filename.rsplit(".", maxsplit=1)
     ext = ext.lower()
     # standardize on "jpeg" extension for jpegs
     if ext == "jpg":
         ext = "jpeg"
-    path = f"images/tags/{instance.name_slug}/orig.{ext}"
+    path = f"images/raw/tags/{instance.name_slug}/{stem}.{ext}"
     return path
 
 
@@ -251,7 +251,7 @@ def recipe_photo_path(instance, filename):
     # standardize on "jpeg" extension for jpegs
     if ext == "jpg":
         ext = "jpeg"
-    path = f"images/recipes/{instance.recipe.slug}/{instance.id}/orig.{ext}"
+    path = f"images/raw/recipes/{instance.recipe.slug}/{instance.id}/{stem}.{ext}"
     return path
 
 
