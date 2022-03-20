@@ -1,0 +1,3 @@
+[submodule "awslambda/photos"]
+	path = awslambda/photos
+	url = git@github.com:ggetzie/nnr-photos.git
