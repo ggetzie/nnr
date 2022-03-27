@@ -2,10 +2,12 @@ from django.db import models
 from django.conf import settings
 from django.contrib.postgres.search import SearchVectorField
 from django.core.cache import cache
+from django.core.files.storage import default_storage
 from django.urls import reverse
 from django.utils.html import strip_tags
 from django.utils.text import slugify
 
+from nnr.custom_storages import RawMediaStorage
 from .utils import sortify, utc_now
 
 import datetime
@@ -33,6 +35,16 @@ def setup_lettercounts():
 
 def make_detail_key(slug):
     return f"{slug}-detail"
+
+
+def select_storage():
+    return default_storage if settings.DEBUG else RawMediaStorage
+
+
+def replace_filename(url, size, ext):
+    """Replace filenames with different sizes for photo tag"""
+    prefix = url.rsplit("/", maxsplit=1)[0]
+    return "/".join([prefix, f"{size}.{ext}"])
 
 
 class LetterCount(models.Model):
@@ -149,19 +161,13 @@ SCREEN_SIZES = ["1200", "992", "768", "576", "408", "320"]
 PHOTO_EXTENSIONS = ["webp", "jpeg"]
 
 
-def photo_urls(url):
-    res = [url.replace("orig", s) for s in SCREEN_SIZES]
-    res += [url]
-    return res
-
-
 def tag_photo_path(instance, filename):
-    stem, ext = filename.rsplit(".", maxsplit=1)
+    stem, ext = filename.rsplit(".", maxsplit=1).lower()
     ext = ext.lower()
     # standardize on "jpeg" extension for jpegs
     if ext == "jpg":
         ext = "jpeg"
-    path = f"images/raw/tags/{instance.name_slug}/{stem}.{ext}"
+    path = f"images/tags/{instance.name_slug}/{stem}.{ext}"
     return path
 
 
@@ -169,7 +175,9 @@ class Tag(models.Model):
     name = models.CharField("name", max_length=100)
     name_slug = models.SlugField("slug", max_length=100, unique=True)
     hashtag = models.BooleanField("Use as hashtag", default=False)
-    photo = models.ImageField("Photo", blank=True, null=True, upload_to=tag_photo_path)
+    photo = models.ImageField(
+        "Photo", blank=True, null=True, upload_to=tag_photo_path, storage=select_storage
+    )
 
     class Meta:
         ordering = ["name_slug"]
@@ -186,13 +194,12 @@ class Tag(models.Model):
 
     @property
     def caption(self):
-        return self.name
+        return f"Tagged: {self.name}"
 
     def picture_tag(self):
-        filename = self.photo.url.rsplit("/", maxsplit=1)[1]
         sources = "\n".join(
             [
-                f"""<source media="(min-width: {size}px)" srcset="{self.photo.url.replace(filename, size+'.'+ext)}">"""
+                f"""<source media="(min-width:{size}px)" srcset="{replace_filename(self.photo.url, size, ext)}">"""
                 for size in SCREEN_SIZES
                 for ext in PHOTO_EXTENSIONS
             ]
@@ -251,7 +258,7 @@ def recipe_photo_path(instance, filename):
     # standardize on "jpeg" extension for jpegs
     if ext == "jpg":
         ext = "jpeg"
-    path = f"images/raw/recipes/{instance.recipe.slug}/{instance.id}/{stem}.{ext}"
+    path = f"images/recipes/{instance.recipe.title_slug}/{instance.id}/{stem}.{ext}"
     return path
 
 
@@ -261,22 +268,26 @@ class RecipePhoto(models.Model):
     uploaded_by = models.ForeignKey(
         settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL
     )
-    photo = models.ImageField("Photo", max_length=200, upload_to=recipe_photo_path)
+    photo = models.ImageField(
+        "Photo", max_length=200, upload_to=recipe_photo_path, storage=select_storage
+    )
     reviewed = models.BooleanField("Reviewed", default=False)
     approved = models.BooleanField("Approved", default=False)
     resized = models.BooleanField("Resized options created", default=False)
     timestamp = models.DateTimeField("Timestamp", default=utc_now, editable=False)
     caption = models.CharField("Caption", max_length=200, default="", blank=True)
-    order = models.PositiveSmallIntegerField("Order", default=0)
+    order = models.PositiveSmallIntegerField("Order", default=1)
 
     class Meta:
         ordering = ["recipe__sort_title", "-timestamp"]
 
     def picture_tag(self):
+
         sources = "\n".join(
             [
-                f"""<source media="(min-width: {size}px)" srcset="{self.photo.url.replace('orig', size)}">"""
+                f"""<source media="(min-width:{size}px)" srcset="{replace_filename(self.photo.url, size, ext)}">"""
                 for size in SCREEN_SIZES
+                for ext in PHOTO_EXTENSIONS
             ]
         )
         return dedent(

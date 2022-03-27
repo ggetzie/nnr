@@ -273,3 +273,4 @@ STRIPE_PK = env("STRIPE_PK")
 STRIPE_SK = env("STRIPE_SK")
 SUPPORT_EMAIL = "support@nononsense.recipes"
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+RAW_MEDIA_BUCKET = env("RAW_MEDIA_BUCKET", default="nnr-media-raw")
