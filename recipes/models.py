@@ -162,12 +162,12 @@ PHOTO_EXTENSIONS = ["webp", "jpeg"]
 
 
 def tag_photo_path(instance, filename):
-    stem, ext = filename.rsplit(".", maxsplit=1).lower()
+    stem, ext = filename.rsplit(".", maxsplit=1)
     ext = ext.lower()
     # standardize on "jpeg" extension for jpegs
     if ext == "jpg":
         ext = "jpeg"
-    path = f"images/tags/{instance.name_slug}/{stem}.{ext}"
+    path = f"images/tags/{instance.name_slug}/{stem.lower()}.{ext}"
     return path
 
 
@@ -195,6 +195,10 @@ class Tag(models.Model):
     @property
     def caption(self):
         return f"Tagged: {self.name}"
+
+    @property
+    def thumbnail_url(self):
+        return replace_filename(self.photo.url, "thumbnail", "jpeg")
 
     def picture_tag(self):
         sources = "\n".join(
@@ -258,7 +262,7 @@ def recipe_photo_path(instance, filename):
     # standardize on "jpeg" extension for jpegs
     if ext == "jpg":
         ext = "jpeg"
-    path = f"images/recipes/{instance.recipe.title_slug}/{instance.id}/{stem}.{ext}"
+    path = f"images/recipes/{instance.recipe.title_slug}/{instance.id}/{stem.lower()}.{ext}"
     return path
 
 
@@ -300,17 +304,5 @@ class RecipePhoto(models.Model):
         )
 
     @property
-    def breakpoint0_url(self):
-        return self.photo.url.replace("orig", SCREEN_SIZES[0])
-
-    @property
-    def breakpoint1_url(self):
-        return self.photo.url.replace("orig", SCREEN_SIZES[1])
-
-    @property
-    def breakpoint2_url(self):
-        return self.photo.url.replace("orig", SCREEN_SIZES[2])
-
-    @property
-    def breakpoint3_url(self):
-        return self.photo.url.replace("orig", SCREEN_SIZES[2])
+    def thumbnail_url(self):
+        return replace_filename(self.photo.url, "thumbnail", "jpeg")

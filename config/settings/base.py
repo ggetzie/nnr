@@ -63,7 +63,12 @@ THIRD_PARTY_APPS = [
 ]
 # https://django-extensions.readthedocs.io/en/latest/installation_instructions.html#configuration
 
-LOCAL_APPS = ["nnr.users.apps.UsersConfig", "main", "recipes", "comments"]
+LOCAL_APPS = [
+    "nnr.users.apps.UsersConfig",
+    "main",
+    "recipes.apps.RecipesConfig",
+    "comments",
+]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
