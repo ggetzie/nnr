@@ -37,8 +37,7 @@ def make_detail_key(slug):
     return f"{slug}-detail"
 
 
-def select_storage():
-    return default_storage if settings.DEBUG else RawMediaStorage
+IMAGE_STORAGE = default_storage if settings.DEBUG else RawMediaStorage
 
 
 def replace_filename(url, size, ext):
@@ -176,7 +175,7 @@ class Tag(models.Model):
     name_slug = models.SlugField("slug", max_length=100, unique=True)
     hashtag = models.BooleanField("Use as hashtag", default=False)
     photo = models.ImageField(
-        "Photo", blank=True, null=True, upload_to=tag_photo_path, storage=select_storage
+        "Photo", blank=True, null=True, upload_to=tag_photo_path, storage=IMAGE_STORAGE
     )
 
     class Meta:
@@ -273,7 +272,7 @@ class RecipePhoto(models.Model):
         settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL
     )
     photo = models.ImageField(
-        "Photo", max_length=200, upload_to=recipe_photo_path, storage=select_storage
+        "Photo", max_length=200, upload_to=recipe_photo_path, storage=IMAGE_STORAGE
     )
     reviewed = models.BooleanField("Reviewed", default=False)
     approved = models.BooleanField("Approved", default=False)
