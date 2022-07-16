@@ -37,7 +37,6 @@ from recipes.forms import (
     UntagRecipeForm,
 )
 
-
 from recipes.models import (
     Recipe,
     Tag,
@@ -184,7 +183,7 @@ class RecipeDetail(DetailView):
         if not photos:
             photos = Tag.objects.filter(
                 photo__isnull=False, usertag__recipe=self.object
-            )
+            ).exclude(photo="")
         context["photos"] = photos
         return context
 

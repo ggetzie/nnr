@@ -50,16 +50,18 @@ def optimize_recipephoto(sender, **kwargs):
 @receiver(post_save, sender=Tag)
 def optimize_tagphoto(sender, **kwargs):
     tag = kwargs["instance"]
-    if not tag.photo:
-        # remove media files if photo cleared from tag.
-        tag.photo.storage.delete(tag.photo.file.name)
-        if settings.DEBUG:
-            folder = pathlib.Path(
-                settings.MEDIA_ROOT, tag_photo_path(tag, "orig.jpeg")
-            ).parent
-            logger.info(f"removing {folder}")
-            shutil.rmtree(folder)
-        return
+    # This doesn't work. Can't find the file if the photo field has been cleared
+    # need to delete unused photos at a different point
+    # if not tag.photo:
+    #     # remove media files if photo cleared from tag.
+    #     tag.photo.storage.delete(tag.photo.file.name)
+    #     if settings.DEBUG:
+    #         folder = pathlib.Path(
+    #             settings.MEDIA_ROOT, tag_photo_path(tag, "orig.jpeg")
+    #         ).parent
+    #         logger.info(f"removing {folder}")
+    #         shutil.rmtree(folder)
+    #     return
 
     if settings.DEBUG and tag.photo:
         logger.info(f"Optimizing tag photo {tag.name}")
@@ -72,7 +74,8 @@ def optimize_tagphoto(sender, **kwargs):
 @receiver(post_delete, sender=Tag)
 def cleanup_tagphoto(sender, **kwargs):
     tag = kwargs["instance"]
-    tag.photo.storage.delete(tag.photo.file.name)
+    if tag.photo and tag.photo != "":
+        tag.photo.storage.delete(tag.photo.file.name)
     if settings.DEBUG:
         folder = pathlib.Path(
             settings.MEDIA_ROOT, tag_photo_path(tag, "orig.jpeg")
@@ -84,7 +87,8 @@ def cleanup_tagphoto(sender, **kwargs):
 @receiver(post_delete, sender=RecipePhoto)
 def cleanup_recipephoto(sender, **kwargs):
     rp = kwargs["instance"]
-    rp.photo.storage.delete(rp.photo.file.name)
+    if rp.photo and rp.photo != "":
+        rp.photo.storage.delete(rp.photo.file.name)
     if settings.DEBUG:
         folder = pathlib.Path(
             settings.MEDIA_ROOT, recipe_photo_path(rp, "orig.jpeg")
