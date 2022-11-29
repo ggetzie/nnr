@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"math/rand"
 	"net/http"
 	"os"
@@ -19,6 +19,8 @@ import (
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
 	"github.com/jackc/pgx/v4/pgxpool"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 type recipe struct {
@@ -36,7 +38,8 @@ func init() {
 }
 
 func slugToHashtag(slug string) string {
-	output := "#" + strings.Title(slug)
+	c := cases.Title(language.English)
+	output := "#" + c.String(slug)
 	output = strings.ReplaceAll(output, "-", "")
 	return output
 }
@@ -44,8 +47,8 @@ func slugToHashtag(slug string) string {
 func setRotd() (recipe, error) {
 	dbPW := os.Getenv("nnr_DB_PW")
 	dbHost := os.Getenv("DB_HOST")
-	dbUser := "nnr_db_user"
-	dbName := "nnr_db"
+	dbUser := os.Getenv("DB_USER")
+	dbName := os.Getenv("DB_NAME")
 
 	dbDSN := fmt.Sprintf("host=%s user=%s password=%s dbname= %s sslmode=disable",
 		dbHost, dbUser, dbPW, dbName)
@@ -212,7 +215,7 @@ func postToFacebook(rotd recipe) (string, error) {
 
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return fmt.Sprintf("Error reading FB response body: %v", err), err
 	}

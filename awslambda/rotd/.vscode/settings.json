@@ -1,11 +1,14 @@
 {
   "cSpell.ignoreWords": [
+    "awslambda",
     "dbname",
     "dbpool",
     "dghubble",
     "jackc",
     "omago",
     "pgxpool",
-    "rotd"
+    "rotd",
+    "sslmode",
+    "usertag"
   ]
 }
