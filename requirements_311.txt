@@ -77,7 +77,6 @@ platformdirs==2.5.3
 pluggy==1.0.0
 progress==1.6
 prompt-toolkit==3.0.32
-psycopg2==2.9.5
 psycopg2-binary==2.9.5
 ptyprocess==0.7.0
 pure-eval==0.2.2
