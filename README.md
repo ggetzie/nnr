@@ -27,6 +27,10 @@ CREATE USER ubuntu WITH SUPERUSER;
 exit
 ```
 
+Make sure TCP/IP connections with username/password are enabled for postgres.
+For standard install edit files in `/etc/postgresql/15/main` (replace 15 with postgresql version used)
+Edit `postgres.conf` to enable TCP/IP and `pg_hba.conf` to set allowed for nnr user.
+
 Add the nginx, redis, supervisor and utility scripts
 ```   
 sudo apt install redis, supervisor, nginx
@@ -47,7 +51,7 @@ cd /usr/local/src/
 git clone --recurse-submodules git@github.com:ggetzie/nnr.git
 
 # on local
-scp nnr_prod_keys ubuntu@nnr-server:/usr/local/src/nnr/.env
+scp -i "nnr_server_key.pem" nnr_prod_keys ubuntu@nnr-server:/usr/local/src/nnr/.env
 ```
 ### Create a user
 ```
