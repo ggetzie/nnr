@@ -6,9 +6,11 @@ from .base import env
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env("nnr_SECRET_KEY")
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-# ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["nononsense.recipes"])
-# ALLOWED_HOSTS = ["172.31.84.146", "35.173.32.90", "nononsense.recipes", "www.nononsense.recipes"]
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = env.list(
+    "DJANGO_ALLOWED_HOSTS", default=["nononsense.recipes", "www.nononsense.recipes"]
+)
+# ALLOWED_HOSTS = ["nononsense.recipes", "www.nononsense.recipes"]
+# ALLOWED_HOSTS = ["*"]
 
 # DATABASES
 # ------------------------------------------------------------------------------
@@ -200,6 +202,12 @@ LOGGING = {
             "filters": ["require_debug_false"],
             "class": "django.utils.log.AdminEmailHandler",
         },
+        "file": {
+            "level": "WARNING",
+            "class": "logging.FileHandler",
+            "filename": "/usr/local/src/nnr/logs/debug.log",
+            "formatter": "verbose",
+        },
         "console": {
             "level": "DEBUG",
             "class": "logging.StreamHandler",
@@ -208,6 +216,11 @@ LOGGING = {
     },
     "root": {"level": "INFO", "handlers": ["console"]},
     "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "WARNING",
+            "propagate": True,
+        },
         "django.request": {
             "handlers": ["mail_admins"],
             "level": "ERROR",
