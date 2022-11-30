@@ -49,9 +49,10 @@ func setRotd() (recipe, error) {
 	dbHost := os.Getenv("DB_HOST")
 	dbUser := os.Getenv("DB_USER")
 	dbName := os.Getenv("DB_NAME")
+	dbPort := os.Getenv("DB_PORT")
 
-	dbDSN := fmt.Sprintf("host=%s user=%s password=%s dbname= %s sslmode=disable",
-		dbHost, dbUser, dbPW, dbName)
+	dbDSN := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
+		dbHost, dbUser, dbPW, dbName, dbPort)
 
 	fmt.Println("Attempting to access db")
 
