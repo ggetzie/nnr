@@ -74,11 +74,21 @@ link_srv nnr production
 
 ### Enable ssl with certbot
 See [instructions](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal)
+Note AWS Lightsail does not enable port 443 by default. Go to the networking tab in the Lightsail dashboard to open it.
 
 ### Install go and build recipe of the day
 ```
 update_go 1.19.3
+cd /usr/local/src/nnr/awslambda/rotd
+mkdir build
+go build -o build/rotd rotd.go
 ```
 
-### configure cron jobs
+### configure cron job
+Note server time is UTC. Run rotd once per day at 7am EST (UTC-5)
+
+```
+m h  dom  mon  dow  command
+0 12 *    *    *    /usr/local/src/nnr/recipes/management/rotd.sh
+```
 
