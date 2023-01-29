@@ -85,6 +85,16 @@ AWS_IS_GZIPPED = True
 
 # STATIC
 # ------------------------
+class StaticRootS3Boto3Storage(S3Boto3Storage):
+    location = "static"
+    default_acl = "public-read"
+
+
+class MediaRootS3Boto3Storage(S3Boto3Storage):
+    location = "media"
+    file_overwrite = False
+
+
 STATICFILES_STORAGE = "config.settings.production.StaticRootS3Boto3Storage"
 STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 # MEDIA
@@ -92,37 +102,6 @@ STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 # region http://stackoverflow.com/questions/10390244/
 # Full-fledge class: https://stackoverflow.com/a/18046120/104731
 from storages.backends.s3boto3 import S3Boto3Storage  # noqa E402
-
-# from django.contrib.staticfiles.storage import ManifestFilesMixin
-# import pathlib
-# import os
-# import json
-
-
-class StaticRootS3Boto3Storage(S3Boto3Storage):
-    location = "static"
-    default_acl = "public-read"
-
-    # def read_manifest(self):
-    #     try:
-    #         with open(APPS_DIR.path(f"static/{self.manifest_name}")) as manifest:
-    #             return manifest.read().decode()
-    #     except FileNotFoundError:
-    #         return None
-
-    # def save_manifest(self):
-    #     payload = {'paths': self.hashed_files,
-    #                'version': self.manifest_version}
-    #     manifest_path = pathlib.Path(APPS_DIR.path(f"static/{self.manifest_name}"))
-    #     if manifest_path.exists(): os.remove(manifest_path)
-    #     contents = json.dumps(payload).encode()
-    #     with open(manifest_path, "wb") as manifest_file:
-    #         manifest_file.write(contents)
-
-
-class MediaRootS3Boto3Storage(S3Boto3Storage):
-    location = "media"
-    file_overwrite = False
 
 
 # endregion
@@ -162,7 +141,7 @@ EMAIL_SUBJECT_PREFIX = env(
 # Django Admin URL regex.
 ADMIN_URL = env("DJANGO_ADMIN_URL")
 
-# Anymail (Mailgun)
+# Anymail
 # ------------------------------------------------------------------------------
 # https://anymail.readthedocs.io/en/stable/installation/#installing-anymail
 INSTALLED_APPS += ["anymail"]  # noqa F405
