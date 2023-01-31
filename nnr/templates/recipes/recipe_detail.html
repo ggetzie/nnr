@@ -34,17 +34,6 @@
 
 {% block content %}
 
-
-<h1>{{ recipe.title }}</h1>
-<div class="byline">
-    Submitted by: 
-    {% if recipe.user %}
-    <a href="{% url 'users:detail' recipe.user.username %}">{{ recipe.user.username }}</a>
-    {% else %}
-    <em>deleted</em>
-    {% endif %}
-    on {{ recipe.created_dt|date:"F j, Y" }}
-</div>
 {% if photos %}
 <div id="carousel" class="carousel slide" data-interval="false" data-ride="false" data-wrap="true">
     <div class="carousel-inner">
@@ -68,6 +57,16 @@
     </a>
 </div>
 {% endif %}
+<h1>{{ recipe.title }}</h1>
+<div class="byline">
+    Submitted by: 
+    {% if recipe.user %}
+    <a href="{% url 'users:detail' recipe.user.username %}">{{ recipe.user.username }}</a>
+    {% else %}
+    <em>deleted</em>
+    {% endif %}
+    on {{ recipe.created_dt|date:"F j, Y" }}
+</div>
 
 <div class="quantity recipe-section">
     {{ recipe.quantity_html|safe }}
