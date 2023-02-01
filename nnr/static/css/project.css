@@ -189,3 +189,27 @@ input[name~="save"] {
 .signup-pitch {
   max-width: 600px;
 }
+
+.carousel-inner {
+  display: inline-block !important;
+}
+
+.carousel-item {
+  text-align: center;
+}
+
+.carousel {
+  margin-top: 2em;
+}
+
+.carousel-control {
+  background-color: #333;
+  opacity: 0.3;
+  height: 40px;
+  width: 30px;
+  border-radius: 2px;
+}
+
+.carousel-control:hover {
+  background-color: aqua;
+}
