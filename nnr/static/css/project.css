@@ -213,3 +213,18 @@ input[name~="save"] {
 .carousel-control:hover {
   background-color: aqua;
 }
+
+.alert {
+  width: fit-content;
+}
+
+.alert > .close {
+  margin-left: 1em;
+}
+
+div#messages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
