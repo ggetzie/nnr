@@ -91,10 +91,13 @@ STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 # ------------------------------------------------------------------------------
 # region http://stackoverflow.com/questions/10390244/
 # Full-fledge class: https://stackoverflow.com/a/18046120/104731
-from storages.backends.s3boto3 import S3Boto3Storage  # noqa E402
+from storages.backends.s3boto3 import (
+    S3Boto3Storage,
+    S3ManifestStaticStorage,
+)  # noqa E402
 
 
-class StaticRootS3Boto3Storage(S3Boto3Storage):
+class StaticRootS3Boto3Storage(S3ManifestStaticStorage):
     location = "static"
     default_acl = "public-read"
 

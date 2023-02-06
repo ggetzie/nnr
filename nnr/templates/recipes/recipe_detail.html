@@ -3,8 +3,6 @@
 {% load static %}
 
 {% block morecss %}
-<link href="{% static 'css/comments.css' %}" rel="stylesheet">
-<link href="{% static 'css/nnr_autocomplete.css' %}" rel="stylesheet">
 <meta name="user_id" content="{{ request.user.id }}">
 <meta name="recipe_id" content="{{ recipe.id }}">
 
@@ -169,8 +167,8 @@
 
 {% block morejs %}
     {% if request.user.is_authenticated %}
-    <script src="{% static 'js/comments.js' %}"></script>
-    <script src="{% static 'js/tags.js' %}"></script>
+    <script src="{% static 'js/comments.min.js' %}"></script>
+    <script src="{% static 'js/tags.min.js' %}"></script>
     {% endif %}
 {% endblock morejs %}
 

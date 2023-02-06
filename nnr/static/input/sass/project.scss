@@ -249,3 +249,84 @@ div#messages {
   justify-content: flex-start;
 }
 
+.autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+    display: inline-block;
+  }
+
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-bottom: 10%;
+  }
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+  }
+  .autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color: #e9e9e9;
+  }
+  .autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }
+
+  .comment {
+    margin-bottom: 2rem;
+    border-bottom: 1px gray solid;
+}
+
+.comment-body p {
+    margin-bottom: 0.7rem;
+}
+
+.comment-container {
+    max-width: 800px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: end;
+}
+
+.form-actions * {
+    margin-left: 1rem;
+}
+
+.comment-error {
+    max-width: 600px;
+}
+
+.comment-ts {
+    margin-left: 1.5rem;
+}
+
+.comment-control {
+    margin-left: 3rem;
+    display: inline;
+}
+
+.comment-dropdown {
+    font-weight: 750;
+}
+
+.comment-header {
+    font-size: 0.9rem;
+    min-height: 35px;
+}
+
+#comment-list {
+    margin-top: 1.5rem;
+}
