@@ -11,7 +11,7 @@ SECRET_KEY = env(
     default="DYxZ5TboLlYPho9TaGQZSs5ysDy8PJvB04U0aJSNvjJYoXbxb5LrKlQaKo5AKdGk",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "nnr"]
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "nnr", "localhost:3000"]
 
 # EMAIL
 # ------------------------------------------------------------------------------
@@ -96,3 +96,4 @@ LOGGING = {
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]

@@ -275,3 +275,58 @@ div#messages {
   background-color: DodgerBlue !important;
   color: #ffffff;
 }
+
+.comment {
+  margin-bottom: 32px;
+  margin-bottom: 2rem;
+  border-bottom: 1px gray solid;
+}
+
+.comment-body p {
+  margin-bottom: 11.2px;
+  margin-bottom: 0.7rem;
+}
+
+.comment-container {
+  max-width: 800px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: end;
+}
+
+.form-actions * {
+  margin-left: 16px;
+  margin-left: 1rem;
+}
+
+.comment-error {
+  max-width: 600px;
+}
+
+.comment-ts {
+  margin-left: 24px;
+  margin-left: 1.5rem;
+}
+
+.comment-control {
+  margin-left: 48px;
+  margin-left: 3rem;
+  display: inline;
+}
+
+.comment-dropdown {
+  font-weight: 750;
+}
+
+.comment-header {
+  font-size: 14.4px;
+  font-size: 0.9rem;
+  min-height: 35px;
+}
+
+#comment-list {
+  margin-top: 24px;
+  margin-top: 1.5rem;
+}
