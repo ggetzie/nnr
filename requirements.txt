@@ -51,7 +51,7 @@ idna==3.4
 imagesize==1.4.1
 iniconfig==1.1.1
 ipdb==0.13.9
-ipython==8.6.0
+ipython==8.10.0
 ipython-genutils==0.2.0
 isort==5.10.1
 itypes==1.2.0
