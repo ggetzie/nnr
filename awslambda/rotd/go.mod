@@ -7,7 +7,7 @@ require (
 	github.com/dghubble/go-twitter v0.0.0-20211002212826-ad02880e616b
 	github.com/dghubble/oauth1 v0.7.0
 	github.com/jackc/pgx/v4 v4.13.0
-	golang.org/x/text v0.3.8
+	golang.org/x/text v0.4.0
 )
 
 require (
@@ -22,5 +22,5 @@ require (
 	github.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b // indirect
 	github.com/jackc/pgtype v1.8.1 // indirect
 	github.com/jackc/puddle v1.1.3 // indirect
-	golang.org/x/crypto v0.0.0-20210711020723-a769d52b0f97 // indirect
+	golang.org/x/crypto v0.1.0 // indirect
 )
