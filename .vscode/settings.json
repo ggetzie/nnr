@@ -1,6 +1,5 @@
 {
   "python.pythonPath": "/usr/local/src/env/nnr/bin/python",
-  "python.linting.pylintEnabled": true,
   "cSpell.words": [
     "and",
     "boto",
@@ -28,6 +27,7 @@
     "auafir",
     "autoprefixing",
     "aws",
+    "awslambda",
     "certbot",
     "cibook",
     "ckogb",
@@ -68,6 +68,7 @@
     "saveform",
     "strongify",
     "tagform",
+    "tagphoto",
     "to",
     "tsvector",
     "tsvectorupdate",
@@ -77,7 +78,7 @@
     "yp",
     "zâàéû"
   ],
-  "restructuredtext.languageServer.disabled": true,
+  // "restructuredtext.languageServer.disabled": true,
   "python.formatting.provider": "black",
   "esbonio.server.enabled": false,
   "esbonio.sphinx.confDir": ""

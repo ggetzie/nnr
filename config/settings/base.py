@@ -256,6 +256,9 @@ ACCOUNT_ADAPTER = "nnr.users.adapters.AccountAdapter"
 SOCIALACCOUNT_ADAPTER = "nnr.users.adapters.SocialAccountAdapter"
 ACCOUNT_FORMS = {"signup": "main.forms.NNRSignupForm"}
 
+# don't send password reset email if the email address is not in the database
+ACCOUNT_EMAIL_UNKNOWN_ACCOUNTS = False
+
 # CACHES
 # ------------------------------------------------------------------------------
 CACHES = {
