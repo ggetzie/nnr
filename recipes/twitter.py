@@ -23,8 +23,13 @@ def create_tweet(
     response = oauth.post("https://api.twitter.com/2/tweets", json=payload)
 
     if response.status_code != 201:
-        logger.error(f"Error sending tweet: {response.status_code} {response.content}")
+        logger.error(
+            "Error sending tweet: %s %s ", response.status_code, response.content
+        )
         return False
+
     logger.info(
-        f"Tweet sent: {response.status_code} {json.dumps(response.json(), indent=2, sort_keys=True)}"
+        "Tweet sent: %s %s",
+        response.status_code,
+        json.dumps(response.json(), indent=2, sort_keys=True),
     )
