@@ -26,7 +26,7 @@ def create_tweet(
         logger.error(
             "Error sending tweet: %s %s ", response.status_code, response.content
         )
-        return False
+        return
 
     logger.info(
         "Tweet sent: %s %s",
