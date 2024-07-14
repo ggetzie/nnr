@@ -12,6 +12,7 @@ from .utils import sortify, utc_now
 
 import datetime
 import markdown
+import re
 import string
 import uuid
 from textwrap import dedent
@@ -132,15 +133,7 @@ class Recipe(models.Model):
         return super().delete(*args, **kwargs)
 
     def text_only(self):
-        return dedent(
-            f"""{self.title}
-
-            Ingredients
-            {strip_tags(self.ingredients_html)}
-
-            Instructions
-            {strip_tags(self.instructions_html)}"""
-        )
+        return f"""{self.title}\n\nIngredients:\n{self.get_ingredients_text()}\n\nInstructions:\n{self.get_instructions_text()}"""
 
     def ingredients_list(self):
         return (
@@ -154,6 +147,32 @@ class Recipe(models.Model):
 
     def get_instructions_text(self):
         return strip_tags(self.instructions_html).strip()
+
+    def as_tweet(self) -> str:
+        max_length = 280
+        length_remaining = max_length
+        title = self.title
+        url = "https://nononsense.recipes" + self.get_absolute_url()
+        intro = f"Recipe of the Day\n"
+        message = f"{intro}{self.title}\n{url}"
+        length_remaining -= len(message)
+        tags = sorted([re.sub(r"\W", "", tag.name) for tag in self.tags.all()], key=len)
+        if length_remaining > len(tags[0]) + 3:
+            message += "\n"
+            length_remaining -= 1
+            for i, tag in enumerate(tags):
+                hashtag = f" #{tag}" if i > 0 else f"#{tag}"
+                if length_remaining - len(hashtag) > 0:
+                    message += hashtag
+                    length_remaining -= len(hashtag)
+                else:
+                    break
+            return message
+        elif length_remaining > 0:
+            return message
+        else:
+            truncated = f"{title}\n{url}"
+            return truncated if len(truncated) < max_length else url
 
 
 SCREEN_SIZES = ["1200", "992", "768", "576", "408", "320"]
@@ -235,7 +254,13 @@ class UserTag(models.Model):
         return f"{self.recipe} - {self.user} - {self.tag}"
 
 
-RATING_CHOICES = ((1, "⭐"), (2, "⭐⭐"), (3, "⭐⭐⭐"), (4, "⭐⭐⭐⭐"), (5, "⭐⭐⭐⭐⭐"))
+RATING_CHOICES = (
+    (1, "⭐"),
+    (2, "⭐⭐"),
+    (3, "⭐⭐⭐"),
+    (4, "⭐⭐⭐⭐"),
+    (5, "⭐⭐⭐⭐⭐"),
+)
 
 
 class RecipeRating(models.Model):

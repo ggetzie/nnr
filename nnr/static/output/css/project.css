@@ -330,3 +330,7 @@ div#messages {
   margin-top: 24px;
   margin-top: 1.5rem;
 }
+
+form.password_reset {
+  max-width: 400px;
+}
