@@ -123,6 +123,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 # STATIC
@@ -256,6 +257,9 @@ ACCOUNT_ADAPTER = "nnr.users.adapters.AccountAdapter"
 SOCIALACCOUNT_ADAPTER = "nnr.users.adapters.SocialAccountAdapter"
 ACCOUNT_FORMS = {"signup": "main.forms.NNRSignupForm"}
 
+# don't send password reset email if the email address is not in the database
+ACCOUNT_EMAIL_UNKNOWN_ACCOUNTS = False
+
 # CACHES
 # ------------------------------------------------------------------------------
 CACHES = {
@@ -279,3 +283,11 @@ STRIPE_SK = env("STRIPE_SK")
 SUPPORT_EMAIL = "support@nononsense.recipes"
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 RAW_MEDIA_BUCKET = env("RAW_MEDIA_BUCKET", default="nnr-media-raw")
+TWITTER_CONSUMER_KEY = env("TWITTER_CONSUMER_KEY")
+TWITTER_CONSUMER_SECRET = env("TWITTER_CONSUMER_SECRET")
+TWITTER_ACCESS_TOKEN = env("TWITTER_ACCESS_TOKEN")
+TWITTER_ACCESS_SECRET = env("TWITTER_ACCESS_SECRET")
+FB_PAGE_ID = env("FB_PAGE_ID")
+FB_PAGE_TOKEN = env("FB_PAGE_TOKEN")
+FB_USER_ID = env("FB_USER_ID")
+FB_BUSINESS_ID = env("FB_BUSINESS_ID")

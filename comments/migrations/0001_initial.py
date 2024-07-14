@@ -5,54 +5,131 @@ import datetime
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-from django.utils.timezone import utc
 import uuid
+
+utc = datetime.timezone.utc
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('recipes', '0003_auto_20200224_0508'),
+        ("recipes", "0003_auto_20200224_0508"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Comment',
+            name="Comment",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False, verbose_name='id')),
-                ('text', models.TextField(verbose_name='Comment')),
-                ('html', models.TextField(verbose_name='Comment HTML')),
-                ('nesting', models.PositiveSmallIntegerField(default=0, verbose_name='Nesting')),
-                ('deleted', models.BooleanField(default=False, verbose_name='Deleted')),
-                ('timestamp', models.DateTimeField(default=comments.models.utc_now, verbose_name='Timestamp')),
-                ('last_edited', models.DateTimeField(default=datetime.datetime(1970, 1, 1, 0, 0, tzinfo=utc), verbose_name='Last Edited')),
-                ('spam', models.BooleanField(default=False, verbose_name='Marked Spam')),
-                ('flag_count', models.IntegerField(default=0, verbose_name='Flag Count')),
-                ('parent', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='comments.Comment')),
-                ('recipe', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='recipes.Recipe')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="id",
+                    ),
+                ),
+                ("text", models.TextField(verbose_name="Comment")),
+                ("html", models.TextField(verbose_name="Comment HTML")),
+                (
+                    "nesting",
+                    models.PositiveSmallIntegerField(default=0, verbose_name="Nesting"),
+                ),
+                ("deleted", models.BooleanField(default=False, verbose_name="Deleted")),
+                (
+                    "timestamp",
+                    models.DateTimeField(
+                        default=comments.models.utc_now, verbose_name="Timestamp"
+                    ),
+                ),
+                (
+                    "last_edited",
+                    models.DateTimeField(
+                        default=datetime.datetime(1970, 1, 1, 0, 0, tzinfo=utc),
+                        verbose_name="Last Edited",
+                    ),
+                ),
+                (
+                    "spam",
+                    models.BooleanField(default=False, verbose_name="Marked Spam"),
+                ),
+                (
+                    "flag_count",
+                    models.IntegerField(default=0, verbose_name="Flag Count"),
+                ),
+                (
+                    "parent",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="comments.Comment",
+                    ),
+                ),
+                (
+                    "recipe",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="recipes.Recipe",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-timestamp'],
+                "ordering": ["-timestamp"],
             },
         ),
         migrations.CreateModel(
-            name='Flag',
+            name="Flag",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False, verbose_name='id')),
-                ('timestamp', models.DateTimeField(default=comments.models.utc_now, verbose_name='timestamp')),
-                ('comment', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='comments.Comment')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="id",
+                    ),
+                ),
+                (
+                    "timestamp",
+                    models.DateTimeField(
+                        default=comments.models.utc_now, verbose_name="timestamp"
+                    ),
+                ),
+                (
+                    "comment",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="comments.Comment",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-timestamp'],
+                "ordering": ["-timestamp"],
             },
         ),
         migrations.AddConstraint(
-            model_name='flag',
-            constraint=models.UniqueConstraint(fields=('comment', 'user'), name='unique_comment_flag'),
+            model_name="flag",
+            constraint=models.UniqueConstraint(
+                fields=("comment", "user"), name="unique_comment_flag"
+            ),
         ),
     ]
