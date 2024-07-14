@@ -27,7 +27,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.13",
     "bootstrap": "^5.2.3",
-    "browser-sync": "^2.28.3",
+    "browser-sync": "^3.0.2",
     "cssnano": "^5.1.14",
     "gulp": "^5.0.0",
     "gulp-concat": "^2.6.1",
