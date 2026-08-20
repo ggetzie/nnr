@@ -65,6 +65,7 @@ pathspec
 pexpect
 pickleshare
 Pillow
+pillow-heif
 platformdirs
 pluggy
 progress
