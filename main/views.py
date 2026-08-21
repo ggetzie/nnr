@@ -222,22 +222,44 @@ def webhook(request):
     event = None
     stripe.api_key = settings.STRIPE_SK
     if webhook_secret:
-        signature = request.META["HTTP_STRIPE_SIGNATURE"]
-        logger.info(request.META)
-        logger.info(signature)
-        try:
-            event = stripe.Webhook.construct_event(
-                payload=json.loads(payload), sig_header=signature, secret=webhook_secret
-            )
-        except Exception as e:
-            logger.error(f"Could not parse event (webhook secret)")
-            logger.error(e)
+        signature = request.META.get("HTTP_STRIPE_SIGNATURE", "")
+        if not signature:
+            logger.error("Webhook request carried no Stripe-Signature header")
             return HttpResponse(status=400)
+        try:
+            # payload must be the raw request body. Stripe signs the exact bytes
+            # it sent, so re-serialising a parsed dict (which is what this used
+            # to pass) can never produce a matching HMAC.
+            event = stripe.Webhook.construct_event(
+                payload=payload, sig_header=signature, secret=webhook_secret
+            )
+        except ValueError:
+            logger.error("Webhook payload was not valid JSON")
+            return HttpResponse(status=400)
+        except stripe.SignatureVerificationError:
+            logger.error("Webhook signature verification failed")
+            return HttpResponse(status=400)
+    elif not settings.DEBUG:
+        # Nothing proves an unsigned request came from Stripe, and the handlers
+        # below change subscription state -- anyone who can reach this URL could
+        # grant themselves an account. Refuse rather than accept it.
+        logger.error(
+            "STRIPE_WEBHOOK_SECRET is not set; refusing to process a webhook. "
+            "Add the endpoint's signing secret to the environment."
+        )
+        return HttpResponse(status=500)
     else:
+        # DEBUG only, so that local development does not require the Stripe CLI
+        # to exercise this endpoint. See `stripe listen --forward-to` for testing
+        # the signed path locally.
+        logger.warning(
+            "STRIPE_WEBHOOK_SECRET is not set; accepting an unverified webhook "
+            "because DEBUG is on"
+        )
         try:
             event = stripe.Event.construct_from(json.loads(payload), stripe.api_key)
         except ValueError:
-            logger.error(f"Could not parse event")
+            logger.error("Could not parse event")
             return HttpResponse(status=400)
 
     logger.info(f"received event - {event.type}")

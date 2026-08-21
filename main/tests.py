@@ -56,18 +56,52 @@ def stripe_stub(monkeypatch):
     return state
 
 
+WEBHOOK_SECRET = "whsec_test_secret"
+
+
+@pytest.fixture(autouse=True)
+def webhook_secret(monkeypatch):
+    """Configure signature verification for every test in this module.
+
+    This is the production configuration, so it is what the handler tests should
+    run against. main.views reads the secret through its own environ.Env
+    instance, which consults os.environ at call time.
+    """
+    monkeypatch.setenv("STRIPE_WEBHOOK_SECRET", WEBHOOK_SECRET)
+    return WEBHOOK_SECRET
+
+
+def sign(payload: str, secret: str = WEBHOOK_SECRET, timestamp: int | None = None):
+    """Build a Stripe-Signature header the way Stripe does."""
+    import hashlib
+    import hmac
+    import time
+
+    timestamp = timestamp if timestamp is not None else int(time.time())
+    signed = f"{timestamp}.{payload}".encode()
+    digest = hmac.new(secret.encode(), signed, hashlib.sha256).hexdigest()
+    return f"t={timestamp},v1={digest}"
+
+
+def event_payload(event_type, obj):
+    return json.dumps(
+        {
+            "id": "evt_test_1",
+            "object": "event",
+            "type": event_type,
+            "data": {"object": obj},
+        }
+    )
+
+
 def post_event(client, event_type, obj):
-    """POST a Stripe-shaped event at the webhook."""
-    payload = {
-        "id": "evt_test_1",
-        "object": "event",
-        "type": event_type,
-        "data": {"object": obj},
-    }
+    """POST a correctly signed Stripe-shaped event at the webhook."""
+    payload = event_payload(event_type, obj)
     return client.post(
         reverse("main:webhook"),
-        data=json.dumps(payload),
+        data=payload,
         content_type="application/json",
+        HTTP_STRIPE_SIGNATURE=sign(payload),
     )
 
 
@@ -151,7 +185,9 @@ def test_profile_is_found_by_email_when_stripe_id_is_unknown(
 # --------------------------------------------------------------------------
 
 
-def test_session_complete_links_stripe_customer(anon_client, subscribed_user, stripe_stub):
+def test_session_complete_links_stripe_customer(
+    anon_client, subscribed_user, stripe_stub
+):
     profile = subscribed_user.profile
     profile.checkout_session = "cs_test_abc"
     profile.stripe_id = ""
@@ -241,6 +277,165 @@ def test_malformed_payload_is_rejected(anon_client):
         reverse("main:webhook"), data="not json", content_type="application/json"
     )
     assert response.status_code == 400
+
+
+# --------------------------------------------------------------------------
+# Signature verification (only active when STRIPE_WEBHOOK_SECRET is set)
+# --------------------------------------------------------------------------
+
+
+def signed_event(event_type, obj):
+    payload = event_payload(event_type, obj)
+    return payload, sign(payload)
+
+
+def test_correctly_signed_webhook_is_processed(anon_client, customer, stripe_stub):
+    """The raw body is what gets signed.
+
+    This previously passed a re-serialised dict to construct_event, so a genuine
+    Stripe request could never verify.
+    """
+    payload, signature = signed_event(
+        "invoice.payment_failed",
+        {"customer": customer.stripe_id, "customer_email": None},
+    )
+
+    response = anon_client.post(
+        reverse("main:webhook"),
+        data=payload,
+        content_type="application/json",
+        HTTP_STRIPE_SIGNATURE=signature,
+    )
+
+    assert response.status_code == 200
+    customer.refresh_from_db()
+    assert customer.payment_status == 0
+
+
+def test_wrongly_signed_webhook_is_rejected(anon_client, customer, stripe_stub):
+    payload, _ = signed_event(
+        "invoice.payment_failed",
+        {"customer": customer.stripe_id, "customer_email": None},
+    )
+    bad_signature = sign(payload, secret="whsec_not_the_secret")
+
+    response = anon_client.post(
+        reverse("main:webhook"),
+        data=payload,
+        content_type="application/json",
+        HTTP_STRIPE_SIGNATURE=bad_signature,
+    )
+
+    assert response.status_code == 400
+    customer.refresh_from_db()
+    assert customer.payment_status != 0
+
+
+def test_webhook_without_signature_header_is_rejected(
+    anon_client, customer, stripe_stub
+):
+    """Used to raise KeyError on request.META and return a 500."""
+    payload, _ = signed_event(
+        "invoice.payment_failed",
+        {"customer": customer.stripe_id, "customer_email": None},
+    )
+
+    response = anon_client.post(
+        reverse("main:webhook"), data=payload, content_type="application/json"
+    )
+
+    assert response.status_code == 400
+    customer.refresh_from_db()
+    assert customer.payment_status != 0
+
+
+def test_replayed_old_signature_is_rejected(anon_client, customer, stripe_stub):
+    """Stripe's default tolerance is five minutes."""
+    import time
+
+    payload, _ = signed_event(
+        "invoice.payment_failed",
+        {"customer": customer.stripe_id, "customer_email": None},
+    )
+    stale = sign(payload, timestamp=int(time.time()) - 3600)
+
+    response = anon_client.post(
+        reverse("main:webhook"),
+        data=payload,
+        content_type="application/json",
+        HTTP_STRIPE_SIGNATURE=stale,
+    )
+
+    assert response.status_code == 400
+
+
+def test_tampered_body_with_valid_looking_signature_is_rejected(
+    anon_client, customer, stripe_stub
+):
+    """Sign one payload, send another."""
+    original, signature = signed_event(
+        "invoice.payment_failed",
+        {"customer": customer.stripe_id, "customer_email": None},
+    )
+    tampered = original.replace("payment_failed", "payment_succeeded")
+
+    response = anon_client.post(
+        reverse("main:webhook"),
+        data=tampered,
+        content_type="application/json",
+        HTTP_STRIPE_SIGNATURE=signature,
+    )
+
+    assert response.status_code == 400
+
+
+# --------------------------------------------------------------------------
+# Behaviour when no secret is configured at all
+# --------------------------------------------------------------------------
+
+
+def post_unsigned(client, event_type, obj):
+    return client.post(
+        reverse("main:webhook"),
+        data=event_payload(event_type, obj),
+        content_type="application/json",
+    )
+
+
+def test_missing_secret_refuses_to_process_when_debug_is_off(
+    anon_client, customer, stripe_stub, monkeypatch, settings
+):
+    """Production must not act on a webhook it cannot verify."""
+    monkeypatch.delenv("STRIPE_WEBHOOK_SECRET", raising=False)
+    settings.DEBUG = False
+
+    response = post_unsigned(
+        anon_client,
+        "invoice.payment_succeeded",
+        {"customer": customer.stripe_id, "customer_email": None, "amount_paid": 1900},
+    )
+
+    assert response.status_code == 500
+    customer.refresh_from_db()
+    assert customer.payment_status != 3
+
+
+def test_missing_secret_still_processes_under_debug(
+    anon_client, customer, stripe_stub, monkeypatch, settings
+):
+    """Local development can exercise the endpoint without the Stripe CLI."""
+    monkeypatch.delenv("STRIPE_WEBHOOK_SECRET", raising=False)
+    settings.DEBUG = True
+
+    response = post_unsigned(
+        anon_client,
+        "invoice.payment_succeeded",
+        {"customer": customer.stripe_id, "customer_email": None, "amount_paid": 1900},
+    )
+
+    assert response.status_code == 200
+    customer.refresh_from_db()
+    assert customer.payment_status == 3
 
 
 # --------------------------------------------------------------------------
