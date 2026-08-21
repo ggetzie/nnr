@@ -96,6 +96,27 @@ SIGNUP_DATA = {
 }
 
 
+def test_signup_form_renders_every_field(anon_client):
+    """A 200 is not enough: crispy-forms failing over would still return one.
+
+    NNRSignupForm builds an explicit crispy Layout, so if the template pack is
+    misconfigured the fields silently stop appearing.
+    """
+    html = anon_client.get(reverse("account_signup")).content.decode()
+
+    assert 'id="signup_form"' in html
+    for field in ("email", "username", "password1", "password2", "tos"):
+        assert f'name="{field}"' in html, f"{field} missing from signup form"
+    # bootstrap4 pack markup, i.e. crispy resolved a real template pack
+    assert "form-group" in html
+
+
+def test_login_form_renders_fields(anon_client):
+    html = anon_client.get(reverse("account_login")).content.decode()
+    assert 'name="login"' in html
+    assert 'name="password"' in html
+
+
 def test_signup_creates_user_and_sends_confirmation(anon_client):
     response = anon_client.post(reverse("account_signup"), SIGNUP_DATA)
     assert response.status_code == 302

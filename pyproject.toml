@@ -4,44 +4,45 @@ version = "1.0.0"
 description = "No Nonsense Recipes"
 requires-python = ">=3.11,<3.12"
 
-# NOTE: these are deliberately the versions that were pinned in requirements.txt
-# before the uv migration. This file is a like-for-like transcription so that the
-# switch to uv is behaviourally a no-op; the upgrades happen in later commits.
+# Exact versions live in uv.lock, which is what gets installed. Constraints here
+# are lower bounds plus an upper bound wherever a major version is known to
+# break us -- Django is held at the 5.2 LTS series deliberately.
 dependencies = [
-    "Django==5.0.7",
-    "django-allauth==0.59.0",
-    "django-anymail[amazon-ses]==8.6",
-    "django-crispy-forms==1.14.0",
-    "django-environ==0.9.0",
-    "django-extensions==3.2.1",
-    "django-storages==1.13.1",
-    "argon2-cffi==21.3.0",
-    "psycopg[binary]==3.2.3",
-    "pillow==10.3.0",
-    "pillow-heif==0.16.0",
-    "redis==5.0.7",
-    "gunicorn==22.0.0",
-    "stripe==4.2.0",
-    "Markdown==3.4.1",
-    "python-dateutil==2.8.2",
-    "requests==2.32.3",
-    "requests-oauthlib==1.3.1",
-    "beautifulsoup4==4.11.1",
-    "boto3==1.26.7",
+    "Django>=5.2.17,<6.0",
+    "django-allauth>=65.19.1",
+    "django-anymail[amazon-ses]>=15.1",
+    "django-crispy-forms>=2.7,<3",
+    "crispy-bootstrap4>=2026.2",
+    "django-environ>=0.14.0",
+    "django-extensions>=4.1",
+    "django-storages>=1.14.6",
+    "argon2-cffi>=25.1.0",
+    "psycopg[binary]>=3.3.4",
+    "pillow>=12.3.0",
+    "pillow-heif>=1.5.0",
+    "redis>=8.1.0",
+    "gunicorn>=26.1.0",
+    "stripe>=15.5.1",
+    "Markdown>=3.10.3",
+    "python-dateutil>=2.9.0",
+    "requests>=2.33.0",
+    "requests-oauthlib>=2.0.0",
+    "beautifulsoup4>=4.14.0",
+    "boto3>=1.40.0",
 ]
 
 [dependency-groups]
 dev = [
-    "pytest==7.2.1",
-    "pytest-django==4.5.2",
-    "pytest-sugar==0.9.6",
-    "coverage==6.5.0",
-    "django-coverage-plugin==2.0.4",
-    "factory-boy==3.2.1",
-    "Faker==15.3.1",
-    "ipython==8.10.0",
-    "ipdb==0.13.9",
-    "black==24.4.2",
+    "pytest>=9.1.1",
+    "pytest-django>=4.14.0",
+    "pytest-sugar>=1.1.1",
+    "coverage>=7.10.0",
+    "django-coverage-plugin>=3.1.1",
+    "factory-boy>=3.3.3",
+    "Faker>=37.0.0",
+    "ipython>=9.0.0",
+    "ipdb>=0.13.13",
+    "black>=26.3.1",
 ]
 
 [tool.uv]
