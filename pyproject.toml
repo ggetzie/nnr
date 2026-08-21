@@ -2,7 +2,7 @@
 name = "nnr"
 version = "1.0.0"
 description = "No Nonsense Recipes"
-requires-python = ">=3.11,<3.12"
+requires-python = ">=3.14"
 
 # Exact versions live in uv.lock, which is what gets installed. Constraints here
 # are lower bounds plus an upper bound wherever a major version is known to
