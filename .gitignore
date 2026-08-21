@@ -268,11 +268,14 @@ tags
 
 ### VirtualEnv template
 # Virtualenv
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ss]cripts
+# The layout of a virtualenv rooted in the repo. Anchored with a leading slash
+# so they cannot swallow real source directories. The [Ss]cripts rule is gone
+# entirely: it was hiding ./scripts/, and uv puts the virtualenv in .venv/,
+# which is ignored above.
+/[Bb]in
+/[Ii]nclude
+/[Ll]ib
+/[Ll]ib64
 pyvenv.cfg
 pip-selfcheck.json
 .env

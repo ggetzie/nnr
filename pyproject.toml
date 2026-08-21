@@ -45,5 +45,12 @@ dev = [
     "black>=26.3.1",
 ]
 
+# Frontend asset build. See scripts/build_assets.py.
+build = [
+    "libsass>=0.23.0",
+    "rjsmin>=1.2.5",
+    "rcssmin>=1.2.2",
+]
+
 [tool.uv]
 package = false

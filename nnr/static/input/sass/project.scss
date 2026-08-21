@@ -235,6 +235,8 @@ input[name~="save"] {
 }
 
 .alert {
+  // -moz- prefix was previously added by autoprefixer in the gulp build
+  width: -moz-fit-content;
   width: fit-content;
 }
 
