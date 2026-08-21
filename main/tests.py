@@ -244,6 +244,155 @@ def test_malformed_payload_is_rejected(anon_client):
 
 
 # --------------------------------------------------------------------------
+# Signature verification (only active when STRIPE_WEBHOOK_SECRET is set)
+# --------------------------------------------------------------------------
+
+
+WEBHOOK_SECRET = "whsec_test_secret"
+
+
+@pytest.fixture
+def signed_webhook(monkeypatch):
+    """Turn on signature verification for the duration of a test.
+
+    main.views reads the secret through its own environ.Env instance, which
+    consults os.environ at call time.
+    """
+    monkeypatch.setenv("STRIPE_WEBHOOK_SECRET", WEBHOOK_SECRET)
+    return WEBHOOK_SECRET
+
+
+def sign(payload: str, secret: str = WEBHOOK_SECRET, timestamp: int | None = None):
+    """Build a Stripe-Signature header the way Stripe does."""
+    import hashlib
+    import hmac
+    import time
+
+    timestamp = timestamp if timestamp is not None else int(time.time())
+    signed = f"{timestamp}.{payload}".encode()
+    digest = hmac.new(secret.encode(), signed, hashlib.sha256).hexdigest()
+    return f"t={timestamp},v1={digest}"
+
+
+def signed_event(event_type, obj):
+    payload = json.dumps(
+        {
+            "id": "evt_test_signed",
+            "object": "event",
+            "type": event_type,
+            "data": {"object": obj},
+        }
+    )
+    return payload, sign(payload)
+
+
+def test_correctly_signed_webhook_is_processed(
+    anon_client, customer, stripe_stub, signed_webhook
+):
+    """The raw body is what gets signed.
+
+    This previously passed a re-serialised dict to construct_event, so a genuine
+    Stripe request could never verify.
+    """
+    payload, signature = signed_event(
+        "invoice.payment_failed",
+        {"customer": customer.stripe_id, "customer_email": None},
+    )
+
+    response = anon_client.post(
+        reverse("main:webhook"),
+        data=payload,
+        content_type="application/json",
+        HTTP_STRIPE_SIGNATURE=signature,
+    )
+
+    assert response.status_code == 200
+    customer.refresh_from_db()
+    assert customer.payment_status == 0
+
+
+def test_wrongly_signed_webhook_is_rejected(
+    anon_client, customer, stripe_stub, signed_webhook
+):
+    payload, _ = signed_event(
+        "invoice.payment_failed",
+        {"customer": customer.stripe_id, "customer_email": None},
+    )
+    bad_signature = sign(payload, secret="whsec_not_the_secret")
+
+    response = anon_client.post(
+        reverse("main:webhook"),
+        data=payload,
+        content_type="application/json",
+        HTTP_STRIPE_SIGNATURE=bad_signature,
+    )
+
+    assert response.status_code == 400
+    customer.refresh_from_db()
+    assert customer.payment_status != 0
+
+
+def test_webhook_without_signature_header_is_rejected(
+    anon_client, customer, stripe_stub, signed_webhook
+):
+    """Used to raise KeyError on request.META and return a 500."""
+    payload, _ = signed_event(
+        "invoice.payment_failed",
+        {"customer": customer.stripe_id, "customer_email": None},
+    )
+
+    response = anon_client.post(
+        reverse("main:webhook"), data=payload, content_type="application/json"
+    )
+
+    assert response.status_code == 400
+    customer.refresh_from_db()
+    assert customer.payment_status != 0
+
+
+def test_replayed_old_signature_is_rejected(
+    anon_client, customer, stripe_stub, signed_webhook
+):
+    """Stripe's default tolerance is five minutes."""
+    import time
+
+    payload, _ = signed_event(
+        "invoice.payment_failed",
+        {"customer": customer.stripe_id, "customer_email": None},
+    )
+    stale = sign(payload, timestamp=int(time.time()) - 3600)
+
+    response = anon_client.post(
+        reverse("main:webhook"),
+        data=payload,
+        content_type="application/json",
+        HTTP_STRIPE_SIGNATURE=stale,
+    )
+
+    assert response.status_code == 400
+
+
+def test_tampered_body_with_valid_looking_signature_is_rejected(
+    anon_client, customer, stripe_stub, signed_webhook
+):
+    """Sign one payload, send another."""
+    original, signature = signed_event(
+        "invoice.payment_failed",
+        {"customer": customer.stripe_id, "customer_email": None},
+    )
+    tampered = original.replace("payment_failed", "payment_succeeded")
+
+    response = anon_client.post(
+        reverse("main:webhook"),
+        data=tampered,
+        content_type="application/json",
+        HTTP_STRIPE_SIGNATURE=signature,
+    )
+
+    assert response.status_code == 400
+
+
+# --------------------------------------------------------------------------
 # Profile helpers the gating depends on
 # --------------------------------------------------------------------------
 
