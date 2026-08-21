@@ -153,13 +153,6 @@ EMAIL_BACKEND = "anymail.backends.amazon_ses.EmailBackend"
 
 ANYMAIL = {"AMAZON_SES_CLIENT_PARAMS": {"region_name": "us-east-1"}}
 
-# Collectfast
-# ------------------------------------------------------------------------------
-# https://github.com/antonagestam/collectfast#installation
-INSTALLED_APPS = ["collectfast"] + INSTALLED_APPS  # noqa F405
-COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
-AWS_PRELOAD_METADATA = True
-
 # LOGGING
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#logging

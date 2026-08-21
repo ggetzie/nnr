@@ -58,7 +58,6 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "rest_framework",
     "django_extensions",
 ]
 # https://django-extensions.readthedocs.io/en/latest/installation_instructions.html#configuration

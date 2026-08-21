@@ -294,3 +294,4 @@ workspace.code-workspace
 
 awslambda/*/build/
 awslambda/vendor/*
+logs/
