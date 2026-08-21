@@ -1,26 +1,25 @@
 from typing import Any, Sequence
 
+import factory
 from django.contrib.auth import get_user_model
-from factory import DjangoModelFactory, Faker, post_generation
+from factory.django import DjangoModelFactory
+
+# Tests that need to log a user in have to know the password, so it is fixed
+# rather than generated. Override by passing password="..." to the factory.
+DEFAULT_PASSWORD = "n0nsense-test-pw"
 
 
 class UserFactory(DjangoModelFactory):
 
-    username = Faker("user_name")
-    email = Faker("email")
-    name = Faker("name")
+    username = factory.Sequence(lambda n: f"user{n}")
+    email = factory.Sequence(lambda n: f"user{n}@example.com")
+    name = factory.Faker("name")
 
-    @post_generation
+    @factory.post_generation
     def password(self, create: bool, extracted: Sequence[Any], **kwargs):
-        password = Faker(
-            "password",
-            length=42,
-            special_chars=True,
-            digits=True,
-            upper_case=True,
-            lower_case=True,
-        ).generate(extra_kwargs={})
-        self.set_password(password)
+        self.set_password(extracted or DEFAULT_PASSWORD)
+        if create:
+            self.save()
 
     class Meta:
         model = get_user_model()
