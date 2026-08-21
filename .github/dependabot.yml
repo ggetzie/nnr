@@ -1,0 +1,31 @@
+version: 2
+
+updates:
+  # Python. Dependabot reads pyproject.toml + uv.lock; requirements.txt is gone.
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      # One PR per week for routine patch/minor bumps rather than a dozen.
+      python-minor:
+        update-types: ["minor", "patch"]
+
+  # The rotd Lambda. Its pgx/v4 and pgproto3/v2 advisories have no patched
+  # version -- clearing those needs a migration to pgx/v5, which is deliberately
+  # not part of the Python modernization. Security updates only until then, so
+  # this does not reopen version-bump PRs that cannot be merged.
+  - package-ecosystem: "gomod"
+    directory: "/awslambda/rotd"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 0
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+
+# The npm ecosystem is deliberately absent: package.json and package-lock.json
+# were removed when the gulp pipeline was replaced by scripts/build_assets.py.

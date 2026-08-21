@@ -11,9 +11,9 @@ DJANGO_WSGI_MODULE=config.wsgi
 
 echo "Starting $NAME as `whoami`"
 
-# Activate the virtual environement
+# The virtualenv is managed by uv and lives at $DJANGODIR/.venv.
+# Deploys must run `uv sync --frozen` before restarting this program.
 cd $DJANGODIR
-source /usr/local/src/env/nnr/bin/activate
 
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
@@ -27,7 +27,7 @@ test -d $RUNDIR || mkdir -p $RUNDIR
 # daemonize themselves.
 # (do not use --daemon)
 
-exec /usr/local/src/env/nnr/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
+exec /usr/local/src/nnr/.venv/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
     --name $NAME \
     --workers $NUM_WORKERS \
     --timeout $TIMEOUT \

@@ -41,8 +41,13 @@ git clone git@github.com:ggetzie/homebin.git
 
 [See here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
-### Install Python 3.11+
-[See here](https://tiltingatwindmills.dev/how-to-install-an-alternate-python-version/)
+### Install uv
+
+uv manages both the Python interpreter and the dependencies, so no system Python build is needed.
+
+```
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
 ### Clone the repository, copy over .env file
 ```   
@@ -53,6 +58,17 @@ git clone --recurse-submodules git@github.com:ggetzie/nnr.git
 # on local
 scp -i "nnr_server_key.pem" nnr_prod_keys ubuntu@nnr-server:/usr/local/src/nnr/.env
 ```
+### Install dependencies and build the frontend assets
+
+```
+cd /usr/local/src/nnr
+uv sync --frozen              # installs the pinned Python and creates .venv
+uv run --group build scripts/build_assets.py
+```
+
+`uv sync --frozen` installs exactly what `uv.lock` records and must be re-run on every deploy --
+`gunicorn_start.bash` execs `.venv/bin/gunicorn` directly.
+
 ### Create a user
 ```
 setup_user nnr_user
