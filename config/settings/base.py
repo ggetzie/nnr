@@ -55,10 +55,10 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
+    "crispy_bootstrap4",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "rest_framework",
     "django_extensions",
 ]
 # https://django-extensions.readthedocs.io/en/latest/installation_instructions.html#configuration
@@ -178,6 +178,10 @@ TEMPLATES = [
     }
 ]
 # http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
+# crispy-forms 2.x ships no template packs of its own; bootstrap4 comes from the
+# separate crispy-bootstrap4 package. Bootstrap 4 is correct here because
+# nnr/templates/base.html loads Bootstrap 4.3.1 from a CDN.
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # FIXTURES
@@ -245,11 +249,13 @@ MANAGERS = ADMINS
 # django-allauth
 # ------------------------------------------------------------------------------
 ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
-# https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_AUTHENTICATION_METHOD = "email"
-# https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_EMAIL_REQUIRED = True
-# https://django-allauth.readthedocs.io/en/latest/configuration.html
+# https://docs.allauth.org/en/latest/account/configuration.html
+# Replaced ACCOUNT_AUTHENTICATION_METHOD = "email" in allauth 65.
+ACCOUNT_LOGIN_METHODS = {"email"}
+# Replaced ACCOUNT_EMAIL_REQUIRED = True. The trailing "*" marks a field
+# required; the set must match the layout in main.forms.NNRSignupForm.
+ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
+# https://docs.allauth.org/en/latest/account/configuration.html
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_ADAPTER = "nnr.users.adapters.AccountAdapter"

@@ -11,29 +11,44 @@ files go to S3/CloudFront in production. Two Go AWS Lambdas live under `awslambd
 
 ## Commands
 
-Scripts and `.vscode/settings.json` assume a virtualenv at `/usr/local/src/env/nnr`
-(`source /usr/local/src/env/nnr/bin/activate`). Environment variables come from `.env` in the
-repo root, read by `django-environ` at settings import — every `manage.py` invocation needs it.
+Dependencies are managed by **uv** (`pyproject.toml` + `uv.lock`, Python pinned by
+`.python-version`). `uv sync` creates `.venv`; there is no `requirements.txt`. Environment
+variables come from `.env` in the repo root, read by `django-environ` at settings import —
+every `manage.py` invocation needs it.
 
 ```bash
-./manage.py runserver              # defaults to config.settings.local (see manage.py)
-./manage.py migrate
-./manage.py shell                  # then: exec(open("imports.py").read()) for a preloaded shell
+uv sync                            # runtime + dev deps
+uv sync --group build              # adds the asset-build tools
 
-pytest                             # pytest.ini forces --ds=config.settings.test
-pytest nnr/users/tests/test_views.py::TestUserUpdateView::test_get_success_url   # single test
-coverage run -m pytest && coverage html    # .coveragerc includes only nnr/*
+uv run ./manage.py runserver       # defaults to config.settings.local (see manage.py)
+uv run ./manage.py migrate
+uv run ./manage.py shell           # then: exec(open("imports.py").read()) for a preloaded shell
 
-npm run build                      # gulp generate-assets: sass + js -> nnr/static/output
-npm run dev                        # gulp: runserver + browser-sync (proxy localhost:8000) + watch
+uv run pytest                      # pytest.ini forces --ds=config.settings.test
+uv run pytest nnr/users/tests/test_auth.py::test_login_with_email_succeeds   # single test
+uv run coverage run -m pytest && uv run coverage html
+
+uv run --group build scripts/build_assets.py           # sass + js -> nnr/static/output
+uv run --group build scripts/build_assets.py --check   # is the committed output current?
 ```
+
+**Running the tests needs a Postgres role with `CREATEDB`**, because the runner creates and
+drops `test_nnr_db`. The app role (`DB_USER` in `.env`) does not have it. Either grant it
+(`ALTER ROLE nnr_db_user CREATEDB;`) or point the suite at a privileged role without touching
+`.env`:
+
+```bash
+TEST_DB_USER=<superuser> TEST_DB_HOST= TEST_DB_PASSWORD= uv run pytest
+```
+
+`TEST_DB_HOST=` (empty) selects the unix socket, which is what local peer auth needs.
 
 Frontend sources are `nnr/static/input/{sass,js}`; **build output in `nnr/static/output` is what
 Django serves** (`STATICFILES_DIRS`) and is committed. Editing files under `output/` directly gets
-overwritten by the next gulp run.
+overwritten by the next build. There is no npm toolchain — `scripts/build_assets.py` uses
+libsass/rcssmin/rjsmin from the `build` dependency group.
 
-Lint config exists (`.pylintrc` with `pylint_django`, flake8/mypy in `setup.cfg`) but is not wired
-into CI. Python is formatted with `black`.
+Python is formatted with `black`. No linter is wired into CI.
 
 ## Settings layout
 
@@ -43,8 +58,11 @@ into CI. Python is formatted with `black`.
 
 - **local**: `DEBUG=True`, media on local disk, email via Amazon SES (anymail) anyway.
 - **production**: `django-storages` S3 backends defined *inside* `production.py`
-  (`StaticRootS3Boto3Storage` / `MediaRootS3Boto3Storage`), served through CloudFront.
-- **test**: locmem cache and email, MD5 password hasher.
+  (`StaticRootS3Boto3Storage` / `MediaRootS3Boto3Storage`) and wired up through the `STORAGES`
+  dict, served through CloudFront. It also hardcodes a log file at `logs/debug.log`, so that
+  directory must exist or importing the settings raises.
+- **test**: defines its own `DATABASES` (`base.py` deliberately has none), locmem cache and
+  email, MD5 password hasher, and dummy Stripe keys so no test can reach the live account.
 
 ## Apps and how they fit together
 
@@ -54,11 +72,20 @@ into CI. Python is formatted with `black`.
 | `main/` | `Profile` (subscription state) and `PaymentPlan`; all Stripe checkout/webhook handling |
 | `comments/` | JSON endpoints for per-recipe comments and flags |
 | `nnr/users/` | custom `User` (`AUTH_USER_MODEL = "users.User"`), allauth adapters |
-| `nnr/` | project package: templates, static, `custom_storages.py`, `conftest.py` |
+| `nnr/` | project package: templates, static, `custom_storages.py` |
 | `config/` | settings, root urlconf, wsgi |
 
 `mixins.py`, `decorators.py` and `imports.py` sit at the **repo root**, not inside an app, and are
-imported as top-level modules (`from mixins import ValidUserMixin`).
+imported as top-level modules (`from mixins import ValidUserMixin`). `conftest.py` is at the root
+too, and has to be: three of the four apps live there, so a conftest under `nnr/` would not be
+visible to them.
+
+### Tests
+
+`pytest.ini` sets `python_files = tests.py test_*.py *_tests.py` — without the `tests.py` entry
+pytest silently skips the Django-convention files in `recipes/`, `main/` and `comments/`.
+`recipes/tests.py` holds the access-control matrix that checks every gated route against every
+subscription state; it is the main guard on the gating described below.
 
 ### Subscription gating
 
@@ -119,8 +146,18 @@ cron (`recipes/management/rotd.sh`, 12:00 UTC daily) mainly to bust the cached f
 
 ## Deployment
 
-No CI. Deployment is manual on the server: `git pull`, migrate, `collectstatic`, restart the
-supervisor program. `srv/{local,production}/` hold the nginx, supervisor and `gunicorn_start.bash`
-configs, symlinked into place by the `link_srv` script from
-[ggetzie/homebin](https://github.com/ggetzie/homebin); README.md documents the full first-time
-server setup.
+No CI. Deployment is manual on the server:
+
+```bash
+git pull
+uv sync --frozen          # required: gunicorn is now run from .venv/, not a system virtualenv
+uv run ./manage.py migrate
+uv run ./manage.py collectstatic --noinput
+sudo supervisorctl restart nnr
+```
+
+`srv/{local,production}/` hold the nginx, supervisor and `gunicorn_start.bash` configs, symlinked
+into place by the `link_srv` script from [ggetzie/homebin](https://github.com/ggetzie/homebin);
+README.md documents the full first-time server setup. `gunicorn_start.bash` execs
+`/usr/local/src/nnr/.venv/bin/gunicorn` directly rather than going through `uv run`, so supervisor
+does not depend on uv being on its PATH — but that means `uv sync --frozen` must run first.

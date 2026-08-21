@@ -83,11 +83,7 @@ AWS_S3_CUSTOM_DOMAIN = env(
 )
 AWS_IS_GZIPPED = True
 
-# STATIC
-# ------------------------
-STATICFILES_STORAGE = "config.settings.production.StaticRootS3Boto3Storage"
-STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
-# MEDIA
+# STATIC / MEDIA
 # ------------------------------------------------------------------------------
 # region http://stackoverflow.com/questions/10390244/
 # Full-fledge class: https://stackoverflow.com/a/18046120/104731
@@ -108,7 +104,13 @@ class MediaRootS3Boto3Storage(S3Boto3Storage):
 
 
 # endregion
-DEFAULT_FILE_STORAGE = "config.settings.production.MediaRootS3Boto3Storage"
+# Django 5.1 removed STATICFILES_STORAGE and DEFAULT_FILE_STORAGE in favour of
+# the single STORAGES dict.
+STORAGES = {
+    "default": {"BACKEND": "config.settings.production.MediaRootS3Boto3Storage"},
+    "staticfiles": {"BACKEND": "config.settings.production.StaticRootS3Boto3Storage"},
+}
+STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 
 # TEMPLATES
@@ -152,13 +154,6 @@ EMAIL_BACKEND = "anymail.backends.amazon_ses.EmailBackend"
 # https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
 
 ANYMAIL = {"AMAZON_SES_CLIENT_PARAMS": {"region_name": "us-east-1"}}
-
-# Collectfast
-# ------------------------------------------------------------------------------
-# https://github.com/antonagestam/collectfast#installation
-INSTALLED_APPS = ["collectfast"] + INSTALLED_APPS  # noqa F405
-COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
-AWS_PRELOAD_METADATA = True
 
 # LOGGING
 # ------------------------------------------------------------------------------

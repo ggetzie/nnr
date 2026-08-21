@@ -177,12 +177,12 @@ span.your-tag {
   margin-bottom: 10px;
 }
 
-.recipe-section div[class^=col-sm] {
+.recipe-section div[class^="col-sm"] {
   margin-bottom: 2px;
   margin-top: 2px;
 }
 
-input[name~=save] {
+input[name~="save"] {
   margin-bottom: 2px;
   margin-top: 2px;
 }

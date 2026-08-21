@@ -17,6 +17,25 @@ SECRET_KEY = env(
 # https://docs.djangoproject.com/en/dev/ref/settings/#test-runner
 TEST_RUNNER = "django.test.runner.DiscoverRunner"
 
+# DATABASES
+# ------------------------------------------------------------------------------
+# base.py deliberately defines no DATABASES; local.py and production.py each build
+# their own. Tests need one too, or every db-backed test errors out before it runs.
+#
+# The test runner creates and drops test_<DB_NAME>, which the application role is
+# not required to be able to do. Set TEST_DB_USER (and TEST_DB_HOST="" for local
+# peer auth) to run as a role that has CREATEDB, without touching the app credentials.
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": env("DB_NAME", default="nnr_db"),
+        "USER": env("TEST_DB_USER", default=env("DB_USER", default="")),
+        "PASSWORD": env("TEST_DB_PASSWORD", default=env("nnr_DB_PW", default="")),
+        "HOST": env("TEST_DB_HOST", default=env("DB_HOST", default="")),
+        "PORT": env("DB_PORT", default=""),
+    }
+}
+
 # CACHES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#caches
@@ -51,3 +70,7 @@ EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+# base.py reads the real keys out of .env. Override them here so that a test which
+# forgets to stub the stripe module cannot reach the live account.
+STRIPE_PK = "pk_test_dummy"
+STRIPE_SK = "sk_test_dummy"

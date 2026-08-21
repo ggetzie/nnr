@@ -1,0 +1,56 @@
+[project]
+name = "nnr"
+version = "1.0.0"
+description = "No Nonsense Recipes"
+requires-python = ">=3.14"
+
+# Exact versions live in uv.lock, which is what gets installed. Constraints here
+# are lower bounds plus an upper bound wherever a major version is known to
+# break us -- Django is held at the 5.2 LTS series deliberately.
+dependencies = [
+    "Django>=5.2.17,<6.0",
+    "django-allauth>=65.19.1",
+    "django-anymail[amazon-ses]>=15.1",
+    "django-crispy-forms>=2.7,<3",
+    "crispy-bootstrap4>=2026.2",
+    "django-environ>=0.14.0",
+    "django-extensions>=4.1",
+    "django-storages>=1.14.6",
+    "argon2-cffi>=25.1.0",
+    "psycopg[binary]>=3.3.4",
+    "pillow>=12.3.0",
+    "pillow-heif>=1.5.0",
+    "redis>=8.1.0",
+    "gunicorn>=26.1.0",
+    "stripe>=15.5.1",
+    "Markdown>=3.10.3",
+    "python-dateutil>=2.9.0",
+    "requests>=2.33.0",
+    "requests-oauthlib>=2.0.0",
+    "beautifulsoup4>=4.14.0",
+    "boto3>=1.40.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-django>=4.14.0",
+    "pytest-sugar>=1.1.1",
+    "coverage>=7.10.0",
+    "django-coverage-plugin>=3.1.1",
+    "factory-boy>=3.3.3",
+    "Faker>=37.0.0",
+    "ipython>=9.0.0",
+    "ipdb>=0.13.13",
+    "black>=26.3.1",
+]
+
+# Frontend asset build. See scripts/build_assets.py.
+build = [
+    "libsass>=0.23.0",
+    "rjsmin>=1.2.5",
+    "rcssmin>=1.2.2",
+]
+
+[tool.uv]
+package = false
