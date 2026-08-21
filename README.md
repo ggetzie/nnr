@@ -58,6 +58,26 @@ git clone --recurse-submodules git@github.com:ggetzie/nnr.git
 # on local
 scp -i "nnr_server_key.pem" nnr_prod_keys ubuntu@nnr-server:/usr/local/src/nnr/.env
 ```
+### Shared Python location (required)
+
+The app runs as `nnr_user` under supervisor, but deploys run as a different user.
+`uv` installs Python under the *installing* user's home by default, and `.venv/bin/python`
+is a symlink to it -- so `nnr_user` cannot traverse to it and gunicorn dies with
+`bad interpreter: Permission denied`. Install Python somewhere both users can reach:
+
+```
+sudo mkdir -p /opt/uv/python
+sudo chown "$USER" /opt/uv/python
+echo 'export UV_PYTHON_INSTALL_DIR=/opt/uv/python' | sudo tee /etc/profile.d/uv.sh
+export UV_PYTHON_INSTALL_DIR=/opt/uv/python
+```
+
+Set this **before** the first `uv sync`. If a venv already exists pointing at the wrong
+place, `rm -rf .venv` first -- the interpreter path is fixed when the venv is created and
+`uv sync` will not repoint it.
+
+Verify with `readlink -f .venv/bin/python`; it should be under `/opt/uv/python`.
+
 ### Install dependencies and build the frontend assets
 
 ```

@@ -156,6 +156,14 @@ uv run ./manage.py collectstatic --noinput
 sudo supervisorctl restart nnr
 ```
 
+**`UV_PYTHON_INSTALL_DIR=/opt/uv/python` must be set on the server** (it is in
+`/etc/profile.d/uv.sh`). uv otherwise installs Python under the deploying user's home,
+and `.venv/bin/python` symlinks there -- which `nnr_user` cannot traverse, so gunicorn
+fails with `bad interpreter: Permission denied`. `gunicorn_start.bash` preflights this
+and exits with an explanatory message rather than that error. Changing the location
+needs `rm -rf .venv` before re-syncing; the interpreter path is baked in at venv
+creation.
+
 `srv/{local,production}/` hold the nginx, supervisor and `gunicorn_start.bash` configs, symlinked
 into place by the `link_srv` script from [ggetzie/homebin](https://github.com/ggetzie/homebin);
 README.md documents the full first-time server setup. `gunicorn_start.bash` execs
