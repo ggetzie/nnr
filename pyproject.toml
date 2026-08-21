@@ -1,0 +1,52 @@
+[project]
+name = "nnr"
+version = "1.0.0"
+description = "No Nonsense Recipes"
+requires-python = ">=3.11,<3.12"
+
+# NOTE: these are deliberately the versions that were pinned in requirements.txt
+# before the uv migration. This file is a like-for-like transcription so that the
+# switch to uv is behaviourally a no-op; the upgrades happen in later commits.
+dependencies = [
+    "Django==5.0.7",
+    "django-allauth==0.59.0",
+    "django-anymail[amazon-ses]==8.6",
+    "django-crispy-forms==1.14.0",
+    "django-environ==0.9.0",
+    "django-extensions==3.2.1",
+    "django-model-utils==4.2.0",
+    "django-pipeline==2.0.8",
+    "django-storages==1.13.1",
+    "djangorestframework==3.15.2",
+    "Collectfast==2.2.0",
+    "argon2-cffi==21.3.0",
+    "psycopg2-binary==2.9.5",
+    "pillow==10.3.0",
+    "pillow-heif==0.16.0",
+    "redis==5.0.7",
+    "gunicorn==22.0.0",
+    "stripe==4.2.0",
+    "Markdown==3.4.1",
+    "python-dateutil==2.8.2",
+    "requests==2.32.3",
+    "requests-oauthlib==1.3.1",
+    "beautifulsoup4==4.11.1",
+    "boto3==1.26.7",
+]
+
+[dependency-groups]
+dev = [
+    "pytest==7.2.1",
+    "pytest-django==4.5.2",
+    "pytest-sugar==0.9.6",
+    "coverage==6.5.0",
+    "django-coverage-plugin==2.0.4",
+    "factory-boy==3.2.1",
+    "Faker==15.3.1",
+    "ipython==8.10.0",
+    "ipdb==0.13.9",
+    "black==24.4.2",
+]
+
+[tool.uv]
+package = false

@@ -60,7 +60,8 @@ docs/_build/
 target/
 
 # pyenv
-.python-version
+# .python-version is committed: uv reads it to pin the interpreter for everyone.
+# .python-version
 
 
 
