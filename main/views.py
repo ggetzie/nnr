@@ -239,13 +239,22 @@ def webhook(request):
         except stripe.SignatureVerificationError:
             logger.error("Webhook signature verification failed")
             return HttpResponse(status=400)
+    elif not settings.DEBUG:
+        # Nothing proves an unsigned request came from Stripe, and the handlers
+        # below change subscription state -- anyone who can reach this URL could
+        # grant themselves an account. Refuse rather than accept it.
+        logger.error(
+            "STRIPE_WEBHOOK_SECRET is not set; refusing to process a webhook. "
+            "Add the endpoint's signing secret to the environment."
+        )
+        return HttpResponse(status=500)
     else:
-        # No shared secret configured, so nothing proves this request came from
-        # Stripe. The handlers below change subscription state, so anyone who
-        # can reach this URL can grant themselves an account. Set
-        # STRIPE_WEBHOOK_SECRET in the environment.
+        # DEBUG only, so that local development does not require the Stripe CLI
+        # to exercise this endpoint. See `stripe listen --forward-to` for testing
+        # the signed path locally.
         logger.warning(
-            "STRIPE_WEBHOOK_SECRET is not set; accepting an unverified webhook"
+            "STRIPE_WEBHOOK_SECRET is not set; accepting an unverified webhook "
+            "because DEBUG is on"
         )
         try:
             event = stripe.Event.construct_from(json.loads(payload), stripe.api_key)
