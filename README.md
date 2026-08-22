@@ -128,3 +128,9 @@ m h  dom  mon  dow  command
 0 12 *    *    *    /usr/local/src/nnr/recipes/management/rotd.sh
 ```
 
+`rotd.sh` writes its own output to `logs/rotd.log` (timestamped, one block per run, with the
+exit status) rather than relying on cron, which mails failures to the crontab owner and
+silently discards them when no MTA is installed. Check that file first when the recipe of
+the day does not change. The script exits nonzero on failure, so `journalctl -t CRON` records
+the failed run too.
+
