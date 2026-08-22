@@ -29,10 +29,13 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         """
-        The functionality to set the new recipe of the day has been moved to
-        a go module in the nnr/awslambda folder to be run by a lambda function.
-        This command is kept to be run at the same time (or shortly after) only to
-        delete the cache entry
+        Pick the next recipe of the day, bust the cached homepage fragment and
+        announce it.
+
+        This is the only thing that selects the recipe of the day. It runs from
+        cron via recipes/management/rotd.sh. A Go lambda under awslambda/rotd
+        used to do the same job and was removed; if a docstring or comment
+        anywhere still says the selection lives in Go, it is out of date.
         """
 
         cache_key = make_template_fragment_key("rotd")

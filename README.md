@@ -116,16 +116,12 @@ link_srv nnr production
 See [instructions](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal)
 Note AWS Lightsail does not enable port 443 by default. Go to the networking tab in the Lightsail dashboard to open it.
 
-### Install go and build recipe of the day
-```
-update_go 1.19.3
-cd /usr/local/src/nnr/awslambda/rotd
-mkdir build
-go build -o build/rotd rotd.go
-```
-
 ### configure cron job
-Note server time is UTC. Run rotd once per day at 7am EST (UTC-5)
+Note server time is UTC. Run rotd once per day at 7am EST (UTC-5).
+
+`rotd.sh` runs the `choose_rotd` management command, which selects the recipe of the day,
+clears the cached homepage fragment and posts the tweet. No Go toolchain is needed on the
+server -- the Go lambda that used to do this was redundant and has been removed.
 
 ```
 m h  dom  mon  dow  command

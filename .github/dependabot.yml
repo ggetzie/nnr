@@ -12,20 +12,13 @@ updates:
       python-minor:
         update-types: ["minor", "patch"]
 
-  # The rotd Lambda. Its pgx/v4 and pgproto3/v2 advisories have no patched
-  # version -- clearing those needs a migration to pgx/v5, which is deliberately
-  # not part of the Python modernization. Security updates only until then, so
-  # this does not reopen version-bump PRs that cannot be merged.
-  - package-ecosystem: "gomod"
-    directory: "/awslambda/rotd"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 0
-
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "monthly"
 
+# No gomod entry: awslambda/rotd was removed, and awslambda/photos is a git
+# submodule whose dependencies belong to the ggetzie/nnr-photos repo.
+#
 # The npm ecosystem is deliberately absent: package.json and package-lock.json
 # were removed when the gulp pipeline was replaced by scripts/build_assets.py.

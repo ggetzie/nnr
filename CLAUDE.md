@@ -108,7 +108,7 @@ Redis, `KEY_PREFIX = "nnr"`. Two patterns worth knowing:
 
 - `RecipeDetail` caches the whole `Recipe` object under `make_detail_key(slug)` for 24h;
   `Recipe.save()` and `Recipe.delete()` invalidate it. Any code path that mutates a recipe
-  *without* going through those methods (bulk updates, raw SQL, the rotd Lambda) leaves a stale page.
+  *without* going through those methods (bulk updates, raw SQL) leaves a stale page.
 - The recipe-of-the-day homepage fragment is a template fragment cache keyed `rotd`, deleted by
   the `choose_rotd` management command via `make_template_fragment_key`.
 
@@ -133,16 +133,17 @@ to the same Go binary at the hardcoded path
 
 ## awslambda/
 
-Two independent Go trees, neither part of the Python build:
+One Go tree, not part of the Python build:
 
 - `awslambda/photos/` — **git submodule** (`github.com/ggetzie/nnr-photos`); pure-Go image
   optimizer plus a `cleanup/` module. It has its own `CLAUDE.md` and `Makefile` — read those before
   touching it. Clone with `--recurse-submodules`.
-- `awslambda/rotd/` — picks the recipe of the day, writes to Postgres with `pgx`, tweets it.
-  Built on the server with `go build -o build/rotd rotd.go`.
 
-The rotd Lambda now owns choosing the featured recipe; the `choose_rotd` Django command runs from
-cron (`recipes/management/rotd.sh`, 12:00 UTC daily) mainly to bust the cached fragment.
+There was also an `awslambda/rotd/` Go lambda that picked the recipe of the day. It was redundant —
+`choose_rotd` does the same `featured`/`last_featured` updates in Python — and has been removed.
+**Recipe-of-the-day selection lives entirely in `recipes/management/commands/choose_rotd.py`**, run
+from cron via `recipes/management/rotd.sh` at 12:00 UTC daily. That command also busts the cached
+`rotd` template fragment and posts the tweet.
 
 ## Deployment
 
