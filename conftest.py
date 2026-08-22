@@ -15,6 +15,12 @@ from nnr.users.tests.factories import DEFAULT_PASSWORD, UserFactory
 
 UTC = datetime.timezone.utc
 
+# pytest.ini widens python_files to include tests.py so the Django-convention test
+# modules in recipes/, main/ and comments/ get collected. That also matches
+# recipes/management/commands/test_rotd.py, which is a management command rather
+# than a test module. Keep collection out of management/commands entirely.
+collect_ignore_glob = ["*/management/commands/*"]
+
 
 @pytest.fixture(autouse=True)
 def media_storage(settings, tmpdir):
